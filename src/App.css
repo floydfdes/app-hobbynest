@@ -1,0 +1,12 @@
+.App {
+  text-align: center;
+}
+
+.hide-input-file {
+  visibility: hidden;
+}
+button,
+img {
+  width: 100%;
+  margin-bottom: 5px !important;
+}
