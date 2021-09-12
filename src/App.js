@@ -51,13 +51,15 @@ function App() {
   }, []);
 
   if (isModelLoading) {
-    return <h1>Model is loading..</h1>;
+    return (
+      <h1 className="text-center heading-button-color">Model is loading..</h1>
+    );
   }
   return (
     <div className="container">
       <div className="row">
         <div className="col-lg-12 col-md-12 col-sm-12">
-          <h1 className="text-center bg-primary text-light pb-2">
+          <h1 className="text-center pb-2 heading-button-color">
             Image classification
           </h1>
         </div>
@@ -78,7 +80,7 @@ function App() {
             </div>
             <div className="col-lg-4 col-md-4 col-sm-12">
               <button
-                className="btn btn-primary"
+                className="btn heading-button-color button-image-width-mb-5"
                 onClick={() => {
                   uploadImageRef.current.click();
                 }}
@@ -89,7 +91,7 @@ function App() {
             <div className="col-lg-4 col-md-4 col-sm-12">
               {imageurl && (
                 <button
-                  className="btn btn-primary "
+                  className="btn  heading-button-color button-image-width-mb-5"
                   onClick={identify}
                   type="button"
                 >
@@ -118,6 +120,7 @@ function App() {
               alt="imageUrl"
               crossOrigin="anonymous"
               ref={ref}
+              className="button-image-width-mb-5"
             />
           )}
         </div>
@@ -127,7 +130,7 @@ function App() {
             <table className="table table-secondary table-striped table-hover table-bordered">
               <thead>
                 <tr>
-                  <th scope="col">Predeiction</th>
+                  <th scope="col">Prediction</th>
                   <th scope="col">Probability</th>
                 </tr>
               </thead>

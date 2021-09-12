@@ -5,8 +5,13 @@
 .hide-input-file {
   visibility: hidden;
 }
-button,
-img {
+.button-image-width-mb-5 {
   width: 100%;
   margin-bottom: 5px !important;
+}
+.heading-button-color {
+  background: #68f33f !important;
+  border: #68f33f !important;
+  color: #3f68f3 !important;
+  font-weight: bold !important;
 }
