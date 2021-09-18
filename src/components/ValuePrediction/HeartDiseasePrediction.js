@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect } from "react";
 
 function HeartDiseasePrediction() {
   const fetchResult = async (url, data) => {
@@ -11,12 +11,12 @@ function HeartDiseasePrediction() {
     });
     return response.json();
   };
-  const result = async () => {
-    const response = await fetchResult("http://localhost:5000/predictapi", {
-      data: [50, 0, 1, 200, 180, 180, 150, 180, 0, 2.5, 2, 1, 2],
-    });
-    console.log(response);
-  };
+  // const result = async () => {
+  //   const response = await fetchResult("http://localhost:5000/predictapi", {
+  //     data: [50, 0, 1, 200, 180, 180, 150, 180, 0, 2.5, 2, 1, 2],
+  //   });
+  //   console.log(response);
+  // };
 
   useEffect(() => {
     // result();
