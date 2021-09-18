@@ -1,0 +1,28 @@
+@font-face {
+  font-family: ubuntu;
+  src: url("../src/assets/fonts/Ubuntu-Medium.ttf");
+}
+:root {
+  --primary-colour: #f340af;
+  --secodary-color: #fbdb14;
+  --third-color: #fffceb;
+  --fourth-color: #01f9c6;
+}
+
+body,
+html {
+  font-family: ubuntu !important;
+  //background: var(--secodary-color);
+}
+
+.table-secondary {
+  --bs-table-bg: var(--primary-colour) !important;
+  --bs-table-striped-bg: white !important;
+  --bs-table-striped-color: #000;
+  --bs-table-active-bg: #cbccce;
+  --bs-table-active-color: #000;
+  --bs-table-hover-bg: #d1d2d4;
+  --bs-table-hover-color: #000;
+  color: var(--secodary-color) !important;
+  border-color: var(--secodary-color) !important;
+}

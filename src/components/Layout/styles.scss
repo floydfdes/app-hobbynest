@@ -1,0 +1,26 @@
+.navbar {
+  background: var(--primary-colour) !important;
+}
+.nav-link {
+  color: var(--secodary-color) !important;
+}
+.navbar-brand {
+  a {
+    color: var(--third-color) !important;
+    text-decoration: none;
+  }
+  a:hover {
+    color: var(--fourth-color) !important;
+  }
+}
+
+.dropdown-menu {
+  background-color: var(--primary-colour) !important;
+  .dropdown-item {
+    color: var(--secodary-color) !important;
+  }
+  .dropdown-item:hover {
+    background-color: var(--fourth-color) !important;
+    color: var(--primary-colour) !important;
+  }
+}
