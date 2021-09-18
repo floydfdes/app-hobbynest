@@ -1,50 +1,30 @@
-import React, { useEffect } from "react";
+import axios from "axios";
+import React, { useState } from "react";
 import { FormControl, InputGroup } from "react-bootstrap";
+import {
+  heartscapeFields,
+  heartscapefieldsCol3,
+  heartscapeInitialData,
+} from "../../Data/Data";
 //import FavoriteIcon from "@mui/icons-material/Favorite";
 import "./styles.scss";
 function HeartDiseasePrediction() {
-  // const fetchResult = async (url, data) => {
-  //   const response = await fetch(url, {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify(data),
-  //   });
-  //   return response.json();
-  // };
-  // const result = async () => {
-  //   const response = await fetchResult("http://localhost:5000/predictapi", {
-  //     data: [50, 0, 1, 200, 180, 180, 150, 180, 0, 2.5, 2, 1, 2],
-  //   });
-  //   console.log(response);
-  // };
-  const fields = [
-    {
-      name: "Age",
-      id: "age",
-    },
-    { name: "Sex", id: "sex" },
-    { name: "Chest pain type", id: "chestPainType" },
-    { name: "Resting blood pressure", id: "restingBloodSugar" },
-    { name: "Cholesterol", id: "cholesterol" },
-    { name: "Fasting blood sugar", id: "fastingBloodSugar" },
-    { name: "Resting electrocardiographic results", id: "restingEcgResults" },
-    { name: "Maximum heart rate", id: "maxHeartRate" },
-    { name: "Exercise Induced Angina", id: "angina" },
-  ];
+  const [formData, setFormData] = useState(heartscapeInitialData);
+  const fields = heartscapeFields;
+  const fieldsCol3 = heartscapefieldsCol3;
 
-  const fieldsCol3 = [
-    { name: "Old peak", id: "oldPeak" },
-    { name: "Slope", id: "slope" },
-    { name: "Flourosopy", id: "flourosopy" },
-    { name: "Thalassemia", id: "thalassemia" },
-  ];
-
-  useEffect(() => {
-    // result();
-  }, []);
-
+  const updateForm = (event) => {
+    setFormData({ ...formData, [event.target.name]: event.target.value });
+  };
+  const submitForm = () => {
+    const data = [];
+    for (const field in formData) {
+      data.push(parseInt(formData[field]));
+    }
+    axios.post("http://localhost:5000/heartdisease", data).then((res) => {
+      console.log(res.data.prediction);
+    });
+  };
   return (
     <>
       <div className="row heartscape-page-padding">
@@ -64,19 +44,34 @@ function HeartDiseasePrediction() {
           return (
             <div className="col-lg-4 col-md-4 col-sm-12" key={field.id}>
               <label className="heartscape-field-label">{field.name}</label>
-              <InputGroup size="sm" className="mb-3">
-                {/* <InputGroup.Text id="inputGroup-sizing-sm">
-                  <FavoriteIcon />
-                </InputGroup.Text> */}
-                <FormControl
+              {!field.options ? (
+                <InputGroup size="sm" className="mb-3">
+                  <FormControl
+                    onChange={updateForm}
+                    id={field.id}
+                    name={field.id}
+                    className="heartscape-input-field"
+                    autoComplete="off"
+                    aria-label="Small"
+                    aria-describedby="inputGroup-sizing-sm"
+                  />
+                </InputGroup>
+              ) : (
+                <select
+                  onChange={updateForm}
                   id={field.id}
                   name={field.id}
-                  className="heartscape-input-field"
-                  autocomplete="off"
-                  aria-label="Small"
-                  aria-describedby="inputGroup-sizing-sm"
-                />
-              </InputGroup>
+                  className="form-select form-select-sm"
+                >
+                  {field.options?.map((option) => {
+                    return (
+                      <option key={option.value} value={option.value}>
+                        {option.name}
+                      </option>
+                    );
+                  })}
+                </select>
+              )}
             </div>
           );
         })}
@@ -84,25 +79,44 @@ function HeartDiseasePrediction() {
           return (
             <div className="col-lg-3 col-md-3 col-sm-12" key={field.id}>
               <label className="heartscape-field-label">{field.name}</label>
-              <InputGroup size="sm" className="mb-3">
-                {/* <InputGroup.Text id="inputGroup-sizing-sm">
-                  <FavoriteIcon />
-                </InputGroup.Text> */}
-                <FormControl
+              {!field.options ? (
+                <InputGroup size="sm" className="mb-3">
+                  <FormControl
+                    onChange={updateForm}
+                    id={field.id}
+                    name={field.id}
+                    className="heartscape-input-field"
+                    autoComplete="off"
+                    aria-label="Small"
+                    aria-describedby="inputGroup-sizing-sm"
+                  />
+                </InputGroup>
+              ) : (
+                <select
+                  onChange={updateForm}
                   id={field.id}
                   name={field.id}
-                  className="heartscape-input-field"
-                  autocomplete="off"
-                  aria-label="Small"
-                  aria-describedby="inputGroup-sizing-sm"
-                />
-              </InputGroup>
+                  className="form-select form-select-sm"
+                  aria-label="Default select example"
+                >
+                  {field.options?.map((option) => {
+                    return (
+                      <option key={option.value} value={option.value}>
+                        {option.name}
+                      </option>
+                    );
+                  })}
+                </select>
+              )}
             </div>
           );
         })}
 
         <div className="col-lg-6 col-md-6 col-sm-12">
-          <button className="btn heading-button-color heartscape-button">
+          <button
+            onClick={submitForm}
+            className="btn heading-button-color heartscape-button"
+          >
             Predict
           </button>
         </div>

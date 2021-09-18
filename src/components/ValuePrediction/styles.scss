@@ -16,7 +16,8 @@
   margin-top: 5px;
 }
 
-.heartscape-input-field:focus {
+.heartscape-input-field:focus,
+.form-select:focus {
   border-color: var(--primary-colour);
   box-shadow: none;
 }
