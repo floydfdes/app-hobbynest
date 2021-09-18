@@ -16,6 +16,7 @@ function Home() {
         <Route path="/mobilenet" component={ImageDetectionMobileNet} exact />
         <Route path="/imagedetection" component={UploadImage} exact />
         <Route path="/hearts" component={HeartDiseasePrediction} exact />
+        <Route path="/" component={Main} exact />
       </Switch>
     </div>
   );

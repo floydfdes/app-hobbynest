@@ -1,0 +1,22 @@
+.heartscape-page-padding {
+  padding: 20px 5px;
+}
+.heartscape-heading-color {
+  color: var(--primary-colour);
+}
+.input-group-text {
+  background-color: var(--primary-colour);
+  color: var(--secodary-color);
+}
+
+.heartscape-field-label {
+  color: var(--primary-colour);
+}
+.heartscape-button {
+  margin-top: 5px;
+}
+
+.heartscape-input-field:focus {
+  border-color: var(--primary-colour);
+  box-shadow: none;
+}

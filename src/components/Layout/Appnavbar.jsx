@@ -40,7 +40,7 @@ function Appnavbar() {
                 className="dropdown-item"
                 to="/hearts"
               >
-                Heart disease
+                Heartscape
               </Link>
               <Link
                 onClick={hideDropdown}

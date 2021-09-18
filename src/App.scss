@@ -1,3 +1,10 @@
 .App {
   text-align: center;
 }
+.heading-button-color {
+  background: var(--primary-colour) !important;
+  border: var(--primary-colour) !important;
+  color: var(--secodary-color) !important;
+  font-weight: bold !important;
+  width: 100%;
+}
