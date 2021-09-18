@@ -1,0 +1,21 @@
+.hide-input-file {
+  visibility: hidden;
+}
+.button-image-width-mb-5 {
+  width: 100%;
+  margin-bottom: 5px !important;
+  border: 2px solid var(--primary-colour);
+}
+.heading-button-color {
+  background: var(--primary-colour) !important;
+  border: var(--primary-colour) !important;
+  color: var(--secodary-color) !important;
+  font-weight: bold !important;
+}
+.heading-color {
+  color: var(--primary-colour);
+}
+.url-input:focus {
+  border-color: var(--primary-colour);
+  box-shadow: none;
+}

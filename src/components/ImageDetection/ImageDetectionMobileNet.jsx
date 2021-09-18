@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect, useRef, useState } from "react";
 import "@tensorflow/tfjs";
 import * as mobileNet from "@tensorflow-models/mobilenet";
+import "./styles.scss";
 function ImageDetectionMobileNet() {
   const [isModelLoading, setIsModelLoading] = useState(false);
   const [model, setModel] = useState(null);
@@ -50,9 +51,7 @@ function ImageDetectionMobileNet() {
 
   if (isModelLoading) {
     return (
-      <h1 className="text-center heading-button-color">
-        Classfier is loading..
-      </h1>
+      <h1 className="text-center heading-color">Classfier is loading..</h1>
     );
   }
 
@@ -60,7 +59,7 @@ function ImageDetectionMobileNet() {
     <div className="container">
       <div className="row">
         <div className="col-lg-12 col-md-12 col-sm-12">
-          <h1 className="text-center pb-2 heading-button-color">
+          <h1 className="text-center pb-2 heading-color">
             Image classification
           </h1>
         </div>
@@ -86,7 +85,7 @@ function ImageDetectionMobileNet() {
                   uploadImageRef.current.click();
                 }}
               >
-                UPLOAD IMAGE
+                Upload Image
               </button>
             </div>
             <div className="col-lg-4 col-md-4 col-sm-12">
@@ -96,7 +95,7 @@ function ImageDetectionMobileNet() {
                   onClick={identify}
                   type="button"
                 >
-                  PREDICT
+                  Predict
                 </button>
               )}
             </div>
@@ -108,10 +107,10 @@ function ImageDetectionMobileNet() {
             type="text"
             name=""
             id=""
-            placeholder="URL of image"
+            placeholder="paste image URL"
             ref={urlRef}
             onChange={handleOnChange}
-            className="form-control"
+            className="form-control url-input"
           />
         </div>
         <div className="col-lg-6 col-md-6 col-sm-12 mt-2">

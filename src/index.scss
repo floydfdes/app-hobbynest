@@ -21,7 +21,7 @@ html {
   --bs-table-striped-color: #000;
   --bs-table-active-bg: #cbccce;
   --bs-table-active-color: #000;
-  --bs-table-hover-bg: #d1d2d4;
+  --bs-table-hover-bg: var(--fourth-color) !important;
   --bs-table-hover-color: #000;
   color: var(--secodary-color) !important;
   border-color: var(--secodary-color) !important;
