@@ -1,8 +1,8 @@
 .navbar {
-  background: var(--primary-colour) !important;
+  background: var(--secodary-color) !important;
 }
 .nav-link {
-  color: var(--secodary-color) !important;
+  color: var(--primary-colour) !important;
 }
 .navbar-brand {
   a {
@@ -22,5 +22,21 @@
   .dropdown-item:hover {
     background-color: var(--fourth-color) !important;
     color: var(--primary-colour) !important;
+  }
+}
+.nav-link:hover {
+  background-color: var(--fourth-color);
+}
+.navbar-light .navbar-toggler {
+  color: var(--primary-colour) !important;
+  border-color: var(--primary-colour) !important;
+}
+@media only screen and (min-width: 769px) {
+  .nav-link {
+    padding: 8px 12px !important;
+    &:hover {
+      background-color: var(--fourth-color);
+      border-radius: 500px;
+    }
   }
 }

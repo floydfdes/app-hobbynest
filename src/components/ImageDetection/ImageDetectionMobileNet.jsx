@@ -107,7 +107,7 @@ function ImageDetectionMobileNet() {
             type="text"
             name=""
             id=""
-            placeholder="paste image URL"
+            placeholder="Paste image URL"
             ref={urlRef}
             onChange={handleOnChange}
             className="form-control url-input"

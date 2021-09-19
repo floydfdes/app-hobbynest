@@ -7,4 +7,7 @@
   color: var(--secodary-color) !important;
   font-weight: bold !important;
   width: 100%;
+  display: flex !important;
+  align-items: flex-end;
+  justify-content: center;
 }

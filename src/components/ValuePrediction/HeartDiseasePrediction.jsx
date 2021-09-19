@@ -6,24 +6,43 @@ import {
   heartscapefieldsCol3,
   heartscapeInitialData,
 } from "../../Data/Data";
-//import FavoriteIcon from "@mui/icons-material/Favorite";
+import InfoIcon from "@mui/icons-material/Info";
 import "./styles.scss";
+
 function HeartDiseasePrediction() {
   const [formData, setFormData] = useState(heartscapeInitialData);
   const fields = heartscapeFields;
   const fieldsCol3 = heartscapefieldsCol3;
 
   const updateForm = (event) => {
+    document.getElementById(event.target.name).classList.remove("error-class");
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
-  const submitForm = () => {
-    const data = [];
-    for (const field in formData) {
-      data.push(parseInt(formData[field]));
+  const validate = () => {
+    let isValid = true;
+    for (const formField in formData) {
+      if (!formData[formField]) {
+        console.log(
+          document.getElementById(formField).classList.add("error-class")
+        );
+        isValid = false;
+      }
     }
-    axios.post("http://localhost:5000/heartdisease", data).then((res) => {
-      console.log(res.data.prediction);
-    });
+    return isValid;
+  };
+  const submitForm = () => {
+    const isValid = validate();
+    if (!isValid) return;
+    const data = [];
+    for (const formField in formData) {
+      data.push(parseInt(formData[formField]));
+    }
+
+    axios
+      .post("https://utilitiesapi.herokuapp.com/heartdisease", data)
+      .then((res) => {
+        console.log(res.data.prediction);
+      });
   };
   return (
     <>
@@ -34,15 +53,18 @@ function HeartDiseasePrediction() {
         <div className="col-lg-10 col-md-10 col-sm-12">
           <h5 className="heartscape-heading-color">
             Please fill the required fields to get an accurate result. Click
-            help icon for more information of the fields below.
+            help for more information.
           </h5>
         </div>
         <div className="col-lg-2 col-md-2 col-sm-12">
-          <button className="btn heading-button-color">Help</button>
+          <button className="btn heading-button-color">
+            <InfoIcon fontSize="small" />
+            Help
+          </button>
         </div>
         {fields.map((field) => {
           return (
-            <div className="col-lg-4 col-md-4 col-sm-12" key={field.id}>
+            <div className="col-lg-4 col-md-4 col-sm-6 col-xm-6" key={field.id}>
               <label className="heartscape-field-label">{field.name}</label>
               {!field.options ? (
                 <InputGroup size="sm" className="mb-3">

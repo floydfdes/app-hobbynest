@@ -86,3 +86,19 @@ export const heartscapeInitialData = {
   flourosopy: "",
   thalassemia: "",
 };
+
+export const validationMessage = {
+  age: "",
+  sex: "",
+  chestPainType: "",
+  restingBloodSugar: "",
+  cholesterol: "",
+  fastingBloodSugar: "",
+  restingEcgResults: "",
+  maxHeartRate: "",
+  angina: "",
+  oldPeak: "",
+  slope: "",
+  flourosopy: "",
+  thalassemia: "",
+};
