@@ -2,15 +2,15 @@
   padding: 20px 5px;
 }
 .heartscape-heading-color {
-  color: var(--primary-colour);
+  color: var(--primary-color);
 }
 .input-group-text {
-  background-color: var(--primary-colour);
-  color: var(--secodary-color);
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
 }
 
 .heartscape-field-label {
-  color: var(--primary-colour);
+  color: var(--primary-color);
 }
 .heartscape-button {
   margin-top: 5px;
@@ -18,7 +18,7 @@
 
 .heartscape-input-field:focus,
 .form-select:focus {
-  border-color: var(--primary-colour);
+  border-color: var(--primary-color);
   box-shadow: none;
 }
 .error-class {

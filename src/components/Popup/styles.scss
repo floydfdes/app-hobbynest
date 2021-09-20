@@ -1,0 +1,35 @@
+@media only screen and (min-width: 769px) {
+  .ReactModal__Content {
+    height: 50% !important;
+    width: 30% !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    text-align: center;
+    border: 2px solid var(--primary-color) !important;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .ReactModal__Content {
+    text-align: center;
+    border: 2px solid var(--primary-color) !important;
+    height: 50% !important;
+  }
+}
+
+.prediction-popup-button {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  width: 40%;
+}
+.prediction-popup-button:hover {
+  color: var(--secondary-color);
+}
+
+.prediction-popup-heading {
+  color: var(--primary-color);
+}
+.prediction-svg {
+  width: 100px;
+  height: 100px;
+}

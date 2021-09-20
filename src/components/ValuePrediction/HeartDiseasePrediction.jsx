@@ -8,8 +8,11 @@ import {
 } from "../../Data/Data";
 import InfoIcon from "@mui/icons-material/Info";
 import "./styles.scss";
+import Popup from "../Popup/Popup";
 
 function HeartDiseasePrediction() {
+  const [isModelOpen, setIsModelOpen] = useState(false);
+  const [prediction, setPrediction] = useState({});
   const [formData, setFormData] = useState(heartscapeInitialData);
   const fields = heartscapeFields;
   const fieldsCol3 = heartscapefieldsCol3;
@@ -39,13 +42,25 @@ function HeartDiseasePrediction() {
     }
 
     axios
-      .post("https://utilitiesapi.herokuapp.com/heartdisease", data)
+      .post("https:///utilitiesapi.herokuapp.com/heartdisease", data)
       .then((res) => {
-        console.log(res.data.prediction);
+        setPrediction(res.data);
+        setIsModelOpen(true);
       });
   };
+  // const resetForm = () => {
+  //   for (const formField in formData) {
+  //     formData[formField] = "";
+  //   }
+  //   console.log(formData);
+  // };
   return (
     <>
+      <Popup
+        isModelOpen={isModelOpen}
+        setIsModelOpen={setIsModelOpen}
+        prediction={prediction}
+      ></Popup>
       <div className="row heartscape-page-padding">
         <div className="col-lg-12 col-md-12 col-sm-12">
           <h3 className="heartscape-heading-color">Heartscapes</h3>
@@ -59,7 +74,7 @@ function HeartDiseasePrediction() {
         <div className="col-lg-2 col-md-2 col-sm-12">
           <button className="btn heading-button-color">
             <InfoIcon fontSize="small" />
-            Help
+            <span>Help</span>
           </button>
         </div>
         {fields.map((field) => {
@@ -143,7 +158,10 @@ function HeartDiseasePrediction() {
           </button>
         </div>
         <div className="col-lg-6 col-md-6 col-sm-12">
-          <button className="btn heading-button-color heartscape-button">
+          <button
+            type="button"
+            className="btn heading-button-color heartscape-button"
+          >
             Reset
           </button>
         </div>

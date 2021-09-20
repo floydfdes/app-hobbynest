@@ -3,8 +3,8 @@
   src: url("../src/assets/fonts/Ubuntu-Medium.ttf");
 }
 :root {
-  --primary-colour: #f01159;
-  --secodary-color: #dff8fe;
+  --primary-color: #f01159;
+  --secondary-color: #dff8fe;
   --third-color: #003458;
   --fourth-color: #82cde5;
 }
@@ -12,17 +12,17 @@
 body,
 html {
   font-family: ubuntu !important;
-  //background: var(--secodary-color);
+  //background: var(--secondary-color);
 }
 
 .table-secondary {
-  --bs-table-bg: var(--primary-colour) !important;
+  --bs-table-bg: var(--primary-color) !important;
   --bs-table-striped-bg: white !important;
   --bs-table-striped-color: #000;
   --bs-table-active-bg: #cbccce;
   --bs-table-active-color: #000;
   --bs-table-hover-bg: var(--fourth-color) !important;
   --bs-table-hover-color: #000;
-  color: var(--secodary-color) !important;
-  border-color: var(--secodary-color) !important;
+  color: var(--secondary-color) !important;
+  border-color: var(--secondary-color) !important;
 }
