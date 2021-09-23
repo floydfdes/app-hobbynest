@@ -9,9 +9,11 @@ import {
 import InfoIcon from "@mui/icons-material/Info";
 import "./styles.scss";
 import Popup from "../Popup/Popup";
+import HelpAccordian from "../Help/HelpAccordian";
 
 function HeartDiseasePrediction() {
   const [isModelOpen, setIsModelOpen] = useState(false);
+  const [isHelpModelOpen, setIsHelpModelOpen] = useState(false);
   const [prediction, setPrediction] = useState({});
   const [formData, setFormData] = useState(heartscapeInitialData);
   const fields = heartscapeFields;
@@ -60,7 +62,11 @@ function HeartDiseasePrediction() {
         isModelOpen={isModelOpen}
         setIsModelOpen={setIsModelOpen}
         prediction={prediction}
-      ></Popup>
+      />
+      <HelpAccordian
+        isHelpModelOpen={isHelpModelOpen}
+        setIsHelpModelOpen={setIsHelpModelOpen}
+      />
       <div className="row heartscape-page-padding">
         <div className="col-lg-12 col-md-12 col-sm-12">
           <h3 className="heartscape-heading-color">Heartscapes</h3>
@@ -72,7 +78,12 @@ function HeartDiseasePrediction() {
           </h5>
         </div>
         <div className="col-lg-2 col-md-2 col-sm-12">
-          <button className="btn heading-button-color">
+          <button
+            onClick={() => {
+              setIsHelpModelOpen(true);
+            }}
+            className="btn heading-button-color"
+          >
             <InfoIcon fontSize="small" />
             <span>Help</span>
           </button>

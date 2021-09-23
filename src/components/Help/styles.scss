@@ -1,0 +1,26 @@
+.ReactModal__Content {
+  height: 80% !important;
+  width: 75% !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  text-align: left;
+  border: 2px solid var(--primary-color) !important;
+}
+
+.accordion-button {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+}
+.accordion-body {
+  color: var(--third-color);
+}
+.accordion-button:not(.collapsed) {
+  color: var(--primary-color);
+  background-color: var(--fourth-color);
+  box-shadow: none;
+}
+
+.accordion-item {
+  border: 1px solid var(--primary-color);
+}
