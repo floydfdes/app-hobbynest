@@ -1,4 +1,4 @@
-.ReactModal__Content {
+#helpAccordian {
   height: 80% !important;
   width: 75% !important;
   top: 50% !important;
@@ -11,16 +11,19 @@
 .accordion-button {
   background-color: var(--secondary-color);
   color: var(--primary-color);
+
+  &:not(.collapsed) {
+    color: var(--primary-color) !important;
+    background-color: var(--fourth-color) !important;
+    box-shadow: none;
+  }
+  &:focus {
+    border-color: var(--primary-color) !important ;
+  }
 }
 .accordion-body {
   color: var(--third-color);
 }
-.accordion-button:not(.collapsed) {
-  color: var(--primary-color);
-  background-color: var(--fourth-color);
-  box-shadow: none;
-}
-
-.accordion-item {
+.accordion-button .accordion-item {
   border: 1px solid var(--primary-color);
 }

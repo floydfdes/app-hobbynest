@@ -7,6 +7,7 @@ ReactModal.setAppElement("#root");
 const HelpAccordian = (props) => {
   return (
     <ReactModal
+      id="helpAccordian"
       isOpen={props.isHelpModelOpen}
       onRequestClose={() => {
         props.setIsHelpModelOpen(false);

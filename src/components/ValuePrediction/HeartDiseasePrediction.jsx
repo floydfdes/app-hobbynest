@@ -10,12 +10,14 @@ import InfoIcon from "@mui/icons-material/Info";
 import "./styles.scss";
 import Popup from "../Popup/Popup";
 import HelpAccordian from "../Help/HelpAccordian";
+import Loading from "../Loading/Loading";
 
 function HeartDiseasePrediction() {
   const [isModelOpen, setIsModelOpen] = useState(false);
   const [isHelpModelOpen, setIsHelpModelOpen] = useState(false);
   const [prediction, setPrediction] = useState({});
   const [formData, setFormData] = useState(heartscapeInitialData);
+  const [loading, setLoading] = useState(false);
   const fields = heartscapeFields;
   const fieldsCol3 = heartscapefieldsCol3;
 
@@ -38,6 +40,7 @@ function HeartDiseasePrediction() {
   const submitForm = () => {
     const isValid = validate();
     if (!isValid) return;
+    setLoading(true);
     const data = [];
     for (const formField in formData) {
       data.push(parseInt(formData[formField]));
@@ -47,6 +50,7 @@ function HeartDiseasePrediction() {
       .post("https:///utilitiesapi.herokuapp.com/heartdisease", data)
       .then((res) => {
         setPrediction(res.data);
+        setLoading(false);
         setIsModelOpen(true);
       });
   };
@@ -67,6 +71,7 @@ function HeartDiseasePrediction() {
         isHelpModelOpen={isHelpModelOpen}
         setIsHelpModelOpen={setIsHelpModelOpen}
       />
+      {loading && <Loading />}
       <div className="row heartscape-page-padding">
         <div className="col-lg-12 col-md-12 col-sm-12">
           <h3 className="heartscape-heading-color">Heartscapes</h3>
