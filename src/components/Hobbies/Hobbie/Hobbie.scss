@@ -1,0 +1,25 @@
+.card-border-background-color {
+  border-color: var(--primary-color);
+  background-color: var(--third-color);
+  color: var(--fourth-color);
+  height: 250px;
+}
+.card-body {
+  padding: 0.1rem 1rem !important;
+}
+.card-text {
+  font-size: 13px !important;
+}
+.card-actions-container {
+  position: absolute;
+  bottom: 10px;
+  width: 91%;
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+}
+.card-button-color {
+  background-color: none;
+}
+.card-button-svg {
+  color: var(--fourth-color);
+}

@@ -40,6 +40,9 @@ function Appnavbar() {
             <Link onClick={hideNavbar} className="nav-link" to="/about">
               About
             </Link>
+            <Link onClick={hideNavbar} className="nav-link" to="/hobbies">
+              Hobbies
+            </Link>
             <NavDropdown title="Prediction" id="basic-nav-dropdown">
               <Link
                 onClick={hideDropdown}

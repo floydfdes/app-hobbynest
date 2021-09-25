@@ -6,6 +6,7 @@ import Main from "../Main/Main";
 import UploadImage from "../ImageDetection/UploadImage";
 import About from "../About/About";
 import "./Home.scss";
+import Hobbies from "../Hobbies/Hobbies";
 
 function Home() {
   return (
@@ -16,6 +17,8 @@ function Home() {
         <Route path="/mobilenet" component={ImageDetectionMobileNet} exact />
         <Route path="/imagedetection" component={UploadImage} exact />
         <Route path="/hearts" component={HeartDiseasePrediction} exact />
+        <Route path="/hobbies" component={Hobbies} exact />
+        <Route path="/*" component={Main} exact />
         <Route path="/" component={Main} exact />
       </Switch>
     </div>

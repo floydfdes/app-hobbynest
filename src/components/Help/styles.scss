@@ -8,11 +8,15 @@
   text-align: left;
   border: 2px solid var(--primary-color) !important;
 }
-
+@media screen and (max-width: 767px) {
+  #helpAccordian {
+    width: 95% !important;
+  }
+}
 .accordion-button {
   background-color: var(--secondary-color);
   color: var(--primary-color);
-  padding: 1% 2%;
+  padding: 1% 2% !important;
 
   &:not(.collapsed) {
     color: var(--primary-color) !important;

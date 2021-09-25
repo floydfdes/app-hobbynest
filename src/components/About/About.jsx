@@ -1,7 +1,12 @@
 import React from "react";
+import { Login } from "simple-authentication-react";
 
 function About() {
-  return <div>About</div>;
+  return (
+    <div>
+      <Login />
+    </div>
+  );
 }
 
 export default About;
