@@ -10,6 +10,16 @@ function Appnavbar() {
     var navItem = document.getElementById("basic-nav-dropdown");
     navItem.click();
     dropDownMenu[0].classList.remove("show");
+
+    if (document.getElementById("navbar-toggle-button")) {
+      document.getElementById("navbar-toggle-button").click();
+    }
+  };
+
+  const hideNavbar = () => {
+    if (document.getElementById("navbar-toggle-button")) {
+      document.getElementById("navbar-toggle-button").click();
+    }
   };
 
   return (
@@ -18,13 +28,16 @@ function Appnavbar() {
         <Navbar.Brand>
           <Link to="/home">Utilities</Link>
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Toggle
+          id="navbar-toggle-button"
+          aria-controls="basic-navbar-nav"
+        />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-            <Link className="nav-link" to="/home">
+            <Link onClick={hideNavbar} className="nav-link" to="/home">
               Home
             </Link>
-            <Link className="nav-link" to="/about">
+            <Link onClick={hideNavbar} className="nav-link" to="/about">
               About
             </Link>
             <NavDropdown title="Prediction" id="basic-nav-dropdown">

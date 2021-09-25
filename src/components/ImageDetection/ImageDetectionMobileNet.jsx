@@ -51,7 +51,7 @@ function ImageDetectionMobileNet() {
 
   if (isModelLoading) {
     return (
-      <h1 className="text-center heading-color">Classfier is loading..</h1>
+      <h1 className="text-center heading-color">Classfier is loading...</h1>
     );
   }
 

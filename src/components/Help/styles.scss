@@ -1,5 +1,6 @@
 #helpAccordian {
-  height: 80% !important;
+  position: relative !important;
+  height: auto !important;
   width: 75% !important;
   top: 50% !important;
   left: 50% !important;
@@ -11,6 +12,7 @@
 .accordion-button {
   background-color: var(--secondary-color);
   color: var(--primary-color);
+  padding: 1% 2%;
 
   &:not(.collapsed) {
     color: var(--primary-color) !important;
@@ -19,11 +21,20 @@
   }
   &:focus {
     border-color: var(--primary-color) !important ;
+    outline: none !important;
   }
 }
 .accordion-body {
   color: var(--third-color);
+
+  padding: 1% 2%;
 }
 .accordion-button .accordion-item {
   border: 1px solid var(--primary-color);
+}
+
+@media screen and (max-width: 768px) {
+  .accordion-body {
+    font-size: 12px;
+  }
 }
