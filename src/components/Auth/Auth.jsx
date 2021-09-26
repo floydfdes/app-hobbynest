@@ -1,10 +1,15 @@
-import React from "react";
-import { Login } from "simple-authentication-react";
+import React, { useState } from "react";
+import { Login, SignUp } from "simple-authentication-react";
 const Auth = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   return (
-    <div>
-      <Login />
-    </div>
+    <>
+      {isLoggedIn ? (
+        <Login setIsLoggedIn={setIsLoggedIn} />
+      ) : (
+        <SignUp setIsLoggedIn={setIsLoggedIn} />
+      )}
+    </>
   );
 };
 
