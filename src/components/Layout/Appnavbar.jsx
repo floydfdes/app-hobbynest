@@ -43,6 +43,7 @@ function Appnavbar() {
             <Link onClick={hideNavbar} className="nav-link" to="/hobbies">
               Hobbies
             </Link>
+
             <NavDropdown title="Prediction" id="basic-nav-dropdown">
               <Link
                 onClick={hideDropdown}
@@ -66,6 +67,9 @@ function Appnavbar() {
                 Mobile net
               </Link>
             </NavDropdown>
+            <Link onClick={hideNavbar} className="nav-link" to="/login">
+              Login
+            </Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
