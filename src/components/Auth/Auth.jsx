@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Login, SignUp } from "simple-authentication-react";
 const Auth = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   return (
     <>
       {isLoggedIn ? (
