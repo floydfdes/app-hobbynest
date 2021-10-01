@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 import HeartDiseasePrediction from "../ValuePrediction/HeartDiseasePrediction";
 import ImageDetectionMobileNet from "../ImageDetection/ImageDetectionMobileNet";
@@ -11,8 +11,20 @@ import Hobbies from "../Hobbies/Hobbies";
 import Auth from "../Auth/Auth";
 
 function Home() {
+  useEffect(() => {
+    setScreenHeight();
+    window.addEventListener("resize", setScreenHeight);
+  }, []);
+  const setScreenHeight = () => {
+    let heightOfScreen = window.innerHeight;
+    document.documentElement.style.setProperty(
+      "--screen-height",
+      heightOfScreen + "px"
+    );
+  };
+
   return (
-    <div className="container container-bg">
+    <div className="container container-bg page-height">
       <Switch>
         <Route path="/home" component={Main} exact />
         <Route path="/about" component={About} exact />

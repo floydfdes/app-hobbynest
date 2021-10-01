@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Login, SignUp } from "simple-authentication-react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { loginFields, signUpFields } from "../../Data/Data";
 
 const Auth = () => {
   let initialState = {};
@@ -39,25 +40,37 @@ const Auth = () => {
 
   const signUpSchema = yup
     .object({
-      firstName: yup.string().required(),
-      lastName: yup.string().required(),
+      firstName: yup.string().required("First name is required field"),
+      lastName: yup.string().required("Last name is required field"),
       age: yup
         .number()
         .transform((value) => (isNaN(value) ? undefined : value))
         .positive()
         .integer()
-        .max(200)
-        .required(),
-      gender: yup.string().required(),
-      email: yup.string().required().email(),
-      password: yup.string().required().min(5),
+        .max(200, "Age nust be less then 200")
+        .required("Age is required field"),
+      gender: yup.string().required("Gender is required field"),
+      email: yup
+        .string()
+        .required("Email is required field")
+        .email("Email is not valid"),
+      password: yup
+        .string()
+        .required("Passowrd is required field")
+        .min(5, "Password must be atleast 5 characters"),
     })
     .required();
 
   const loginSchema = yup
     .object({
-      email: yup.string().required().email(),
-      password: yup.string().required().min(5),
+      email: yup
+        .string()
+        .required("Email is required field")
+        .email("Email is not valid"),
+      password: yup
+        .string()
+        .required("Passowrd is required field")
+        .min(5, "Password must be atleast 5 characters"),
     })
     .required();
 
@@ -70,6 +83,7 @@ const Auth = () => {
           yupResolver={yupResolver}
           submitForm={submitForm}
           schema={loginSchema}
+          fields={loginFields}
         />
       ) : (
         <SignUp
@@ -78,6 +92,7 @@ const Auth = () => {
           yupResolver={yupResolver}
           submitForm={submitForm}
           schema={signUpSchema}
+          fields={signUpFields}
         />
       )}
     </>

@@ -157,3 +157,57 @@ export const help = [
       " Thalassemia is an inherited (i.e., passed from parents to children through genes) blood disorder caused when the body doesn’t make enough of a protein called hemoglobin, an important part of red blood cells.",
   },
 ];
+
+export const signUpFields = [
+  {
+    fieldId: "firstName",
+    fieldName: "First Name",
+    fieldOptions: [],
+    fieldType: "text",
+  },
+  {
+    fieldId: "lastName",
+    fieldName: "Last Name",
+    fieldOptions: [],
+    fieldType: "text",
+  },
+  {
+    fieldId: "age",
+    fieldName: "Age",
+    fieldOptions: [],
+    fieldType: "number",
+  },
+  {
+    fieldId: "gender",
+    fieldName: "Gender",
+    fieldOptions: ["", "Male", "Female"],
+    fieldType: "",
+  },
+  {
+    fieldId: "email",
+    fieldName: "Email",
+    fieldOptions: [],
+    fieldType: "email",
+  },
+  {
+    fieldId: "password",
+    fieldName: "Password",
+    fieldOptions: [],
+    fieldType: "password",
+  },
+];
+
+export const loginFields = [
+  {
+    fieldId: "email",
+    fieldName: "Email",
+    fieldOptions: [],
+    fieldType: "email",
+  },
+  {
+    fieldId: "password",
+    fieldName: "Password",
+    fieldOptions: [],
+    fieldType: "password",
+  },
+];
