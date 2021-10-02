@@ -29,7 +29,10 @@
 // }
 .navbar-light .navbar-toggler {
   color: var(--primary-color) !important;
-  border-color: var(--primary-color) !important;
+  border: none !important;
+  &-icon {
+    background-image: url(../../assets/images/menu.svg) !important;
+  }
 }
 @media only screen and (min-width: 769px) {
   .nav-link {

@@ -26,3 +26,28 @@
 .page-height {
   height: var(--screen-height);
 }
+
+.main-page {
+  &-div {
+    height: var(--screen-height);
+    background: url(../src/assets/images/backgroundImage.png);
+  }
+  &-card {
+    margin: 6%;
+    padding: 6%;
+    opacity: 0.9;
+    align-items: center;
+    margin-top: calc(var(--screen-height) / 2 * -0.7);
+    h2 {
+      color: var(--primary-color);
+    }
+    h5 {
+      color: var(--third-color);
+    }
+    button {
+      color: var(--secondary-color);
+      background-color: var(--primary-color);
+      padding: 4%;
+    }
+  }
+}

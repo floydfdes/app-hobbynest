@@ -2,14 +2,19 @@ import React from "react";
 
 function Main() {
   return (
-    <div className="row">
-      <div className="col-lg-6 col-md-6 col-sm-12 d-flex flex-column  align-items-center">
-        <div>
-          <h1>Utilites app</h1>
-          <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h5>
+    <div className="row main-page-div">
+      <div className="col-lg-12 col-md-12 col-sm-12 d-flex flex-column align-items-center justify-content-center">
+        <div className="card main-page-card">
+          <h2>Utilites app</h2>
+          <h5>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+            Recusandae, at ipsam? Magni eligendi aut suscipit et praesentium, ea
+            numquam cum totam nihil quod quas ratione repellat ipsum fuga
+            similique cumque.
+          </h5>
+          <button className="btn">Get started</button>
         </div>
       </div>
-      <div className="col-lg-6 col-md-6 col-sm-12">Image</div>
     </div>
   );
 }
