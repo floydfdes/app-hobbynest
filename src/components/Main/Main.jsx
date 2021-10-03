@@ -2,8 +2,8 @@ import React from "react";
 
 function Main() {
   return (
-    <div className="row main-page-div">
-      <div className="col-lg-12 col-md-12 col-sm-12 d-flex flex-column align-items-center justify-content-center">
+    <div className="row main-page-div mx-0">
+      {/* <div className="col-lg-12 col-md-12 col-sm-12 d-flex flex-column align-items-center justify-content-center">
         <div className="card main-page-card">
           <h2>Utilites app</h2>
           <h5>
@@ -14,6 +14,10 @@ function Main() {
           </h5>
           <button className="btn">Get started</button>
         </div>
+      </div> */}
+      <div className="col-lg-12 col-md-12 col-sm-12 mx-2">
+        <h1 className="text-warning">Greetings,</h1>
+        <h1 className="text-warning">User</h1>
       </div>
     </div>
   );

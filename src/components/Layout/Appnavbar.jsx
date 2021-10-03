@@ -26,25 +26,15 @@ function Appnavbar() {
     <Navbar expand="lg">
       <Container>
         <Navbar.Brand>
-          <Link to="/home">Utilities</Link>
+          <Link to="/home">Utilities.com</Link>
         </Navbar.Brand>
         <Navbar.Toggle
           id="navbar-toggle-button"
           aria-controls="basic-navbar-nav"
         />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ms-auto">
-            <Link onClick={hideNavbar} className="nav-link" to="/home">
-              Home
-            </Link>
-            <Link onClick={hideNavbar} className="nav-link" to="/about">
-              About
-            </Link>
-            <Link onClick={hideNavbar} className="nav-link" to="/hobbies">
-              Hobbies
-            </Link>
-
-            <NavDropdown title="Prediction" id="basic-nav-dropdown">
+          <Nav className="me-auto">
+            <NavDropdown title="PREDICTION" id="basic-nav-dropdown">
               <Link
                 onClick={hideDropdown}
                 className="dropdown-item"
@@ -67,8 +57,16 @@ function Appnavbar() {
                 Mobile net
               </Link>
             </NavDropdown>
-            <Link onClick={hideNavbar} className="nav-link" to="/login">
-              Login
+            <Link onClick={hideNavbar} className="nav-link" to="/hobbies">
+              HOBBIES
+            </Link>
+            <Link onClick={hideNavbar} className="nav-link" to="/about">
+              ABOUT
+            </Link>
+          </Nav>
+          <Nav>
+            <Link onClick={hideNavbar} className="nav-link ms-auto" to="/login">
+              LOGIN
             </Link>
           </Nav>
         </Navbar.Collapse>

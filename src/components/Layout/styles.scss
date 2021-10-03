@@ -1,16 +1,16 @@
 .navbar {
-  background: var(--secondary-color) !important;
+  background: var(--third-color) !important;
 }
 .nav-link {
   color: var(--primary-color) !important;
 }
 .navbar-brand {
   a {
-    color: var(--third-color) !important;
+    color: var(--fourth-color) !important;
     text-decoration: none;
   }
   a:hover {
-    color: var(--fourth-color) !important;
+    color: var(--secondary-color) !important;
   }
 }
 
@@ -38,7 +38,8 @@
   .nav-link {
     padding: 8px 12px !important;
     &:hover {
-      background-color: var(--fourth-color);
+      background-color: var(--primary-color);
+      color: var(--third-color) !important;
       border-radius: 500px;
     }
   }

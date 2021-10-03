@@ -5,10 +5,10 @@ import Hobbie from "./Hobbie/Hobbie";
 const Hobbies = () => {
   return (
     <div className="container">
-      <div className="row">
+      <div className="row my-3">
         {help.map((element) => {
           return (
-            <div className="col-lg-4 col-md-4 col-sm-12" key={element.id}>
+            <div className="col-lg-4 col-md-6 col-sm-12" key={element.id}>
               <Hobbie
                 title={element.helpTitle}
                 content={element.helpContent}
