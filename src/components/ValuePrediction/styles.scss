@@ -1,26 +1,33 @@
-.heartscape-page-padding {
-  padding: 20px 5px;
-}
-.heartscape-heading-color {
-  color: var(--primary-color);
-}
 .input-group-text {
   background-color: var(--primary-color);
   color: var(--secondary-color);
 }
 
-.heartscape-field-label {
-  color: var(--primary-color);
-}
-.heartscape-button {
-  margin-top: 5px;
-}
-
-.heartscape-input-field:focus,
-.form-select:focus {
-  border-color: var(--primary-color);
-  box-shadow: none;
-}
-.error-class {
-  border: 2px solid red;
+.heartscape {
+  &-input-field {
+    border: 1px solid var(--primary-color) !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+  &-page-padding {
+    padding: 20px 5px;
+  }
+  &-heading-color {
+    color: var(--primary-color);
+  }
+  &-field-label {
+    color: var(--primary-color);
+  }
+  &-button {
+    margin-top: 5px;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+  &-input-field:focus {
+    border-color: var(--primary-color);
+    box-shadow: none;
+  }
+  &-error-class {
+    border: 1px solid red !important;
+  }
 }

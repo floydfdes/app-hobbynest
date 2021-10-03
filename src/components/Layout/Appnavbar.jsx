@@ -2,6 +2,7 @@ import React from "react";
 import { Container, Nav, NavDropdown } from "react-bootstrap";
 import Navbar from "react-bootstrap/Navbar";
 import { Link } from "react-router-dom";
+import LogoImage from "../../assets/images/surfboard.png";
 import "./styles.scss";
 
 function Appnavbar() {
@@ -26,7 +27,10 @@ function Appnavbar() {
     <Navbar expand="lg">
       <Container>
         <Navbar.Brand>
-          <Link to="/home">Utilities.com</Link>
+          <Link to="/home">
+            <img className="logo-image" src={LogoImage} alt="logo" />
+            Utilities.com
+          </Link>
         </Navbar.Brand>
         <Navbar.Toggle
           id="navbar-toggle-button"
@@ -65,7 +69,11 @@ function Appnavbar() {
             </Link>
           </Nav>
           <Nav>
-            <Link onClick={hideNavbar} className="nav-link ms-auto" to="/login">
+            <Link
+              onClick={hideNavbar}
+              className="nav-link nav-link-login"
+              to="/login"
+            >
               LOGIN
             </Link>
           </Nav>

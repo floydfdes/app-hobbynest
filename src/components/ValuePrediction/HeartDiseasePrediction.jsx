@@ -22,7 +22,9 @@ function HeartDiseasePrediction() {
   const fieldsCol3 = heartscapefieldsCol3;
 
   const updateForm = (event) => {
-    document.getElementById(event.target.name).classList.remove("error-class");
+    document
+      .getElementById(event.target.name)
+      .classList.remove("heartscape-error-class");
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
   const validate = () => {
@@ -30,7 +32,9 @@ function HeartDiseasePrediction() {
     for (const formField in formData) {
       if (!formData[formField]) {
         console.log(
-          document.getElementById(formField).classList.add("error-class")
+          document
+            .getElementById(formField)
+            .classList.add("heartscape-error-class")
         );
         isValid = false;
       }
@@ -102,7 +106,7 @@ function HeartDiseasePrediction() {
               >
                 <label className="heartscape-field-label">{field.name}</label>
                 {!field.options ? (
-                  <InputGroup size="sm" className="mb-3">
+                  <InputGroup size="md" className="mb-3">
                     <FormControl
                       onChange={updateForm}
                       id={field.id}
@@ -118,7 +122,7 @@ function HeartDiseasePrediction() {
                     onChange={updateForm}
                     id={field.id}
                     name={field.id}
-                    className="form-select form-select-sm"
+                    className="form-select form-select heartscape-input-field mb-3"
                   >
                     {field.options?.map((option) => {
                       return (
@@ -137,7 +141,7 @@ function HeartDiseasePrediction() {
               <div className="col-lg-3 col-md-3 col-sm-12" key={field.id}>
                 <label className="heartscape-field-label">{field.name}</label>
                 {!field.options ? (
-                  <InputGroup size="sm" className="mb-3">
+                  <InputGroup size="md" className="mb-3">
                     <FormControl
                       onChange={updateForm}
                       id={field.id}
@@ -153,7 +157,7 @@ function HeartDiseasePrediction() {
                     onChange={updateForm}
                     id={field.id}
                     name={field.id}
-                    className="form-select form-select-sm"
+                    className="form-select form-select heartscape-input-field mb-3"
                     aria-label="Default select example"
                   >
                     {field.options?.map((option) => {

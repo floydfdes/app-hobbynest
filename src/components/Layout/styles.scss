@@ -8,6 +8,8 @@
   a {
     color: var(--fourth-color) !important;
     text-decoration: none;
+    display: flex;
+    padding: 5px;
   }
   a:hover {
     color: var(--secondary-color) !important;
@@ -42,5 +44,16 @@
       color: var(--third-color) !important;
       border-radius: 500px;
     }
+    &-login {
+      margin-left: auto;
+      border: 2px solid var(--primary-color);
+      border-radius: 20px;
+    }
   }
+}
+
+.logo-image {
+  width: 32px;
+  height: 32px;
+  margin-right: 5px;
 }

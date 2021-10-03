@@ -28,27 +28,20 @@
 }
 
 .main-page {
-  &-div {
-    height: var(--screen-height);
-    background: url(../src/assets/images/backgroundImage.png);
-    background: linear-gradient(var(--primary-color), var(--fourth-color));
+  height: var(--screen-height);
+  background: url(../src/assets/images/backgroundImage.png);
+  background: linear-gradient(var(--primary-color), var(--fourth-color));
+  &-heading {
+    color: var(--secondary-color);
   }
-  // &-card {
-  //   margin: 6%;
-  //   padding: 6%;
-  //   opacity: 0.9;
-  //   align-items: center;
-  //   margin-top: calc(var(--screen-height) / 2 * -0.7);
-  //   h2 {
-  //     color: var(--primary-color);
-  //   }
-  //   h5 {
-  //     color: var(--third-color);
-  //   }
-  //   button {
-  //     color: var(--secondary-color);
-  //     background-color: var(--primary-color);
-  //     padding: 4%;
-  //   }
-  // }
+  &-sub-heading {
+    color: var(--third-color);
+  }
+  &-button {
+    background-color: var(--primary-color) !important;
+    color: var(--secondary-color) !important;
+    border-color: var(--primary-color) !important;
+    outline: none !important;
+    width: 45% !important;
+  }
 }
