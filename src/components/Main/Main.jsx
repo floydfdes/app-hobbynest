@@ -26,12 +26,12 @@ function Main() {
         <p className="main-page-sub-heading">
           The sky is clear; the stars are twinkling.
         </p>
-        <div className="my-3">
+        <div className="my-3 main-page-button-div">
           <button className="btn main-page-button">Explore</button>
-          <button className="btn main-page-button mx-2">Sign Up</button>
+          <button className="btn main-page-button">Sign Up</button>
         </div>
       </div>
-      <div className="col-lg-6 col-md-6 col-sm-12 mx-2"></div>
+      <div className="col-lg-6 col-md-6 col-sm-12"></div>
     </div>
   );
 }

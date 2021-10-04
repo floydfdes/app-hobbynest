@@ -13,11 +13,15 @@ const Hobbie = (props) => {
         </div>
         <div className="card-body ">
           <span className="card-title">{props.tags}</span>
-          <p className="card-text">
-            {props.content.length > 350
-              ? props.content.slice(0, 350) + "..."
-              : props.content}
-          </p>
+          <p
+            className="card-text"
+            dangerouslySetInnerHTML={{
+              __html:
+                props.content.length > 350
+                  ? props.content.slice(0, 350) + "..."
+                  : props.content,
+            }}
+          ></p>
           <div className="card-actions-container">
             <button className="btn card-button-color mx-2">
               <FavoriteIcon className="card-button-svg" />

@@ -10,6 +10,7 @@
     text-decoration: none;
     display: flex;
     padding: 5px;
+    align-items: flex-end;
   }
   a:hover {
     color: var(--secondary-color) !important;
