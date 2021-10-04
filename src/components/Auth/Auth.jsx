@@ -3,8 +3,13 @@ import { Login, SignUp } from "simple-authentication-react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { loginFields, signUpFields } from "../../Data/Data";
+import { useHistory } from "react-router";
+import { useDispatch } from "react-redux";
+import { signIn, signUp } from "../../actions/auth";
 
 const Auth = () => {
+  const history = useHistory();
+  const dispatch = useDispatch();
   let initialState = {};
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   if (isLoggedIn) {
@@ -30,11 +35,11 @@ const Auth = () => {
       formData[entry] = data[entry];
     }
     if (isLoggedIn) {
-      console.log("signIn");
-      //const result = await signIn(formData);
+      const result = dispatch(signIn(formData, history));
+      console.log(result);
     } else {
-      console.log("signUp");
-      //const result = await SignUp(formData);
+      const result = dispatch(signUp(formData, history));
+      console.log(result);
     }
   };
 
