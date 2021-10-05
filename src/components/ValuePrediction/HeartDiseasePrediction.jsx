@@ -76,16 +76,16 @@ function HeartDiseasePrediction() {
         setIsHelpModelOpen={setIsHelpModelOpen}
       />
       {loading && <Loading />}
-      <div className="container">
+      <div className="container card">
         <div className="row heartscape-page-padding">
           <div className="col-lg-12 col-md-12 col-sm-12">
             <h3 className="heartscape-heading-color">Heartscapes</h3>
           </div>
           <div className="col-lg-10 col-md-10 col-sm-12">
-            <h5 className="heartscape-heading-color">
+            <p className="heartscape-heading-color">
               Please fill the required fields to get an accurate result. Click
               help for more information.
-            </h5>
+            </p>
           </div>
           <div className="col-lg-2 col-md-2 col-sm-12">
             <button

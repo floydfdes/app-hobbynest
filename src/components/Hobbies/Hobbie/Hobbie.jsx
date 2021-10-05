@@ -9,7 +9,7 @@ const Hobbie = (props) => {
     <>
       <div className="card card-border-background-color mb-3">
         <div className="card-header">
-          <span className="text-warning">{props.title}</span>
+          <span className="hobbies-heading">{props.title}</span>
         </div>
         <div className="card-body ">
           <span className="card-title">{props.tags}</span>

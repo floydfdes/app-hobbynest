@@ -29,7 +29,7 @@ function Appnavbar() {
         <Navbar.Brand>
           <Link to="/home">
             <img className="logo-image" src={LogoImage} alt="logo" />
-            Utilities.com
+            Utilities
           </Link>
         </Navbar.Brand>
         <Navbar.Toggle

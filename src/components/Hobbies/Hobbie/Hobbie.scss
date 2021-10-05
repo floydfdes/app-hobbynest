@@ -1,6 +1,6 @@
 .card-border-background-color {
-  border-color: var(--primary-color) !important;
-  background-color: var(--primary-color) !important;
+  border-color: var(--fourth-color) !important;
+  background-color: var(--third-color) !important;
   color: var(--third-color);
   height: 250px;
 }
@@ -9,6 +9,10 @@
 }
 .card-text {
   font-size: 13px !important;
+  color: var(--fourth-color);
+}
+.hobbies-heading {
+  color: var(--fourth-color);
 }
 .card-actions-container {
   position: absolute;
@@ -21,5 +25,5 @@
   background-color: none;
 }
 .card-button-svg {
-  color: var(--secondary-color);
+  color: var(--fourth-color);
 }

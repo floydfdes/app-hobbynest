@@ -2,9 +2,11 @@
   text-align: center;
 }
 .heading-button-color {
-  background: var(--primary-color) !important;
-  border: var(--primary-color) !important;
-  color: var(--secondary-color) !important;
+  background: var(--secondary-color) !important;
+  border: var(--secondary-color) !important;
+  color: var(--primary-color) !important;
+  outline: none;
+  box-shadow: none !important;
   font-weight: bold !important;
   width: 100%;
   display: flex !important;
@@ -24,15 +26,11 @@
 }
 
 .page-height {
-  height: calc(var(--screen-height) * 1.2);
+  height: calc(var(--screen-height) * 1.1);
 }
 
 .main-page {
   height: var(--screen-height);
-  background: url(../src/assets/images/backgroundImage.png);
-  background: linear-gradient(var(--primary-color), var(--fourth-color));
-  background: url(../src/assets/images/layered-waves-haikei.svg);
-  background-size: cover;
   &-heading {
     color: var(--secondary-color);
   }
@@ -58,7 +56,18 @@
   }
 }
 
-.login-card-margin {
-  background: url(../src/assets/images/layered-waves-haikei.svg) !important;
-  background-size: cover !important;
+@media screen and (max-width: 766px) {
+  .main-page {
+    display: flex !important;
+    align-items: center;
+    padding: 0px 10px;
+  }
+}
+@media screen and (min-width: 767px) {
+  .main-page {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -15%);
+  }
 }

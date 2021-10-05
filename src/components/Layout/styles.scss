@@ -1,8 +1,5 @@
-.navbar {
-  background: var(--third-color) !important;
-}
 .nav-link {
-  color: var(--primary-color) !important;
+  color: var(--secondary-color) !important;
 }
 .navbar-brand {
   a {
@@ -41,8 +38,8 @@
   .nav-link {
     padding: 8px 12px !important;
     &:hover {
-      background-color: var(--primary-color);
-      color: var(--third-color) !important;
+      background-color: var(--secondary-color) !important;
+      color: var(--primary-color) !important;
       border-radius: 500px;
     }
     &-login {
