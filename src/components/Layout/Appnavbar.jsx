@@ -21,7 +21,6 @@ function Appnavbar() {
   }, []);
   const setScreenHeight = () => {
     setScreenWidth(window.innerWidth);
-    console.log(screenWidth);
   };
 
   const hideDropdown = () => {
@@ -60,23 +59,25 @@ function Appnavbar() {
             Utilities
           </Link>
         </Navbar.Brand>
-        <Navbar.Toggle
-          id="navbar-toggle-button"
-          aria-controls="basic-navbar-nav"
-        >
-          {user && screenWidth < 768 && (
-            <Avatar
-              className="profile-avatar mx-2"
-              alt={user?.result?.firstName[0]}
-              src={
-                user.result?.imageUrl
-                  ? user.result?.imageUrl
-                  : user.result?.firstName
-              }
-            />
-          )}
-          {screenWidth < 768 && <span className="navbar-toggler-icon"></span>}
-        </Navbar.Toggle>
+        {screenWidth < 767 && (
+          <Navbar.Toggle
+            id="navbar-toggle-button"
+            aria-controls="basic-navbar-nav"
+          >
+            {user && (
+              <Avatar
+                className="profile-avatar mx-2"
+                alt={user?.result?.firstName[0]}
+                src={
+                  user.result?.imageUrl
+                    ? user.result?.imageUrl
+                    : user.result?.firstName
+                }
+              />
+            )}
+            <span className="navbar-toggler-icon"></span>
+          </Navbar.Toggle>
+        )}
 
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">

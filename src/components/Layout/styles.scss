@@ -71,3 +71,8 @@
   display: flex;
   align-items: center;
 }
+
+.MuiAvatar-root {
+  background-color: var(--secondary-color) !important;
+  color: var(--primary-color) !important;
+}

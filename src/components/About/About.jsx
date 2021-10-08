@@ -1,10 +1,11 @@
 import React from "react";
 
-
 function About() {
   return (
-    <div>
-      About us
+    <div className="container">
+      <div className="row">
+        <h2>About us</h2>
+      </div>
     </div>
   );
 }

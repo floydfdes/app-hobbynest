@@ -28,6 +28,10 @@
 .page-height {
   height: calc(var(--screen-height) * 1.1);
 }
+h2 {
+  color: var(--secondary-color);
+  margin: 0px !important;
+}
 
 .main-page {
   height: var(--screen-height);

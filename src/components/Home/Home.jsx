@@ -9,6 +9,7 @@ import "./Home.scss";
 import Hobbies from "../Hobbies/Hobbies";
 
 import Auth from "../Auth/Auth";
+import CreateHobby from "../Hobbies/Hobbie/CreateHobby";
 
 function Home() {
   useEffect(() => {
@@ -33,6 +34,7 @@ function Home() {
         <Route path="/imagedetection" component={UploadImage} exact />
         <Route path="/hearts" component={HeartDiseasePrediction} exact />
         <Route path="/hobbies" component={Hobbies} exact />
+        <Route path="/hobbies/create" component={CreateHobby} exact />
         <Route path="/*" component={Main} exact />
         <Route path="/" component={Main} exact />
       </Switch>
