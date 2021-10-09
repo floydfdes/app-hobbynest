@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const Hobbies = () => {
   return (
     <div className="container">
-      <div className="row">
+      <div className="row mobile-grid">
         <div className="col-lg-10 col-md-10 col-sm-10">
           <h2>Hobbies</h2>
         </div>

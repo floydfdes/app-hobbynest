@@ -14,8 +14,8 @@
   }
 }
 .accordion-button {
-  background-color: var(--secondary-color);
-  color: var(--primary-color);
+  color: var(--third-color) !important;
+  background-color: var(--primary-color) !important;
   padding: 1% 2% !important;
   outline: none !important;
 
@@ -27,6 +27,9 @@
   &:focus {
     border-color: var(--primary-color) !important ;
     outline: none !important;
+  }
+  &::after {
+    background-image: url(../../assets/images/downArrow.svg) !important;
   }
 }
 .accordion-body {

@@ -76,7 +76,7 @@ function HeartDiseasePrediction() {
         setIsHelpModelOpen={setIsHelpModelOpen}
       />
       {loading && <Loading />}
-      <div className="container card">
+      <div className="container card shadow-1">
         <div className="row heartscape-page-padding">
           <div className="col-lg-12 col-md-12 col-sm-12">
             <h3 className="heartscape-heading-color">Heartscapes</h3>
