@@ -35,6 +35,7 @@ function Home() {
         <Route path="/hearts" component={HeartDiseasePrediction} exact />
         <Route path="/hobbies" component={Hobbies} exact />
         <Route path="/hobbies/create" component={CreateHobby} exact />
+        <Route path="/hobbies/update" component={CreateHobby} exact />
         <Route path="/*" component={Main} exact />
         <Route path="/" component={Main} exact />
       </Switch>

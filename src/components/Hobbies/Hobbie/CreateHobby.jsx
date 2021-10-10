@@ -31,6 +31,7 @@ const CreateHobby = () => {
       setFormData({ ...formData, [entry]: data[entry] });
       formData[entry] = data[entry];
     }
+    console.log(formData);
   };
   return (
     <>

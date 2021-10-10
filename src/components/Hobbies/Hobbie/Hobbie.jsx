@@ -3,9 +3,16 @@ import "./Hobbie.scss";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import { useDispatch } from "react-redux";
+import { editHobby } from "../../../actions/trigger";
+import { useHistory } from "react-router";
 
 const Hobbie = (props) => {
-  console.log(props.tags);
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const updateHobby = () => {
+    dispatch(editHobby(props.id, history));
+  };
   return (
     <>
       <div className="card card-border-background-color mb-3">
@@ -27,7 +34,10 @@ const Hobbie = (props) => {
             <button className="btn card-button-color mx-2">
               <FavoriteIcon className="card-button-svg" />
             </button>
-            <button className="btn card-button-color mx-2">
+            <button
+              onClick={updateHobby}
+              className="btn card-button-color mx-2"
+            >
               <ModeEditIcon className="card-button-svg" />
             </button>
             <button className="btn card-button-color mx-2">
