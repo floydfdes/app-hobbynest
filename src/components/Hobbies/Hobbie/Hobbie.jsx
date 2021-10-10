@@ -5,6 +5,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
 const Hobbie = (props) => {
+  console.log(props.tags);
   return (
     <>
       <div className="card card-border-background-color mb-3">
@@ -12,7 +13,7 @@ const Hobbie = (props) => {
           <span className="hobbies-heading">{props.title}</span>
         </div>
         <div className="card-body ">
-          <span className="card-title">{props.tags}</span>
+          <span className="">{props.tags.map((tag) => `#${tag} `)}</span>
           <p
             className="card-text"
             dangerouslySetInnerHTML={{
