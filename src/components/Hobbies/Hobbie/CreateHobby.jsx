@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
+import { useDispatch, useSelector } from "react-redux";
 import * as yup from "yup";
-
+import { createPost, updatePost } from "../../../actions/hobby";
+import { useHistory } from "react-router";
 const CreateHobby = () => {
   const initialState = {
     title: "",
@@ -11,6 +13,13 @@ const CreateHobby = () => {
     description: "",
   };
   const [formData, setFormData] = useState(initialState);
+  const currentHobby = useSelector((state) => state.formReducer);
+  const history = useHistory();
+  useEffect(() => {
+    if (currentHobby.formData) setFormData(currentHobby.formData);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  const dispatch = useDispatch();
 
   const schema = yup
     .object({
@@ -31,6 +40,10 @@ const CreateHobby = () => {
       setFormData({ ...formData, [entry]: data[entry] });
       formData[entry] = data[entry];
     }
+    if (currentHobby.formData.id)
+      dispatch(updatePost(currentHobby.formData.id, formData));
+    else dispatch(createPost(formData, history));
+
     console.log(formData);
   };
   return (
@@ -59,7 +72,7 @@ const CreateHobby = () => {
                 </div>
                 <div>
                   <label className="login-form-label " htmlFor="tags">
-                    Title
+                    Tags
                   </label>
                   <input
                     type="text"
@@ -92,7 +105,7 @@ const CreateHobby = () => {
                   type="submit"
                   className="btn btn-primary btn-lg btn-block login-form-button"
                 >
-                  Create
+                  {formData.id ? "Update" : "Create"}
                 </button>
                 <Link to="/hobbies">
                   <button className="btn btn-primary btn-lg btn-block login-form-button">

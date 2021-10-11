@@ -56,7 +56,7 @@ function Appnavbar() {
         <Navbar.Brand>
           <Link to="/home">
             <img className="logo-image" src={LogoImage} alt="logo" />
-            Utilities
+            Postlytical
           </Link>
         </Navbar.Brand>
         {screenWidth < 767 && (

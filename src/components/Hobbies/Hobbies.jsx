@@ -40,7 +40,7 @@ const Hobbies = () => {
             <div className="col-lg-4 col-md-6 col-sm-12" key={element.title}>
               <Hobbie
                 title={element.title}
-                content={element.description}
+                description={element.description}
                 tags={element.tags}
                 id={element._id}
               />

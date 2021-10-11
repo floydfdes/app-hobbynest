@@ -11,7 +11,7 @@ const Hobbie = (props) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const updateHobby = () => {
-    dispatch(editHobby(props.id, history));
+    dispatch(editHobby(props, history));
   };
   return (
     <>
@@ -25,9 +25,9 @@ const Hobbie = (props) => {
             className="card-text"
             dangerouslySetInnerHTML={{
               __html:
-                props.content.length > 350
-                  ? props.content.slice(0, 350) + "..."
-                  : props.content,
+                props.description.length > 350
+                  ? props.description.slice(0, 350) + "..."
+                  : props.description,
             }}
           ></p>
           <div className="card-actions-container">
