@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import * as yup from "yup";
 import { createPost, updatePost } from "../../../actions/hobby";
 import { useHistory } from "react-router";
 const CreateHobby = () => {
@@ -12,7 +9,18 @@ const CreateHobby = () => {
     tags: "",
     description: "",
   };
+  const initialErrorState = {
+    title: "",
+    tags: "",
+    description: "",
+  };
+  const fieldPattern = {
+    title: /^[A-Za-z ]+$/,
+    tags: /^[A-Za-z ,]+$/,
+    description: /^[A-Za-z ]+$/,
+  };
   const [formData, setFormData] = useState(initialState);
+  const [errors, setErrors] = useState(initialErrorState);
   const currentHobby = useSelector((state) => state.formReducer);
   const history = useHistory();
   useEffect(() => {
@@ -21,30 +29,42 @@ const CreateHobby = () => {
   }, []);
   const dispatch = useDispatch();
 
-  const schema = yup
-    .object({
-      title: yup.string().required("title is required field"),
-      tags: yup.string().required("tags is required field"),
-      description: yup.string().required("description is required field"),
-    })
-    .required();
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
-    resolver: yupResolver(schema),
-  });
-  const createHobby = (data) => {
-    for (const entry in data) {
-      setFormData({ ...formData, [entry]: data[entry] });
-      formData[entry] = data[entry];
-    }
-    if (currentHobby.formData.id)
-      dispatch(updatePost(currentHobby.formData.id, formData));
-    else dispatch(createPost(formData, history));
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
-    console.log(formData);
+  const validation = (formData) => {
+    let isValid = true;
+    setErrors(initialErrorState);
+    for (const entry in formData) {
+      if (!formData[entry]) {
+        setErrors((prevState) => ({
+          ...prevState,
+          [entry]: `${entry} is required`,
+        }));
+        isValid = false;
+      } else if (formData[entry]) {
+        let regularExp = new RegExp(fieldPattern[entry]);
+        if (!regularExp.test(formData[entry])) {
+          setErrors((prevState) => ({
+            ...prevState,
+            [entry]: `${entry} is invalid`,
+          }));
+          isValid = false;
+        }
+      }
+    }
+    return isValid;
+  };
+
+  const createHobby = (e) => {
+    e.preventDefault();
+    const validate = validation(formData);
+    console.log(validate);
+    if (!validate) return;
+    if (currentHobby.formData)
+      dispatch(updatePost(currentHobby.formData.id, formData, history));
+    else dispatch(createPost(formData, history));
   };
   return (
     <>
@@ -52,7 +72,7 @@ const CreateHobby = () => {
         <div className="card login-card-margin">
           <div className="row">
             <div className="col-md-12 col-sm-12 login-form-div">
-              <form className="login-form" onSubmit={handleSubmit(createHobby)}>
+              <form className="login-form" onSubmit={createHobby}>
                 <h1 className="login-form-h1">Add a hobby</h1>
                 <p className="form-sub-heading">Please specify your Hobby</p>
                 <div>
@@ -64,11 +84,13 @@ const CreateHobby = () => {
                     name="title"
                     className="form-control"
                     autoComplete="off"
-                    {...register("title")}
+                    value={formData.title}
+                    onChange={
+                      // method from hook form register
+                      handleChange
+                    }
                   />
-                  <div className="validation-message">
-                    {errors?.title?.message}
-                  </div>
+                  <div className="validation-message">{errors?.title}</div>
                 </div>
                 <div>
                   <label className="login-form-label " htmlFor="tags">
@@ -79,11 +101,13 @@ const CreateHobby = () => {
                     name="tags"
                     className="form-control"
                     autoComplete="off"
-                    {...register("tags")}
+                    value={formData.tags}
+                    onChange={
+                      // method from hook form register
+                      handleChange
+                    }
                   />
-                  <div className="validation-message">
-                    {errors?.tags?.message}
-                  </div>
+                  <div className="validation-message">{errors?.tags}</div>
                 </div>
                 <div>
                   <label className="login-form-label " htmlFor="description">
@@ -94,10 +118,14 @@ const CreateHobby = () => {
                     name="description"
                     className="form-control"
                     autoComplete="off"
-                    {...register("description")}
+                    value={formData.description}
+                    onChange={
+                      // method from hook form register
+                      handleChange
+                    }
                   />
                   <div className="validation-message">
-                    {errors?.description?.message}
+                    {errors?.description}
                   </div>
                 </div>
 
