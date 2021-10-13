@@ -1,6 +1,6 @@
 {
   "name": "postlytical",
-  "version": "0.60.0",
+  "version": "0.65.0",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.4.1",

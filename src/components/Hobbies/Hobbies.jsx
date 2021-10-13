@@ -16,7 +16,7 @@ const Hobbies = () => {
   }, [dispatch]);
 
   let hobbies = useSelector((state) => state.hobby);
-
+  console.log(hobbies);
   const createHobby = () => {
     dispatch(createNewHobby(0, history));
   };
@@ -43,6 +43,7 @@ const Hobbies = () => {
                 description={element.description}
                 tags={element.tags}
                 id={element._id}
+                likes={element.likes.length}
               />
             </div>
           );

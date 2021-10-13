@@ -5,6 +5,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useDispatch } from "react-redux";
 import { editHobby } from "../../../actions/trigger";
+import { deletePost, likePost } from "../../../actions/hobby";
 import { useHistory } from "react-router";
 
 const Hobbie = (props) => {
@@ -20,7 +21,9 @@ const Hobbie = (props) => {
           <span className="hobbies-heading">{props.title}</span>
         </div>
         <div className="card-body ">
-          <span className="">{props.tags.map((tag) => `#${tag} `)}</span>
+          <span className="">
+            {props.tags.map((tag) => tag.split(",").map((el) => `#${el} `))}
+          </span>
           <p
             className="card-text"
             dangerouslySetInnerHTML={{
@@ -31,8 +34,12 @@ const Hobbie = (props) => {
             }}
           ></p>
           <div className="card-actions-container">
-            <button className="btn card-button-color mx-2">
+            <button
+              onClick={() => dispatch(likePost(props.id))}
+              className="btn card-button-color mx-2"
+            >
               <FavoriteIcon className="card-button-svg" />
+              <span className="mx-2">{props.likes}</span>
             </button>
             <button
               onClick={updateHobby}
@@ -40,7 +47,10 @@ const Hobbie = (props) => {
             >
               <ModeEditIcon className="card-button-svg" />
             </button>
-            <button className="btn card-button-color mx-2">
+            <button
+              onClick={() => dispatch(deletePost(props.id))}
+              className="btn card-button-color mx-2"
+            >
               <DeleteIcon className="card-button-svg" />
             </button>
           </div>

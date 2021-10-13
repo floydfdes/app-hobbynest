@@ -16,7 +16,7 @@ const CreateHobby = () => {
   };
   const fieldPattern = {
     title: /^[A-Za-z ]+$/,
-    tags: /^[A-Za-z ,]+$/,
+    tags: /^[A-Za-z,]+$/,
     description: /^[A-Za-z ]+$/,
   };
   const [formData, setFormData] = useState(initialState);
@@ -37,7 +37,7 @@ const CreateHobby = () => {
     let isValid = true;
     setErrors(initialErrorState);
     for (const entry in formData) {
-      if (!formData[entry]) {
+      if (!formData[entry] && entry !== "likes") {
         setErrors((prevState) => ({
           ...prevState,
           [entry]: `${entry} is required`,
