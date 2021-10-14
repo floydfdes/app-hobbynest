@@ -20,6 +20,11 @@
   width: 91%;
   display: grid;
   grid-template-columns: 33% 33% 33%;
+
+  button {
+    outline: none !important;
+    box-shadow: none !important;
+  }
 }
 .card-button-color {
   background-color: none;

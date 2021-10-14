@@ -15,9 +15,9 @@ const CreateHobby = () => {
     description: "",
   };
   const fieldPattern = {
-    title: /^[A-Za-z ]+$/,
-    tags: /^[A-Za-z,]+$/,
-    description: /^[A-Za-z ]+$/,
+    title: /^[A-Za-z .,]+$/,
+    tags: /^[A-za-z]+(,[A-Za-z]+)*$/,
+    description: /^[A-Za-z .,]+$/,
   };
   const [formData, setFormData] = useState(initialState);
   const [errors, setErrors] = useState(initialErrorState);

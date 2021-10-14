@@ -9,6 +9,8 @@ import { deletePost, likePost } from "../../../actions/hobby";
 import { useHistory } from "react-router";
 
 const Hobbie = (props) => {
+  const user = JSON.parse(localStorage.getItem("profile"));
+  console.log(user.result._id, props.creator);
   const dispatch = useDispatch();
   const history = useHistory();
   const updateHobby = () => {
@@ -41,18 +43,23 @@ const Hobbie = (props) => {
               <FavoriteIcon className="card-button-svg" />
               <span className="mx-2">{props.likes}</span>
             </button>
-            <button
-              onClick={updateHobby}
-              className="btn card-button-color mx-2"
-            >
-              <ModeEditIcon className="card-button-svg" />
-            </button>
-            <button
-              onClick={() => dispatch(deletePost(props.id))}
-              className="btn card-button-color mx-2"
-            >
-              <DeleteIcon className="card-button-svg" />
-            </button>
+            {user?.result?._id === props?.creator && (
+              <button
+                onClick={updateHobby}
+                className="btn card-button-color mx-2"
+              >
+                <ModeEditIcon className="card-button-svg" />
+              </button>
+            )}
+
+            {user?.result?._id === props?.creator && (
+              <button
+                onClick={() => dispatch(deletePost(props.id))}
+                className="btn card-button-color mx-2"
+              >
+                <DeleteIcon className="card-button-svg" />
+              </button>
+            )}
           </div>
         </div>
       </div>

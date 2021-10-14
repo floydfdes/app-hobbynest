@@ -24,10 +24,10 @@ const Hobbies = () => {
   return (
     <div className="container">
       <div className="row mobile-grid">
-        <div className="col-lg-10 col-md-9">
+        <div className="col-lg-10 col-md-8">
           <h2>Hobbies</h2>
         </div>
-        <div className="col-lg-2 col-md-3">
+        <div className="col-lg-2 col-md-4">
           <button onClick={createHobby} className="btn heading-button-color">
             <AddIcon />
             <span className="d-none d-md-block">Add a hobby</span>
@@ -44,6 +44,7 @@ const Hobbies = () => {
                 tags={element.tags}
                 id={element._id}
                 likes={element.likes.length}
+                creator={element.creator}
               />
             </div>
           );
