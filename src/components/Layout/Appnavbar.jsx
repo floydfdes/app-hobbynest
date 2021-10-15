@@ -59,7 +59,7 @@ function Appnavbar() {
             Postlytical
           </Link>
         </Navbar.Brand>
-        {screenWidth < 920 && (
+        {screenWidth < 990 && (
           <Navbar.Toggle
             id="navbar-toggle-button"
             aria-controls="basic-navbar-nav"

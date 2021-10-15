@@ -20,10 +20,10 @@ const Hobbie = (props) => {
     <>
       <div className="card card-border-background-color mb-3">
         <div className="card-header">
-          <span className="hobbies-heading">{props.title}</span>
+          <span>{props.title}</span>
         </div>
         <div className="card-body ">
-          <span className="">
+          <span className="card-tags">
             {props.tags.map((tag) => tag.split(",").map((el) => `#${el} `))}
           </span>
           <p
@@ -38,7 +38,7 @@ const Hobbie = (props) => {
           <div className="card-actions-container">
             <button
               onClick={() => dispatch(likePost(props.id))}
-              className="btn card-button-color mx-2"
+              className="btn card-button-color mx-2 card-like-button"
             >
               <FavoriteIcon className="card-button-svg" />
               <span className="mx-2">{props.likes}</span>

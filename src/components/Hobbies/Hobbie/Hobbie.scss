@@ -1,34 +1,81 @@
-.card-border-background-color {
-  border-color: var(--fourth-color) !important;
-  background-color: var(--third-color) !important;
-  color: var(--fourth-color);
-  height: 250px;
-}
-.card-body {
-  padding: 0.1rem 1rem !important;
-}
-.card-text {
-  font-size: 13px !important;
-  color: var(--fourth-color);
-}
-.hobbies-heading {
-  color: var(--fourth-color);
-}
-.card-actions-container {
-  position: absolute;
-  bottom: 10px;
-  width: 91%;
-  display: grid;
-  grid-template-columns: 33% 33% 33%;
+.card {
+  &-border-background-color {
+    border-color: var(--fourth-color) !important;
+    background-color: var(--third-color) !important;
+    color: var(--fourth-color);
+    height: 250px;
+  }
+  &-body {
+    padding: 0.1rem 1rem !important;
+  }
 
-  button {
-    outline: none !important;
-    box-shadow: none !important;
+  &-header {
+    background: none !important;
+    color: var(--fourth-color);
+    font-size: 24px;
+    border: none !important;
+  }
+
+  &-text {
+    font-size: 20px !important;
+    color: var(--fourth-color);
+  }
+
+  &-tags {
+    font-style: italic;
+    color: var(--primary-color);
+  }
+
+  &-button-color {
+    background-color: none;
+  }
+  &-button-color:hover {
+    background: var(--secondary-color);
+    border-radius: 20px;
+  }
+
+  &-button-svg {
+    color: var(--fourth-color);
+  }
+
+  &-actions-container {
+    position: absolute;
+    bottom: 10px;
+    width: 91%;
+    display: flex;
+    justify-content: space-around;
+
+    button {
+      outline: none !important;
+      box-shadow: none !important;
+    }
+  }
+  &-like-button {
+    display: flex !important;
+    align-items: center !important;
+    span {
+      font-size: 18px;
+      color: var(--primary-color);
+    }
   }
 }
-.card-button-color {
-  background-color: none;
-}
-.card-button-svg {
-  color: var(--fourth-color);
+
+.hobby-form-button {
+  border: none;
+  margin: 10px 0 5px;
+  width: 100%;
+  border-radius: 12px !important;
+  outline: none !important;
+  box-shadow: none !important;
+
+  &-primary {
+    background: var(--primary-color) !important;
+    color: var(--secondary-color) !important;
+    border: none !important;
+  }
+  &-secondary {
+    background: var(--third-color) !important;
+    color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+  }
 }

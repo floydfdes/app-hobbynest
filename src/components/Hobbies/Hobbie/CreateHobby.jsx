@@ -134,12 +134,12 @@ const CreateHobby = () => {
 
                 <button
                   type="submit"
-                  className="btn btn-primary btn-lg btn-block login-form-button"
+                  className="btn btn-primary btn-lg btn-block hobby-form-button hobby-form-button-primary"
                 >
                   {formData.id ? "Update" : "Create"}
                 </button>
                 <Link to="/hobbies">
-                  <button className="btn btn-primary btn-lg btn-block login-form-button">
+                  <button className="btn btn-primary btn-lg btn-block hobby-form-button hobby-form-button-secondary">
                     Return to Hobbies
                   </button>
                 </Link>
