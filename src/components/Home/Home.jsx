@@ -7,15 +7,27 @@ import UploadImage from "../ImageDetection/UploadImage";
 import About from "../About/About";
 import "./Home.scss";
 import Hobbies from "../Hobbies/Hobbies";
+import { ToastContainer, toast } from "material-react-toastify";
+import "material-react-toastify/dist/ReactToastify.css";
+import { useSelector } from "react-redux";
 
 import Auth from "../Auth/Auth";
 import CreateHobby from "../Hobbies/Hobbie/CreateHobby";
 
 function Home() {
+  let notification = useSelector((state) => state.toastNotificationReducer);
+
+  const notify = (notification) => {
+    if (notification.message) toast[notification.color](notification.message);
+  };
   useEffect(() => {
     setScreenHeight();
     window.addEventListener("resize", setScreenHeight);
   }, []);
+
+  useEffect(() => {
+    notify(notification);
+  }, [notification]);
   const setScreenHeight = () => {
     let heightOfScreen = window.innerHeight;
     document.documentElement.style.setProperty(
@@ -39,6 +51,7 @@ function Home() {
         <Route path="/*" component={Main} exact />
         <Route path="/" component={Main} exact />
       </Switch>
+      <ToastContainer position="bottom-center" autoClose={3000} />
     </div>
   );
 }

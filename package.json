@@ -1,6 +1,6 @@
 {
   "name": "postlytical",
-  "version": "0.70.0",
+  "version": "0.75.0",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.4.1",
@@ -18,6 +18,7 @@
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.21.4",
     "bootstrap": "^5.1.1",
+    "material-react-toastify": "^1.0.1",
     "node-sass": "^6.0.1",
     "react": "^17.0.2",
     "react-bootstrap": "^1.6.3",

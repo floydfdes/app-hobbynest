@@ -10,12 +10,12 @@ import { useHistory } from "react-router";
 
 const Hobbie = (props) => {
   const user = JSON.parse(localStorage.getItem("profile"));
-  console.log(user.result._id, props.creator);
   const dispatch = useDispatch();
   const history = useHistory();
   const updateHobby = () => {
     dispatch(editHobby(props, history));
   };
+
   return (
     <>
       <div className="card card-border-background-color mb-3">

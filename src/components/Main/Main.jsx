@@ -19,6 +19,7 @@ function Main() {
           <button className="btn main-page-button">Sign Up</button>
         </div>
       </div>
+
       {/* <div className="col-lg-2 col-md-2 d-none d-md-block"></div> */}
     </div>
   );
