@@ -1,6 +1,6 @@
 {
   "name": "postpred",
-  "version": "0.77.0",
+  "version": "0.78.0",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.4.1",

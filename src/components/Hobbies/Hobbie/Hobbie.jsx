@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Hobbie.scss";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -7,17 +7,42 @@ import { useDispatch } from "react-redux";
 import { editHobby } from "../../../actions/trigger";
 import { deletePost, likePost } from "../../../actions/hobby";
 import { useHistory } from "react-router";
-
+import ReactModal from "react-modal";
+ReactModal.setAppElement("#root");
 const Hobbie = (props) => {
   const user = JSON.parse(localStorage.getItem("profile"));
+  const [confirmDelete, setConfirmDelete] = useState(false);
   const dispatch = useDispatch();
   const history = useHistory();
   const updateHobby = () => {
     dispatch(editHobby(props, history));
   };
+  const deleteHobby = () => {
+    dispatch(deletePost(props.id));
+  };
 
   return (
     <>
+      <ReactModal id="delete-modal" isOpen={confirmDelete}>
+        <div>
+          <strong>
+            Are you sure you want to permanently delete this hobby?
+          </strong>
+        </div>
+        <div className="my-2 modal-button-div">
+          <button onClick={deleteHobby} className="btn btn-danger">
+            Delete hobby
+          </button>
+          <button
+            className="btn btn-primary mx-2"
+            onClick={() => {
+              setConfirmDelete(false);
+            }}
+          >
+            Cancel
+          </button>
+        </div>
+      </ReactModal>
       <div className="card card-border-background-color mb-3">
         <div className="card-header">
           <span>{props.title}</span>
@@ -54,7 +79,9 @@ const Hobbie = (props) => {
 
             {user?.result?._id === props?.creator && (
               <button
-                onClick={() => dispatch(deletePost(props.id))}
+                onClick={() => {
+                  setConfirmDelete(true);
+                }}
                 className="btn card-button-color mx-2"
               >
                 <DeleteIcon className="card-button-svg icon-delete" />

@@ -117,3 +117,23 @@
     width: 93% !important;
   }
 }
+
+#delete-modal {
+  height: 24% !important;
+  width: 360px !important;
+  strong {
+    font-size: 17px;
+  }
+}
+.modal-button-div {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 400px) {
+  #delete-modal {
+    height: 155px !important;
+    width: 80% !important;
+    margin-top: 45%;
+  }
+}
