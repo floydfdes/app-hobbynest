@@ -6,7 +6,9 @@
     color: var(--fourth-color) !important;
     text-decoration: none;
     display: flex;
-    padding: 5px;
+    padding: 0px;
+    font-size: 24px;
+    font-weight: bold;
     align-items: flex-end;
   }
   a:hover {
@@ -28,7 +30,7 @@
 //   background-color: var(--fourth-color);
 // }
 .navbar-light .navbar-toggler {
-  color: var(--primary-color) !important;
+  color: var(--secondary-color) !important;
   border: none !important;
   &-icon {
     background-image: url(../../assets/images/menu.svg) !important;
@@ -70,9 +72,22 @@
 #navbar-toggle-button {
   display: flex;
   align-items: center;
+  font-weight: 900 !important;
 }
 
 .MuiAvatar-root {
   background-color: var(--secondary-color) !important;
   color: var(--primary-color) !important;
+}
+// @media screen and (max-width: 900px) {
+//   .navbar-fixed-top-mobile {
+//     position: fixed;
+//     top: 0%;
+//     background-color: var(--fifth-color);
+//     z-index: 999;
+//   }
+// }
+
+#basic-navbar-nav {
+  font-weight: 900;
 }

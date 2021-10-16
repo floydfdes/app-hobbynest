@@ -7,6 +7,7 @@ import { getPosts } from "../../actions/hobby";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import { createNewHobby } from "../../actions/trigger";
+import Loading from "../Loading/Loading";
 
 const Hobbies = () => {
   const dispatch = useDispatch();
@@ -16,12 +17,14 @@ const Hobbies = () => {
   }, [dispatch]);
 
   let hobbies = useSelector((state) => state.hobby);
+
   const createHobby = () => {
     dispatch(createNewHobby(0, history));
   };
 
   return (
     <div className="container">
+      {hobbies.length === 0 && <Loading />}
       <div className="row mobile-grid">
         <div className="col-lg-10 col-md-8">
           <h2>Hobbies</h2>

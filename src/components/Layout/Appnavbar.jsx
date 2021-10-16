@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Container, Nav, NavDropdown } from "react-bootstrap";
 import Navbar from "react-bootstrap/Navbar";
-import LogoImage from "../../assets/images/surfboard.png";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import Avatar from "@material-ui/core/Avatar";
 import { useDispatch } from "react-redux";
@@ -52,12 +51,9 @@ function Appnavbar() {
 
   return (
     <Navbar expand="lg">
-      <Container>
+      <Container className="navbar-fixed-top-mobile">
         <Navbar.Brand>
-          <Link to="/home">
-            <img className="logo-image" src={LogoImage} alt="logo" />
-            Postpred
-          </Link>
+          <Link to="/home">Postpred</Link>
         </Navbar.Brand>
         {screenWidth < 990 && (
           <Navbar.Toggle
