@@ -82,7 +82,7 @@ function HeartDiseasePrediction() {
             <h3 className="heartscape-heading-color">Heartscapes</h3>
           </div>
           <div className="col-lg-10 col-md-10 col-sm-12">
-            <p className="heartscape-heading-color">
+            <p className="heartscape-sub-heading-color">
               Please fill the required fields to get an accurate result. Click
               help for more information.
             </p>

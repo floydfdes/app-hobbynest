@@ -13,10 +13,11 @@
     padding: 20px 20px;
   }
   &-heading-color {
-    color: var(--primary-color);
+    color: var(--secondary-color);
   }
-  &-field-label {
-    color: var(--primary-color);
+  &-field-label,
+  &-sub-heading-color {
+    color: var(--fourth-color);
   }
   &-button {
     margin-top: 5px;

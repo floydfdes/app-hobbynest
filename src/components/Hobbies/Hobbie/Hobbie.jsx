@@ -40,7 +40,7 @@ const Hobbie = (props) => {
               onClick={() => dispatch(likePost(props.id))}
               className="btn card-button-color mx-2 card-like-button"
             >
-              <FavoriteIcon className="card-button-svg" />
+              <FavoriteIcon className="card-button-svg icon-like" />
               <span className="mx-2">{props.likes}</span>
             </button>
             {user?.result?._id === props?.creator && (
@@ -48,7 +48,7 @@ const Hobbie = (props) => {
                 onClick={updateHobby}
                 className="btn card-button-color mx-2"
               >
-                <ModeEditIcon className="card-button-svg" />
+                <ModeEditIcon className="card-button-svg icon-edit" />
               </button>
             )}
 
@@ -57,7 +57,7 @@ const Hobbie = (props) => {
                 onClick={() => dispatch(deletePost(props.id))}
                 className="btn card-button-color mx-2"
               >
-                <DeleteIcon className="card-button-svg" />
+                <DeleteIcon className="card-button-svg icon-delete" />
               </button>
             )}
           </div>

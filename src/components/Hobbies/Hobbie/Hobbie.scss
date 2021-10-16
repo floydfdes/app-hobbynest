@@ -1,7 +1,7 @@
 .card {
   &-border-background-color {
-    border-color: var(--fourth-color) !important;
-    background-color: var(--third-color) !important;
+    // border-color: var(--fourth-color) !important;
+    background-color: var(--primary-color) !important;
     color: var(--fourth-color);
     height: 250px;
   }
@@ -12,25 +12,25 @@
   &-header {
     background: none !important;
     color: var(--fourth-color);
-    font-size: 24px;
+    font-size: 20px;
     border: none !important;
   }
 
   &-text {
-    font-size: 20px !important;
+    font-size: 16px !important;
     color: var(--fourth-color);
   }
 
   &-tags {
     font-style: italic;
-    color: var(--primary-color);
+    color: var(--third-color);
   }
 
   &-button-color {
     background-color: none;
   }
   &-button-color:hover {
-    background: var(--secondary-color);
+    background: var(--third-color);
     border-radius: 20px;
   }
 
@@ -55,8 +55,20 @@
     align-items: center !important;
     span {
       font-size: 18px;
-      color: var(--primary-color);
+      color: var(--secondary-color);
     }
+  }
+}
+
+.icon {
+  &-like {
+    color: deeppink;
+  }
+  &-edit {
+    color: var(--third-color);
+  }
+  &-delete {
+    color: var(--fourth-color);
   }
 }
 
@@ -69,13 +81,39 @@
   box-shadow: none !important;
 
   &-primary {
-    background: var(--primary-color) !important;
-    color: var(--secondary-color) !important;
+    background: var(--secondary-color) !important;
+    color: var(--primary-color) !important;
     border: none !important;
   }
   &-secondary {
-    background: var(--third-color) !important;
-    color: var(--primary-color) !important;
-    border-color: var(--primary-color) !important;
+    background: var(--primary-color) !important;
+    color: var(--fourth-color) !important;
+    border-color: var(--fourth-color) !important;
+  }
+}
+
+.create-edit-form {
+  background: var(--primary-color);
+  border-radius: 20px;
+  box-shadow: 0 5px 15px rgb(0, 0, 20);
+  padding: 2% 5%;
+  width: 45%;
+  &-h1 {
+    color: var(--secondary-color) !important;
+    margin-bottom: 0;
+    margin-left: -2px;
+    margin-top: 1rem;
+  }
+  &-sub-heading {
+    color: var(--fourth-color);
+  }
+  &-label {
+    color: var(--fourth-color);
+    margin-bottom: 2px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .create-edit-form {
+    width: 93% !important;
   }
 }

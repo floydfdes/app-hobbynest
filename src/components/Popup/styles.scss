@@ -6,20 +6,20 @@
     left: 50% !important;
     transform: translate(-50%, -50%) !important;
     text-align: center;
-    border: 2px solid var(--primary-color) !important;
+    border: 2px solid var(--secondary-color) !important;
   }
 }
 @media only screen and (max-width: 768px) {
   .ReactModal__Content {
     text-align: center;
-    border: 2px solid var(--primary-color) !important;
+    border: 2px solid var(--secondary-color) !important;
     height: 50% !important;
   }
 }
 
 .prediction-popup-button {
-  background-color: var(--primary-color);
-  color: var(--secondary-color);
+  background-color: var(--secondary-color) !important;
+  color: var(--primary-color) !important;
   width: 40%;
 }
 .prediction-popup-button:hover {
@@ -27,7 +27,7 @@
 }
 
 .prediction-popup-heading {
-  color: var(--primary-color);
+  color: var(--secondary-color);
 }
 .prediction-svg {
   width: 100px;

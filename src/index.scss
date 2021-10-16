@@ -1,16 +1,17 @@
 @font-face {
   font-family: ubuntu;
-  src: url("../src/assets/fonts/Ubuntu-Medium.ttf");
+  src: url("../src/assets/fonts/Raleway-Medium.ttf");
 }
 :root {
   --primary-color: #008a8b;
   --secondary-color: #dff8fe;
   --third-color: #003458;
   --fourth-color: #82cde5;
-  --primary-color: #1a3365;
-  --secondary-color: #ffbb00;
-  --third-color: #fff;
-  --fourth-color: #ff4343;
+  --primary-color: #d8f7f8;
+  --secondary-color: #033b73;
+  --third-color: #e0cd17;
+  --fourth-color: #015245;
+  --fifth-color: #45d9d5;
   --screen-height: 1080px;
 }
 
@@ -33,6 +34,6 @@ html {
 }
 
 body {
-  background: url(./assets/images/layered-waves-haikei.svg) !important;
+  background: var(--fifth-color) !important;
   background-size: cover !important;
 }

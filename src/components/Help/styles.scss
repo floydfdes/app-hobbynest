@@ -14,14 +14,15 @@
   }
 }
 .accordion-button {
-  color: var(--third-color) !important;
-  background-color: var(--primary-color) !important;
+  color: var(--primary-color) !important;
+  background-color: var(--secondary-color) !important;
   padding: 1% 2% !important;
   outline: none !important;
+  box-shadow: none !important;
 
   &:not(.collapsed) {
-    color: var(--third-color) !important;
-    background-color: var(--primary-color) !important;
+    color: var(--primary-color) !important;
+    background-color: var(--third-color) !important;
     box-shadow: none !important;
   }
   &:focus {
@@ -33,7 +34,7 @@
   }
 }
 .accordion-body {
-  color: var(--primary-color);
+  color: var(--secondary-color);
 
   padding: 1% 2%;
 }

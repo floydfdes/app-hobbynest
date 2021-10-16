@@ -72,14 +72,16 @@ const CreateHobby = () => {
         <div className="card login-card-margin">
           <div className="row">
             <div className="col-md-12 col-sm-12 login-form-div">
-              <form className="login-form" onSubmit={createHobby}>
-                <h1 className="login-form-h1">
+              <form className="create-edit-form" onSubmit={createHobby}>
+                <h1 className="create-edit-form-h1">
                   {" "}
                   {formData.id ? "Update your" : "Add a"} hobby
                 </h1>
-                <p className="form-sub-heading">Please specify your Hobby</p>
+                <p className="create-edit-form-sub-heading">
+                  Please specify your Hobby
+                </p>
                 <div>
-                  <label className="login-form-label " htmlFor="title">
+                  <label className="create-edit-form-label" htmlFor="title">
                     Title
                   </label>
                   <input
@@ -96,7 +98,7 @@ const CreateHobby = () => {
                   <div className="validation-message">{errors?.title}</div>
                 </div>
                 <div>
-                  <label className="login-form-label " htmlFor="tags">
+                  <label className="create-edit-form-label" htmlFor="tags">
                     Tags
                   </label>
                   <input
@@ -113,7 +115,10 @@ const CreateHobby = () => {
                   <div className="validation-message">{errors?.tags}</div>
                 </div>
                 <div>
-                  <label className="login-form-label " htmlFor="description">
+                  <label
+                    className="create-edit-form-label"
+                    htmlFor="description"
+                  >
                     Description
                   </label>
                   <input

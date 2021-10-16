@@ -56,7 +56,7 @@ function Appnavbar() {
         <Navbar.Brand>
           <Link to="/home">
             <img className="logo-image" src={LogoImage} alt="logo" />
-            Postlytical
+            Postpred
           </Link>
         </Navbar.Brand>
         {screenWidth < 990 && (
@@ -81,7 +81,7 @@ function Appnavbar() {
 
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <NavDropdown title="PREDICTION" id="basic-nav-dropdown">
+            <NavDropdown title="Prediction" id="basic-nav-dropdown">
               <Link
                 onClick={hideDropdown}
                 className="dropdown-item"
@@ -105,16 +105,16 @@ function Appnavbar() {
               </Link>
             </NavDropdown>
             <Link onClick={hideNavbar} className="nav-link" to="/hobbies">
-              HOBBIES
+              Hobbies
             </Link>
             <Link onClick={hideNavbar} className="nav-link" to="/about">
-              ABOUT
+              About
             </Link>
           </Nav>
           <Nav className="profile-login-div">
             {user && screenWidth > 768 && (
               <Avatar
-                className="profile-avatar"
+                className="profile-avatar mx-2"
                 alt={user?.result?.firstName[0]}
                 src={
                   user.result?.imageUrl
@@ -125,7 +125,7 @@ function Appnavbar() {
             )}
             {user ? (
               <Link onClick={logout} to="/" className="nav-link nav-link-login">
-                LOGOUT
+                Logout
               </Link>
             ) : (
               <Link
@@ -133,7 +133,7 @@ function Appnavbar() {
                 className="nav-link nav-link-login"
                 to="/login"
               >
-                LOGIN
+                Login
               </Link>
             )}
           </Nav>

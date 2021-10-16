@@ -1,6 +1,6 @@
 {
-  "name": "postlytical",
-  "version": "0.76.0",
+  "name": "postpred",
+  "version": "0.77.0",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.4.1",
@@ -29,7 +29,7 @@
     "react-router-dom": "^5.3.0",
     "react-scripts": "4.0.3",
     "redux-thunk": "^2.3.0",
-    "simple-authentication-react": "^1.0.12",
+    "simple-authentication-react": "^1.0.13",
     "web-vitals": "^1.1.2",
     "yup": "^0.32.9"
   },
