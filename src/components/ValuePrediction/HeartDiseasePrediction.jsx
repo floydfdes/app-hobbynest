@@ -76,18 +76,12 @@ function HeartDiseasePrediction() {
         setIsHelpModelOpen={setIsHelpModelOpen}
       />
       {loading && <Loading />}
-      <div className="container card shadow-1">
+      <div className="container card shadow">
         <div className="row heartscape-page-padding">
-          <div className="col-lg-12 col-md-12 col-sm-12">
-            <h3 className="heartscape-heading-color">Heartscapes</h3>
+          <div className="col-lg-10 col-md-9 col-10">
+            <h2 className="heartscape-heading-color">Heartscapes</h2>
           </div>
-          <div className="col-lg-10 col-md-10 col-sm-12">
-            <p className="heartscape-sub-heading-color">
-              Please fill the required fields to get an accurate result. Click
-              help for more information.
-            </p>
-          </div>
-          <div className="col-lg-2 col-md-2 col-sm-12">
+          <div className="col-lg-2 col-md-3 col-2">
             <button
               onClick={() => {
                 setIsHelpModelOpen(true);
@@ -95,9 +89,16 @@ function HeartDiseasePrediction() {
               className="btn heading-button-color"
             >
               <InfoIcon fontSize="small" />
-              <span>Help</span>
+              <span className="d-none d-md-block mx-1">Help</span>
             </button>
           </div>
+          <div className="col-lg-12 col-md-12 col-sm-12">
+            <p className="heartscape-sub-heading-color">
+              Please fill the required fields to get an accurate result. Click
+              help for more information.
+            </p>
+          </div>
+
           {fields.map((field) => {
             return (
               <div
@@ -115,6 +116,8 @@ function HeartDiseasePrediction() {
                       autoComplete="off"
                       aria-label="Small"
                       aria-describedby="inputGroup-sizing-sm"
+                      placeholder={field.placeholder}
+                      type="Number"
                     />
                   </InputGroup>
                 ) : (
@@ -150,6 +153,8 @@ function HeartDiseasePrediction() {
                       autoComplete="off"
                       aria-label="Small"
                       aria-describedby="inputGroup-sizing-sm"
+                      placeholder={field.placeholder}
+                      type="Number"
                     />
                   </InputGroup>
                 ) : (

@@ -43,9 +43,9 @@ const Hobbie = (props) => {
           </button>
         </div>
       </ReactModal>
-      <div className="card card-border-background-color mb-3">
+      <div className="card card-border-background-color mb-3 shadow">
         <div className="card-header">
-          <span>{props.title}</span>
+          <h2>{props.title}</h2>
         </div>
         <div className="card-body ">
           <span className="card-tags">

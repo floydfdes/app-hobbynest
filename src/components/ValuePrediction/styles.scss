@@ -5,7 +5,7 @@
 
 .heartscape {
   &-input-field {
-    border: 1px solid var(--primary-color) !important;
+    border: 1px solid var(--fifth-color) !important;
     outline: none !important;
     box-shadow: none !important;
   }
@@ -25,7 +25,7 @@
     box-shadow: none !important;
   }
   &-input-field:focus {
-    border-color: var(--primary-color);
+    border-color: var(--secondary-color) !important;
     box-shadow: none;
   }
   &-error-class {

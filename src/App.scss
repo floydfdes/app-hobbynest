@@ -10,7 +10,7 @@
   font-weight: bold !important;
   width: 100%;
   display: flex !important;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
 }
 .Loading-spinner {
@@ -28,6 +28,7 @@
 .page-height {
   height: calc(var(--screen-height) * 1.1);
 }
+h1,
 h2 {
   color: var(--secondary-color);
   margin: 0px !important;
@@ -79,4 +80,16 @@ h2 {
     left: 50%;
     transform: translate(-50%, -15%);
   }
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
 }

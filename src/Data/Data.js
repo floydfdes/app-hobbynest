@@ -2,6 +2,7 @@ export const heartscapeFields = [
   {
     name: "Age",
     id: "age",
+    placeholder: "0-200",
   },
   {
     name: "Sex",
@@ -23,8 +24,12 @@ export const heartscapeFields = [
       { name: "3-Asymptomatic", value: 3 },
     ],
   },
-  { name: "Resting blood pressure", id: "restingBloodSugar" },
-  { name: "Cholesterol", id: "cholesterol" },
+  {
+    name: "Resting blood pressure",
+    id: "restingBloodSugar",
+    placeholder: "0-200",
+  },
+  { name: "Cholesterol", id: "cholesterol", placeholder: "0-600" },
   {
     name: "Fasting blood sugar",
     id: "fastingBloodSugar",
@@ -34,8 +39,12 @@ export const heartscapeFields = [
       { name: "1-True( > 120 mg/dl)", value: 1 },
     ],
   },
-  { name: "Resting electrocardiographic results", id: "restingEcgResults" },
-  { name: "Maximum heart rate", id: "maxHeartRate" },
+  {
+    name: "Resting electrocardiographic results",
+    id: "restingEcgResults",
+    placeholder: "0-2",
+  },
+  { name: "Maximum heart rate", id: "maxHeartRate", placeholder: "0-250" },
   {
     name: "Exercise Induced Angina",
     id: "angina",
@@ -47,7 +56,7 @@ export const heartscapeFields = [
   },
 ];
 export const heartscapefieldsCol3 = [
-  { name: "Old peak", id: "oldPeak" },
+  { name: "Old peak", id: "oldPeak", placeholder: "0-7" },
   {
     name: "Slope",
     id: "slope",
@@ -58,7 +67,7 @@ export const heartscapefieldsCol3 = [
       { name: "2-Downsloping", value: 2 },
     ],
   },
-  { name: "Flourosopy", id: "flourosopy" },
+  { name: "Flourosopy", id: "flourosopy", placeholder: "0-3" },
   {
     name: "Thalassemia",
     id: "thalassemia",
