@@ -115,6 +115,13 @@
     color: var(--fourth-color);
     margin-bottom: 2px;
   }
+  input {
+    outline: none !important;
+    box-shadow: none !important;
+  }
+  input:focus {
+    border: 1px solid var(--secondary-color) !important;
+  }
 }
 @media screen and (max-width: 767px) {
   .create-edit-form {

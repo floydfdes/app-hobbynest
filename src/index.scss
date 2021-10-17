@@ -1,6 +1,14 @@
 @font-face {
-  font-family: ubuntu;
+  font-family: ralewayMedium;
   src: url("../src/assets/fonts/Raleway-Medium.ttf");
+}
+@font-face {
+  font-family: ralewayBold;
+  src: url("../src/assets/fonts/Raleway-Bold.ttf");
+}
+@font-face {
+  font-family: ralewayRegular;
+  src: url("../src/assets/fonts/Raleway-Regular.ttf");
 }
 :root {
   --primary-color: #008a8b;
@@ -17,8 +25,19 @@
 
 body,
 html {
-  font-family: ubuntu !important;
+  font-family: ralewayRegular !important;
   //background: var(--secondary-color);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+label {
+  font-family: ralewayBold !important;
 }
 
 .table-secondary {

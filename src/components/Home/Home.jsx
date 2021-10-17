@@ -37,7 +37,7 @@ function Home() {
   };
 
   return (
-    <div className="container container-bg page-height">
+    <div className="container container-bg page-height container-margin-mobile">
       <Switch>
         <Route path="/home" component={Main} exact />
         <Route path="/about" component={About} exact />

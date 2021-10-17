@@ -53,7 +53,9 @@ function Appnavbar() {
     <Navbar expand="lg">
       <Container className="navbar-fixed-top-mobile">
         <Navbar.Brand>
-          <Link to="/home">Postpred</Link>
+          <Link to="/home">
+            <h2>Postpred</h2>
+          </Link>
         </Navbar.Brand>
         {screenWidth < 990 && (
           <Navbar.Toggle

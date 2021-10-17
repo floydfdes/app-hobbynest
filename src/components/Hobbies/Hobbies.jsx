@@ -27,7 +27,7 @@ const Hobbies = () => {
       {hobbies.length === 0 && <Loading />}
       <div className="row mobile-grid">
         <div className="col-lg-10 col-md-8">
-          <h1>Hobbies</h1>
+          <h2>Hobbies</h2>
         </div>
         <div className="col-lg-2 col-md-4">
           <button onClick={createHobby} className="btn heading-button-color">
