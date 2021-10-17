@@ -3,7 +3,7 @@ import React from "react";
 function Main() {
   return (
     <div className="row main-page mx-0">
-      <div>
+      <div className="main-page-mobile-center">
         <h1 className="main-page-heading my-3">
           This book is sure to liquefy your brain.
         </h1>
