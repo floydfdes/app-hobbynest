@@ -47,6 +47,7 @@ const Hobbies = () => {
                 id={element._id}
                 likes={element.likes.length}
                 creator={element.creator}
+                creatorName={element.creatorName}
               />
             </div>
           );

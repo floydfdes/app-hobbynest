@@ -74,7 +74,6 @@ const CreateHobby = () => {
             <div className="col-md-12 col-sm-12 login-form-div">
               <form className="create-edit-form" onSubmit={createHobby}>
                 <h1 className="create-edit-form-h1">
-                  {" "}
                   {formData.id ? "Update your" : "Add a"} hobby
                 </h1>
                 <p className="create-edit-form-sub-heading">

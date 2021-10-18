@@ -9,7 +9,13 @@
   &-body {
     padding: 0.1rem 1rem !important;
   }
-
+  &-title {
+    margin-bottom: 0px !important;
+  }
+  &-author {
+    font-size: 13px !important;
+    color: var(--secondary-color) !important;
+  }
   &-header {
     background: none !important;
     color: var(--fourth-color);
@@ -32,7 +38,7 @@
     background-color: none;
   }
   &-button-color:hover {
-    background: var(--third-color);
+    background: var(--fifth-color);
     border-radius: 20px;
   }
 

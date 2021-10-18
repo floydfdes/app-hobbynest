@@ -45,8 +45,12 @@ const Hobbie = (props) => {
       </ReactModal>
       <div className="card card-border-background-color mb-3 shadow">
         <div className="card-header">
-          <h3>{props.title}</h3>
+          <h3 className="card-title">{props.title}</h3>
+          <span className="card-author">
+            created by: {props.creatorName ? props.creatorName : "unknown"}
+          </span>
         </div>
+
         <div className="card-body ">
           <span className="card-tags">
             {props.tags.map((tag) => tag.split(",").map((el) => `#${el} `))}

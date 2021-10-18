@@ -21,6 +21,10 @@ export const getPosts = () => async (dispatch) => {
 
 export const createPost = (post, history) => async (dispatch) => {
   try {
+    post["creatorName"] = JSON.parse(
+      localStorage.getItem("profile")
+    ).result.firstName;
+    console.log(post);
     const { data } = await api.createPost(post);
 
     dispatch({ type: CREATE, payload: data });
