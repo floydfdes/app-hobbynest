@@ -72,6 +72,11 @@ h2 {
     &-mobile-center {
       text-align: center;
     }
+    &-card-div {
+      .card {
+        background: #eeeeee !important;
+      }
+    }
   }
   .mobile-grid {
     display: grid !important;
@@ -95,7 +100,7 @@ h2 {
         width: 33%;
         height: 250px;
         justify-content: space-around;
-        background: lightgray !important;
+        background: #eeeeee !important;
       }
     }
   }

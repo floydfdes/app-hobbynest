@@ -1,6 +1,8 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 
 function Main() {
+  const history = useHistory();
   return (
     <>
       <div className="row main-page mx-0">
@@ -30,12 +32,26 @@ function Main() {
         <div className="card m-3 p-3 shadow text-center">
           <h5>Hobbies</h5>
           <p>Post a hobby. Edit, like and share to the world </p>
-          <button className="btn heading-button-color">Try</button>
+          <button
+            onClick={() => {
+              history.push("/hobbies");
+            }}
+            className="btn heading-button-color"
+          >
+            Try
+          </button>
         </div>
         <div className="card m-3 p-3 shadow text-center">
           <h5>Prediction</h5>
           <p>Check the condition of our heart</p>
-          <button className="btn heading-button-color">Predict</button>
+          <button
+            onClick={() => {
+              history.push("/hearts");
+            }}
+            className="btn heading-button-color"
+          >
+            Predict
+          </button>
         </div>
         <div className="card m-3 p-3 shadow text-center">
           <h5>Classification</h5>
@@ -43,7 +59,14 @@ function Main() {
             Capture and classify and image. Results based on tensorflow
             mobilenet model
           </p>
-          <button className="btn heading-button-color">Classify</button>
+          <button
+            onClick={() => {
+              history.push("/mobilenet");
+            }}
+            className="btn heading-button-color"
+          >
+            Classify
+          </button>
         </div>
       </div>
     </>
