@@ -37,22 +37,27 @@ function Home() {
   };
 
   return (
-    <div className="container container-bg page-height container-margin-mobile">
-      <Switch>
-        <Route path="/home" component={Main} exact />
-        <Route path="/about" component={About} exact />
-        <Route path="/login" component={Auth} exact />
-        <Route path="/mobilenet" component={ImageDetectionMobileNet} exact />
-        <Route path="/imagedetection" component={UploadImage} exact />
-        <Route path="/hearts" component={HeartDiseasePrediction} exact />
-        <Route path="/hobbies" component={Hobbies} exact />
-        <Route path="/hobbies/create" component={CreateHobby} exact />
-        <Route path="/hobbies/update" component={CreateHobby} exact />
-        <Route path="/*" component={Main} exact />
-        <Route path="/" component={Main} exact />
-      </Switch>
-      <ToastContainer position="bottom-center" autoClose={3000} />
-    </div>
+    <>
+      <div
+        id="main-container"
+        className="container container-bg page-height container-margin-mobile"
+      >
+        <Switch>
+          <Route path="/home" component={Main} exact />
+          <Route path="/about" component={About} exact />
+          <Route path="/login" component={Auth} exact />
+          <Route path="/mobilenet" component={ImageDetectionMobileNet} exact />
+          <Route path="/imagedetection" component={UploadImage} exact />
+          <Route path="/hearts" component={HeartDiseasePrediction} exact />
+          <Route path="/hobbies" component={Hobbies} exact />
+          <Route path="/hobbies/create" component={CreateHobby} exact />
+          <Route path="/hobbies/update" component={CreateHobby} exact />
+          <Route path="/*" component={Main} exact />
+          <Route path="/" component={Main} exact />
+        </Switch>
+        <ToastContainer position="bottom-center" autoClose={3000} />
+      </div>
+    </>
   );
 }
 

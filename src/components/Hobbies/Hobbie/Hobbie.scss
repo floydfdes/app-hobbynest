@@ -1,7 +1,7 @@
 .card {
   &-border-background-color {
     // border-color: var(--fourth-color) !important;
-    background-color: var(--primary-color) !important;
+    background-color: lightgray !important;
     color: var(--fourth-color);
     height: 250px;
     border-radius: 1rem !important;
@@ -11,10 +11,11 @@
   }
   &-title {
     margin-bottom: 0px !important;
+    border-bottom: 3px solid var(--fourth-color);
   }
   &-author {
     font-size: 13px !important;
-    color: var(--secondary-color) !important;
+    color: var(--fourth-color) !important;
   }
   &-header {
     background: none !important;

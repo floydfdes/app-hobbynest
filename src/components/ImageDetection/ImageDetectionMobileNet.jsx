@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import "@tensorflow/tfjs";
 import * as mobileNet from "@tensorflow-models/mobilenet";
 import "./styles.scss";
+import Loading from "../Loading/Loading";
 function ImageDetectionMobileNet() {
   const [isModelLoading, setIsModelLoading] = useState(false);
   const [model, setModel] = useState(null);
@@ -50,9 +51,7 @@ function ImageDetectionMobileNet() {
   }, []);
 
   if (isModelLoading) {
-    return (
-      <h1 className="text-center heading-color">Classfier is loading...</h1>
-    );
+    return <Loading />;
   }
 
   return (

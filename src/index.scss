@@ -14,6 +14,22 @@
   font-family: ralewaySemiBold;
   src: url("../src/assets/fonts/Raleway-SemiBold.ttf");
 }
+@font-face {
+  font-family: RobotoMedium;
+  src: url("../src/assets/fonts/Roboto-Medium.ttf");
+}
+@font-face {
+  font-family: RobotoBold;
+  src: url("../src/assets/fonts/Roboto-Bold.ttf");
+}
+@font-face {
+  font-family: RobotoRegular;
+  src: url("../src/assets/fonts/Roboto-Regular.ttf");
+}
+@font-face {
+  font-family: RobotoSemiBold;
+  src: url("../src/assets/fonts/Roboto-Black.ttf");
+}
 :root {
   --primary-color: #008a8b;
   --secondary-color: #dff8fe;
@@ -23,19 +39,18 @@
   --secondary-color: #033b73;
   --third-color: #e0cd17;
   --fourth-color: #015245;
-  --fifth-color: #45d9d5;
-  --screen-height: 1080px;
+  --fifth-color: #fff;
 }
 
 body,
 html {
-  font-family: ralewayRegular !important;
+  font-family: RobotoRegular !important;
   //background: var(--secondary-color);
 }
 
 h1,
 h2 {
-  font-family: ralewayBold !important;
+  font-family: RobotoBold !important;
 }
 
 h3,
@@ -44,7 +59,7 @@ h5,
 h6,
 a,
 label {
-  font-family: ralewaySemiBold !important;
+  font-family: RobotoSemiBold !important;
 }
 
 .table-secondary {
@@ -62,4 +77,18 @@ label {
 body {
   background: var(--fifth-color) !important;
   background-size: cover !important;
+}
+
+button:hover {
+  cursor: pointer;
+}
+@media screen and (min-width: 924px) {
+  #main-container {
+    margin: 0px 0px !important;
+    max-width: 100% !important;
+  }
+}
+
+.login-form {
+  background: lightgray !important;
 }

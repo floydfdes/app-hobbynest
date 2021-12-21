@@ -26,7 +26,7 @@
 }
 
 .page-height {
-  height: calc(var(--screen-height) * 1.1);
+  height: 100vh;
 }
 h1,
 h2 {
@@ -35,7 +35,9 @@ h2 {
 }
 
 .main-page {
-  height: var(--screen-height);
+  height: 100vh;
+  background: url("../src/assets/images/background.jpeg");
+  background-repeat: no-repeat;
   &-heading {
     color: var(--secondary-color);
   }
@@ -55,10 +57,10 @@ h2 {
     border-color: var(--secondary-color) !important;
     color: var(--secondary-color) !important;
   }
-  &-button-div {
-    display: flex;
-    justify-content: space-between;
-  }
+  // &-button-div {
+  //   display: flex;
+  //   justify-content: space-between;
+  // }
 }
 
 @media screen and (max-width: 769px) {
@@ -78,10 +80,24 @@ h2 {
 }
 @media screen and (min-width: 767px) {
   .main-page {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -15%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &-web {
+      flex-basis: content;
+      text-align: center;
+    }
+    &-card-div {
+      height: 100vh;
+      display: flex;
+      justify-content: space-around;
+      .card {
+        width: 33%;
+        height: 250px;
+        justify-content: space-around;
+        background: lightgray !important;
+      }
+    }
   }
 }
 

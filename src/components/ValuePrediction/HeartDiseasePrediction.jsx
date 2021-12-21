@@ -59,10 +59,7 @@ function HeartDiseasePrediction() {
       });
   };
   // const resetForm = () => {
-  //   for (const formField in formData) {
-  //     formData[formField] = "";
-  //   }
-  //   console.log(formData);
+  //   setFormData(heartscapeInitialData);
   // };
   return (
     <>
@@ -177,8 +174,9 @@ function HeartDiseasePrediction() {
               </div>
             );
           })}
-
-          <div className="col-lg-6 col-md-6 col-sm-12">
+          <div className="col-lg-4 col-md-4"></div>
+          <div className="col-lg-4 col-md-4"></div>
+          <div className="col-lg-4 col-md-4 col-sm-12">
             <button
               onClick={submitForm}
               className="btn heading-button-color heartscape-button"
@@ -186,14 +184,11 @@ function HeartDiseasePrediction() {
               Predict
             </button>
           </div>
-          <div className="col-lg-6 col-md-6 col-sm-12">
-            <button
-              type="button"
-              className="btn heading-button-color heartscape-button"
-            >
+          {/* <div className="col-lg-3 col-md-3 col-sm-12" onClick={resetForm}>
+            <button type="button" className="btn heartscape-reset-button">
               Reset
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
     </>

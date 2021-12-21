@@ -11,7 +11,7 @@ function UploadImage() {
     fd.append("image", selectedFile, selectedFile.name);
     axios
       .post("http://localhost:5000/binaryimagedetection", fd)
-      .then((res) => console.log(res));
+      .then((res) => console.log(res["data"]));
   };
   return (
     <div>
