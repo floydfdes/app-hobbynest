@@ -36,8 +36,7 @@ h2 {
 
 .main-page {
   height: 100vh;
-  background: url("../src/assets/images/background.jpeg");
-  background-repeat: no-repeat;
+
   &-heading {
     color: var(--secondary-color);
   }
@@ -74,7 +73,8 @@ h2 {
     }
     &-card-div {
       .card {
-        background: #eeeeee !important;
+        border: none !important;
+        margin-top: 30px !important;
       }
     }
   }
@@ -100,7 +100,7 @@ h2 {
         width: 33%;
         height: 250px;
         justify-content: space-around;
-        background: #eeeeee !important;
+        border: none !important;
       }
     }
   }

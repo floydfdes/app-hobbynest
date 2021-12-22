@@ -38,10 +38,13 @@
   --primary-color: #d8f7f8;
   --secondary-color: #033b73;
   --third-color: #ebe91b;
-  --fourth-color: #015245;
-  --fifth-color: #fff;
+  --fourth-color: #25354a;
+  --fifth-color: #f0e7cf;
 }
-
+.main-page {
+  background: url("../src/assets/images/background.jpeg");
+  background-repeat: no-repeat;
+}
 body,
 html {
   font-family: RobotoRegular !important;
@@ -90,5 +93,5 @@ button:hover {
 }
 
 .login-form {
-  background: #eeeeee !important;
+  background: white !important;
 }
