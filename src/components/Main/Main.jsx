@@ -28,7 +28,7 @@ function Main() {
         {/* <div className="col-lg-2 col-md-2 d-none d-md-block"></div> */}
       </div>
 
-      <div id="explore" className="main-page-card-div mt-4 p-4">
+      <div id="explore" className="main-page-card-div mt-4">
         <div className="card m-3 p-3 shadow text-center">
           <h5>Hobbies</h5>
           <p>Post a hobby. Edit, like and share to the world </p>

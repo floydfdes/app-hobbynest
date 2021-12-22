@@ -96,6 +96,7 @@ h2 {
       height: 100vh;
       display: flex;
       justify-content: space-around;
+      padding: 4rem;
       .card {
         width: 33%;
         height: 250px;
@@ -116,4 +117,10 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type="number"] {
   -moz-appearance: textfield;
+}
+.about-page {
+  h5,
+  h4 {
+    color: var(--fourth-color);
+  }
 }
