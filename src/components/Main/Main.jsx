@@ -43,7 +43,10 @@ function Main() {
         </div>
         <div className="card m-3 p-3 shadow text-center">
           <h5>Prediction</h5>
-          <p>Check the condition of our heart</p>
+          <p>
+            Check the condition of our heart. Find out whether you have heart
+            disease
+          </p>
           <button
             onClick={() => {
               history.push("/hearts");

@@ -46,7 +46,7 @@ function About() {
             <span>
               I'm Floyd Fernandes, 24. I'm a software developer from Goa,India.
               I work with Angular, React and python based projects. Please click
-              the links below to follow me and have fun using the hobbies
+              the links below to follow me and have fun using the Postpred
               application.
             </span>
           </div>
