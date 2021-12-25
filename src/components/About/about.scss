@@ -1,0 +1,39 @@
+#accordionExample {
+  padding: 20px;
+}
+.accordion-button-about {
+  color: var(--secondary-color) !important;
+  //   background-color: var(--secondary-color) !important;
+  background: none !important;
+  padding: 1% 2% !important;
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
+  width: 100%;
+  text-align: left;
+
+  &:not(.collapsed) {
+    box-shadow: none !important;
+  }
+  &:focus {
+    border-color: var(--primary-color) !important ;
+    outline: none !important;
+  }
+  &::after {
+    background-image: url(../../assets/images/downArrowAbout.svg) !important;
+  }
+}
+.accordion-body-about {
+  color: var(--secondary-color);
+
+  padding: 1% 2%;
+}
+.accordion-item-about {
+  border-bottom: 1px solid var(--secondary-color);
+}
+
+@media screen and (max-width: 768px) {
+  .accordion-body-about {
+    font-size: 12px;
+  }
+}
