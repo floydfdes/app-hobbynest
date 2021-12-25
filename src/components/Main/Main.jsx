@@ -1,6 +1,8 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-
+import ClassiicationImage from "../../assets/images/classificationIcon.png";
+import PredictionImage from "../../assets/images/predictionIcon.png";
+import HobbyImage from "../../assets/images/hobbyIcon.png";
 function Main() {
   const history = useHistory();
   return (
@@ -23,55 +25,54 @@ function Main() {
             <a href="#explore" className="btn main-page-button">
               Explore
             </a>
-            {/* <button className="btn main-page-button">Sign Up</button> */}
           </div>
         </div>
-
-        {/* <div className="col-lg-2 col-md-2 d-none d-md-block"></div> */}
       </div>
 
       <div id="explore" className="main-page-card-div mt-4">
-        <div className="card m-3 p-3 shadow text-center">
+        <div
+          className="card m-3 p-3 shadow text-center"
+          onClick={() => {
+            history.push("/hobbies");
+          }}
+        >
+          <img className="main-page-image" src={HobbyImage} alt="img1" />
           <h5>Hobbies</h5>
           <p>Post a hobby. Edit, like and share to the world </p>
-          <button
-            onClick={() => {
-              history.push("/hobbies");
-            }}
-            className="btn heading-button-color"
-          >
-            Try
-          </button>
         </div>
-        <div className="card m-3 p-3 shadow text-center">
+        <div
+          className="card m-3 p-3 shadow text-center"
+          onClick={() => {
+            history.push("/hearts");
+          }}
+        >
+          <img
+            className="main-page-image"
+            src={PredictionImage}
+            alt="PredictionImage"
+          />
           <h5>Prediction</h5>
           <p>
-            Check the condition of our heart. Find out whether you have heart
-            disease
+            Check the condition of our heart. Find out if you have a heart
+            disease by filling few fields.
           </p>
-          <button
-            onClick={() => {
-              history.push("/hearts");
-            }}
-            className="btn heading-button-color"
-          >
-            Predict
-          </button>
         </div>
-        <div className="card m-3 p-3 shadow text-center">
+        <div
+          className="card m-3 p-3 shadow text-center"
+          onClick={() => {
+            history.push("/mobilenet");
+          }}
+        >
+          <img
+            className="main-page-image"
+            src={ClassiicationImage}
+            alt="ClassiicationImage"
+          />
           <h5>Classification</h5>
           <p>
-            Capture and classify and image. Results based on tensorflow
+            Capture and classify an image. The outcome is based on tensorflow
             mobilenet model
           </p>
-          <button
-            onClick={() => {
-              history.push("/mobilenet");
-            }}
-            className="btn heading-button-color"
-          >
-            Classify
-          </button>
         </div>
       </div>
     </>

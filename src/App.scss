@@ -37,7 +37,9 @@ h2 {
 
 .main-page {
   height: 100vh;
-
+  &-image {
+    width: 5rem !important;
+  }
   &-heading {
     color: var(--secondary-color);
   }
@@ -52,6 +54,7 @@ h2 {
     box-shadow: none !important;
     width: 49% !important;
     font-size: 20px !important;
+    border-radius: 1rem !important;
   }
 
   &-button:hover {
@@ -62,6 +65,9 @@ h2 {
   &-card-div {
     button {
       font-size: 20px;
+    }
+    .card:hover {
+      background: var(--third-color);
     }
   }
 }
@@ -82,6 +88,7 @@ h2 {
         height: 200px;
         display: flex;
         justify-content: space-between;
+        align-items: center;
       }
     }
   }
@@ -110,6 +117,7 @@ h2 {
         height: 250px;
         justify-content: space-around;
         border: none !important;
+        align-items: center;
       }
     }
   }
