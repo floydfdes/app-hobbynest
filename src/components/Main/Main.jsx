@@ -37,7 +37,7 @@ function Main() {
           }}
         >
           <img className="main-page-image" src={HobbyImage} alt="img1" />
-          <h5>Hobbies</h5>
+          <h3>Hobbies</h3>
           <p>Post a hobby. Edit, like and share to the world </p>
         </div>
         <div
@@ -51,7 +51,7 @@ function Main() {
             src={PredictionImage}
             alt="PredictionImage"
           />
-          <h5>Prediction</h5>
+          <h3>Prediction</h3>
           <p>
             Check the condition of our heart. Find out if you have a heart
             disease by filling few fields.
@@ -68,7 +68,7 @@ function Main() {
             src={ClassiicationImage}
             alt="ClassiicationImage"
           />
-          <h5>Classification</h5>
+          <h3>Classification</h3>
           <p>
             Capture and classify an image. The outcome is based on tensorflow
             mobilenet model

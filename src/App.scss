@@ -30,15 +30,18 @@
   height: 100vh;
 }
 h1,
-h2 {
+h2,
+h3 {
   color: var(--secondary-color) !important;
   margin: 0px !important;
 }
 
 .main-page {
   height: 100vh;
+
   &-image {
-    width: 5rem !important;
+    width: 80px !important;
+    height: 80px !important;
   }
   &-heading {
     color: var(--secondary-color);
