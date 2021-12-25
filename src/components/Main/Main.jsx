@@ -8,14 +8,16 @@ function Main() {
       <div className="row main-page mx-0">
         <div className="main-page-mobile-center main-page-web">
           <h1 className="main-page-heading my-3">
-            This book is sure to liquefy your brain.
+            Hello, Welcome to Postpred.
           </h1>
 
           <p className="main-page-sub-heading my-0">
-            The manager of the fruit stand always sat and only sold vegetables.
+            This app lets yo create your favorite Hobby post and share it to the
+            entire world.
           </p>
           <p className="main-page-sub-heading">
-            The sky is clear; the stars are twinkling.
+            It also has some utilities such as Image classification and heart
+            disease prediction.
           </p>
           <div className="my-3 main-page-button-div">
             <a href="#explore" className="btn main-page-button">

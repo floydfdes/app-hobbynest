@@ -73,9 +73,9 @@ const CreateHobby = () => {
           <div className="row">
             <div className="col-md-12 col-sm-12 login-form-div">
               <form className="create-edit-form" onSubmit={createHobby}>
-                <h1 className="create-edit-form-h1">
+                <h2 className="create-edit-form-h1">
                   {formData.id ? "Update your" : "Add a"} hobby
-                </h1>
+                </h2>
                 <p className="create-edit-form-sub-heading">
                   Please specify your Hobby
                 </p>

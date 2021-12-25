@@ -12,7 +12,7 @@
   display: flex !important;
   align-items: center;
   justify-content: center;
-  padding: 15px !important;
+  padding: 10px !important;
 }
 .Loading-spinner {
   position: fixed;
@@ -51,16 +51,19 @@ h2 {
     outline: none !important;
     box-shadow: none !important;
     width: 49% !important;
+    font-size: 20px !important;
   }
+
   &-button:hover {
     background-color: var(--primary-color) !important;
     border-color: var(--secondary-color) !important;
     color: var(--secondary-color) !important;
   }
-  // &-button-div {
-  //   display: flex;
-  //   justify-content: space-between;
-  // }
+  &-card-div {
+    button {
+      font-size: 20px;
+    }
+  }
 }
 
 @media screen and (max-width: 769px) {
@@ -101,6 +104,7 @@ h2 {
       display: flex;
       justify-content: space-around;
       padding: 4rem;
+
       .card {
         width: 33%;
         height: 250px;
