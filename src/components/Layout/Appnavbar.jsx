@@ -1,10 +1,12 @@
+import "./styles.scss";
+
 import React, { useState, useEffect } from "react";
 import { Container, Nav, NavDropdown } from "react-bootstrap";
 import Navbar from "react-bootstrap/Navbar";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import Avatar from "@material-ui/core/Avatar";
 import { useDispatch } from "react-redux";
-import "./styles.scss";
+import LogoSvg from "./LogoSvg";
 
 function Appnavbar() {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
@@ -54,7 +56,7 @@ function Appnavbar() {
       <Container className="navbar-fixed-top-mobile">
         <Navbar.Brand>
           <Link to="/home">
-            <h1>Postpred</h1>
+            <LogoSvg />
           </Link>
         </Navbar.Brand>
         {screenWidth < 990 && (

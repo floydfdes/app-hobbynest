@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, useLocation } from "react-router-dom";
 import HeartDiseasePrediction from "../ValuePrediction/HeartDiseasePrediction";
 import ImageDetectionMobileNet from "../ImageDetection/ImageDetectionMobileNet";
 import Main from "../Main/Main";
@@ -15,6 +15,11 @@ import Auth from "../Auth/Auth";
 import CreateHobby from "../Hobbies/Hobbie/CreateHobby";
 
 function Home() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    console.log(pathname);
+    window.scrollTo(0, 0);
+  }, [pathname]);
   let notification = useSelector((state) => state.toastNotificationReducer);
 
   const notify = (notification) => {
