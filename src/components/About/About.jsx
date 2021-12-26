@@ -10,7 +10,7 @@ function About() {
           <div className="accordion-item-about">
             <h3 className="accordion-header" id="headingOne">
               <button
-                className="accordion-button-about"
+                className="accordion-button-about collapsed"
                 type="button"
                 data-bs-toggle="collapse"
                 data-bs-target="#collapseOne"
@@ -22,7 +22,7 @@ function About() {
             </h3>
             <div
               id="collapseOne"
-              className="accordion-collapse collapse show"
+              className="accordion-collapse collapse"
               aria-labelledby="headingOne"
               data-bs-parent="#accordionExample"
             >

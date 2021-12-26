@@ -88,21 +88,32 @@
   border-radius: 12px !important;
   outline: none !important;
   box-shadow: none !important;
-
+  font-family: RobotoSemiBold !important;
   &-primary {
     background: var(--secondary-color) !important;
     color: var(--primary-color) !important;
-    border: none !important;
+    border: 1px solid var(--secondary-color) !important;
+    &:hover {
+      background: none !important;
+      color: var(--secondary-color) !important;
+      border: 1px solid var(--secondary-color) !important;
+    }
   }
+
   &-secondary {
-    background: var(--primary-color) !important;
+    background: none !important;
     color: var(--fourth-color) !important;
     border-color: var(--fourth-color) !important;
+    &:hover {
+      background: var(--primary-color) !important;
+      color: var(--secondary-color) !important;
+      border: 1px solid var(--secondary-color) !important;
+    }
   }
 }
 
 .create-edit-form {
-  background: var(--primary-color);
+  background: white !important;
   border-radius: 20px;
 
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
