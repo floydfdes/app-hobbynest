@@ -19,8 +19,14 @@
     border-color: var(--primary-color) !important ;
     outline: none !important;
   }
-  &::after {
-    background-image: url(../../assets/images/downArrowAbout.svg) !important;
+  &.collapsed::after {
+    float: right;
+    content: url(../../assets/images/plus.svg);
+  }
+  &:not(.collapsed)::after {
+    float: right;
+    content: url(../../assets/images/minus.svg);
+    background-image: url(../../assets/images/minus.svg);
   }
 }
 .accordion-body-about {

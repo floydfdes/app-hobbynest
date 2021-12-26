@@ -61,7 +61,7 @@ const Auth = () => {
         .email("Email is not valid"),
       password: yup
         .string()
-        .required("Passowrd is required field")
+        .required("Password is required field")
         .min(5, "Password must be atleast 5 characters"),
     })
     .required();
