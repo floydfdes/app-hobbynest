@@ -50,5 +50,8 @@
 
 }
 .about-heading-bg{
-  background-color: var(--third-color);
+  background-color: var(--secondary-color);
+ h1{
+  color: var(--primary-color) !important;
+ }
 }
