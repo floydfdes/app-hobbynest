@@ -4,7 +4,6 @@ import HeartDiseasePrediction from "../ValuePrediction/HeartDiseasePrediction";
 import ImageDetectionMobileNet from "../ImageDetection/ImageDetectionMobileNet";
 import Main from "../Main/Main";
 import UploadImage from "../ImageDetection/UploadImage";
-import About from "../About/About";
 import "./Home.scss";
 import Hobbies from "../Hobbies/Hobbies";
 import { ToastContainer, toast } from "material-react-toastify";
@@ -13,6 +12,7 @@ import { useSelector } from "react-redux";
 
 import Auth from "../Auth/Auth";
 import CreateHobby from "../Hobbies/Hobbie/CreateHobby";
+import About2 from "../About/About2";
 
 function Home() {
   const { pathname } = useLocation();
@@ -49,7 +49,7 @@ function Home() {
       >
         <Switch>
           <Route path="/home" component={Main} exact />
-          <Route path="/about" component={About} exact />
+          <Route path="/about" component={About2} exact />
           <Route path="/login" component={Auth} exact />
           <Route path="/mobilenet" component={ImageDetectionMobileNet} exact />
           <Route path="/imagedetection" component={UploadImage} exact />
