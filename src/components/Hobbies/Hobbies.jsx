@@ -7,6 +7,7 @@ import { getPosts } from "../../actions/hobby";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import { createNewHobby } from "../../actions/trigger";
+import SearchIcon from "@mui/icons-material/Search";
 import Loading from "../Loading/Loading";
 
 const Hobbies = () => {
@@ -26,13 +27,33 @@ const Hobbies = () => {
     <div className="container">
       {hobbies.length === 0 && <Loading />}
       <div className="row mobile-grid">
-        <div className="col-lg-10 col-md-8">
+        <div className="col-lg-4 col-md-4">
           <h2>Hobbies</h2>
+        </div>
+        <div className="col-lg-6 col-md-4 display-none-mobile hobbie-search">
+          <input type="text" className="form-control" id="query" />
+
+          <button type="submit" className="btn btn-primary mx-2">
+            <SearchIcon></SearchIcon>
+          </button>
         </div>
         <div className="col-lg-2 col-md-4">
           <button onClick={createHobby} className="btn heading-button-color">
             <AddIcon />
             <span className="d-none d-md-block">Add a hobby</span>
+          </button>
+        </div>
+      </div>
+      <div className="row">
+        <div className="col-sm-12 d-none d-sm-flex d-flex d-md-none my-2">
+          <input
+            type="text"
+            className="form-control margin-right-1"
+            id="query"
+          />
+
+          <button type="submit" className="btn btn-primary">
+            <SearchIcon></SearchIcon>
           </button>
         </div>
       </div>

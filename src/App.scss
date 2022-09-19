@@ -76,7 +76,7 @@ h3 {
 
 @media screen and (max-width: 769px) {
   .display-none-mobile {
-    display: none;
+    display: none !important;
   }
   .contact-row-padding {
     .contact-form {
@@ -194,4 +194,8 @@ input[type="number"] {
   svg {
     fill: var(--fifth-color);
   }
+}
+
+.margin-right-1 {
+  margin-right: 0.5rem;
 }
