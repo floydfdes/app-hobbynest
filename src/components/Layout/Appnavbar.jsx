@@ -82,13 +82,13 @@ function Appnavbar() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <NavDropdown title="Prediction" id="basic-nav-dropdown">
-              <Link
+              {/* <Link
                 onClick={hideDropdown}
                 className="dropdown-item"
                 to="/imagedetection"
               >
                 Image
-              </Link>
+              </Link> */}
               <Link
                 onClick={hideDropdown}
                 className="dropdown-item"

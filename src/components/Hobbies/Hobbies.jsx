@@ -66,7 +66,7 @@ const Hobbies = () => {
         </div>
       </div>
       <div className="row">
-        <div className="col-sm-12 d-none d-sm-flex d-flex d-md-none my-2">
+        <div className="col-sm-12 d-sm-flex d-flex d-md-none my-2">
           <input
             onInput={search}
             type="text"
