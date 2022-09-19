@@ -57,7 +57,6 @@ h3 {
     box-shadow: none !important;
     width: 49% !important;
     font-size: 20px !important;
-    border-radius: 1rem !important;
   }
 
   &-button:hover {
@@ -76,6 +75,9 @@ h3 {
 }
 
 @media screen and (max-width: 769px) {
+  .display-none-mobile {
+    display: none;
+  }
   .main-page {
     display: flex !important;
     align-items: center;
@@ -85,6 +87,8 @@ h3 {
       text-align: center;
     }
     &-card-div {
+      background: var(--secondary-color);
+      padding: 10px;
       .card {
         border: none !important;
         margin: 30px 15px !important;
@@ -110,10 +114,10 @@ h3 {
       text-align: center;
     }
     &-card-div {
-      height: 100vh;
       display: flex;
       justify-content: space-around;
       padding: 4rem;
+      background: var(--secondary-color);
 
       .card {
         width: 33%;

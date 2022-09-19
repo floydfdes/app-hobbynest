@@ -44,12 +44,12 @@
     &:hover {
       background-color: var(--secondary-color) !important;
       color: var(--primary-color) !important;
-      border-radius: 500px;
+      border-radius: 0.25rem;
     }
     &-login {
       margin-left: auto;
       border: 2px solid var(--secondary-color);
-      border-radius: 20px;
+      border-radius: 0.25rem;
     }
   }
 }
@@ -93,4 +93,11 @@
 
 #basic-navbar-nav {
   font-weight: 900;
+}
+
+@media screen and (max-width: 1000px) {
+  #main-container {
+    max-width: 100% !important;
+    margin: auto;
+  }
 }
