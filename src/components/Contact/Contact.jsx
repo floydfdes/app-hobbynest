@@ -4,10 +4,10 @@ const Contact = () => {
   return (
     <>
       <div className="row contact-row-padding">
-        <div className="col-md-6 text-center display-none-mobile">
+        <div className="col-md-6 col-sm-12 text-center display-none-mobile">
           <img src={ContactUs} alt="" height={400} />
         </div>
-        <div className="col-md-6 contact-form">
+        <div className="col-md-6 col-sm-12 contact-form">
           <h1>Have some questions?</h1>
           <form>
             <div className="form-group">

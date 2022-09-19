@@ -79,8 +79,13 @@ h3 {
     display: none;
   }
   .contact-row-padding {
-    width: 80%;
     padding: 4rem 0rem;
+    input,
+    textarea,
+    button {
+      width: 100%;
+      padding: 8px;
+    }
   }
   .main-page {
     display: flex !important;
@@ -111,6 +116,12 @@ h3 {
 @media screen and (min-width: 767px) {
   .contact-row-padding {
     padding: 4rem;
+    input,
+    textarea,
+    button {
+      width: 500px;
+      padding: 8px;
+    }
   }
   .main-page {
     display: flex;
@@ -162,12 +173,6 @@ input[type="number"] {
     margin: 5px 0px;
   }
 
-  input,
-  textarea,
-  button {
-    width: 500px;
-    padding: 8px;
-  }
   button {
     font-weight: bold;
   }
