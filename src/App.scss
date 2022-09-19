@@ -79,6 +79,9 @@ h3 {
     display: none;
   }
   .contact-row-padding {
+    .contact-form {
+      padding: 0px 3rem;
+    }
     padding: 4rem 0rem;
     input,
     textarea,
@@ -112,10 +115,18 @@ h3 {
     display: grid !important;
     grid-template-columns: 70% 30% !important;
   }
+  .page-footer {
+    div {
+      text-align: center !important;
+    }
+  }
 }
 @media screen and (min-width: 767px) {
   .contact-row-padding {
     padding: 4rem;
+    .contact-form {
+      padding: 0px 5rem;
+    }
     input,
     textarea,
     button {
@@ -166,14 +177,21 @@ input[type="number"] {
   }
 }
 .contact-row-padding {
-  .contact-form {
-    padding: 0px 5rem;
-  }
   .form-group {
     margin: 5px 0px;
   }
 
   button {
     font-weight: bold;
+  }
+}
+
+.page-footer {
+  padding: 4rem !important;
+  font-size: 1.5rem;
+  background: var(--secondary-color);
+  color: var(--fifth-color);
+  svg {
+    fill: var(--fifth-color);
   }
 }

@@ -5,6 +5,7 @@ import PredictionImage from "../../assets/images/predictionIcon.png";
 import HobbyImage from "../../assets/images/hobbyIcon.png";
 import LandingImage from "../../assets/images/PostPredLanding.svg";
 import Contact from "../Contact/Contact";
+import Footer from "../Footer/Footer";
 function Main() {
   const history = useHistory();
   return (
@@ -83,6 +84,7 @@ function Main() {
         </div>
       </div>
       <Contact></Contact>
+      <Footer></Footer>
     </>
   );
 }
