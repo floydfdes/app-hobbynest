@@ -4,6 +4,7 @@ import ClassiicationImage from "../../assets/images/classificationIcon.png";
 import PredictionImage from "../../assets/images/predictionIcon.png";
 import HobbyImage from "../../assets/images/hobbyIcon.png";
 import LandingImage from "../../assets/images/PostPredLanding.svg";
+import Contact from "../Contact/Contact";
 function Main() {
   const history = useHistory();
   return (
@@ -81,6 +82,7 @@ function Main() {
           </p>
         </div>
       </div>
+      <Contact></Contact>
     </>
   );
 }

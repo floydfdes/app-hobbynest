@@ -78,6 +78,10 @@ h3 {
   .display-none-mobile {
     display: none;
   }
+  .contact-row-padding {
+    width: 80%;
+    padding: 4rem 0rem;
+  }
   .main-page {
     display: flex !important;
     align-items: center;
@@ -105,6 +109,9 @@ h3 {
   }
 }
 @media screen and (min-width: 767px) {
+  .contact-row-padding {
+    padding: 4rem;
+  }
   .main-page {
     display: flex;
     align-items: center;
@@ -145,5 +152,23 @@ input[type="number"] {
   h5,
   h4 {
     color: var(--fourth-color);
+  }
+}
+.contact-row-padding {
+  .contact-form {
+    padding: 0px 5rem;
+  }
+  .form-group {
+    margin: 5px 0px;
+  }
+
+  input,
+  textarea,
+  button {
+    width: 500px;
+    padding: 8px;
+  }
+  button {
+    font-weight: bold;
   }
 }
