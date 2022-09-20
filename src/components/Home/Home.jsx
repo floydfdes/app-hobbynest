@@ -1,18 +1,25 @@
 import React, { useEffect } from "react";
 import { Route, Switch, useLocation } from "react-router-dom";
-import HeartDiseasePrediction from "../ValuePrediction/HeartDiseasePrediction";
-import ImageDetectionMobileNet from "../ImageDetection/ImageDetectionMobileNet";
-import Main from "../Main/Main";
-import UploadImage from "../ImageDetection/UploadImage";
+import { useSelector } from "react-redux";
+import { Suspense } from "react";
+
 import "./Home.scss";
-import Hobbies from "../Hobbies/Hobbies";
 import { ToastContainer, toast } from "material-react-toastify";
 import "material-react-toastify/dist/ReactToastify.css";
-import { useSelector } from "react-redux";
 
-import Auth from "../Auth/Auth";
-import CreateHobby from "../Hobbies/Hobbie/CreateHobby";
-import About2 from "../About/About2";
+import Loading from "../Loading/Loading";
+const UploadImage = React.lazy(() => import("../ImageDetection/UploadImage"));
+const Hobbies = React.lazy(() => import("../Hobbies/Hobbies"));
+const Main = React.lazy(() => import("../Main/Main"));
+const Auth = React.lazy(() => import("../Auth/Auth"));
+const CreateHobby = React.lazy(() => import("../Hobbies/Hobbie/CreateHobby"));
+const About2 = React.lazy(() => import("../About/About2"));
+const HeartDiseasePrediction = React.lazy(() =>
+  import("../ValuePrediction/HeartDiseasePrediction")
+);
+const ImageDetectionMobileNet = React.lazy(() =>
+  import("../ImageDetection/ImageDetectionMobileNet")
+);
 
 function Home() {
   const { pathname } = useLocation();
@@ -47,19 +54,25 @@ function Home() {
         id="main-container"
         className="container container-bg page-height container-margin-mobile"
       >
-        <Switch>
-          <Route path="/home" component={Main} exact />
-          <Route path="/about" component={About2} exact />
-          <Route path="/login" component={Auth} exact />
-          <Route path="/mobilenet" component={ImageDetectionMobileNet} exact />
-          <Route path="/imagedetection" component={UploadImage} exact />
-          <Route path="/hearts" component={HeartDiseasePrediction} exact />
-          <Route path="/hobbies" component={Hobbies} exact />
-          <Route path="/hobbies/create" component={CreateHobby} exact />
-          <Route path="/hobbies/update" component={CreateHobby} exact />
-          <Route path="/*" component={Main} exact />
-          <Route path="/" component={Main} exact />
-        </Switch>
+        <Suspense fallback={<Loading />}>
+          <Switch>
+            <Route path="/home" component={Main} exact />
+            <Route path="/about" component={About2} exact />
+            <Route path="/login" component={Auth} exact />
+            <Route
+              path="/mobilenet"
+              component={ImageDetectionMobileNet}
+              exact
+            />
+            <Route path="/imagedetection" component={UploadImage} exact />
+            <Route path="/hearts" component={HeartDiseasePrediction} exact />
+            <Route path="/hobbies" component={Hobbies} exact />
+            <Route path="/hobbies/create" component={CreateHobby} exact />
+            <Route path="/hobbies/update" component={CreateHobby} exact />
+            <Route path="/*" component={Main} exact />
+            <Route path="/" component={Main} exact />
+          </Switch>
+        </Suspense>
         <ToastContainer position="bottom-center" autoClose={3000} />
       </div>
     </>

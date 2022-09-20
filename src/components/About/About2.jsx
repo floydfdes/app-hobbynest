@@ -63,6 +63,7 @@ const About2 = () => {
         <div className="col-lg-6 col-md-6 col-sm-6 d-flex justify-content-center align-items-center">
           <div className="text-center">
             <img
+              loading="lazy"
               className="about-image"
               src={MyImage}
               alt=""

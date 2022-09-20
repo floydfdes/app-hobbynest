@@ -33,7 +33,7 @@ function Main() {
           </div>
         </div>
         <div className="col-md-6 col-sm-12 text-center display-none-mobile">
-          <img src={LandingImage} alt="" height={500} />
+          <img src={LandingImage} loading="lazy" alt="" height={500} />
         </div>
       </div>
 
@@ -44,7 +44,12 @@ function Main() {
             history.push("/hobbies");
           }}
         >
-          <img className="main-page-image" src={HobbyImage} alt="img1" />
+          <img
+            className="main-page-image"
+            loading="lazy"
+            src={HobbyImage}
+            alt="img1"
+          />
           <h3>Hobbies</h3>
           <p>Post a hobby. Edit, like and share to the world </p>
         </div>
@@ -58,6 +63,7 @@ function Main() {
             className="main-page-image"
             src={PredictionImage}
             alt="PredictionImage"
+            loading="lazy"
           />
           <h3>Prediction</h3>
           <p>
@@ -75,6 +81,7 @@ function Main() {
             className="main-page-image"
             src={ClassiicationImage}
             alt="ClassiicationImage"
+            loading="lazy"
           />
           <h3>Classification</h3>
           <p>

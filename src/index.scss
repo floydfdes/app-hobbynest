@@ -1,34 +1,18 @@
 @font-face {
-  font-family: ralewayMedium;
-  src: url("../src/assets/fonts/Raleway-Medium.ttf");
-}
-@font-face {
-  font-family: ralewayBold;
-  src: url("../src/assets/fonts/Raleway-Bold.ttf");
-}
-@font-face {
-  font-family: ralewayRegular;
-  src: url("../src/assets/fonts/Raleway-Regular.ttf");
-}
-@font-face {
-  font-family: ralewaySemiBold;
-  src: url("../src/assets/fonts/Raleway-SemiBold.ttf");
-}
-@font-face {
   font-family: RobotoMedium;
-  src: url("../src/assets/fonts/Lato-Thin.ttf");
+  src: url("../src/assets/fonts/NotoSans-Thin.ttf");
 }
 @font-face {
   font-family: RobotoBold;
-  src: url("../src/assets/fonts/Lato-Bold.ttf");
+  src: url("../src/assets/fonts/NotoSans-Bold.ttf");
 }
 @font-face {
   font-family: RobotoRegular;
-  src: url("../src/assets/fonts/Lato-Regular.ttf");
+  src: url("../src/assets/fonts/NotoSans-Regular.ttf");
 }
 @font-face {
   font-family: RobotoSemiBold;
-  src: url("../src/assets/fonts/Lato-Black.ttf");
+  src: url("../src/assets/fonts/NotoSans-SemiBold.ttf");
 }
 :root {
   --primary-color: #008a8b;
@@ -50,6 +34,7 @@ html {
   font-family: RobotoRegular !important;
   //background: var(--secondary-color);
   scroll-behavior: smooth;
+  transition: all 0.9s ease-in-out;
 }
 
 h1,
