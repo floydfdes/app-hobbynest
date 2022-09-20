@@ -56,7 +56,7 @@ function Appnavbar() {
       <Container className="navbar-fixed-top-mobile">
         <Navbar.Brand>
           <Link to="/home">
-            <LogoSvg />
+            <h2 className="main-logo">PostPred</h2>
           </Link>
         </Navbar.Brand>
         {screenWidth < 990 && (
