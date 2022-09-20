@@ -73,6 +73,15 @@ h3 {
     }
   }
 }
+.page-footer {
+  padding: 4rem !important;
+  font-size: 1.5rem;
+  background: var(--secondary-color);
+  color: var(--fifth-color);
+  svg {
+    fill: var(--fifth-color);
+  }
+}
 
 @media screen and (max-width: 769px) {
   .display-none-mobile {
@@ -116,6 +125,8 @@ h3 {
     grid-template-columns: 70% 30% !important;
   }
   .page-footer {
+    padding: 2rem !important;
+
     div {
       text-align: center !important;
     }
@@ -183,16 +194,6 @@ input[type="number"] {
 
   button {
     font-weight: bold;
-  }
-}
-
-.page-footer {
-  padding: 4rem !important;
-  font-size: 1.5rem;
-  background: var(--secondary-color);
-  color: var(--fifth-color);
-  svg {
-    fill: var(--fifth-color);
   }
 }
 

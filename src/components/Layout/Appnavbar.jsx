@@ -6,7 +6,6 @@ import Navbar from "react-bootstrap/Navbar";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import Avatar from "@material-ui/core/Avatar";
 import { useDispatch } from "react-redux";
-import LogoSvg from "./LogoSvg";
 
 function Appnavbar() {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
