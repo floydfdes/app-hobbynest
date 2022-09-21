@@ -16,6 +16,7 @@ const Hobbies = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const [filterHobbies, setFilterHobbies] = useState([]);
+  const [searchValue, setSearchValue] = useState("");
   useEffect(() => {
     dispatch(getPosts());
   }, [dispatch]);
@@ -27,6 +28,7 @@ const Hobbies = () => {
   };
 
   const search = (event) => {
+    setSearchValue(event.target.value);
     let filterArr = filteredHobbiesCopy.slice();
     filterArr = filterArr.filter((el) => {
       return (
@@ -37,6 +39,11 @@ const Hobbies = () => {
     });
     setFilterHobbies(filterArr.slice());
     console.log(filterArr);
+  };
+
+  const clearSearch = () => {
+    setSearchValue("");
+    setFilterHobbies(hobbies.slice());
   };
 
   return (
@@ -52,14 +59,23 @@ const Hobbies = () => {
             type="text"
             className="form-control"
             id="query"
+            value={searchValue}
           />
 
-          <button type="submit" className="btn btn-primary mx-2">
+          <button
+            onClick={clearSearch}
+            type="button"
+            className="btn btn-primary mx-2"
+          >
             <CloseIcon></CloseIcon>
           </button>
         </div>
         <div className="col-lg-2 col-md-4">
-          <button onClick={createHobby} className="btn heading-button-color">
+          <button
+            type="button"
+            onClick={createHobby}
+            className="btn heading-button-color"
+          >
             <AddIcon />
             <span className="d-none d-md-block">Add a hobby</span>
           </button>
@@ -74,7 +90,11 @@ const Hobbies = () => {
             id="query"
           />
 
-          <button type="submit" className="btn btn-primary">
+          <button
+            onClick={clearSearch}
+            type="button"
+            className="btn btn-primary"
+          >
             <CloseIcon></CloseIcon>
           </button>
         </div>

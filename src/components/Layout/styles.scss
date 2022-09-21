@@ -81,6 +81,12 @@
   background-color: var(--secondary-color) !important;
   color: var(--primary-color) !important;
 }
+@media screen and (min-width: 900px) {
+  .navbar-fixed-top-mobile {
+    max-width: 100% !important;
+    margin: 0rem 5rem !important;
+  }
+}
 @media screen and (max-width: 900px) {
   .navbar-fixed-top-mobile {
     position: fixed;

@@ -151,7 +151,9 @@ h3 {
     justify-content: center;
     &-web {
       flex-basis: content;
-      text-align: center;
+    }
+    &-sub-div {
+      padding: 5rem;
     }
     &-card-div {
       display: flex;
