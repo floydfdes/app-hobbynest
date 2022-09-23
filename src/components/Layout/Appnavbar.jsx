@@ -49,6 +49,9 @@ function Appnavbar() {
     history.push("/");
     setUser(null);
   };
+  const goToProfile = () => {
+    history.push("/profile");
+  };
 
   return (
     <Navbar expand="lg">
@@ -65,6 +68,7 @@ function Appnavbar() {
           >
             {user && (
               <Avatar
+                onClick={goToProfile}
                 className="profile-avatar mx-2"
                 alt={user?.result?.firstName[0]}
                 src={
@@ -113,6 +117,7 @@ function Appnavbar() {
           <Nav className="profile-login-div">
             {user && screenWidth > 768 && (
               <Avatar
+                onClick={goToProfile}
                 className="profile-avatar mx-2"
                 alt={user?.result?.firstName[0]}
                 src={
