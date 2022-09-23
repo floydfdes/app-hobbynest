@@ -1,23 +1,25 @@
 import { Avatar } from "@mui/material";
 import React from "react";
-import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
-import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
-import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
-import DialogTitle from "@mui/material/DialogTitle";
+
 import "./Profile.scss";
+import ChangePasswordModal from "./ProfileModals/ChangePasswordModal";
+import DeleteModal from "./ProfileModals/DeleteModal";
+import EditModal from "./ProfileModals/EditModal";
 const Profile = () => {
   const user = JSON.parse(localStorage.getItem("profile")).result;
-  const [open, setOpen] = React.useState(false);
+  const [openDelete, setOpenDelete] = React.useState(false);
+  const [openEdit, setOpenEdit] = React.useState(false);
+  const [openChangePwd, setOpenChangePwd] = React.useState(false);
 
-  const handleClickOpen = () => {
-    setOpen(true);
+  const handleClickOpenDelete = () => {
+    setOpenDelete(true);
   };
-
-  const handleClose = () => {
-    setOpen(false);
+  const handleClickOpenEdit = () => {
+    setOpenEdit(true);
+  };
+  const handleClickOpenChangePwd = () => {
+    debugger;
+    setOpenChangePwd(true);
   };
 
   return (
@@ -49,36 +51,35 @@ const Profile = () => {
               </div>
             </div>
             <div className="my-2 btn-grid">
-              <button className="btn btn-success">Change Password</button>
-              <button onClick={handleClickOpen} className="btn btn-danger">
+              <button
+                onClick={handleClickOpenChangePwd}
+                className="btn btn-success"
+              >
+                Change Password
+              </button>
+              <button
+                onClick={handleClickOpenDelete}
+                className="btn btn-danger"
+              >
                 Delete Profile
               </button>
-              <button className="btn btn-warning">Edit Profile</button>
+              <button onClick={handleClickOpenEdit} className="btn btn-warning">
+                Edit Profile
+              </button>
             </div>
           </div>
         </div>
       </div>
-      <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Delete</DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-            Please enter your password if you want to delete your profile.
-          </DialogContentText>
-          <TextField
-            autoFocus
-            margin="dense"
-            id="name"
-            label="Password"
-            type="email"
-            fullWidth
-            variant="standard"
-          />
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose}>Delete</Button>
-        </DialogActions>
-      </Dialog>
+      <DeleteModal open={openDelete} setOpen={setOpenDelete}></DeleteModal>
+      <EditModal
+        open={openEdit}
+        setOpen={setOpenEdit}
+        userDetails={user}
+      ></EditModal>
+      <ChangePasswordModal
+        open={openChangePwd}
+        setOpen={setOpenChangePwd}
+      ></ChangePasswordModal>
     </>
   );
 };
