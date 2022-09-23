@@ -26,7 +26,7 @@ const Profile = () => {
     <>
       <div className="container card profile-padding ">
         <div className="row p-4">
-          <div className="col-md-3 col-lg-3 col-sm-12">
+          <div className="col-md-3 col-lg-3 col-sm-12 d-flex justify-content-center">
             <div className="p-4">
               <Avatar
                 className="profile-avatar-page"

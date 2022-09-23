@@ -8,7 +8,7 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 
 const DeleteModal = ({ open, setOpen }) => {
-  const handleClose = () => {
+  const handleClose = (action) => {
     setOpen(false);
   };
   return (
@@ -30,8 +30,8 @@ const DeleteModal = ({ open, setOpen }) => {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose}>Delete</Button>
+          <Button onClick={() => handleClose(false)}>Cancel</Button>
+          <Button onClick={() => handleClose(true)}>Delete</Button>
         </DialogActions>
       </Dialog>
     </>

@@ -10,7 +10,7 @@ import { useState } from "react";
 
 const EditModal = ({ open, setOpen, userDetails }) => {
   const [user, setUser] = useState(userDetails);
-  const handleClose = () => {
+  const handleClose = (action) => {
     setOpen(false);
   };
 
@@ -59,8 +59,8 @@ const EditModal = ({ open, setOpen, userDetails }) => {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose}>Edit</Button>
+          <Button onClick={() => handleClose(false)}>Cancel</Button>
+          <Button onClick={() => handleClose(true)}>Edit</Button>
         </DialogActions>
       </Dialog>
     </>

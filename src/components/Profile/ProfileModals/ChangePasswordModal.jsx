@@ -8,7 +8,7 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 
 const ChangePasswordModal = ({ open, setOpen }) => {
-  const handleClose = () => {
+  const handleClose = (action) => {
     setOpen(false);
   };
   return (
@@ -45,8 +45,8 @@ const ChangePasswordModal = ({ open, setOpen }) => {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose}>Change Password</Button>
+          <Button onClick={() => handleClose(false)}>Cancel</Button>
+          <Button onClick={() => handleClose(true)}>Change Password</Button>
         </DialogActions>
       </Dialog>
     </>
