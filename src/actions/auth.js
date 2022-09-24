@@ -21,3 +21,25 @@ export const signIn = (formData, history) => async (dispatch) => {
     return error;
   }
 };
+export const editUser = (id, formData, history) => async (dispatch) => {
+  try {
+    const { data } = await api.editUser(id, formData);
+    dispatch({ type: AUTH, data });
+    dispatch(
+      notifySignup({ message: "User successfully updated", color: "info" })
+    );
+    history.push("/");
+  } catch (error) {
+    return error;
+  }
+};
+export const deleteUser = (id, formData, history) => async (dispatch) => {
+  try {
+    const { data } = await api.deleteUser(id, formData);
+    dispatch({ type: AUTH, data });
+    dispatch(notifySignup({ message: "User has been deleted", color: "info" }));
+    history.push("/");
+  } catch (error) {
+    return error;
+  }
+};

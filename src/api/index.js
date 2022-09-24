@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API = axios.create({ baseURL: "https://hobbies-project.herokuapp.com" });
+const API = axios.create({ baseURL: "https://postpred.herokuapp.com" });
 
 API.interceptors.request.use((req) => {
   if (localStorage.getItem("profile")) {
@@ -14,6 +14,10 @@ API.interceptors.request.use((req) => {
 //auth end points
 export const signIn = (FormData) => API.post("/auth/login", FormData);
 export const signUp = (FormData) => API.post("/auth/register", FormData);
+export const editUser = (id, formData) =>
+  API.patch(`/auth/editUser/${id}`, formData);
+export const deleteUser = (id, formData) =>
+  API.delete(`/auth/deleteUser/${id}`, formData);
 
 //hobby end points
 export const fetchPosts = () => API.get("/posts");

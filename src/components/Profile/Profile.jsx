@@ -70,7 +70,11 @@ const Profile = () => {
           </div>
         </div>
       </div>
-      <DeleteModal open={openDelete} setOpen={setOpenDelete}></DeleteModal>
+      <DeleteModal
+        open={openDelete}
+        setOpen={setOpenDelete}
+        userDetails={user}
+      ></DeleteModal>
       <EditModal
         open={openEdit}
         setOpen={setOpenEdit}

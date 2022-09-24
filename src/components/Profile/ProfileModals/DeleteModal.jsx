@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";
@@ -6,9 +6,21 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
+import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { deleteUser } from "../../../actions/auth";
 
-const DeleteModal = ({ open, setOpen }) => {
+const DeleteModal = ({ open, setOpen, userDetails }) => {
+  const [password, setPassword] = useState(null);
+  const history = useHistory();
+  const dispatch = useDispatch();
   const handleClose = (action) => {
+    if (action) {
+      const { email } = userDetails;
+      const body = { email, password };
+      if (password) dispatch(deleteUser(userDetails._id, body, history));
+    }
+
     setOpen(false);
   };
   return (
@@ -24,9 +36,10 @@ const DeleteModal = ({ open, setOpen }) => {
             margin="dense"
             id="name"
             label="Password"
-            type="email"
+            type="text"
             fullWidth
             variant="standard"
+            onChange={(event) => setPassword(event.target.value)}
           />
         </DialogContent>
         <DialogActions>
