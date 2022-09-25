@@ -83,6 +83,7 @@ const Profile = () => {
       <ChangePasswordModal
         open={openChangePwd}
         setOpen={setOpenChangePwd}
+        userDetails={user}
       ></ChangePasswordModal>
     </>
   );

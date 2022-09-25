@@ -11,14 +11,23 @@ import { useDispatch } from "react-redux";
 import { deleteUser } from "../../../actions/auth";
 
 const DeleteModal = ({ open, setOpen, userDetails }) => {
-  const [password, setPassword] = useState(null);
+  const [emailField, setEmailField] = useState(null);
+  const [errors, setErrors] = useState(null);
   const history = useHistory();
   const dispatch = useDispatch();
   const handleClose = (action) => {
     if (action) {
       const { email } = userDetails;
-      const body = { email, password };
-      if (password) dispatch(deleteUser(userDetails._id, body, history));
+      if (emailField && email === emailField) {
+        dispatch(deleteUser(userDetails._id, history));
+      } else {
+        if (!emailField) {
+          setErrors("Please enter email address");
+        } else {
+          setErrors("Please enter the correct email address");
+        }
+        return;
+      }
     }
 
     setOpen(false);
@@ -29,18 +38,20 @@ const DeleteModal = ({ open, setOpen, userDetails }) => {
         <DialogTitle>Delete</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Please enter your password if you want to delete your profile.
+            Please reenter your email in the textbox below to delete your
+            profile.
           </DialogContentText>
           <TextField
             autoFocus
             margin="dense"
             id="name"
-            label="Password"
+            label="Email"
             type="text"
             fullWidth
             variant="standard"
-            onChange={(event) => setPassword(event.target.value)}
+            onChange={(event) => setEmailField(event.target.value)}
           />
+          <span class="profile-model-errors">{errors}</span>
         </DialogContent>
         <DialogActions>
           <Button onClick={() => handleClose(false)}>Cancel</Button>

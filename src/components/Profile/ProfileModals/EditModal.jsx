@@ -86,7 +86,7 @@ const EditModal = ({ open, setOpen, userDetails }) => {
             value={user?.firstName}
             onChange={onUserDetailChange}
           />
-          <span>{errors?.firstName}</span>
+          <span class="profile-model-errors">{errors?.firstName}</span>
           <TextField
             autoFocus
             margin="dense"
@@ -99,7 +99,7 @@ const EditModal = ({ open, setOpen, userDetails }) => {
             value={user?.lastName}
             onChange={onUserDetailChange}
           />
-          <span>{errors?.lastName}</span>
+          <span class="profile-model-errors">{errors?.lastName}</span>
           <TextField
             autoFocus
             margin="dense"
@@ -112,7 +112,7 @@ const EditModal = ({ open, setOpen, userDetails }) => {
             value={user?.age}
             onChange={onUserDetailChange}
           />
-          <span>{errors?.age}</span>
+          <span class="profile-model-errors">{errors?.age}</span>
         </DialogContent>
         <DialogActions>
           <Button onClick={() => handleClose(false)}>Cancel</Button>
