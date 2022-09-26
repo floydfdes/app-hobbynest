@@ -5,7 +5,13 @@ const Contact = () => {
     <>
       <div className="row contact-row-padding">
         <div className="col-md-6 col-sm-12 text-center display-none-mobile">
-          <img src={ContactUs} loading="lazy" alt="" height={400} />
+          <img
+            className="contact-image"
+            src={ContactUs}
+            loading="lazy"
+            alt=""
+            height={400}
+          />
         </div>
         <div className="col-md-6 col-sm-12 contact-form">
           <h1>Have some questions?</h1>

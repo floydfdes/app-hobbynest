@@ -141,7 +141,6 @@ h3 {
     input,
     textarea,
     button {
-      width: 500px;
       padding: 8px;
     }
   }
@@ -201,4 +200,7 @@ input[type="number"] {
 
 .margin-right-1 {
   margin-right: 0.5rem;
+}
+.contact-image {
+  width: 100%;
 }
