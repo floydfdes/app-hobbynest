@@ -27,3 +27,6 @@ export const likePost = (id) => API.patch(`/posts/${id}/likePost`);
 export const updatePost = (id, updatedPost) =>
   API.patch(`/posts/${id}`, updatedPost);
 export const deletePost = (id) => API.delete(`/posts/${id}`);
+
+//contact us end point
+export const contactUs = (contactForm) => API.post("/contact", contactForm);

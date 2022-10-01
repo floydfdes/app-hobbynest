@@ -1,6 +1,47 @@
 import React from "react";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { sendContactUsEmail } from "../../actions/contactUs";
+import { notifyCreate } from "../../actions/toastNotifications";
 import ContactUs from "../../assets/images/ContactUs_1.svg";
 const Contact = () => {
+  const dispatch = useDispatch();
+  const initialState = {
+    firstName: "",
+    lastName: "",
+    email: "",
+    message: "",
+  };
+  const [contactFormData, setContactFormData] = useState(initialState);
+  const onContactFormChange = (e) => {
+    setContactFormData({ ...contactFormData, [e.target.name]: e.target.value });
+  };
+
+  const sendEmail = async () => {
+    for (let keys in contactFormData) {
+      if (!contactFormData[keys]) {
+        dispatch(
+          notifyCreate({
+            message: "Please fill all the fields",
+            color: "error",
+          })
+        );
+        return;
+      }
+    }
+    const res = await dispatch(sendContactUsEmail(contactFormData));
+    console.log(res);
+    if (res) {
+      dispatch(
+        notifyCreate({
+          message: res,
+          color: "info",
+        })
+      );
+      setContactFormData(initialState);
+    }
+  };
+
   return (
     <>
       <div className="row contact-row-padding">
@@ -24,6 +65,9 @@ const Contact = () => {
                 type="text"
                 className="form-control"
                 id="firstName"
+                name="firstName"
+                onChange={onContactFormChange}
+                value={contactFormData.firstName}
                 placeholder="Enter First Name"
               />
             </div>
@@ -35,6 +79,9 @@ const Contact = () => {
                 type="text"
                 className="form-control"
                 id="lastName"
+                name="lastName"
+                onChange={onContactFormChange}
+                value={contactFormData.lastName}
                 placeholder="Enter Last Name"
               />
             </div>
@@ -46,6 +93,9 @@ const Contact = () => {
                 type="email"
                 className="form-control"
                 id="email"
+                name="email"
+                onChange={onContactFormChange}
+                value={contactFormData.email}
                 placeholder="Enter email"
               />
             </div>
@@ -56,11 +106,18 @@ const Contact = () => {
               <textarea
                 className="form-control"
                 id="message"
+                name="message"
+                onChange={onContactFormChange}
+                value={contactFormData.message}
                 placeholder="Message"
               ></textarea>
             </div>
 
-            <button type="submit" className="btn btn-primary login-form-button">
+            <button
+              onClick={sendEmail}
+              type="button"
+              className="btn btn-primary login-form-button"
+            >
               Send Message
             </button>
           </form>

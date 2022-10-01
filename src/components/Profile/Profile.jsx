@@ -30,7 +30,7 @@ const Profile = () => {
             <div className="p-4">
               <Avatar
                 className="profile-avatar-page"
-                alt={user?.firstName[0]}
+                alt={`${user?.firstName.slice(0, 1)}${user?.lastName[0]}`}
                 src={user?.imageUrl ? user?.imageUrl : user?.firstName}
               />
             </div>
