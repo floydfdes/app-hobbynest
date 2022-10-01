@@ -6,6 +6,7 @@ import { loginFields, signUpFields } from "../../Data/Data";
 import { useHistory } from "react-router";
 import { useDispatch } from "react-redux";
 import { signIn, signUp } from "../../actions/auth";
+import { notifyCreate } from "../../actions/toastNotifications";
 
 const Auth = () => {
   const history = useHistory();
@@ -29,14 +30,23 @@ const Auth = () => {
   }
 
   const [formData, setFormData] = useState(initialState);
-  const submitForm = (data) => {
+  const submitForm = async (data) => {
     for (const entry in data) {
       setFormData({ ...formData, [entry]: data[entry] });
       formData[entry] = data[entry];
     }
+
     if (isLoggedIn) {
-      const result = dispatch(signIn(formData, history));
-      console.log(result);
+      const result = await dispatch(signIn(formData, history));
+
+      if (result && result.response) {
+        dispatch(
+          notifyCreate({
+            message: result.response.data,
+            color: "error",
+          })
+        );
+      }
     } else {
       const result = dispatch(signUp(formData, history));
       console.log(result);
