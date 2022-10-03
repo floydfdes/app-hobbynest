@@ -44,14 +44,16 @@
   }
 }
 
-.about-image{
-  border: 3px solid var(--secondary-color);
+.about-image-div {
+  background-color: var(--third-color);
   border-radius: 50%;
-
+  img {
+    border-radius: 50%;
+  }
 }
-.about-heading-bg{
+.about-heading-bg {
   background-color: var(--secondary-color);
- h1{
-  color: var(--primary-color) !important;
- }
+  h1 {
+    color: var(--primary-color) !important;
+  }
 }

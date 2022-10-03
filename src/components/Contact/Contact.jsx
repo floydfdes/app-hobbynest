@@ -57,10 +57,10 @@ const Contact = () => {
         <div className="col-md-6 col-sm-12 contact-form">
           <h1>Have some questions?</h1>
           <form>
-            <div className="form-group">
-              <label htmlFor="firstName" className="login-form-label">
+            <div className="form-group mb-3">
+              {/* <label htmlFor="firstName" className="login-form-label">
                 First Name
-              </label>
+              </label> */}
               <input
                 type="text"
                 className="form-control"
@@ -71,10 +71,10 @@ const Contact = () => {
                 placeholder="Enter First Name"
               />
             </div>
-            <div className="form-group">
-              <label htmlFor="lastName" className="login-form-label">
+            <div className="form-group mb-3">
+              {/* <label htmlFor="lastName" className="login-form-label">
                 Last Name
-              </label>
+              </label> */}
               <input
                 type="text"
                 className="form-control"
@@ -85,10 +85,10 @@ const Contact = () => {
                 placeholder="Enter Last Name"
               />
             </div>
-            <div className="form-group">
-              <label htmlFor="email" className="login-form-label">
+            <div className="form-group mb-3">
+              {/* <label htmlFor="email" className="login-form-label">
                 Email address
-              </label>
+              </label> */}
               <input
                 type="email"
                 className="form-control"
@@ -99,10 +99,10 @@ const Contact = () => {
                 placeholder="Enter email"
               />
             </div>
-            <div className="form-group">
-              <label htmlFor="message" className="login-form-label">
+            <div className="form-group mb-3">
+              {/* <label htmlFor="message" className="login-form-label">
                 Message
-              </label>
+              </label> */}
               <textarea
                 className="form-control"
                 id="message"

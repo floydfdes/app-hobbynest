@@ -1,7 +1,7 @@
 import { GitHub, Instagram, LinkedIn, Twitter } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
 import "./about.scss";
-import MyImage from "../../assets/images/my image.jpg";
+import MyImage from "../../assets/images/my_image.png";
 import React from "react";
 
 const About2 = () => {
@@ -61,7 +61,7 @@ const About2 = () => {
           </div>
         </div>
         <div className="col-lg-6 col-md-6 col-sm-6 d-flex justify-content-center align-items-center">
-          <div className="text-center">
+          <div className="text-center about-image-div">
             <img
               loading="lazy"
               className="about-image"
