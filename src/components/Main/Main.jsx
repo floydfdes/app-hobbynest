@@ -1,8 +1,8 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import ClassiicationImage from "../../assets/images/classificationIcon.png";
-import PredictionImage from "../../assets/images/predictionIcon.png";
-import HobbyImage from "../../assets/images/hobbyIcon.png";
+import ClassiicationImage from "../../assets/images/cf.svg";
+import PredictionImage from "../../assets/images/pf.svg";
+import HobbyImage from "../../assets/images/hb.svg";
 import LandingImage from "../../assets/images/PostPredLanding.svg";
 import Contact from "../Contact/Contact";
 import Footer from "../Footer/Footer";
@@ -19,8 +19,7 @@ function Main() {
               </h1>
 
               <p className="main-page-sub-heading my-0">
-                This app lets you create your favorite Hobby post and share it
-                to the entire world.
+                This app lets you create a psot about your hobbies.
               </p>
               <p className="main-page-sub-heading">
                 It also has some utilities such as Image classification and
@@ -53,7 +52,10 @@ function Main() {
             alt="img1"
           />
           <h3>Hobbies</h3>
-          <p>Post a hobby. Edit, like and share to the world </p>
+          <p>
+            Create a post about your hobby, edit, like and share it to the
+            world.
+          </p>
         </div>
         <div
           className="card m-3 p-3 shadow text-center"

@@ -162,10 +162,14 @@ h3 {
 
       .card {
         width: 33%;
-        height: 250px;
-        justify-content: space-around;
+        padding: 2rem 1rem !important;
         border: none !important;
         align-items: center;
+        img,
+        h3,
+        p {
+          margin-bottom: 5px;
+        }
       }
     }
   }
