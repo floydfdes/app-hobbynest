@@ -70,10 +70,7 @@ function Main() {
             loading="lazy"
           />
           <h3>Prediction</h3>
-          <p>
-            Check the condition of our heart. Find out if you have a heart
-            disease by filling few fields.
-          </p>
+          <p>Check if you have heart diseases by filling up few fields.</p>
         </div>
         <div
           className="card m-3 p-3 shadow text-center"
@@ -89,8 +86,8 @@ function Main() {
           />
           <h3>Classification</h3>
           <p>
-            Capture and classify an image. The outcome is based on tensorflow
-            mobilenet model
+            Image classification using keras MobileNet model with great
+            accuracy.
           </p>
         </div>
       </div>
