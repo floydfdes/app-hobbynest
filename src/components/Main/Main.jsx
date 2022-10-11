@@ -19,7 +19,7 @@ function Main() {
               </h1>
 
               <p className="main-page-sub-heading my-0">
-                This app lets you create a psot about your hobbies.
+                This app lets you create a post about your hobbies.
               </p>
               <p className="main-page-sub-heading">
                 It also has some utilities such as Image classification and
