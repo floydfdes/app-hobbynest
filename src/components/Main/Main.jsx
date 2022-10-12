@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import ClassiicationImage from "../../assets/images/cf.svg";
 import PredictionImage from "../../assets/images/pf.svg";
 import HobbyImage from "../../assets/images/hb.svg";
-import LandingImage from "../../assets/images/PostPredLanding.svg";
+import LandingImage from "../../assets/images/garden.svg";
 import Contact from "../Contact/Contact";
 import Footer from "../Footer/Footer";
 function Main() {
@@ -14,17 +14,16 @@ function Main() {
         <div className="col-md-6 col-sm-12">
           <div className="main-page-mobile-center main-page-web">
             <div className="main-page-sub-div">
-              <h1 className="main-page-heading my-3">
-                Hello, Welcome to Postpred.
-              </h1>
+              <h1 className="main-page-heading my-3">Welcome to Postpred.</h1>
 
               <p className="main-page-sub-heading my-0">
-                This app lets you create a post about your hobbies.
+                Do you have any hobbies? Dont keep it a secret, tell us about it
+                and let the world know.
               </p>
-              <p className="main-page-sub-heading">
+              {/* <p className="main-page-sub-heading">
                 It also has some utilities such as Image classification and
                 heart disease prediction.
-              </p>
+              </p> */}
               <div className="my-3 main-page-button-div">
                 <a href="#explore" className="btn main-page-button">
                   Explore
