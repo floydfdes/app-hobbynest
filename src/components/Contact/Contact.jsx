@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { sendContactUsEmail } from "../../actions/contactUs";
 import { notifyCreate } from "../../actions/toastNotifications";
-import ContactUs from "../../assets/images/ContactUs_1.svg";
+import ContactUs from "../../assets/images/PostPredLanding.svg";
 const Contact = () => {
   const dispatch = useDispatch();
   const initialState = {
@@ -69,6 +69,7 @@ const Contact = () => {
                 onChange={onContactFormChange}
                 value={contactFormData.firstName}
                 placeholder="Enter First Name"
+                autoComplete="off"
               />
             </div>
             <div className="form-group mb-3">
@@ -109,14 +110,14 @@ const Contact = () => {
                 name="message"
                 onChange={onContactFormChange}
                 value={contactFormData.message}
-                placeholder="Message"
+                placeholder="Enter Message"
               ></textarea>
             </div>
 
             <button
               onClick={sendEmail}
               type="button"
-              className="btn btn-primary login-form-button"
+              className="btn btn-primary main-page-button login-form-button"
             >
               Send Message
             </button>
