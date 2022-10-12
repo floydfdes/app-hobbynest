@@ -33,7 +33,13 @@ function Main() {
           </div>
         </div>
         <div className="col-md-6 col-sm-12 text-center display-none-mobile">
-          <img src={LandingImage} loading="lazy" alt="" height={500} />
+          <img
+            src={LandingImage}
+            loading="lazy"
+            alt=""
+            width={500}
+            height={500}
+          />
         </div>
       </div>
 
