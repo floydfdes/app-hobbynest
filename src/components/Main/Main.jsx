@@ -62,7 +62,7 @@ function Main() {
             alt="img1"
           />
           <h5>Easy to use</h5>
-          <p>
+          <p className="main-page-card-para">
             Our website allows you to share your own hobby experiences with
             other users through the easy-to-use posting functionality.
           </p>
@@ -80,7 +80,7 @@ function Main() {
             loading="lazy"
           />
           <h5>Free signup</h5>
-          <p>
+          <p className="main-page-card-para">
             Our website provides a secure login functionality that allows you to
             access your personalized hobby feeds and the heart disease
             prediction section.
@@ -99,7 +99,7 @@ function Main() {
             loading="lazy"
           />
           <h5>Prediction</h5>
-          <p>
+          <p className="main-page-card-para">
             Our website's prediction functionality uses advanced algorithms to
             analyze your personal health data and provide you with an accurate
             assessment of your heart disease risk.
