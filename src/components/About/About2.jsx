@@ -27,9 +27,12 @@ const About2 = () => {
             moments. The users has to sign up to use this website but don't
             worry its completely free. It also provides some utilities such as a
             heart disease prediction which has 95% accuracy and also an image
-            classiication which is built using tensorflow mobileNet model.Please
-            click the links below to follow me and have fun using the postpred
-            application.
+            classiication which is built using tensorflow mobileNet model which
+            is a deep learning model that is designed to run efficiently on
+            mobile and embedded devices with limited computational power, making
+            it perfect for real-time object detection and image classification
+            tasks.Please click the links below to follow me and have fun using
+            the postpred application.
           </div>
 
           <div>
