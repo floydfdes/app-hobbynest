@@ -91,8 +91,10 @@ function HeartDiseasePrediction() {
           </div>
           <div className="col-lg-12 col-md-12 col-sm-12">
             <p className="heartscape-sub-heading-color">
-              Please fill the required fields to get an accurate result. Click
-              help for more information.
+              Please ensure that all the required fields are filled in order to
+              get the most accurate results and if you need more information or
+              help with any of the fields, please refer to our help section for
+              further assistance.
             </p>
           </div>
 
