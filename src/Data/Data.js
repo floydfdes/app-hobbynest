@@ -154,11 +154,27 @@ export const help = [
   {
     id: "exerciseInducedEngima",
     helpTitle: "Exercise Induced Angina",
-    helpContent: "Exercise Induced Angina help",
+    helpContent:
+      "Exercise Induced Angina is a type of chest pain that occurs during physical activity. It is caused by a temporary decrease in blood flow to the heart muscle, usually due to narrowed or blocked coronary arteries. It can be a symptom of underlying heart disease and should be evaluated by a healthcare professional.",
   },
-  { id: "oldPeak", helpTitle: "Old peak", helpContent: "Old peak help" },
-  { id: "slope", helpTitle: "Slope", helpContent: "Slope help" },
-  { id: "flourosopy", helpTitle: "Flourosopy", helpContent: "Flourosopy help" },
+  {
+    id: "oldPeak",
+    helpTitle: "Old peak",
+    helpContent:
+      "Old Peak in heart refers to an abnormal pattern seen on an electrocardiogram (ECG) that suggests a previous heart attack. This pattern is characterized by a tall R wave in lead V4, which is an indicator of a previous heart attack. Old Peak in heart is typically seen in patients who have had a heart attack in the past, and it is considered to be a risk factor for future heart attacks.",
+  },
+  {
+    id: "slope",
+    helpTitle: "Slope",
+    helpContent:
+      "The slope of the ST segment in an electrocardiogram (ECG) is a measure of the rate at which the electrical activity in the heart is changing. A positive slope is indicative of ischemia, while a negative slope may indicate an injury to the heart muscle. The slope of the ST segment can be used to help diagnose and evaluate the severity of heart conditions such as myocardial infarction and ischemia.",
+  },
+  {
+    id: "flourosopy",
+    helpTitle: "Flourosopy",
+    helpContent:
+      "Fluoroscopy is a medical imaging technique that uses X-rays to produce real-time moving images of the inside of the body. It is commonly used in cardiology to visualize the heart and its blood vessels. Fluoroscopy can be used for a variety of procedures, including angiograms, catheterization, and valve replacements, to help diagnose and treat heart conditions.",
+  },
   {
     id: "thalassemia",
     helpTitle: "Thalassemia",
