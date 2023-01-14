@@ -35,7 +35,13 @@ h3 {
   color: var(--secondary-color) !important;
   margin: 0px !important;
 }
-
+h5 {
+  text-transform: uppercase;
+  font-weight: 700 !important;
+  font-size: 18px !important;
+  color: var(--secondary-color) !important;
+  margin-top: 40px !important;
+}
 .main-page {
   height: 100vh;
 
@@ -113,7 +119,7 @@ h3 {
       .card {
         border: none !important;
         margin: 30px 15px !important;
-        height: 200px;
+
         display: flex;
         justify-content: space-between;
         align-items: center;

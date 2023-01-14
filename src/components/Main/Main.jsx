@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import ClassiicationImage from "../../assets/images/cf.svg";
 import PredictionImage from "../../assets/images/pf.svg";
 import HobbyImage from "../../assets/images/hb.svg";
-import LandingImage from "../../assets/images/garden.svg";
+import LandingImage from "../../assets/images/toucan.png";
 import Contact from "../Contact/Contact";
 import Footer from "../Footer/Footer";
 function Main() {
@@ -14,11 +14,16 @@ function Main() {
         <div className="col-md-6 col-sm-12">
           <div className="main-page-mobile-center main-page-web">
             <div className="main-page-sub-div">
-              <h1 className="main-page-heading my-3">Welcome to Postpred.</h1>
+              <h1 className="main-page-heading my-3">
+                Welcome to hobbynest, where you can explore a wide range of
+                hobbies and interests.
+              </h1>
 
               <p className="main-page-sub-heading my-0">
-                Do you have any hobbies? Dont keep it a secret, tell us about it
-                and let the world know.
+                From crafting and cooking to photography and gardening, we have
+                something for everyone. Plus, our heart disease prediction
+                section can help you understand your risk of heaving a heart
+                disease.
               </p>
               {/* <p className="main-page-sub-heading">
                 It also has some utilities such as Image classification and
@@ -56,10 +61,10 @@ function Main() {
             src={HobbyImage}
             alt="img1"
           />
-          <h3>Hobbies</h3>
+          <h5>Easy to use</h5>
           <p>
-            Create a post about your hobby, edit, like and share it to the
-            world.
+            Our website allows you to share your own hobby experiences with
+            other users through the easy-to-use posting functionality.
           </p>
         </div>
         <div
@@ -74,8 +79,12 @@ function Main() {
             alt="PredictionImage"
             loading="lazy"
           />
-          <h3>Prediction</h3>
-          <p>Check if you have heart diseases by filling up few fields.</p>
+          <h5>Free signup</h5>
+          <p>
+            Our website provides a secure login functionality that allows you to
+            access your personalized hobby feeds and the heart disease
+            prediction section.
+          </p>
         </div>
         <div
           className="card m-3 p-3 shadow text-center"
@@ -89,10 +98,11 @@ function Main() {
             alt="ClassiicationImage"
             loading="lazy"
           />
-          <h3>Classification</h3>
+          <h5>Prediction</h5>
           <p>
-            Image classification using keras MobileNet model with great
-            accuracy.
+            Our website's prediction functionality uses advanced algorithms to
+            analyze your personal health data and provide you with an accurate
+            assessment of your heart disease risk.
           </p>
         </div>
       </div>
