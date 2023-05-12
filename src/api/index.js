@@ -1,7 +1,7 @@
 import axios from "axios";
 
 //const API = axios.create({ baseURL: "https://postpred.herokuapp.com" });
-const API = axios.create({ baseURL: "http://ec2-13-233-254-82.ap-south-1.compute.amazonaws.com:8000"});
+const API = axios.create({ baseURL: "http://ec2-13-233-254-82.ap-south-1.compute.amazonaws.com:3000"});
 API.interceptors.request.use((req) => {
   if (localStorage.getItem("profile")) {
     req.headers.Authorization = `Bearer ${
