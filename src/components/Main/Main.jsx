@@ -1,11 +1,11 @@
-import React from "react";
-import { useHistory } from "react-router-dom";
 import ClassiicationImage from "../../assets/images/cf.svg";
-import PredictionImage from "../../assets/images/pf.svg";
-import HobbyImage from "../../assets/images/hb.svg";
-import LandingImage from "../../assets/images/toucan.png";
 import Contact from "../Contact/Contact";
 import Footer from "../Footer/Footer";
+import HobbyImage from "../../assets/images/hb.svg";
+import LandingImage from "../../assets/images/toucan.png";
+import PredictionImage from "../../assets/images/pf.svg";
+import React from "react";
+import { useHistory } from "react-router-dom";
 function Main() {
   const history = useHistory();
   return (
@@ -20,10 +20,7 @@ function Main() {
               </h1>
 
               <p className="main-page-sub-heading my-0">
-                From crafting and cooking to photography and gardening, we have
-                something for everyone. Plus, our heart disease prediction
-                section can help you understand your risk of heaving a heart
-                disease.
+                Embark on a journey of discovery at Hobby Nest, your platform for creating and sharing posts about your hobbies and interests. Whether it's crafting, culinary arts, photography, gardening, or beyond, we provide a space for every passion to thrive.
               </p>
               {/* <p className="main-page-sub-heading">
                 It also has some utilities such as Image classification and
@@ -61,10 +58,9 @@ function Main() {
             src={HobbyImage}
             alt="img1"
           />
-          <h5>Easy to use</h5>
+          <h5>Share Your Hobbies</h5>
           <p className="main-page-card-para">
-            Our website allows you to share your own hobby experiences with
-            other users through the easy-to-use posting functionality.
+            Express your passion for hobbies with ease. Our user-friendly platform lets you share your hobby experiences effortlessly, connecting you with like-minded enthusiasts.
           </p>
         </div>
         <div
@@ -81,9 +77,7 @@ function Main() {
           />
           <h5>Free signup</h5>
           <p className="main-page-card-para">
-            Our website provides a secure login functionality that allows you to
-            access your personalized hobby feeds and the heart disease
-            prediction section.
+            Step into the world of hobbies with a hassle-free registration. Once you're in, enjoy personalized hobby feeds and more. Dive into a world of diverse interests.
           </p>
         </div>
         <div
@@ -98,11 +92,9 @@ function Main() {
             alt="ClassiicationImage"
             loading="lazy"
           />
-          <h5>Prediction</h5>
+          <h5>Discover More</h5>
           <p className="main-page-card-para">
-            Our website's prediction functionality uses advanced algorithms to
-            analyze your personal health data and provide you with an accurate
-            assessment of your heart disease risk.
+            Explore exciting features and content. Dive into the world of hobbies and connect with fellow enthusiasts. Discover new passions and share your experiences.
           </p>
         </div>
       </div>
