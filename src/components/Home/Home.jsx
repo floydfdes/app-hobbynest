@@ -1,26 +1,20 @@
-import React, { useEffect } from "react";
-import { Route, Switch, useLocation } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { Suspense } from "react";
-
 import "./Home.scss";
-import { ToastContainer, toast } from "material-react-toastify";
 import "material-react-toastify/dist/ReactToastify.css";
 
+import React, { useEffect } from "react";
+import { Route, Switch, useLocation } from "react-router-dom";
+import { ToastContainer, toast } from "material-react-toastify";
+
 import Loading from "../Loading/Loading";
+import { Suspense } from "react";
+import { useSelector } from "react-redux";
+
 const Profile = React.lazy(() => import("../Profile/Profile"));
-const UploadImage = React.lazy(() => import("../ImageDetection/UploadImage"));
 const Hobbies = React.lazy(() => import("../Hobbies/Hobbies"));
 const Main = React.lazy(() => import("../Main/Main"));
 const Auth = React.lazy(() => import("../Auth/Auth"));
 const CreateHobby = React.lazy(() => import("../Hobbies/Hobbie/CreateHobby"));
 const About2 = React.lazy(() => import("../About/About2"));
-const HeartDiseasePrediction = React.lazy(() =>
-  import("../ValuePrediction/HeartDiseasePrediction")
-);
-const ImageDetectionMobileNet = React.lazy(() =>
-  import("../ImageDetection/ImageDetectionMobileNet")
-);
 
 function Home() {
   const { pathname } = useLocation();
@@ -61,13 +55,6 @@ function Home() {
             <Route path="/about" component={About2} exact />
             <Route path="/login" component={Auth} exact />
             <Route path="/profile" component={Profile} exact />
-            <Route
-              path="/mobilenet"
-              component={ImageDetectionMobileNet}
-              exact
-            />
-            <Route path="/imagedetection" component={UploadImage} exact />
-            <Route path="/hearts" component={HeartDiseasePrediction} exact />
             <Route path="/hobbies" component={Hobbies} exact />
             <Route path="/hobbies/create" component={CreateHobby} exact />
             <Route path="/hobbies/update" component={CreateHobby} exact />
