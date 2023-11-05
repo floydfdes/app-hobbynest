@@ -1,10 +1,13 @@
-import ClassiicationImage from "../../assets/images/cf.svg";
+// import ClassiicationImage from "../../assets/images/cf.svg";
 import Contact from "../Contact/Contact";
 import Footer from "../Footer/Footer";
-import HobbyImage from "../../assets/images/hb.svg";
+// import HobbyImage from "../../assets/images/hb.svg";
 import LandingImage from "../../assets/images/toucan.png";
-import PredictionImage from "../../assets/images/pf.svg";
+import PaletteIcon from '@mui/icons-material/Palette';
+// import PredictionImage from "../../assets/images/pf.svg";
+import PeopleIcon from '@mui/icons-material/People';
 import React from "react";
+import TravelExploreIcon from '@mui/icons-material/TravelExplore';
 import { useHistory } from "react-router-dom";
 function Main() {
   const history = useHistory();
@@ -39,63 +42,74 @@ function Main() {
             src={LandingImage}
             loading="lazy"
             alt=""
-            width={500}
-            height={500}
+            width={450}
+            height={450}
           />
         </div>
       </div>
 
-      <div id="explore" className="main-page-card-div mt-4">
-        <div
-          className="card m-3 p-3 shadow text-center"
-          onClick={() => {
-            history.push("/hobbies");
-          }}
-        >
-          <img
-            className="main-page-image"
-            loading="lazy"
-            src={HobbyImage}
-            alt="img1"
-          />
-          <h5>Share Your Hobbies</h5>
-          <p className="main-page-card-para">
-            Express your passion for hobbies with ease. Our user-friendly platform lets you share your hobby experiences effortlessly, connecting you with like-minded enthusiasts.
-          </p>
-        </div>
-        <div
-          className="card m-3 p-3 shadow text-center"
-          onClick={() => {
-            history.push("/hearts");
-          }}
-        >
-          <img
-            className="main-page-image"
-            src={PredictionImage}
-            alt="PredictionImage"
-            loading="lazy"
-          />
-          <h5>Free signup</h5>
-          <p className="main-page-card-para">
-            Step into the world of hobbies with a hassle-free registration. Once you're in, enjoy personalized hobby feeds and more. Dive into a world of diverse interests.
-          </p>
-        </div>
-        <div
-          className="card m-3 p-3 shadow text-center"
-          onClick={() => {
-            history.push("/mobilenet");
-          }}
-        >
-          <img
-            className="main-page-image"
-            src={ClassiicationImage}
-            alt="ClassiicationImage"
-            loading="lazy"
-          />
-          <h5>Discover More</h5>
-          <p className="main-page-card-para">
-            Explore exciting features and content. Dive into the world of hobbies and connect with fellow enthusiasts. Discover new passions and share your experiences.
-          </p>
+      <div id="explore" className="main-page-card-div container-fluid mt-4">
+        <div className="row">
+          <div
+            className="col-md-4 col-lg-4 col-sm-12"
+            onClick={() => {
+              history.push("/hobbies");
+            }}
+          >
+            <div className="card shadow text-center">
+              {/* <img
+                className="main-page-image"
+                loading="lazy"
+                src={HobbyImage}
+                alt="img1"
+              /> */}
+              <PaletteIcon style={{ fontSize: '4rem', fill: 'var(--secondary-color)' }} />
+              <h5>Share Your Hobbies</h5>
+              <p className="main-page-card-para">
+                Express your passion for hobbies with ease. Our user-friendly platform lets you share your hobby experiences effortlessly, connecting you with like-minded enthusiasts.
+              </p>
+            </div>
+          </div>
+          <div
+            className="col-md-4 col-lg-4 col-sm-12"
+            onClick={() => {
+              history.push("/login");
+            }}
+          >
+            <div className="card shadow text-center">
+              {/* <img
+                className="main-page-image"
+                src={PredictionImage}
+                alt="PredictionImage"
+                loading="lazy"
+              /> */}
+              <PeopleIcon style={{ fontSize: '4rem', fill: 'var(--secondary-color)' }} />
+              <h5>Free signup</h5>
+              <p className="main-page-card-para">
+                Step into the world of hobbies with a hassle-free registration. Once you're in, enjoy personalized hobby feeds and more. Dive into a world of diverse interests.
+              </p>
+            </div>
+          </div>
+          <div
+            className="col-md-4 col-lg-4  col-sm-12"
+            onClick={() => {
+              history.push("/hobbies");
+            }}
+          >
+            <div className="card shadow text-center">
+              {/* <img
+                className="main-page-image"
+                src={ClassiicationImage}
+                alt="ClassiicationImage"
+                loading="lazy"
+              /> */}
+              <TravelExploreIcon style={{ fontSize: '4rem', fill: 'var(--secondary-color)' }} />
+              <h5>Discover More</h5>
+              <p className="main-page-card-para">
+                Explore exciting features and content. Dive into the world of hobbies and connect with fellow enthusiasts. Discover new passions and share your experiences.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
       <Contact></Contact>

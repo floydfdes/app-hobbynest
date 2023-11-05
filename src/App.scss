@@ -1,6 +1,7 @@
 .App {
   text-align: center;
 }
+
 .heading-button-color {
   background: var(--secondary-color) !important;
   border: var(--secondary-color) !important;
@@ -14,12 +15,14 @@
   justify-content: center;
   padding: 10px !important;
 }
+
 .Loading-spinner {
   position: fixed;
   top: 50% !important;
   left: 50% !important;
   transform: translate(-50%, -50%) !important;
   z-index: 999;
+
   &-image {
     width: 100px;
     height: 100px;
@@ -29,19 +32,21 @@
 .page-height {
   height: 100vh;
 }
+
 h1,
 h2,
 h3 {
   color: var(--secondary-color) !important;
   margin: 0px !important;
 }
+
 h5 {
-  text-transform: uppercase;
   font-weight: 700 !important;
   font-size: 18px !important;
   color: var(--secondary-color) !important;
   margin-top: 40px !important;
 }
+
 .main-page {
   height: 100vh;
 
@@ -49,23 +54,26 @@ h5 {
     width: 80px !important;
     height: 80px !important;
   }
+
   &-heading {
     color: var(--secondary-color);
   }
+
   &-sub-heading {
     color: var(--fourth-color);
   }
+
   &-card-para {
-    text-align: justify;
-    font-size: 1.25rem;
+    text-align: left;
+    font-size: 1rem;
   }
+
   &-button {
     background-color: var(--secondary-color) !important;
     color: var(--primary-color) !important;
     border-color: var(--secondary-color) !important;
     outline: none !important;
     box-shadow: none !important;
-    width: 49% !important;
     font-size: 20px !important;
   }
 
@@ -74,20 +82,24 @@ h5 {
     border-color: var(--secondary-color) !important;
     color: var(--secondary-color) !important;
   }
+
   &-card-div {
     button {
       font-size: 20px;
     }
+
     .card:hover {
       background: var(--third-color);
     }
   }
 }
+
 .page-footer {
   padding: 4rem !important;
   font-size: 1.5rem;
   background: var(--secondary-color);
   color: var(--fifth-color);
+
   svg {
     fill: var(--fifth-color);
   }
@@ -97,11 +109,14 @@ h5 {
   .display-none-mobile {
     display: none !important;
   }
+
   .contact-row-padding {
     .contact-form {
       padding: 0px 3rem;
     }
+
     padding: 4rem 0rem;
+
     input,
     textarea,
     button {
@@ -109,20 +124,25 @@ h5 {
       padding: 8px;
     }
   }
+
   .main-page {
     display: flex !important;
     align-items: center;
     padding: 0px 10px;
     margin-top: -20% !important;
+
     &-mobile-center {
       text-align: center;
     }
+
     &-card-para {
-      text-align: justify;
+      text-align: left;
     }
+
     &-card-div {
       background: var(--secondary-color);
       padding: 10px;
+
       .card {
         border: none !important;
         margin: 30px 15px !important;
@@ -133,10 +153,12 @@ h5 {
       }
     }
   }
+
   .mobile-grid {
     display: grid !important;
     grid-template-columns: 70% 30% !important;
   }
+
   .page-footer {
     padding: 2rem !important;
 
@@ -145,45 +167,56 @@ h5 {
     }
   }
 }
+
 @media screen and (min-width: 767px) {
   .contact-row-padding {
-    padding: 4rem;
+    padding: 8rem 4rem;
+
     .contact-form {
       padding: 0px 5rem;
     }
+
     input,
     textarea,
     button {
       padding: 8px;
     }
   }
+
   .main-page {
     display: flex;
     align-items: center;
     justify-content: center;
+
     &-web {
       flex-basis: content;
     }
+
     &-heading {
       font-size: 2rem;
     }
+
     &-sub-heading {
       font-size: 1.2rem;
     }
+
     &-sub-div {
       padding: 5rem;
     }
+
     &-card-div {
-      display: flex;
-      justify-content: space-around;
+      // display: flex;
+      // justify-content: space-around;
       padding: 8rem 4rem;
       background: var(--secondary-color);
 
       .card {
-        width: 33%;
-        padding: 3.5rem 1rem !important;
+        padding: 3.5rem 2rem !important;
         border: none !important;
         align-items: center;
+        margin: 3rem;
+
+
         img,
         h3,
         p {
@@ -205,12 +238,15 @@ input::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
+
 .about-page {
+
   h5,
   h4 {
     color: var(--fourth-color);
   }
 }
+
 .contact-row-padding {
   .form-group {
     margin: 5px 0px;
@@ -224,6 +260,7 @@ input[type="number"] {
 .margin-right-1 {
   margin-right: 0.5rem;
 }
+
 .contact-image {
   width: 100%;
 }
@@ -232,10 +269,12 @@ input,
 textarea {
   box-shadow: none !important;
 }
+
 .contact-row-padding input,
 .contact-row-padding textarea {
   border: none;
 }
+
 input,
 select {
   height: 46px;

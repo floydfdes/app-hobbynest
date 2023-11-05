@@ -1,6 +1,8 @@
-import { GitHub, Instagram, LinkedIn, Twitter } from "@mui/icons-material";
-import { IconButton } from "@mui/material";
 import "./about.scss";
+
+import { GitHub, Instagram, LinkedIn, Twitter } from "@mui/icons-material";
+
+import { IconButton } from "@mui/material";
 import MyImage from "../../assets/images/my_image.png";
 import React from "react";
 
@@ -16,23 +18,12 @@ const About2 = () => {
           <div>
             I am Floyd Fernandes, 24. I'm a software developer from Goa,India. I
             work with Angular, React and python based projects. Please click the
-            links below to follow me and have fun using the Postpred
+            links below to follow me and have fun using the HobbyNest
             application.
           </div>
           <h3 className="my-2">About website</h3>
           <div>
-            This is project I built for learning purpose. It uses technologies
-            such as ReactJS, ExpressJS, MongoDB, Bootstrap etc. Its main purpose
-            is to allow users to create a post about events, hobbies and their
-            moments. The users has to sign up to use this website but don't
-            worry its completely free. It also provides some utilities such as a
-            heart disease prediction which has 95% accuracy and also an image
-            classiication which is built using tensorflow mobileNet model which
-            is a deep learning model that is designed to run efficiently on
-            mobile and embedded devices with limited computational power, making
-            it perfect for real-time object detection and image classification
-            tasks.Please click the links below to follow me and have fun using
-            the postpred application.
+            This project was developed for educational purposes, incorporating a blend of technologies, including ReactJS, ExpressJS, MongoDB, and Bootstrap. Its primary goal is to empower users to share their experiences by creating posts about events, hobbies, and cherished moments. User registration is required, but rest assured, it's entirely free.
           </div>
 
           <div>

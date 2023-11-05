@@ -1,10 +1,11 @@
 import "./styles.scss";
 
-import React, { useState, useEffect } from "react";
-import { Container, Nav, NavDropdown } from "react-bootstrap";
-import Navbar from "react-bootstrap/Navbar";
+import { Container, Nav } from "react-bootstrap";
 import { Link, useHistory, useLocation } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+
 import Avatar from "@material-ui/core/Avatar";
+import Navbar from "react-bootstrap/Navbar";
 import { useDispatch } from "react-redux";
 
 function Appnavbar() {
@@ -23,16 +24,16 @@ function Appnavbar() {
     setScreenWidth(window.innerWidth);
   };
 
-  const hideDropdown = () => {
-    var dropDownMenu = document.getElementsByClassName("dropdown-menu show");
-    var navItem = document.getElementById("basic-nav-dropdown");
-    navItem.click();
-    dropDownMenu[0].classList.remove("show");
+  // const hideDropdown = () => {
+  //   var dropDownMenu = document.getElementsByClassName("dropdown-menu show");
+  //   var navItem = document.getElementById("basic-nav-dropdown");
+  //   navItem.click();
+  //   dropDownMenu[0].classList.remove("show");
 
-    if (document.getElementById("navbar-toggle-button")) {
-      document.getElementById("navbar-toggle-button").click();
-    }
-  };
+  //   if (document.getElementById("navbar-toggle-button")) {
+  //     document.getElementById("navbar-toggle-button").click();
+  //   }
+  // };
 
   const hideNavbar = () => {
     if (document.getElementById("navbar-toggle-button")) {
@@ -58,7 +59,7 @@ function Appnavbar() {
       <Container className="navbar-fixed-top-mobile">
         <Navbar.Brand>
           <Link to="/home">
-            <h2 className="main-logo">PostPred</h2>
+            <h2 className="main-logo">HobbyNest</h2>
           </Link>
         </Navbar.Brand>
         {screenWidth < 990 && (
@@ -84,14 +85,14 @@ function Appnavbar() {
 
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <NavDropdown title="Prediction" id="basic-nav-dropdown">
+            {/* <NavDropdown title="Prediction" id="basic-nav-dropdown">
               {/* <Link
                 onClick={hideDropdown}
                 className="dropdown-item"
                 to="/imagedetection"
               >
                 Image
-              </Link> */}
+              </Link> 
               <Link
                 onClick={hideDropdown}
                 className="dropdown-item"
@@ -106,7 +107,7 @@ function Appnavbar() {
               >
                 Mobile net
               </Link>
-            </NavDropdown>
+            </NavDropdown> */}
             <Link onClick={hideNavbar} className="nav-link" to="/hobbies">
               Hobbies
             </Link>
