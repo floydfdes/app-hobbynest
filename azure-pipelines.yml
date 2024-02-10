@@ -1,28 +1,28 @@
 # Node.js with React
-- task: AzureWebApp@1
-  inputs:
-    azureSubscription: 'Free Trial(e1d43da7-8847-4b66-9d47-5ebdd184edc7)'
-    appType: 'webApp'
-    appName: 'hobbynest'
-    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
-    deploymentMethod: 'auto'
-# Build a Node.js project that uses React.
-# Add steps that analyze code, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
-
 trigger:
 - main
 
 pool:
   vmImage: ubuntu-latest
 
-steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '10.x'
-  displayName: 'Install Node.js'
+jobs:
+- job: Build
+  displayName: 'Build and Deploy'
+  steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '10.x'
+    displayName: 'Install Node.js'
 
-- script: |
-    npm install
-    npm run build
-  displayName: 'npm install and build'
+  - script: |
+      npm install
+      npm run build
+    displayName: 'npm install and build'
+
+  - task: AzureWebApp@1
+    inputs:
+      azureSubscription: 'Free Trial(e1d43da7-8847-4b66-9d47-5ebdd184edc7)'
+      appType: 'webApp'
+      appName: 'hobbynest'
+      package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+      deploymentMethod: 'auto'
