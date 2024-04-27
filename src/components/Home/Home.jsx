@@ -22,7 +22,6 @@ const About2 = React.lazy(() => import("../About/About2"));
 function Home() {
   const { pathname } = useLocation();
   useEffect(() => {
-    console.log(pathname);
     window.scrollTo(0, 0);
   }, [pathname]);
   let notification = useSelector((state) => state.toastNotificationReducer);

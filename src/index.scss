@@ -2,18 +2,22 @@
   font-family: RobotoMedium;
   src: url("../src/assets/fonts/Poppins-Thin.ttf");
 }
+
 @font-face {
   font-family: RobotoBold;
   src: url("../src/assets/fonts/Poppins-Bold.ttf");
 }
+
 @font-face {
   font-family: RobotoRegular;
   src: url("../src/assets/fonts/Poppins-Regular.ttf");
 }
+
 @font-face {
   font-family: RobotoSemiBold;
   src: url("../src/assets/fonts/Poppins-SemiBold.ttf");
 }
+
 :root {
   --primary-color: #008a8b;
   --secondary-color: #dff8fe;
@@ -25,6 +29,7 @@
   --fourth-color: #15440f;
   --fifth-color: #fbf4e4;
 }
+
 // .main-page {
 //   background: url("../src/assets/images/background.jpeg");
 //   background-repeat: no-repeat;
@@ -70,6 +75,7 @@ body {
 button:hover {
   cursor: pointer;
 }
+
 @media screen and (min-width: 924px) {
   #main-container {
     margin: 0px 0px !important;

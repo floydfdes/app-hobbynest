@@ -1,13 +1,13 @@
-import {
-  FETCH_ALL,
-  CREATE,
-  UPDATE,
-  DELETE,
-  LIKE,
-} from "../constants/actionTypes";
-
 import * as api from "../api/index.js";
-import { notifyDelete, notifyCreate, notifyUpdate } from "./toastNotifications";
+
+import {
+  CREATE,
+  DELETE,
+  FETCH_ALL,
+  LIKE,
+  UPDATE,
+} from "../constants/actionTypes";
+import { notifyCreate, notifyDelete, notifyUpdate } from "./toastNotifications";
 
 export const getPosts = () => async (dispatch) => {
   try {
@@ -31,7 +31,7 @@ export const createPost = (post, history) => async (dispatch) => {
     dispatch(
       notifyCreate({ message: "Post created successfully", color: "success" })
     );
-    history.push("/hobbies");
+    history("/hobbies");
   } catch (error) {
     console.log(error);
   }
@@ -45,7 +45,7 @@ export const updatePost = (id, post, history) => async (dispatch) => {
     dispatch(
       notifyUpdate({ message: "Post updated successfully", color: "success" })
     );
-    history.push("/hobbies");
+    history("/hobbies");
   } catch (error) {
     console.log(error.message);
   }

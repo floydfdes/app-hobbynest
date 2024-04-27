@@ -37,7 +37,6 @@ const Hobbies = () => {
       );
     });
     setFilterHobbies(filterArr.slice());
-    console.log(filterArr);
   };
 
   const clearSearch = () => {

@@ -62,7 +62,6 @@ const CreateHobby = () => {
   const createHobby = (e) => {
     e.preventDefault();
     const validate = validation(formData);
-    console.log(validate);
     if (!validate) return;
     if (currentHobby.formData)
       dispatch(updatePost(currentHobby.formData.id, formData, history));

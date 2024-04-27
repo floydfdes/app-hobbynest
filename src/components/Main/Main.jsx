@@ -53,7 +53,7 @@ function Main() {
           <div
             className="col-md-4 col-lg-4 col-sm-12"
             onClick={() => {
-              history.push("/hobbies");
+              history("/hobbies");
             }}
           >
             <div className="card shadow text-center">
@@ -73,7 +73,7 @@ function Main() {
           <div
             className="col-md-4 col-lg-4 col-sm-12"
             onClick={() => {
-              history.push("/login");
+              history("/login");
             }}
           >
             <div className="card shadow text-center">
@@ -93,7 +93,7 @@ function Main() {
           <div
             className="col-md-4 col-lg-4  col-sm-12"
             onClick={() => {
-              history.push("/hobbies");
+              history("/hobbies");
             }}
           >
             <div className="card shadow text-center">

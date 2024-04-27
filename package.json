@@ -27,7 +27,7 @@
     "react-toastify": "^10.0.5",
     "redux": "^5.0.1",
     "redux-thunk": "^3.1.0",
-    "simple-authentication-react": "^1.0.22",
+    "simple-authentication-react": "^1.0.23",
     "web-vitals": "^2.1.4",
     "yup": "^1.4.0"
   },

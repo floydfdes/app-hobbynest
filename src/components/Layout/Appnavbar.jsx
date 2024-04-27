@@ -47,11 +47,11 @@ function Appnavbar() {
   const logout = () => {
     hideNavbar();
     dispatch({ type: "LOGOUT" });
-    history.push("/");
+    history("/");
     setUser(null);
   };
   const goToProfile = () => {
-    history.push("/profile");
+    history("/profile");
   };
 
   return (
