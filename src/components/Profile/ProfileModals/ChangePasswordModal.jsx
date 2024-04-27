@@ -1,14 +1,15 @@
 import React, { useState } from "react";
+
 import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
+import TextField from "@mui/material/TextField";
 import { resetPassword } from "../../../actions/auth";
-import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const ChangePasswordModal = ({ open, setOpen, userDetails }) => {
   const initialErrorState = {
@@ -19,7 +20,7 @@ const ChangePasswordModal = ({ open, setOpen, userDetails }) => {
 
   const [formData, setFormData] = useState(initialErrorState);
   const [errors, setErrors] = useState(initialErrorState);
-  const history = useHistory();
+  const history = useNavigate();
   const dispatch = useDispatch();
 
   const handleClose = (action) => {

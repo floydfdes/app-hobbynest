@@ -1,15 +1,17 @@
-import React, { useState } from "react";
-import { Login, SignUp } from "simple-authentication-react";
-import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+
+import { Login, SignUp } from "simple-authentication-react";
+import React, { useState } from "react";
 import { loginFields, signUpFields } from "../../Data/Data";
-import { useHistory } from "react-router";
-import { useDispatch } from "react-redux";
 import { signIn, signUp } from "../../actions/auth";
+
 import { notifyCreate } from "../../actions/toastNotifications";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 const Auth = () => {
-  const history = useHistory();
+  const history = useNavigate();
   const dispatch = useDispatch();
   let initialState = {};
   const [isLoggedIn, setIsLoggedIn] = useState(true);

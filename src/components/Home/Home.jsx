@@ -1,13 +1,16 @@
 import "./Home.scss";
-import "material-react-toastify/dist/ReactToastify.css";
 
 import React, { useEffect } from "react";
-import { Route, Switch, useLocation } from "react-router-dom";
-import { ToastContainer, toast } from "material-react-toastify";
+import { Route, Routes, useLocation } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
 
 import Loading from "../Loading/Loading";
 import { Suspense } from "react";
 import { useSelector } from "react-redux";
+
+//import 'material-react-toastify/dist/ReactToastify.css';
+
+
 
 const Profile = React.lazy(() => import("../Profile/Profile"));
 const Hobbies = React.lazy(() => import("../Hobbies/Hobbies"));
@@ -50,17 +53,17 @@ function Home() {
         className="container container-bg page-height container-margin-mobile"
       >
         <Suspense fallback={<Loading />}>
-          <Switch>
-            <Route path="/home" component={Main} exact />
-            <Route path="/about" component={About2} exact />
-            <Route path="/login" component={Auth} exact />
-            <Route path="/profile" component={Profile} exact />
-            <Route path="/hobbies" component={Hobbies} exact />
-            <Route path="/hobbies/create" component={CreateHobby} exact />
-            <Route path="/hobbies/update" component={CreateHobby} exact />
-            <Route path="/*" component={Main} exact />
-            <Route path="/" component={Main} exact />
-          </Switch>
+          <Routes>
+            <Route path="/home" element={<Main />} exact />
+            <Route path="/about" element={<About2 />} exact />
+            <Route path="/login" element={<Auth />} exact />
+            <Route path="/profile" element={<Profile />} exact />
+            <Route path="/hobbies" element={<Hobbies />} exact />
+            <Route path="/hobbies/create" element={<CreateHobby />} exact />
+            <Route path="/hobbies/update" element={<CreateHobby />} exact />
+            <Route path="/*" element={<Main />} exact />
+            <Route path="/" element={<Main />} exact />
+          </Routes>
         </Suspense>
         <ToastContainer position="bottom-center" autoClose={3000} />
       </div>

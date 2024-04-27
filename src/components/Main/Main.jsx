@@ -8,9 +8,9 @@ import PaletteIcon from '@mui/icons-material/Palette';
 import PeopleIcon from '@mui/icons-material/People';
 import React from "react";
 import TravelExploreIcon from '@mui/icons-material/TravelExplore';
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 function Main() {
-  const history = useHistory();
+  const history = useNavigate();
   return (
     <>
       <div className="row main-page mx-0">

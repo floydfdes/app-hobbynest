@@ -1,15 +1,15 @@
-import React from "react";
 import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-import { useState } from "react";
+import React from "react";
+import TextField from "@mui/material/TextField";
 import { editUser } from "../../../actions/auth";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const EditModal = ({ open, setOpen, userDetails }) => {
   const initialErrorState = {
@@ -24,7 +24,7 @@ const EditModal = ({ open, setOpen, userDetails }) => {
     age: /^[0-9]+$/,
   };
 
-  const history = useHistory();
+  const history = useNavigate();
   const dispatch = useDispatch();
   const [user, setUser] = useState(userDetails);
   const [errors, setErrors] = useState(initialErrorState);

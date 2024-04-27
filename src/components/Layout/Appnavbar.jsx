@@ -1,7 +1,7 @@
 import "./styles.scss";
 
 import { Container, Nav } from "react-bootstrap";
-import { Link, useHistory, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 
 import Avatar from "@material-ui/core/Avatar";
@@ -12,7 +12,7 @@ function Appnavbar() {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const location = useLocation();
-  const history = useHistory();
+  const history = useNavigate();
   const dispatch = useDispatch();
 
   useEffect(() => {

@@ -1,19 +1,22 @@
-import React, { useState } from "react";
 import "./Hobbie.scss";
-import ModeEditIcon from "@mui/icons-material/ModeEdit";
+
+import React, { useState } from "react";
+import { deletePost, likePost } from "../../../actions/hobby";
+
 import DeleteIcon from "@mui/icons-material/Delete";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import { useDispatch } from "react-redux";
-import { editHobby } from "../../../actions/trigger";
-import { deletePost, likePost } from "../../../actions/hobby";
-import { useHistory } from "react-router";
+import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import ReactModal from "react-modal";
+import { editHobby } from "../../../actions/trigger";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
 ReactModal.setAppElement("#root");
 const Hobbie = (props) => {
   const user = JSON.parse(localStorage.getItem("profile"));
   const [confirmDelete, setConfirmDelete] = useState(false);
   const dispatch = useDispatch();
-  const history = useHistory();
+  const history = useNavigate();
   const updateHobby = () => {
     dispatch(editHobby(props, history));
   };

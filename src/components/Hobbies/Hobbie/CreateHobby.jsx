@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
 import { createPost, updatePost } from "../../../actions/hobby";
-import { useHistory } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
+
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 const CreateHobby = () => {
   const initialState = {
     title: "",
@@ -22,7 +24,7 @@ const CreateHobby = () => {
   const [formData, setFormData] = useState(initialState);
   const [errors, setErrors] = useState(initialErrorState);
   const currentHobby = useSelector((state) => state.formReducer);
-  const history = useHistory();
+  const history = useNavigate();
   useEffect(() => {
     if (currentHobby.formData) setFormData(currentHobby.formData);
     // eslint-disable-next-line react-hooks/exhaustive-deps
