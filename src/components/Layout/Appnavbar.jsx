@@ -4,7 +4,7 @@ import { Container, Nav } from "react-bootstrap";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 
-import Avatar from "@material-ui/core/Avatar";
+import Avatar from '@mui/material/Avatar';
 import Navbar from "react-bootstrap/Navbar";
 import { useDispatch } from "react-redux";
 
