@@ -2,7 +2,7 @@
 import Contact from "../Contact/Contact";
 import Footer from "../Footer/Footer";
 // import HobbyImage from "../../assets/images/hb.svg";
-import LandingImage from "../../assets/images/toucan.png";
+import LandingImage from "../../assets/images/hobby-nest-bird.svg";
 import PaletteIcon from '@mui/icons-material/Palette';
 // import PredictionImage from "../../assets/images/pf.svg";
 import PeopleIcon from '@mui/icons-material/People';
@@ -42,7 +42,7 @@ function Main() {
             src={LandingImage}
             loading="lazy"
             alt=""
-            width={450}
+            width={650}
             height={450}
           />
         </div>

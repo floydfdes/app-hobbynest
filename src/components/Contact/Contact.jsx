@@ -1,9 +1,9 @@
+import ContactUs from "../../assets/images/contact-us.svg";
 import React from "react";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { sendContactUsEmail } from "../../actions/contactUs";
 import { notifyCreate } from "../../actions/toastNotifications";
-import ContactUs from "../../assets/images/PostPredLanding.svg";
+import { sendContactUsEmail } from "../../actions/contactUs";
+import { useDispatch } from "react-redux";
+import { useState } from "react";
 const Contact = () => {
   const dispatch = useDispatch();
   const initialState = {
@@ -52,6 +52,7 @@ const Contact = () => {
             loading="lazy"
             alt=""
             height={400}
+            width={500}
           />
         </div>
         <div className="col-md-6 col-sm-12 contact-form">
