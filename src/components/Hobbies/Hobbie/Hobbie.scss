@@ -6,17 +6,21 @@
     height: 250px;
     border-radius: 1rem !important;
   }
+
   &-body {
     padding: 0.1rem 1rem !important;
   }
+
   &-title {
     margin-bottom: 0px !important;
     // border-bottom: 3px solid var(--fourth-color);
   }
+
   &-author {
     font-size: 13px !important;
     color: var(--fourth-color) !important;
   }
+
   &-header {
     background: none !important;
     color: var(--fourth-color);
@@ -38,6 +42,7 @@
   &-button-color {
     background-color: none;
   }
+
   &-button-color:hover {
     background: var(--fifth-color);
     border-radius: 20px;
@@ -48,7 +53,6 @@
   }
 
   &-actions-container {
-    position: absolute;
     bottom: 10px;
     width: 91%;
     display: flex;
@@ -59,9 +63,11 @@
       box-shadow: none !important;
     }
   }
+
   &-like-button {
     display: flex !important;
     align-items: center !important;
+
     span {
       font-size: 18px;
       color: var(--secondary-color);
@@ -73,9 +79,11 @@
   &-like {
     color: deeppink;
   }
+
   &-edit {
     color: var(--third-color);
   }
+
   &-delete {
     color: var(--fourth-color);
   }
@@ -89,10 +97,12 @@
   outline: none !important;
   box-shadow: none !important;
   font-family: RobotoSemiBold !important;
+
   &-primary {
     background: var(--secondary-color) !important;
     color: var(--primary-color) !important;
     border: 1px solid var(--secondary-color) !important;
+
     &:hover {
       background: none !important;
       color: var(--secondary-color) !important;
@@ -104,6 +114,7 @@
     background: none !important;
     color: var(--fourth-color) !important;
     border-color: var(--fourth-color) !important;
+
     &:hover {
       background: var(--primary-color) !important;
       color: var(--secondary-color) !important;
@@ -120,27 +131,33 @@
 
   padding: 6% 6%;
   width: 45%;
+
   &-h1 {
     color: var(--secondary-color) !important;
     margin-bottom: 0;
     margin-left: -2px;
     margin-top: 1rem;
   }
+
   &-sub-heading {
     color: var(--fourth-color);
   }
+
   &-label {
     color: var(--fourth-color);
     margin-bottom: 2px;
   }
+
   input {
     outline: none !important;
     box-shadow: none !important;
   }
+
   input:focus {
     border: 1px solid var(--secondary-color) !important;
   }
 }
+
 @media screen and (max-width: 767px) {
   .create-edit-form {
     width: 93% !important;
@@ -150,10 +167,12 @@
 #delete-modal {
   height: 24% !important;
   width: 360px !important;
+
   strong {
     font-size: 17px;
   }
 }
+
 .modal-button-div {
   display: flex;
   justify-content: space-between;

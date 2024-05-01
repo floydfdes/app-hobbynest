@@ -1,8 +1,8 @@
-import { combineReducers } from "redux";
-
 import authReducer from "./auth";
-import hobby from "./hobby";
+import { combineReducers } from "redux";
+import commentReducer from "./comment"
 import formReducer from "./formReducer";
+import hobby from "./hobby";
 import toastNotificationReducer from "./toastNotificationReducer";
 
 export const reducers = combineReducers({
@@ -10,4 +10,5 @@ export const reducers = combineReducers({
   hobby,
   formReducer,
   toastNotificationReducer,
+  commentReducer
 });

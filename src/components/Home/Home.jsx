@@ -1,4 +1,5 @@
 import "./Home.scss";
+import 'react-toastify/dist/ReactToastify.css';
 
 import React, { useEffect } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
@@ -7,10 +8,6 @@ import { ToastContainer, toast } from 'react-toastify';
 import Loading from "../Loading/Loading";
 import { Suspense } from "react";
 import { useSelector } from "react-redux";
-
-//import 'material-react-toastify/dist/ReactToastify.css';
-
-
 
 const Profile = React.lazy(() => import("../Profile/Profile"));
 const Hobbies = React.lazy(() => import("../Hobbies/Hobbies"));
