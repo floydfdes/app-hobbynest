@@ -1,4 +1,4 @@
-import { CREATE_NEW_HOBBY, UPDATE_HOBBY } from "../constants/actionTypes";
+import { CREATE_NEW_HOBBY, FETCH, UPDATE_HOBBY } from "../constants/actionTypes";
 
 export const createNewHobby = (data, history) => async (dispatch) => {
   try {
@@ -13,6 +13,16 @@ export const editHobby = (data, history) => async (dispatch) => {
   try {
     dispatch({ type: UPDATE_HOBBY, payload: data });
     history("/hobbies/update");
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const viewHobby = (data, history) => async (dispatch) => {
+  console.log(data);
+  try {
+    dispatch({ type: FETCH, payload: data });
+    history("/hobbies/view");
   } catch (error) {
     console.log(error);
   }

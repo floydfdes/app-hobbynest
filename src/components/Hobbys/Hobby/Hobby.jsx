@@ -1,13 +1,13 @@
-import "./Hobbie.scss";
+import "./Hobby.scss";
 
 import React, { useState } from "react";
 import { deletePost, likePost } from "../../../actions/hobby";
+import { editHobby, viewHobby } from "../../../actions/trigger";
 
 import DeleteIcon from "@mui/icons-material/Delete";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import ReactModal from "react-modal";
-import { editHobby } from "../../../actions/trigger";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -22,6 +22,10 @@ const Hobbie = (props) => {
   };
   const deleteHobby = () => {
     dispatch(deletePost(props.id));
+  };
+
+  const view = () => {
+    dispatch(viewHobby(props, history));
   };
 
   return (
@@ -46,7 +50,7 @@ const Hobbie = (props) => {
           </button>
         </div>
       </ReactModal>
-      <div className="card card-border-background-color mb-3 shadow">
+      <div onClick={view} className="card card-border-background-color mb-3 shadow">
         <div className="card-header">
           <h3 className="card-title">{props.title}</h3>
           <span className="card-author">

@@ -10,10 +10,11 @@ import { Suspense } from "react";
 import { useSelector } from "react-redux";
 
 const Profile = React.lazy(() => import("../Profile/Profile"));
-const Hobbies = React.lazy(() => import("../Hobbies/Hobbies"));
+const Hobbies = React.lazy(() => import("../Hobbys/Hobbies"));
 const Main = React.lazy(() => import("../Main/Main"));
 const Auth = React.lazy(() => import("../Auth/Auth"));
-const CreateHobby = React.lazy(() => import("../Hobbies/Hobbie/CreateHobby"));
+const CreateHobby = React.lazy(() => import("../Hobbys/Hobby/CreateHobby"));
+const ViewHobby = React.lazy(() => import("../Hobbys/Hobby/ViewHobby"));
 const About2 = React.lazy(() => import("../About/About2"));
 
 function Home() {
@@ -57,6 +58,7 @@ function Home() {
             <Route path="/hobbies" element={<Hobbies />} exact />
             <Route path="/hobbies/create" element={<CreateHobby />} exact />
             <Route path="/hobbies/update" element={<CreateHobby />} exact />
+            <Route path="/hobbies/view" element={<ViewHobby />} exact />
             <Route path="/*" element={<Main />} exact />
             <Route path="/" element={<Main />} exact />
           </Routes>

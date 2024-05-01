@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 
 import AddIcon from "@mui/icons-material/Add";
 import CloseIcon from "@mui/icons-material/Close";
-import Hobbie from "./Hobbie/Hobbie";
+import Hobbie from "./Hobby/Hobby";
 import Loading from "../Loading/Loading";
 import { createNewHobby } from "../../actions/trigger";
 import { getPosts } from "../../actions/hobby";
@@ -21,6 +21,7 @@ const Hobbies = () => {
   }, [dispatch]);
 
   let hobbies = useSelector((state) => state.hobby);
+  console.log(hobbies);
   let filteredHobbiesCopy = hobbies.slice();
   const createHobby = () => {
     dispatch(createNewHobby(0, history));
@@ -110,6 +111,8 @@ const Hobbies = () => {
                   likes={element.likes.length}
                   creator={element.creator}
                   creatorName={element.creatorName}
+                  date={element.date}
+                  comments={element.comments}
                 />
               </div>
             );
@@ -126,6 +129,8 @@ const Hobbies = () => {
                   likes={element.likes.length}
                   creator={element.creator}
                   creatorName={element.creatorName}
+                  date={element.date}
+                  comments={element.comments}
                 />
               </div>
             );

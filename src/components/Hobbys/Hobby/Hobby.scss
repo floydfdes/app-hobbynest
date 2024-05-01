@@ -189,3 +189,23 @@
 .hobbie-search {
   display: flex;
 }
+
+.login-form-div {
+  display: flex;
+  justify-content: center;
+}
+
+.login-card-margin {
+  padding: 3%;
+  display: flex;
+  height: calc(var(--screen-height) * 1.2);
+  background: none !important;
+  border: none;
+}
+
+.view-hobby-form {
+  background: white !important;
+  border-radius: 20px;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+  padding: 6% 6%;
+}
