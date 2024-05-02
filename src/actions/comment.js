@@ -41,7 +41,7 @@ export const deleteComment = (postId, commentId) => async (dispatch) => {
 export const likeComment = (postId, commentId) => async (dispatch) => {
     try {
         const { data } = await api.likeComment(postId, commentId);
-        dispatch({ type: LIKE_COMMENT, payload: data });
+        dispatch({ type: LIKE_COMMENT, payload: data?.post });
 
     } catch (error) {
         console.log(error.message);
@@ -51,7 +51,7 @@ export const likeComment = (postId, commentId) => async (dispatch) => {
 export const dislikeComment = (postId, commentId) => async (dispatch) => {
     try {
         const { data } = await api.dislikeComment(postId, commentId);
-        dispatch({ type: DISLIKE_COMMENT, payload: data });
+        dispatch({ type: DISLIKE_COMMENT, payload: data?.post });
 
     } catch (error) {
         console.log(error.message);

@@ -21,7 +21,6 @@ const Hobbies = () => {
   }, [dispatch]);
 
   let hobbies = useSelector((state) => state.hobby);
-  console.log(hobbies);
   let filteredHobbiesCopy = hobbies.slice();
   const createHobby = () => {
     dispatch(createNewHobby(0, history));

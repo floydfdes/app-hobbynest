@@ -1,6 +1,8 @@
 import "./Hobby.scss"
 
 import React, { useEffect, useState } from 'react'
+import { dislikeComment, likeComment } from "../../../actions/comment";
+import { useDispatch, useSelector } from 'react-redux';
 
 import Avatar from '@mui/material/Avatar';
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -9,10 +11,9 @@ import SendIcon from '@mui/icons-material/Send';
 import ThumbDown from "@mui/icons-material/ThumbDown";
 import ThumbUp from "@mui/icons-material/ThumbUp";
 import moment from "moment";
-import { useSelector } from 'react-redux';
 
 const ViewHobby = () => {
-    const userId = '662cca6a868e8e0071fd5faa'
+    const userId = JSON.parse(localStorage.getItem('profile'))
     const initialState = {
         title: "",
         description: "",
@@ -25,16 +26,17 @@ const ViewHobby = () => {
     const formatDate = (commentDate) => {
         return moment(commentDate).fromNow();
     };
-
+    const dispatch = useDispatch();
     const [formData, setFormData] = useState(initialState);
     const currentHobby = useSelector((state) => state.formReducer);
+
 
     useEffect(() => {
         if (currentHobby.formData) setFormData(currentHobby.formData);
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [currentHobby]);
 
-    const { title, description, tags, creatorName, date, comments } = formData;
+    const { title, description, tags, creatorName, date, comments, id, _id } = formData;
 
     return (
         <>
@@ -74,7 +76,7 @@ const ViewHobby = () => {
                                                 <div className='d-flex justify-content-between'>
                                                     <div>{comment.content}</div>
                                                     <div className="d-flex">
-                                                        {userId === comment.userId && (
+                                                        {userId?.result?._id === comment.userId && (
                                                             <>
                                                                 <ModeEditIcon className="card-button-svg icon-edit" />
                                                                 <DeleteIcon className="card-button-svg icon-delete" />
@@ -82,11 +84,24 @@ const ViewHobby = () => {
                                                         )}
                                                     </div>
                                                 </div>
-                                                <div>
-                                                    <ThumbUp className="card-button-svg icon-like" />
-                                                    <span className="mx-2">{comment.likes.length}</span>
-                                                    <ThumbDown className="card-button-svg icon-like" />
-                                                    <span className="mx-2">{comment.dislikes.length}</span>
+                                                <div className="d-flex">
+                                                    <button
+                                                        onClick={() => dispatch(likeComment(id || _id, comment._id))}
+                                                        className="btn card-button-color card-like-button"
+                                                    >
+                                                        <ThumbUp className="card-button-svg icon-like" />
+                                                        <span className="mx-2">{comment.likes.length}</span>
+                                                    </button>
+                                                    <button
+                                                        onClick={() => dispatch(dislikeComment(id || _id, comment._id))}
+                                                        className="btn card-button-color card-like-button"
+                                                    >
+                                                        <ThumbDown className="card-button-svg icon-like" />
+                                                        <span className="mx-2">{comment.dislikes.length}</span>
+                                                    </button>
+
+
+
                                                 </div>
                                             </div>
                                         ))}

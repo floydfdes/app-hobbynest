@@ -19,7 +19,6 @@ export const signIn = (formData, history) => async (dispatch) => {
     dispatch({ type: AUTH, data });
     history("/");
   } catch (error) {
-    console.log("object");
     return error;
   }
 };

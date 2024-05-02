@@ -19,7 +19,6 @@ export const editHobby = (data, history) => async (dispatch) => {
 };
 
 export const viewHobby = (data, history) => async (dispatch) => {
-  console.log(data);
   try {
     dispatch({ type: FETCH, payload: data });
     history("/hobbies/view");
