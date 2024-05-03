@@ -64,7 +64,7 @@ const ViewHobby = () => {
                         <div className="row view-hobby-form">
                             <div className="col-md-6">
                                 {/* Left column for post details */}
-                                <div className='d-flex align-items-center'>
+                                <div className='d-flex align-items-center post-title'>
                                     <Avatar
                                         className="profile-avatar mx-2"
                                         alt={creatorName[0]}
@@ -79,7 +79,7 @@ const ViewHobby = () => {
                                     <div>{formatDate(date)}</div>
                                 </div>
                             </div>
-                            <div className="col-md-6">
+                            <div className="col-md-6 comments-div">
                                 {/* Right column for comments */}
                                 <h5>{comments.length} comments on the post</h5>
                                 <div className="comments-section">

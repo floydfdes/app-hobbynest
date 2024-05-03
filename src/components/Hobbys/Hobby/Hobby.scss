@@ -213,6 +213,8 @@
 
 .comment-size {
   font-size: 14px;
+  border-bottom: 2px solid var(--secondary-color);
+  margin: 5px;
 }
 
 .comment-button-svg {
@@ -223,4 +225,24 @@
   height: 250px;
   overflow: scroll;
   padding: 0px 5px;
+}
+
+.post-details {
+  border: 2px solid var(--secondary-color);
+  border-radius: 10px;
+  height: 88%;
+  position: relative;
+  margin: 10px 0px;
+  padding: 5px;
+}
+
+.post-title {
+  border: 2px solid var(--secondary-color);
+  border-radius: 10px;
+}
+
+.comments-div {
+  border: 2px solid var(--secondary-color);
+  border-radius: 10px;
+  padding: 10px;
 }
