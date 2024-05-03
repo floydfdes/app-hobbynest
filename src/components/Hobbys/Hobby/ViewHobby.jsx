@@ -1,7 +1,7 @@
 import "./Hobby.scss"
 
 import React, { useEffect, useState } from 'react'
-import { dislikeComment, likeComment } from "../../../actions/comment";
+import { createNewComment, deleteComment, dislikeComment, likeComment, updateComment } from "../../../actions/comment";
 import { useDispatch, useSelector } from 'react-redux';
 
 import Avatar from '@mui/material/Avatar';
@@ -15,21 +15,39 @@ import moment from "moment";
 const ViewHobby = () => {
     const userId = JSON.parse(localStorage.getItem('profile'))
     const initialState = {
-        title: "",
-        description: "",
-        tags: [],
-        creatorName: "",
-        date: "",
-        comments: [],
+        title: "", description: "", tags: [], creatorName: "", date: "", comments: [],
     };
-
-    const formatDate = (commentDate) => {
-        return moment(commentDate).fromNow();
-    };
-    const dispatch = useDispatch();
-    const [formData, setFormData] = useState(initialState);
     const currentHobby = useSelector((state) => state.formReducer);
+    const initialCommentState = { commentId: '', commentData: '', postId: '' }
+    const [formData, setFormData] = useState(initialState);
+    const [newComment, setNewComment] = useState(initialCommentState);
 
+
+
+    const formatDate = (commentDate) => moment(commentDate).fromNow();
+    const handleChange = (e) => {
+        setNewComment({ ...newComment, [e.target.name]: e.target.value });
+    };
+
+    const createUpdateComment = (e) => {
+        e.preventDefault();
+        if (newComment.commentData) {
+            if (newComment.postId && newComment.commentId)
+                dispatch(updateComment(newComment.postId, newComment.commentId, newComment.commentData));
+            else dispatch(createNewComment(formData.id || formData._id, newComment.commentData));
+        }
+        setNewComment(initialCommentState)
+    }
+
+    const updateNewComment = (data) => {
+        setNewComment({
+            postId: id || _id,
+            commentData: data.content,
+            commentId: data._id
+        })
+    }
+
+    const dispatch = useDispatch();
 
     useEffect(() => {
         if (currentHobby.formData) setFormData(currentHobby.formData);
@@ -50,16 +68,11 @@ const ViewHobby = () => {
                                     <Avatar
                                         className="profile-avatar mx-2"
                                         alt={creatorName[0]}
-                                        src={
-                                            creatorName[0]
-                                        }
-                                    />
+                                        src={creatorName[0]} />
                                     <h1>{creatorName}</h1>
                                 </div>
-
-
                                 <div className="post-details">
-                                    <h2>{title}</h2>
+                                    <h4>{title}</h4>
                                     <div>{tags.join(', ')}</div>
                                     <div>{description}</div>
                                     <div>{creatorName}</div>
@@ -68,18 +81,29 @@ const ViewHobby = () => {
                             </div>
                             <div className="col-md-6">
                                 {/* Right column for comments */}
+                                <h5>{comments.length} comments on the post</h5>
                                 <div className="comments-section">
-                                    <div>{comments.length} comments on the post</div>
+
                                     <div className="comment-list">
                                         {comments.map(comment => (
-                                            <div key={comment._id} className="comment px-1">
+                                            <div key={comment._id} className="comment px-1 comment-size">
                                                 <div className='d-flex justify-content-between'>
                                                     <div>{comment.content}</div>
                                                     <div className="d-flex">
                                                         {userId?.result?._id === comment.userId && (
                                                             <>
-                                                                <ModeEditIcon className="card-button-svg icon-edit" />
-                                                                <DeleteIcon className="card-button-svg icon-delete" />
+                                                                <button
+                                                                    type="button"
+                                                                    onClick={() => updateNewComment(comment)}
+                                                                    className="btn card-button-color card-like-button py-0 px-0">
+                                                                    <ModeEditIcon className="comment-button-svg icon-edit" />
+                                                                </button>
+                                                                <button
+                                                                    type="button"
+                                                                    onClick={() => dispatch(deleteComment(id || _id, comment._id))}
+                                                                    className="btn card-button-color card-like-button py-0 px-0">
+                                                                    <DeleteIcon className="comment-button-svg icon-delete" />
+                                                                </button>
                                                             </>
                                                         )}
                                                     </div>
@@ -87,33 +111,27 @@ const ViewHobby = () => {
                                                 <div className="d-flex">
                                                     <button
                                                         onClick={() => dispatch(likeComment(id || _id, comment._id))}
-                                                        className="btn card-button-color card-like-button"
-                                                    >
-                                                        <ThumbUp className="card-button-svg icon-like" />
-                                                        <span className="mx-2">{comment.likes.length}</span>
+                                                        className="btn card-button-color card-like-button py-0 px-0">
+                                                        <ThumbUp className="comment-button-svg icon-like" />
+                                                        <div className="mx-2">{comment.likes.length}</div>
                                                     </button>
                                                     <button
                                                         onClick={() => dispatch(dislikeComment(id || _id, comment._id))}
-                                                        className="btn card-button-color card-like-button"
-                                                    >
-                                                        <ThumbDown className="card-button-svg icon-like" />
-                                                        <span className="mx-2">{comment.dislikes.length}</span>
+                                                        className="btn card-button-color card-like-button py-0 px-0">
+                                                        <ThumbDown className="comment-button-svg icon-like" />
+                                                        <div className="mx-2">{comment.dislikes.length}</div>
                                                     </button>
-
-
-
                                                 </div>
                                             </div>
                                         ))}
                                     </div>
 
-                                    <div className="input-group mt-4">
-                                        <input type="text" className="form-control" placeholder="Add comment" />
-                                        <div className="input-group-append">
-                                            <span className="input-group-text h-100">  <SendIcon className="card-button-svg icon-edit" /></span>
-                                        </div>
+                                </div>
+                                <div className="input-group mt-4">
+                                    <input name="commentData" type="text" className="form-control" placeholder="Add comment" onChange={handleChange} value={newComment.commentData} />
+                                    <div className="input-group-append">
+                                        <span onClick={createUpdateComment} className="input-group-text h-100">  <SendIcon className="comment-button-svg icon-edit" /></span>
                                     </div>
-
                                 </div>
                             </div>
                         </div>

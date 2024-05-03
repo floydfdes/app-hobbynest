@@ -10,7 +10,7 @@ import {
 
 export const createNewComment = (postId, commentData) => async (dispatch) => {
     try {
-        const { data } = await api.createComment(postId, commentData);
+        const { data } = await api.createComment(postId, { content: commentData });
         dispatch({ type: CREATE_NEW_COMMENT, payload: data });
 
     } catch (error) {
@@ -20,7 +20,7 @@ export const createNewComment = (postId, commentData) => async (dispatch) => {
 
 export const updateComment = (postId, commentId, updatedCommentData) => async (dispatch) => {
     try {
-        const { data } = await api.updateComment(postId, commentId, updatedCommentData);
+        const { data } = await api.updateComment(postId, commentId, { content: updatedCommentData });
         dispatch({ type: UPDATE_COMMENT, payload: data });
 
     } catch (error) {
