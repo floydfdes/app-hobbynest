@@ -1,7 +1,7 @@
 import axios from "axios";
 
 //const API = axios.create({ baseURL: "https://postpred.herokuapp.com" });
-const API = axios.create({ baseURL: "https://hobbynest-api.azurewebsites.net/" });
+const API = axios.create({ baseURL: "https://app-postpred-api-express.onrender.com/" });
 API.interceptors.request.use((req) => {
   if (localStorage.getItem("profile")) {
     req.headers.Authorization = `Bearer ${JSON.parse(localStorage.getItem("profile")).token}`;
