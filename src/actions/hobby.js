@@ -4,8 +4,9 @@ import {
   CREATE,
   DELETE,
   FETCH_ALL,
+  FETCH_ONE,
   LIKE,
-  UPDATE,
+  UPDATE
 } from "../constants/actionTypes";
 import { notifyCreate, notifyDelete, notifyUpdate } from "./toastNotifications";
 
@@ -14,6 +15,16 @@ export const getPosts = () => async (dispatch) => {
     const { data } = await api.fetchPosts();
 
     dispatch({ type: FETCH_ALL, payload: data });
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+export const getPost = (id) => async (dispatch) => {
+  try {
+    const { data } = await api.fetchPost(id);
+
+    dispatch({ type: FETCH_ONE, payload: data });
   } catch (error) {
     console.log(error.message);
   }

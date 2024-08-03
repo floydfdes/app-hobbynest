@@ -7,9 +7,9 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import TextField from "@mui/material/TextField";
-import { resetPassword } from "../../../actions/auth";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { resetPassword } from "../../../actions/auth";
 
 const ChangePasswordModal = ({ open, setOpen, userDetails }) => {
   const initialErrorState = {
@@ -24,7 +24,6 @@ const ChangePasswordModal = ({ open, setOpen, userDetails }) => {
   const dispatch = useDispatch();
 
   const handleClose = (action) => {
-    debugger;
     if (action) {
       const isValid = validatedFields(formData);
       if (!isValid) return;

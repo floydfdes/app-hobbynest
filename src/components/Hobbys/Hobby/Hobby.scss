@@ -208,7 +208,6 @@
   border-radius: 20px;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
   padding: 6% 6%;
-  height: 75vh;
 }
 
 .comment-size {
@@ -228,17 +227,10 @@
 }
 
 .post-details {
-  border: 2px solid var(--secondary-color);
-  border-radius: 10px;
-  height: 88%;
+  height: 86%;
   position: relative;
   margin: 10px 0px;
   padding: 5px;
-}
-
-.post-title {
-  border: 2px solid var(--secondary-color);
-  border-radius: 10px;
 }
 
 .comments-div {

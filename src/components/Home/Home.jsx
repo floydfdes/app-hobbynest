@@ -1,13 +1,13 @@
-import "./Home.scss";
 import 'react-toastify/dist/ReactToastify.css';
+import "./Home.scss";
 
 import React, { useEffect } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 
-import Loading from "../Loading/Loading";
 import { Suspense } from "react";
 import { useSelector } from "react-redux";
+import Loading from "../Loading/Loading";
 
 const Profile = React.lazy(() => import("../Profile/Profile"));
 const Hobbies = React.lazy(() => import("../Hobbys/Hobbies"));
@@ -58,7 +58,7 @@ function Home() {
             <Route path="/hobbies" element={<Hobbies />} exact />
             <Route path="/hobbies/create" element={<CreateHobby />} exact />
             <Route path="/hobbies/update" element={<CreateHobby />} exact />
-            <Route path="/hobbies/view" element={<ViewHobby />} exact />
+            <Route path="/hobbies/view/:hobbyid" element={<ViewHobby />} exact />
             <Route path="/*" element={<Main />} exact />
             <Route path="/" element={<Main />} exact />
           </Routes>

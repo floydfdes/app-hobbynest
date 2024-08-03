@@ -4,9 +4,10 @@ import {
   DELETE_COMMENT,
   DISLIKE_COMMENT,
   FETCH,
+  FETCH_ONE,
   LIKE_COMMENT,
   UPDATE_COMMENT,
-  UPDATE_HOBBY,
+  UPDATE_HOBBY
 } from "../constants/actionTypes";
 
 const formReducer = (state = { formData: null }, action) => {
@@ -17,6 +18,8 @@ const formReducer = (state = { formData: null }, action) => {
     case UPDATE_HOBBY:
       return { ...state, formData: action?.payload };
     case FETCH:
+      return { ...state, formData: action?.payload };
+    case FETCH_ONE:
       return { ...state, formData: action?.payload };
     case CREATE_NEW_COMMENT:
       return { ...state, formData: action?.payload };

@@ -1,9 +1,9 @@
 import {
-  FETCH_ALL,
   CREATE,
-  UPDATE,
   DELETE,
+  FETCH_ALL,
   LIKE,
+  UPDATE
 } from "../constants/actionTypes";
 
 const hobby = (posts = [], action) => {

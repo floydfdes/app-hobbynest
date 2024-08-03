@@ -1,10 +1,11 @@
+import "./Profile.scss";
+
 import { Avatar } from "@mui/material";
 import React from "react";
-
-import "./Profile.scss";
 import ChangePasswordModal from "./ProfileModals/ChangePasswordModal";
 import DeleteModal from "./ProfileModals/DeleteModal";
 import EditModal from "./ProfileModals/EditModal";
+
 const Profile = () => {
   const user = JSON.parse(localStorage.getItem("profile")).result;
   const [openDelete, setOpenDelete] = React.useState(false);
@@ -18,7 +19,6 @@ const Profile = () => {
     setOpenEdit(true);
   };
   const handleClickOpenChangePwd = () => {
-    debugger;
     setOpenChangePwd(true);
   };
 
