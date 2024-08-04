@@ -41,11 +41,12 @@ const CreateHobby = () => {
     let isValid = true;
     const newErrors = { ...initialErrorState };
 
-    Object.entries(data).forEach(([key, value]) => {
+    Object.entries(fieldPattern).forEach(([key, pattern]) => {
+      const value = data[key];
       if (!value) {
         newErrors[key] = `${key} is required`;
         isValid = false;
-      } else if (!fieldPattern[key].test(value)) {
+      } else if (!pattern.test(value)) {
         newErrors[key] = `${key} is invalid`;
         isValid = false;
       }
