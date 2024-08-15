@@ -59,13 +59,13 @@ const Comment = ({ comment, userId, postId, dispatch, setNewComment }) => {
                     onClick={() => dispatch(likeComment(postId, comment._id))}
                     className="btn card-button-color card-like-button py-0 px-0">
                     <ThumbUp className="comment-button-svg icon-like" />
-                    <div className="mx-2">{comment.likes.length}</div>
+                    <div className="mx-2">{comment?.likes?.length}</div>
                 </button>
                 <button
                     onClick={() => dispatch(dislikeComment(postId, comment._id))}
                     className="btn card-button-color card-like-button py-0 px-0">
                     <ThumbDown className="comment-button-svg icon-like" />
-                    <div className="mx-2">{comment.dislikes.length}</div>
+                    <div className="mx-2">{comment?.dislikes?.length}</div>
                 </button>
             </div>
         </div>
@@ -133,10 +133,10 @@ const ViewHobby = () => {
                             </div>
                             <div className="col-md-6 comments-div">
                                 {/* Right column for comments */}
-                                <h5>{comments.length} comments on the post</h5>
+                                <h5>{comments?.length} comments on the post</h5>
                                 <div className="comments-section">
                                     <div className="comment-list">
-                                        {comments.map(comment => (
+                                        {comments?.map(comment => (
                                             <Comment
                                                 key={comment._id}
                                                 comment={comment}
