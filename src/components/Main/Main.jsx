@@ -1,14 +1,12 @@
-// import ClassiicationImage from "../../assets/images/cf.svg";
+import PaletteIcon from '@mui/icons-material/Palette';
+import PeopleIcon from '@mui/icons-material/People';
+import TravelExploreIcon from '@mui/icons-material/TravelExplore';
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import LandingImage from "../../assets/images/hobby-nest-bird.svg";
 import Contact from "../Contact/Contact";
 import Footer from "../Footer/Footer";
-// import HobbyImage from "../../assets/images/hb.svg";
-import LandingImage from "../../assets/images/hobby-nest-bird.svg";
-import PaletteIcon from '@mui/icons-material/Palette';
-// import PredictionImage from "../../assets/images/pf.svg";
-import PeopleIcon from '@mui/icons-material/People';
-import React from "react";
-import TravelExploreIcon from '@mui/icons-material/TravelExplore';
-import { useNavigate } from "react-router-dom";
+
 function Main() {
   const history = useNavigate();
   return (
@@ -18,12 +16,12 @@ function Main() {
           <div className="main-page-mobile-center main-page-web">
             <div className="main-page-sub-div">
               <h1 className="main-page-heading my-3">
-                Welcome to hobbynest, where you can explore a wide range of
+                Welcome to HobbyNest, where you can explore a wide range of
                 hobbies and interests.
               </h1>
 
               <p className="main-page-sub-heading my-0">
-                Embark on a journey of discovery at Hobby Nest, your platform for creating and sharing posts about your hobbies and interests. Whether it's crafting, culinary arts, photography, gardening, or beyond, we provide a space for every passion to thrive.
+                Embark on a journey of discovery at Hobby Nest, your platform for creating and sharing posts about your hobbies and interests. Whether it&apos;s crafting, culinary arts, photography, gardening, or beyond, we provide a space for every passion to thrive.
               </p>
               {/* <p className="main-page-sub-heading">
                 It also has some utilities such as Image classification and
@@ -84,14 +82,14 @@ function Main() {
                 loading="lazy"
               /> */}
               <PeopleIcon style={{ fontSize: '4rem', fill: 'var(--secondary-color)' }} />
-              <h5>Free signup</h5>
+              <h5>Free Signup</h5>
               <p className="main-page-card-para">
-                Step into the world of hobbies with a hassle-free registration. Once you're in, enjoy personalized hobby feeds and more. Dive into a world of diverse interests.
+                Step into the world of hobbies with a hassle-free registration. Once you&apos;re in, enjoy personalized hobby feeds and more. Dive into a world of diverse interests.
               </p>
             </div>
           </div>
           <div
-            className="col-md-4 col-lg-4  col-sm-12"
+            className="col-md-4 col-lg-4 col-sm-12"
             onClick={() => {
               history("/hobbies");
             }}
@@ -112,8 +110,8 @@ function Main() {
           </div>
         </div>
       </div>
-      <Contact></Contact>
-      <Footer></Footer>
+      <Contact />
+      <Footer />
     </>
   );
 }

@@ -7,6 +7,7 @@ import { editHobby, viewHobby } from "../../../actions/trigger";
 import DeleteIcon from "@mui/icons-material/Delete";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
+import PropTypes from 'prop-types';
 import ReactModal from "react-modal";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -74,6 +75,16 @@ const Hobbie = ({ id, title, creatorName, tags, description, likes, creator }) =
       </div>
     </>
   );
+};
+
+Hobbie.propTypes = {
+  id: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  creatorName: PropTypes.string,
+  tags: PropTypes.arrayOf(PropTypes.string).isRequired,
+  description: PropTypes.string.isRequired,
+  likes: PropTypes.number.isRequired,
+  creator: PropTypes.string.isRequired,
 };
 
 export default Hobbie;

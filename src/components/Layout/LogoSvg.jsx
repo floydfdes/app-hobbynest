@@ -7,7 +7,6 @@ const LogoSvg = () => {
         <defs id="SvgjsDefs2042"></defs>
         <g
           id="SvgjsG2043"
-          featurekey="symbolContainer"
           transform="matrix(0.9,0,0,0.9,0,0)"
           fill="#25354a"
         >
@@ -21,7 +20,6 @@ const LogoSvg = () => {
         </g>
         <g
           id="SvgjsG2044"
-          featurekey="monogramFeature-0"
           transform="matrix(0.870718055035974,0,0,0.870718055035974,13.387910189454136,0.36789988275963026)"
           fill="#ffcee4"
         >
@@ -29,7 +27,6 @@ const LogoSvg = () => {
         </g>
         <g
           id="SvgjsG2045"
-          featurekey="nameFeature-0"
           transform="matrix(1.2838499198720226,0,0,1.2838499198720226,85.94627750545507,-3.4051705637207217)"
           fill="#25354a"
         >

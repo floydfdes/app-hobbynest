@@ -3,8 +3,8 @@ import "./about.scss";
 import { GitHub, Instagram, LinkedIn, Twitter } from "@mui/icons-material";
 
 import { IconButton } from "@mui/material";
-import MyImage from "../../assets/images/my_image.png";
 import React from "react";
+import MyImage from "../../assets/images/my_image.png";
 
 const About2 = () => {
   return (
@@ -16,14 +16,14 @@ const About2 = () => {
         <div className="col-lg-6 col-md-6 col-sm-12">
           <h3>About me</h3>
           <div>
-            I am Floyd Fernandes, 24. I'm a software developer from Goa,India. I
-            work with Angular, React and python based projects. Please click the
+            I am Floyd Fernandes, 24. I&apos;m a software developer from Goa, India. I
+            work with Angular, React, and Python-based projects. Please click the
             links below to follow me and have fun using the HobbyNest
             application.
           </div>
           <h3 className="my-2">About website</h3>
           <div>
-            This project was developed for educational purposes, incorporating a blend of technologies, including ReactJS, ExpressJS, MongoDB, and Bootstrap. Its primary goal is to empower users to share their experiences by creating posts about events, hobbies, and cherished moments. User registration is required, but rest assured, it's entirely free.
+            This project was developed for educational purposes, incorporating a blend of technologies, including ReactJS, ExpressJS, MongoDB, and Bootstrap. Its primary goal is to empower users to share their experiences by creating posts about events, hobbies, and cherished moments. User registration is required, but rest assured, it&apos;s entirely free.
           </div>
 
           <div>

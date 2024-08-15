@@ -1,6 +1,6 @@
 import * as api from "../api/index.js";
 
-export const sendContactUsEmail = (contactFormData) => async (dispatch) => {
+export const sendContactUsEmail = (contactFormData) => async () => {
   try {
     const { data } = await api.contactUs(contactFormData);
 

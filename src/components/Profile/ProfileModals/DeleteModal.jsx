@@ -7,15 +7,17 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import TextField from "@mui/material/TextField";
-import { deleteUser } from "../../../actions/auth";
+import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { deleteUser } from "../../../actions/auth";
 
 const DeleteModal = ({ open, setOpen, userDetails }) => {
   const [emailField, setEmailField] = useState(null);
   const [errors, setErrors] = useState(null);
   const history = useNavigate();
   const dispatch = useDispatch();
+
   const handleClose = (action) => {
     if (action) {
       const { email } = userDetails;
@@ -33,6 +35,7 @@ const DeleteModal = ({ open, setOpen, userDetails }) => {
 
     setOpen(false);
   };
+
   return (
     <>
       <Dialog open={open} onClose={handleClose}>
@@ -61,6 +64,16 @@ const DeleteModal = ({ open, setOpen, userDetails }) => {
       </Dialog>
     </>
   );
+};
+
+// Add PropTypes validation
+DeleteModal.propTypes = {
+  open: PropTypes.bool.isRequired,
+  setOpen: PropTypes.func.isRequired,
+  userDetails: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default DeleteModal;

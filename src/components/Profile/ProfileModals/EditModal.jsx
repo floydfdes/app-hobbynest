@@ -1,3 +1,5 @@
+import React, { useState } from "react";
+
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
@@ -5,7 +7,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import TextField from "@mui/material/TextField";
-import React, { useState } from "react";
+import PropTypes from "prop-types"; // Import PropTypes
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { editUser } from "../../../actions/auth";
@@ -27,6 +29,7 @@ const EditModal = ({ open, setOpen, userDetails }) => {
   const dispatch = useDispatch();
   const [user, setUser] = useState(userDetails);
   const [errors, setErrors] = useState(initialErrorState);
+
   const handleClose = (action) => {
     if (action) {
       const { firstName, lastName, age } = user;
@@ -67,6 +70,7 @@ const EditModal = ({ open, setOpen, userDetails }) => {
 
     return isValid;
   };
+
   return (
     <>
       <Dialog open={open} onClose={handleClose}>
@@ -120,6 +124,17 @@ const EditModal = ({ open, setOpen, userDetails }) => {
       </Dialog>
     </>
   );
+};
+
+// Add PropTypes validation
+EditModal.propTypes = {
+  open: PropTypes.bool.isRequired,
+  setOpen: PropTypes.func.isRequired,
+  userDetails: PropTypes.shape({
+    firstName: PropTypes.string,
+    lastName: PropTypes.string,
+    age: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  }).isRequired,
 };
 
 export default EditModal;

@@ -1,9 +1,12 @@
+import "./styles.scss";
+
+import PropTypes from "prop-types";
 import React from "react";
 import ReactModal from "react-modal";
 import { help } from "../../Data/Data";
-import "./styles.scss";
 
 ReactModal.setAppElement("#root");
+
 const HelpAccordian = (props) => {
   return (
     <ReactModal
@@ -46,6 +49,11 @@ const HelpAccordian = (props) => {
       </div>
     </ReactModal>
   );
+};
+
+HelpAccordian.propTypes = {
+  isHelpModelOpen: PropTypes.bool.isRequired,
+  setIsHelpModelOpen: PropTypes.func.isRequired,
 };
 
 export default HelpAccordian;

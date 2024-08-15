@@ -7,6 +7,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import TextField from "@mui/material/TextField";
+import PropTypes from 'prop-types';
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { resetPassword } from "../../../actions/auth";
@@ -121,5 +122,14 @@ const ChangePasswordModal = ({ open, setOpen, userDetails }) => {
     </>
   );
 };
+
+ChangePasswordModal.propTypes = {
+  open: PropTypes.bool.isRequired,
+  setOpen: PropTypes.func.isRequired,
+  userDetails: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+  }).isRequired,
+};
+
 
 export default ChangePasswordModal;

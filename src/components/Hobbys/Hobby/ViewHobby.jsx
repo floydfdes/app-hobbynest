@@ -11,6 +11,7 @@ import ThumbDown from "@mui/icons-material/ThumbDown";
 import ThumbUp from "@mui/icons-material/ThumbUp";
 import Avatar from '@mui/material/Avatar';
 import moment from "moment";
+import PropTypes from 'prop-types';
 import { useParams } from "react-router-dom";
 import { getPost } from "../../../actions/hobby";
 
@@ -167,6 +168,24 @@ const ViewHobby = () => {
             )}
         </>
     );
+};
+
+Comment.propTypes = {
+    comment: PropTypes.shape({
+        _id: PropTypes.string.isRequired,
+        content: PropTypes.string.isRequired,
+        userId: PropTypes.string.isRequired,
+        likes: PropTypes.array.isRequired,
+        dislikes: PropTypes.array.isRequired
+    }).isRequired,
+    userId: PropTypes.shape({
+        result: PropTypes.shape({
+            _id: PropTypes.string.isRequired
+        }).isRequired
+    }).isRequired,
+    postId: PropTypes.string.isRequired,
+    dispatch: PropTypes.func.isRequired,
+    setNewComment: PropTypes.func.isRequired
 };
 
 export default ViewHobby;

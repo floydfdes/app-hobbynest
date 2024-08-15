@@ -1,14 +1,14 @@
-import React from "react";
 import "./styles.scss";
+
+import PropTypes from "prop-types";
+import React from "react";
 import ReactModal from "react-modal";
 import DoctorSvg from "../../assets/images/doctor.svg";
 import ManSVg from "../../assets/images/man.svg";
+
 ReactModal.setAppElement("#root");
+
 const Popup = (props) => {
-  // const messages = [
-  //   "According to our prediction, you have a high risk of heart disease. We strongly recommend that you consult with a doctor for further evaluation and treatment.",
-  //   "Based on the information provided, it appears that you do not have an increased risk of heart disease.",
-  // ];
   return (
     <ReactModal
       isOpen={props.isModelOpen}
@@ -38,6 +38,16 @@ const Popup = (props) => {
       </button>
     </ReactModal>
   );
+};
+
+// Add PropTypes validation
+Popup.propTypes = {
+  isModelOpen: PropTypes.bool.isRequired,
+  setIsModelOpen: PropTypes.func.isRequired,
+  prediction: PropTypes.shape({
+    prediction: PropTypes.bool.isRequired,
+    predictionMessage: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default Popup;
