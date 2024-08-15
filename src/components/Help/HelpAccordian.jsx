@@ -1,11 +1,11 @@
-import "./styles.scss";
+import './styles.scss';
 
-import PropTypes from "prop-types";
-import React from "react";
-import ReactModal from "react-modal";
-import { help } from "../../Data/Data";
+import PropTypes from 'prop-types';
+import React from 'react';
+import ReactModal from 'react-modal';
+import { help } from '../../Data/Data';
 
-ReactModal.setAppElement("#root");
+ReactModal.setAppElement('#root');
 
 const HelpAccordian = (props) => {
   return (
@@ -20,22 +20,22 @@ const HelpAccordian = (props) => {
         {help.map((element) => {
           return (
             <div className="accordion-item" key={element.id}>
-              <h2 className="accordion-header" id={"heading" + element.id}>
+              <h2 className="accordion-header" id={'heading' + element.id}>
                 <button
                   className="accordion-button collapsed"
                   type="button"
                   data-bs-toggle="collapse"
-                  data-bs-target={"#collapse" + element.id}
+                  data-bs-target={'#collapse' + element.id}
                   aria-expanded="true"
-                  aria-controls={"collapse" + element.id}
+                  aria-controls={'collapse' + element.id}
                 >
                   {element.helpTitle}
                 </button>
               </h2>
               <div
-                id={"collapse" + element.id}
+                id={'collapse' + element.id}
                 className="accordion-collapse collapse hide"
-                aria-labelledby={"heading" + element.id}
+                aria-labelledby={'heading' + element.id}
                 data-bs-parent="#accordionExample"
               >
                 <div

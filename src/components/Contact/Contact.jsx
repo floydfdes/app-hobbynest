@@ -1,16 +1,16 @@
-import ContactUs from "../../assets/images/contact-us.svg";
-import React from "react";
-import { notifyCreate } from "../../actions/toastNotifications";
-import { sendContactUsEmail } from "../../actions/contactUs";
-import { useDispatch } from "react-redux";
-import { useState } from "react";
+import ContactUs from '../../assets/images/contact-us.svg';
+import React from 'react';
+import { notifyCreate } from '../../actions/toastNotifications';
+import { sendContactUsEmail } from '../../actions/contactUs';
+import { useDispatch } from 'react-redux';
+import { useState } from 'react';
 const Contact = () => {
   const dispatch = useDispatch();
   const initialState = {
-    firstName: "",
-    lastName: "",
-    email: "",
-    message: "",
+    firstName: '',
+    lastName: '',
+    email: '',
+    message: '',
   };
   const [contactFormData, setContactFormData] = useState(initialState);
   const onContactFormChange = (e) => {
@@ -22,9 +22,9 @@ const Contact = () => {
       if (!contactFormData[keys]) {
         dispatch(
           notifyCreate({
-            message: "Please fill all the fields",
-            color: "error",
-          })
+            message: 'Please fill all the fields',
+            color: 'error',
+          }),
         );
         return;
       }
@@ -35,8 +35,8 @@ const Contact = () => {
       dispatch(
         notifyCreate({
           message: res,
-          color: "info",
-        })
+          color: 'info',
+        }),
       );
       setContactFormData(initialState);
     }

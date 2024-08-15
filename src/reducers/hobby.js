@@ -3,8 +3,8 @@ import {
   DELETE,
   FETCH_ALL,
   LIKE,
-  UPDATE
-} from "../constants/actionTypes";
+  UPDATE,
+} from '../constants/actionTypes';
 
 const hobby = (posts = [], action) => {
   switch (action.type) {
@@ -12,13 +12,13 @@ const hobby = (posts = [], action) => {
       return action.payload;
     case LIKE:
       return posts.map((post) =>
-        post._id === action.payload._id ? action.payload : post
+        post._id === action.payload._id ? action.payload : post,
       );
     case CREATE:
       return [...posts, action.payload];
     case UPDATE:
       return posts.map((post) =>
-        post._id === action.payload._id ? action.payload : post
+        post._id === action.payload._id ? action.payload : post,
       );
     case DELETE:
       return posts.filter((post) => post._id !== action.payload);

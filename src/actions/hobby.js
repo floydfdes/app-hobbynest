@@ -1,4 +1,4 @@
-import * as api from "../api/index.js";
+import * as api from '../api/index.js';
 
 import {
   CREATE,
@@ -7,12 +7,17 @@ import {
   FETCH_ONE,
   LIKE,
   UPDATE,
-} from "../constants/actionTypes";
-import { notifyCreate, notifyDelete, notifyError, notifyUpdate } from "./toastNotifications";
+} from '../constants/actionTypes';
+import {
+  notifyCreate,
+  notifyDelete,
+  notifyError,
+  notifyUpdate,
+} from './toastNotifications';
 
 const handleError = (dispatch, error) => {
   console.log(error?.message);
-  dispatch(notifyError({ message: error?.message, color: "error" }));
+  dispatch(notifyError({ message: error?.message, color: 'error' }));
 };
 
 export const getPosts = () => async (dispatch) => {
@@ -35,12 +40,15 @@ export const getPost = (id) => async (dispatch) => {
 
 export const createPost = (post, history) => async (dispatch) => {
   try {
-    const creatorName = JSON.parse(localStorage.getItem("profile")).result.firstName;
+    const creatorName = JSON.parse(localStorage.getItem('profile')).result
+      .firstName;
     const { data } = await api.createPost({ ...post, creatorName });
 
     dispatch({ type: CREATE, payload: data });
-    dispatch(notifyCreate({ message: "Post created successfully", color: "success" }));
-    history("/hobbies");
+    dispatch(
+      notifyCreate({ message: 'Post created successfully', color: 'success' }),
+    );
+    history('/hobbies');
   } catch (error) {
     handleError(dispatch, error);
   }
@@ -51,8 +59,10 @@ export const updatePost = (id, post, history) => async (dispatch) => {
     const { data } = await api.updatePost(id, post);
 
     dispatch({ type: UPDATE, payload: data });
-    dispatch(notifyUpdate({ message: "Post updated successfully", color: "success" }));
-    history("/hobbies");
+    dispatch(
+      notifyUpdate({ message: 'Post updated successfully', color: 'success' }),
+    );
+    history('/hobbies');
   } catch (error) {
     handleError(dispatch, error);
   }
@@ -71,7 +81,7 @@ export const deletePost = (id) => async (dispatch) => {
   try {
     await api.deletePost(id);
     dispatch({ type: DELETE, payload: id });
-    dispatch(notifyDelete({ message: "Post deleted", color: "error" }));
+    dispatch(notifyDelete({ message: 'Post deleted', color: 'error' }));
   } catch (error) {
     handleError(dispatch, error);
   }

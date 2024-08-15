@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useState } from 'react';
+import axios from 'axios';
 
 function UploadImage() {
   const [selectedFile, setselectedFile] = useState(null);
@@ -8,10 +8,10 @@ function UploadImage() {
   };
   const fileUpload = () => {
     const fd = new FormData();
-    fd.append("image", selectedFile, selectedFile.name);
+    fd.append('image', selectedFile, selectedFile.name);
     axios
-      .post("http://localhost:5000/binaryimagedetection", fd)
-      .then((res) => console.log(res["data"]));
+      .post('http://localhost:5000/binaryimagedetection', fd)
+      .then((res) => console.log(res['data']));
   };
   return (
     <div>

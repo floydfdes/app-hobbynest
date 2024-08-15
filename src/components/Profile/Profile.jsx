@@ -1,13 +1,13 @@
-import "./Profile.scss";
+import './Profile.scss';
 
-import { Avatar } from "@mui/material";
-import React from "react";
-import ChangePasswordModal from "./ProfileModals/ChangePasswordModal";
-import DeleteModal from "./ProfileModals/DeleteModal";
-import EditModal from "./ProfileModals/EditModal";
+import { Avatar } from '@mui/material';
+import React from 'react';
+import ChangePasswordModal from './ProfileModals/ChangePasswordModal';
+import DeleteModal from './ProfileModals/DeleteModal';
+import EditModal from './ProfileModals/EditModal';
 
 const Profile = () => {
-  const user = JSON.parse(localStorage.getItem("profile")).result;
+  const user = JSON.parse(localStorage.getItem('profile')).result;
   const [openDelete, setOpenDelete] = React.useState(false);
   const [openEdit, setOpenEdit] = React.useState(false);
   const [openChangePwd, setOpenChangePwd] = React.useState(false);

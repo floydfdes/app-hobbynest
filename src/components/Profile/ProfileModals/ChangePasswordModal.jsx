@@ -1,22 +1,22 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import Button from "@mui/material/Button";
-import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
-import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
-import DialogTitle from "@mui/material/DialogTitle";
-import TextField from "@mui/material/TextField";
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import TextField from '@mui/material/TextField';
 import PropTypes from 'prop-types';
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { resetPassword } from "../../../actions/auth";
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { resetPassword } from '../../../actions/auth';
 
 const ChangePasswordModal = ({ open, setOpen, userDetails }) => {
   const initialErrorState = {
-    oldPass: "",
-    newPass: "",
-    cNewPass: "",
+    oldPass: '',
+    newPass: '',
+    cNewPass: '',
   };
 
   const [formData, setFormData] = useState(initialErrorState);
@@ -31,7 +31,7 @@ const ChangePasswordModal = ({ open, setOpen, userDetails }) => {
       const { newPass } = formData;
 
       dispatch(
-        resetPassword(userDetails._id, { newPassword: newPass }, history)
+        resetPassword(userDetails._id, { newPassword: newPass }, history),
       );
     }
     setOpen(false);
@@ -130,6 +130,5 @@ ChangePasswordModal.propTypes = {
     _id: PropTypes.string.isRequired,
   }).isRequired,
 };
-
 
 export default ChangePasswordModal;

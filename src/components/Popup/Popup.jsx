@@ -1,12 +1,12 @@
-import "./styles.scss";
+import './styles.scss';
 
-import PropTypes from "prop-types";
-import React from "react";
-import ReactModal from "react-modal";
-import DoctorSvg from "../../assets/images/doctor.svg";
-import ManSVg from "../../assets/images/man.svg";
+import PropTypes from 'prop-types';
+import React from 'react';
+import ReactModal from 'react-modal';
+import DoctorSvg from '../../assets/images/doctor.svg';
+import ManSVg from '../../assets/images/man.svg';
 
-ReactModal.setAppElement("#root");
+ReactModal.setAppElement('#root');
 
 const Popup = (props) => {
   return (
@@ -24,7 +24,7 @@ const Popup = (props) => {
         )}
       </p>
       <h1 className="prediction-popup-heading">
-        {props.prediction.prediction ? "Sorry!" : "Awesome"}
+        {props.prediction.prediction ? 'Sorry!' : 'Awesome'}
       </h1>
       <p>{props.prediction.predictionMessage}</p>
       <br />

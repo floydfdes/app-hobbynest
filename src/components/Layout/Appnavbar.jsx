@@ -1,14 +1,14 @@
-import "./styles.scss";
+import './styles.scss';
 
-import React, { useCallback, useEffect, useState } from "react";
-import { Container, Nav, Navbar } from "react-bootstrap";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import React, { useCallback, useEffect, useState } from 'react';
+import { Container, Nav, Navbar } from 'react-bootstrap';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import Avatar from '@mui/material/Avatar';
-import { useDispatch } from "react-redux";
+import { useDispatch } from 'react-redux';
 
 const Appnavbar = () => {
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const location = useLocation();
   const history = useNavigate();
@@ -19,16 +19,16 @@ const Appnavbar = () => {
   }, []);
 
   useEffect(() => {
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, [handleResize]);
 
   useEffect(() => {
-    setUser(JSON.parse(localStorage.getItem("profile")));
+    setUser(JSON.parse(localStorage.getItem('profile')));
   }, [location]);
 
   const hideNavbar = () => {
-    const navbarToggle = document.getElementById("navbar-toggle-button");
+    const navbarToggle = document.getElementById('navbar-toggle-button');
     if (navbarToggle) {
       navbarToggle.click();
     }
@@ -36,13 +36,13 @@ const Appnavbar = () => {
 
   const logout = () => {
     hideNavbar();
-    dispatch({ type: "LOGOUT" });
-    history("/");
+    dispatch({ type: 'LOGOUT' });
+    history('/');
     setUser(null);
   };
 
   const goToProfile = () => {
-    history("/profile");
+    history('/profile');
   };
 
   return (
@@ -54,7 +54,10 @@ const Appnavbar = () => {
           </Link>
         </Navbar.Brand>
         {screenWidth < 990 && (
-          <Navbar.Toggle id="navbar-toggle-button" aria-controls="basic-navbar-nav">
+          <Navbar.Toggle
+            id="navbar-toggle-button"
+            aria-controls="basic-navbar-nav"
+          >
             {user && (
               <Avatar
                 onClick={goToProfile}
@@ -89,7 +92,11 @@ const Appnavbar = () => {
                 Logout
               </Link>
             ) : (
-              <Link onClick={hideNavbar} className="nav-link nav-link-login" to="/login">
+              <Link
+                onClick={hideNavbar}
+                className="nav-link nav-link-login"
+                to="/login"
+              >
                 Login
               </Link>
             )}

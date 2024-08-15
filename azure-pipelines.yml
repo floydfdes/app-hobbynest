@@ -1,28 +1,28 @@
 # Node.js with React
 trigger:
-- main
+  - main
 
 pool:
   vmImage: ubuntu-latest
 
 jobs:
-- job: Build
-  displayName: 'Build and Deploy'
-  steps:
-  - task: NodeTool@0
-    inputs:
-      versionSpec: '10.x'
-    displayName: 'Install Node.js'
+  - job: Build
+    displayName: "Build and Deploy"
+    steps:
+      - task: NodeTool@0
+        inputs:
+          versionSpec: "10.x"
+        displayName: "Install Node.js"
 
-  - script: |
-      npm install
-      npm run build
-    displayName: 'npm install and build'
+      - script: |
+          npm install
+          npm run build
+        displayName: "npm install and build"
 
-  - task: AzureWebApp@1
-    inputs:
-      azureSubscription: 'Free Trial(e1d43da7-8847-4b66-9d47-5ebdd184edc7)'
-      appType: 'webApp'
-      appName: 'hobbynest'
-      package: '$(System.DefaultWorkingDirectory)/**/*.zip'
-      deploymentMethod: 'auto'
+      - task: AzureWebApp@1
+        inputs:
+          azureSubscription: "Free Trial(e1d43da7-8847-4b66-9d47-5ebdd184edc7)"
+          appType: "webApp"
+          appName: "hobbynest"
+          package: "$(System.DefaultWorkingDirectory)/**/*.zip"
+          deploymentMethod: "auto"

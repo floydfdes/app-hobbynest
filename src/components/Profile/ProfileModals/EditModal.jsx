@@ -1,22 +1,22 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import Button from "@mui/material/Button";
-import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
-import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
-import DialogTitle from "@mui/material/DialogTitle";
-import TextField from "@mui/material/TextField";
-import PropTypes from "prop-types"; // Import PropTypes
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { editUser } from "../../../actions/auth";
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import TextField from '@mui/material/TextField';
+import PropTypes from 'prop-types'; // Import PropTypes
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { editUser } from '../../../actions/auth';
 
 const EditModal = ({ open, setOpen, userDetails }) => {
   const initialErrorState = {
-    firstName: "",
-    lastName: "",
-    age: "",
+    firstName: '',
+    lastName: '',
+    age: '',
   };
 
   const fieldPattern = {

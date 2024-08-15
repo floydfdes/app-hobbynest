@@ -1,18 +1,18 @@
-import React, { useCallback, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
-import { createPost, updatePost } from "../../../actions/hobby";
+import React, { useCallback, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { createPost, updatePost } from '../../../actions/hobby';
 
 const initialFormState = {
-  title: "",
-  tags: "",
-  description: "",
+  title: '',
+  tags: '',
+  description: '',
 };
 
 const initialErrorState = {
-  title: "",
-  tags: "",
-  description: "",
+  title: '',
+  tags: '',
+  description: '',
 };
 
 const fieldPattern = {
@@ -67,7 +67,7 @@ const CreateHobby = () => {
         dispatch(createPost(formData, navigate));
       }
     },
-    [formData, currentHobby.formData, dispatch, navigate, validate]
+    [formData, currentHobby.formData, dispatch, navigate, validate],
   );
 
   return (
@@ -77,13 +77,13 @@ const CreateHobby = () => {
           <div className="col-md-12 col-sm-12 login-form-div">
             <form className="create-edit-form" onSubmit={handleSubmit}>
               <h2 className="create-edit-form-h1">
-                {formData.id ? "Update your" : "Add a"} hobby
+                {formData.id ? 'Update your' : 'Add a'} hobby
               </h2>
               <p className="create-edit-form-sub-heading">
                 Please specify your Hobby
               </p>
 
-              {["title", "tags", "description"].map((field) => (
+              {['title', 'tags', 'description'].map((field) => (
                 <div key={field}>
                   <label className="create-edit-form-label" htmlFor={field}>
                     {field.charAt(0).toUpperCase() + field.slice(1)}
@@ -104,7 +104,7 @@ const CreateHobby = () => {
                 type="submit"
                 className="btn btn-primary btn-lg btn-block hobby-form-button hobby-form-button-primary"
               >
-                {formData.id ? "Update" : "Create"}
+                {formData.id ? 'Update' : 'Create'}
               </button>
               <Link to="/hobbies">
                 <button className="btn btn-primary btn-lg btn-block hobby-form-button hobby-form-button-secondary">

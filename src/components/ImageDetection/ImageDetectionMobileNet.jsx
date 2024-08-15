@@ -1,16 +1,16 @@
-import "@tensorflow/tfjs";
-import "./styles.scss";
+import '@tensorflow/tfjs';
+import './styles.scss';
 
-import * as mobileNet from "@tensorflow-models/mobilenet";
+import * as mobileNet from '@tensorflow-models/mobilenet';
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from 'react';
 
-import Loading from "../Loading/Loading";
+import Loading from '../Loading/Loading';
 
 function ImageDetectionMobileNet() {
   const [isModelLoading, setIsModelLoading] = useState(true);
   const [model, setModel] = useState(null);
-  const [imageUrl, setImageUrl] = useState("");
+  const [imageUrl, setImageUrl] = useState('');
   const [results, setResults] = useState([]);
 
   const imageRef = useRef(null);
@@ -22,7 +22,7 @@ function ImageDetectionMobileNet() {
       const loadedModel = await mobileNet.load();
       setModel(loadedModel);
     } catch (error) {
-      console.error("Error loading model:", error);
+      console.error('Error loading model:', error);
     } finally {
       setIsModelLoading(false);
     }

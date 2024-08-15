@@ -1,6 +1,6 @@
-import { GitHub, Instagram, LinkedIn, Twitter } from "@mui/icons-material";
-import { IconButton } from "@mui/material";
-import React from "react";
+import { GitHub, Instagram, LinkedIn, Twitter } from '@mui/icons-material';
+import { IconButton } from '@mui/material';
+import React from 'react';
 
 const Footer = () => {
   return (
@@ -15,7 +15,7 @@ const Footer = () => {
               <IconButton
                 onClick={() =>
                   window.open(
-                    "https://in.linkedin.com/in/floyd-fernandes-03b771121"
+                    'https://in.linkedin.com/in/floyd-fernandes-03b771121',
                   )
                 }
               >
@@ -29,7 +29,7 @@ const Footer = () => {
               </IconButton>
               <IconButton
                 onClick={() =>
-                  window.open("https://www.instagram.com/floyd_fernandes_24/")
+                  window.open('https://www.instagram.com/floyd_fernandes_24/')
                 }
               >
                 <Instagram />

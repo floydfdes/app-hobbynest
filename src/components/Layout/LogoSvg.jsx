@@ -1,15 +1,11 @@
-import React from "react";
+import React from 'react';
 
 const LogoSvg = () => {
   return (
     <>
       <svg width="150" viewBox="0 0 288 69.3">
         <defs id="SvgjsDefs2042"></defs>
-        <g
-          id="SvgjsG2043"
-          transform="matrix(0.9,0,0,0.9,0,0)"
-          fill="#25354a"
-        >
+        <g id="SvgjsG2043" transform="matrix(0.9,0,0,0.9,0,0)" fill="#25354a">
           <rect
             xmlns="http://www.w3.org/2000/svg"
             width="75"

@@ -1,8 +1,8 @@
-export const checkTokenExpiry = () => {
-  let profileData = JSON.parse(localStorage.getItem("profile"));
+const checkTokenExpiry = () => {
+  const profileData = JSON.parse(localStorage.getItem('profile'));
   const parseJwt = (token) => {
     try {
-      return JSON.parse(atob(token.split(".")[1]));
+      return JSON.parse(atob(token.split('.')[1]));
     } catch (e) {
       return null;
     }
@@ -13,3 +13,5 @@ export const checkTokenExpiry = () => {
     localStorage.clear();
   }
 };
+
+export default checkTokenExpiry;

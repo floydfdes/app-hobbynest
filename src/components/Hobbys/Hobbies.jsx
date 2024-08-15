@@ -1,21 +1,21 @@
-import React, { useEffect } from "react";
+import React, { useEffect } from 'react';
 
-import AddIcon from "@mui/icons-material/Add";
-import CloseIcon from "@mui/icons-material/Close";
-import Hobbie from "./Hobby/Hobby";
-import Loading from "../Loading/Loading";
-import { createNewHobby } from "../../actions/trigger";
-import { getPosts } from "../../actions/hobby";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { useState } from "react";
+import AddIcon from '@mui/icons-material/Add';
+import CloseIcon from '@mui/icons-material/Close';
+import Hobbie from './Hobby/Hobby';
+import Loading from '../Loading/Loading';
+import { createNewHobby } from '../../actions/trigger';
+import { getPosts } from '../../actions/hobby';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { useState } from 'react';
 
 const Hobbies = () => {
   const dispatch = useDispatch();
   const history = useNavigate();
   const [filterHobbies, setFilterHobbies] = useState([]);
-  const [searchValue, setSearchValue] = useState("");
+  const [searchValue, setSearchValue] = useState('');
   useEffect(() => {
     dispatch(getPosts());
   }, [dispatch]);
@@ -40,7 +40,7 @@ const Hobbies = () => {
   };
 
   const clearSearch = () => {
-    setSearchValue("");
+    setSearchValue('');
     setFilterHobbies(hobbies.slice());
   };
 

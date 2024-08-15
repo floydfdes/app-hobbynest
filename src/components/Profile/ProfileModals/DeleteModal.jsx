@@ -1,16 +1,16 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import Button from "@mui/material/Button";
-import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
-import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
-import DialogTitle from "@mui/material/DialogTitle";
-import TextField from "@mui/material/TextField";
-import PropTypes from "prop-types";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { deleteUser } from "../../../actions/auth";
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import TextField from '@mui/material/TextField';
+import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { deleteUser } from '../../../actions/auth';
 
 const DeleteModal = ({ open, setOpen, userDetails }) => {
   const [emailField, setEmailField] = useState(null);
@@ -25,9 +25,9 @@ const DeleteModal = ({ open, setOpen, userDetails }) => {
         dispatch(deleteUser(userDetails._id, history));
       } else {
         if (!emailField) {
-          setErrors("Please enter email address");
+          setErrors('Please enter email address');
         } else {
-          setErrors("Please enter the correct email address");
+          setErrors('Please enter the correct email address');
         }
         return;
       }

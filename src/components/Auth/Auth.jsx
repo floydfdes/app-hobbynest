@@ -1,14 +1,14 @@
-import * as yup from "yup";
+import * as yup from 'yup';
 
-import { Login, SignUp } from "simple-authentication-react";
-import React, { useState } from "react";
-import { loginFields, signUpFields } from "../../Data/Data";
-import { signIn, signUp } from "../../actions/auth";
+import { Login, SignUp } from 'simple-authentication-react';
+import React, { useState } from 'react';
+import { loginFields, signUpFields } from '../../Data/Data';
+import { signIn, signUp } from '../../actions/auth';
 
-import { notifyCreate } from "../../actions/toastNotifications";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { yupResolver } from "@hookform/resolvers/yup";
+import { notifyCreate } from '../../actions/toastNotifications';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 const Auth = () => {
   const history = useNavigate();
@@ -17,17 +17,17 @@ const Auth = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   if (isLoggedIn) {
     initialState = {
-      email: "",
-      password: "",
+      email: '',
+      password: '',
     };
   } else {
     initialState = {
-      firstName: "",
-      lastName: "",
+      firstName: '',
+      lastName: '',
       age: 0,
-      gender: "",
-      email: "",
-      password: "",
+      gender: '',
+      email: '',
+      password: '',
     };
   }
 
@@ -45,8 +45,8 @@ const Auth = () => {
         dispatch(
           notifyCreate({
             message: result.response.data,
-            color: "error",
-          })
+            color: 'error',
+          }),
         );
       }
     } else {
@@ -57,24 +57,24 @@ const Auth = () => {
 
   const signUpSchema = yup
     .object({
-      firstName: yup.string().required("First name is required field"),
-      lastName: yup.string().required("Last name is required field"),
+      firstName: yup.string().required('First name is required field'),
+      lastName: yup.string().required('Last name is required field'),
       age: yup
         .number()
         .transform((value) => (isNaN(value) ? undefined : value))
         .positive()
         .integer()
-        .max(200, "Age nust be less then 200")
-        .required("Age is required field"),
-      gender: yup.string().required("Gender is required field"),
+        .max(200, 'Age nust be less then 200')
+        .required('Age is required field'),
+      gender: yup.string().required('Gender is required field'),
       email: yup
         .string()
-        .required("Email is required field")
-        .email("Email is not valid"),
+        .required('Email is required field')
+        .email('Email is not valid'),
       password: yup
         .string()
-        .required("Password is required field")
-        .min(5, "Password must be atleast 5 characters"),
+        .required('Password is required field')
+        .min(5, 'Password must be atleast 5 characters'),
     })
     .required();
 
@@ -82,12 +82,12 @@ const Auth = () => {
     .object({
       email: yup
         .string()
-        .required("Email is required field")
-        .email("Email is not valid"),
+        .required('Email is required field')
+        .email('Email is not valid'),
       password: yup
         .string()
-        .required("Passowrd is required field")
-        .min(5, "Password must be atleast 5 characters"),
+        .required('Passowrd is required field')
+        .min(5, 'Password must be atleast 5 characters'),
     })
     .required();
 

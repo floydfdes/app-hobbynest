@@ -4,7 +4,7 @@ import {
   NOTIFY_ERROR,
   NOTIFY_SIGNUP,
   NOTIFY_UPDATE,
-} from "../constants/actionTypes";
+} from '../constants/actionTypes';
 
 export const notifyCreate = (data) => async (dispatch) => {
   try {
@@ -36,7 +36,6 @@ export const notifySignup = (data) => async (dispatch) => {
     console.log(error);
   }
 };
-
 
 export const notifyError = (data) => async (dispatch) => {
   try {
