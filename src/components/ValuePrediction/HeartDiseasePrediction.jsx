@@ -1,16 +1,16 @@
-import axios from "axios";
+import "./styles.scss";
+
 import React, { useState } from "react";
 import { FormControl, InputGroup } from "react-bootstrap";
 import {
-  heartscapeFields,
-  heartscapefieldsCol3,
-  heartscapeInitialData,
+  heartscapeInitialData
 } from "../../Data/Data";
+
 import InfoIcon from "@mui/icons-material/Info";
-import "./styles.scss";
-import Popup from "../Popup/Popup";
+import axios from "axios";
 import HelpAccordian from "../Help/HelpAccordian";
 import Loading from "../Loading/Loading";
+import Popup from "../Popup/Popup";
 
 function HeartDiseasePrediction() {
   const [isModelOpen, setIsModelOpen] = useState(false);
@@ -18,37 +18,29 @@ function HeartDiseasePrediction() {
   const [prediction, setPrediction] = useState({});
   const [formData, setFormData] = useState(heartscapeInitialData);
   const [loading, setLoading] = useState(false);
-  const fields = heartscapeFields;
-  const fieldsCol3 = heartscapefieldsCol3;
 
   const updateForm = (event) => {
-    document
-      .getElementById(event.target.name)
-      .classList.remove("heartscape-error-class");
-    setFormData({ ...formData, [event.target.name]: event.target.value });
+    const { name, value } = event.target;
+    document.getElementById(name).classList.remove("heartscape-error-class");
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
+
   const validate = () => {
     let isValid = true;
-    for (const formField in formData) {
-      if (!formData[formField]) {
-        console.log(
-          document
-            .getElementById(formField)
-            .classList.add("heartscape-error-class")
-        );
+    for (const key in formData) {
+      if (!formData[key]) {
+        document.getElementById(key).classList.add("heartscape-error-class");
         isValid = false;
       }
     }
     return isValid;
   };
+
   const submitForm = () => {
-    const isValid = validate();
-    if (!isValid) return;
+    if (!validate()) return;
+
     setLoading(true);
-    const data = [];
-    for (const formField in formData) {
-      data.push(parseInt(formData[formField]));
-    }
+    const data = Object.values(formData).map((value) => parseInt(value, 10));
 
     axios
       .post("https:///utilitiesapi.herokuapp.com/heartdisease", data)
@@ -56,11 +48,41 @@ function HeartDiseasePrediction() {
         setPrediction(res.data);
         setLoading(false);
         setIsModelOpen(true);
-      });
+      })
+      .catch(() => setLoading(false));
   };
-  // const resetForm = () => {
-  //   setFormData(heartscapeInitialData);
-  // };
+
+  const renderField = (field) => {
+    return !field.options ? (
+      <InputGroup size="md" className="mb-3">
+        <FormControl
+          onChange={updateForm}
+          id={field.id}
+          name={field.id}
+          className="heartscape-input-field"
+          autoComplete="off"
+          aria-label="Small"
+          aria-describedby="inputGroup-sizing-sm"
+          placeholder={field.placeholder}
+          type="Number"
+        />
+      </InputGroup>
+    ) : (
+      <select
+        onChange={updateForm}
+        id={field.id}
+        name={field.id}
+        className="form-select form-select heartscape-input-field mb-3"
+      >
+        {field.options.map((option) => (
+          <option key={option.value} value={option.value}>
+            {option.name}
+          </option>
+        ))}
+      </select>
+    );
+  };
+
   return (
     <>
       <Popup
@@ -80,9 +102,7 @@ function HeartDiseasePrediction() {
           </div>
           <div className="col-lg-2 col-md-3 col-2">
             <button
-              onClick={() => {
-                setIsHelpModelOpen(true);
-              }}
+              onClick={() => setIsHelpModelOpen(true)}
               className="btn heading-button-color"
             >
               <InfoIcon fontSize="small" />
@@ -92,90 +112,25 @@ function HeartDiseasePrediction() {
           <div className="col-lg-12 col-md-12 col-sm-12">
             <p className="heartscape-sub-heading-color">
               Please ensure that all the required fields are filled in order to
-              get the most accurate results and if you need more information or
-              help with any of the fields, please refer to our help section for
-              further assistance.
+              get the most accurate results. If you need more information or
+              help, please refer to our help section.
             </p>
           </div>
 
-          {fields.map((field) => {
-            return (
-              <div
-                className="col-lg-4 col-md-4 col-sm-6 col-xm-6"
-                key={field.id}
-              >
-                <label className="heartscape-field-label">{field.name}</label>
-                {!field.options ? (
-                  <InputGroup size="md" className="mb-3">
-                    <FormControl
-                      onChange={updateForm}
-                      id={field.id}
-                      name={field.id}
-                      className="heartscape-input-field"
-                      autoComplete="off"
-                      aria-label="Small"
-                      aria-describedby="inputGroup-sizing-sm"
-                      placeholder={field.placeholder}
-                      type="Number"
-                    />
-                  </InputGroup>
-                ) : (
-                  <select
-                    onChange={updateForm}
-                    id={field.id}
-                    name={field.id}
-                    className="form-select form-select heartscape-input-field mb-3"
-                  >
-                    {field.options?.map((option) => {
-                      return (
-                        <option key={option.value} value={option.value}>
-                          {option.name}
-                        </option>
-                      );
-                    })}
-                  </select>
-                )}
-              </div>
-            );
-          })}
-          {fieldsCol3.map((field) => {
-            return (
-              <div className="col-lg-3 col-md-3 col-sm-12" key={field.id}>
-                <label className="heartscape-field-label">{field.name}</label>
-                {!field.options ? (
-                  <InputGroup size="md" className="mb-3">
-                    <FormControl
-                      onChange={updateForm}
-                      id={field.id}
-                      name={field.id}
-                      className="heartscape-input-field"
-                      autoComplete="off"
-                      aria-label="Small"
-                      aria-describedby="inputGroup-sizing-sm"
-                      placeholder={field.placeholder}
-                      type="Number"
-                    />
-                  </InputGroup>
-                ) : (
-                  <select
-                    onChange={updateForm}
-                    id={field.id}
-                    name={field.id}
-                    className="form-select form-select heartscape-input-field mb-3"
-                    aria-label="Default select example"
-                  >
-                    {field.options?.map((option) => {
-                      return (
-                        <option key={option.value} value={option.value}>
-                          {option.name}
-                        </option>
-                      );
-                    })}
-                  </select>
-                )}
-              </div>
-            );
-          })}
+          {fields.map((field) => (
+            <div className="col-lg-4 col-md-4 col-sm-6 col-xm-6" key={field.id}>
+              <label className="heartscape-field-label">{field.name}</label>
+              {renderField(field)}
+            </div>
+          ))}
+
+          {fieldsCol3.map((field) => (
+            <div className="col-lg-3 col-md-3 col-sm-12" key={field.id}>
+              <label className="heartscape-field-label">{field.name}</label>
+              {renderField(field)}
+            </div>
+          ))}
+
           <div className="col-lg-4 col-md-4"></div>
           <div className="col-lg-4 col-md-4"></div>
           <div className="col-lg-4 col-md-4 col-sm-12">
@@ -186,11 +141,6 @@ function HeartDiseasePrediction() {
               Predict
             </button>
           </div>
-          {/* <div className="col-lg-3 col-md-3 col-sm-12" onClick={resetForm}>
-            <button type="button" className="btn heartscape-reset-button">
-              Reset
-            </button>
-          </div> */}
         </div>
       </div>
     </>

@@ -1,54 +1,57 @@
-import React from "react";
-import { useEffect, useRef, useState } from "react";
 import "@tensorflow/tfjs";
-import * as mobileNet from "@tensorflow-models/mobilenet";
 import "./styles.scss";
+
+import * as mobileNet from "@tensorflow-models/mobilenet";
+
+import React, { useEffect, useRef, useState } from "react";
+
 import Loading from "../Loading/Loading";
+
 function ImageDetectionMobileNet() {
-  const [isModelLoading, setIsModelLoading] = useState(false);
+  const [isModelLoading, setIsModelLoading] = useState(true);
   const [model, setModel] = useState(null);
-  const [imageurl, setImageurl] = useState(null);
+  const [imageUrl, setImageUrl] = useState("");
   const [results, setResults] = useState([]);
 
-  const ref = useRef();
-  const urlRef = useRef();
-  const uploadImageRef = useRef();
+  const imageRef = useRef(null);
+  const urlRef = useRef(null);
+  const uploadImageRef = useRef(null);
 
   const loadModel = async () => {
-    setIsModelLoading(true);
     try {
-      const model = await mobileNet.load();
-      setModel(model);
-      setIsModelLoading(false);
+      const loadedModel = await mobileNet.load();
+      setModel(loadedModel);
     } catch (error) {
-      console.log(error);
+      console.error("Error loading model:", error);
+    } finally {
       setIsModelLoading(false);
     }
-  };
-
-  const uploadImage = (e) => {
-    const { files } = e.target;
-    if (files.length > 0) {
-      const url = URL.createObjectURL(files[0]);
-      setImageurl(url);
-    } else {
-      setImageurl(null);
-    }
-  };
-
-  const identify = async () => {
-    const results = await model.classify(ref.current);
-    setResults(results);
-  };
-
-  const handleOnChange = (e) => {
-    setImageurl(e.target.value);
-    setResults([]);
   };
 
   useEffect(() => {
     loadModel();
   }, []);
+
+  const uploadImage = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const url = URL.createObjectURL(file);
+      setImageUrl(url);
+      setResults([]);
+    }
+  };
+
+  const identify = async () => {
+    if (model && imageRef.current) {
+      const predictions = await model.classify(imageRef.current);
+      setResults(predictions);
+    }
+  };
+
+  const handleOnChange = (e) => {
+    setImageUrl(e.target.value);
+    setResults([]);
+  };
 
   if (isModelLoading) {
     return <Loading />;
@@ -57,40 +60,33 @@ function ImageDetectionMobileNet() {
   return (
     <div className="container">
       <div className="row">
-        <div className="col-lg-12 col-md-12 col-sm-12">
-          <h1 className="text-center pb-2 heading-color">
-            Image classification
-          </h1>
+        <div className="col-lg-12 text-center pb-2">
+          <h1 className="heading-color">Image Classification</h1>
         </div>
-
-        <div className="col-lg-6 col-md-6 col-sm-12">
+        <div className="col-lg-6">
           <div className="row">
-            <div className="col-lg-4 col-md-4 col-sm-12">
+            <div className="col-lg-4">
               <input
-                className="hide-input-file"
+                className="d-none"
                 type="file"
-                name=""
-                id=""
-                accept="img/*"
+                accept="image/*"
                 capture="camera"
                 ref={uploadImageRef}
                 onChange={uploadImage}
               />
             </div>
-            <div className="col-lg-4 col-md-4 col-sm-12">
+            <div className="col-lg-4">
               <button
                 className="btn heading-button-color button-image-width-mb-5"
-                onClick={() => {
-                  uploadImageRef.current.click();
-                }}
+                onClick={() => uploadImageRef.current.click()}
               >
                 Upload Image
               </button>
             </div>
-            <div className="col-lg-4 col-md-4 col-sm-12">
-              {imageurl && (
+            <div className="col-lg-4">
+              {imageUrl && (
                 <button
-                  className="btn  heading-button-color button-image-width-mb-5"
+                  className="btn heading-button-color button-image-width-mb-5"
                   onClick={identify}
                   type="button"
                 >
@@ -101,30 +97,29 @@ function ImageDetectionMobileNet() {
           </div>
         </div>
 
-        <div className="col-lg-6 col-md-6 col-sm-12 text-start ">
+        <div className="col-lg-6 text-start">
           <input
             type="text"
-            name=""
-            id=""
             placeholder="Paste image URL"
             ref={urlRef}
             onChange={handleOnChange}
             className="form-control url-input"
           />
         </div>
-        <div className="col-lg-6 col-md-6 col-sm-12 mt-2">
-          {imageurl && (
+
+        <div className="col-lg-6 mt-2">
+          {imageUrl && (
             <img
-              src={imageurl}
-              alt="imageUrl"
+              src={imageUrl}
+              alt="Uploaded"
               crossOrigin="anonymous"
-              ref={ref}
+              ref={imageRef}
               className="button-image-width-mb-5"
             />
           )}
         </div>
 
-        <div className="col-lg-6 col-md-6 col-sm-12 mt-2">
+        <div className="col-lg-6 mt-2">
           {results.length > 0 && (
             <table className="table table-secondary table-striped table-hover table-bordered">
               <thead>
@@ -134,14 +129,12 @@ function ImageDetectionMobileNet() {
                 </tr>
               </thead>
               <tbody>
-                {results.map((result, index) => {
-                  return (
-                    <tr key={result.className}>
-                      <td>{result.className}</td>
-                      <td>{Math.round(result.probability * 100)} %</td>
-                    </tr>
-                  );
-                })}
+                {results.map((result) => (
+                  <tr key={result.className}>
+                    <td>{result.className}</td>
+                    <td>{Math.round(result.probability * 100)}%</td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           )}

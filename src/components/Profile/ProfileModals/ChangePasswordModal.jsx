@@ -89,7 +89,7 @@ const ChangePasswordModal = ({ open, setOpen, userDetails }) => {
             variant="standard"
             onChange={onUserDetailChange}
           />
-          <span class="profile-model-errors">{errors?.oldPass}</span>
+          <span className="profile-model-errors">{errors?.oldPass}</span>
           <TextField
             margin="dense"
             id="newPass"
@@ -100,7 +100,7 @@ const ChangePasswordModal = ({ open, setOpen, userDetails }) => {
             variant="standard"
             onChange={onUserDetailChange}
           />
-          <span class="profile-model-errors">{errors?.newPass}</span>
+          <span className="profile-model-errors">{errors?.newPass}</span>
           <TextField
             margin="dense"
             id="cNewPass"
@@ -111,7 +111,7 @@ const ChangePasswordModal = ({ open, setOpen, userDetails }) => {
             variant="standard"
             onChange={onUserDetailChange}
           />
-          <span class="profile-model-errors">{errors?.cNewPass}</span>
+          <span className="profile-model-errors">{errors?.cNewPass}</span>
         </DialogContent>
         <DialogActions>
           <Button onClick={() => handleClose(false)}>Cancel</Button>

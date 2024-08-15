@@ -4,12 +4,11 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-import React from "react";
 import TextField from "@mui/material/TextField";
-import { editUser } from "../../../actions/auth";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { editUser } from "../../../actions/auth";
 
 const EditModal = ({ open, setOpen, userDetails }) => {
   const initialErrorState = {
@@ -86,7 +85,7 @@ const EditModal = ({ open, setOpen, userDetails }) => {
             value={user?.firstName}
             onChange={onUserDetailChange}
           />
-          <span class="profile-model-errors">{errors?.firstName}</span>
+          <span className="profile-model-errors">{errors?.firstName}</span>
           <TextField
             autoFocus
             margin="dense"
@@ -99,7 +98,7 @@ const EditModal = ({ open, setOpen, userDetails }) => {
             value={user?.lastName}
             onChange={onUserDetailChange}
           />
-          <span class="profile-model-errors">{errors?.lastName}</span>
+          <span className="profile-model-errors">{errors?.lastName}</span>
           <TextField
             autoFocus
             margin="dense"
@@ -112,7 +111,7 @@ const EditModal = ({ open, setOpen, userDetails }) => {
             value={user?.age}
             onChange={onUserDetailChange}
           />
-          <span class="profile-model-errors">{errors?.age}</span>
+          <span className="profile-model-errors">{errors?.age}</span>
         </DialogContent>
         <DialogActions>
           <Button onClick={() => handleClose(false)}>Cancel</Button>

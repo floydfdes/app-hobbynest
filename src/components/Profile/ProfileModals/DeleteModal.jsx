@@ -52,7 +52,7 @@ const DeleteModal = ({ open, setOpen, userDetails }) => {
             variant="standard"
             onChange={(event) => setEmailField(event.target.value)}
           />
-          <span class="profile-model-errors">{errors}</span>
+          <span className="profile-model-errors">{errors}</span>
         </DialogContent>
         <DialogActions>
           <Button onClick={() => handleClose(false)}>Cancel</Button>
