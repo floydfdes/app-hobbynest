@@ -1,4 +1,4 @@
-import * as api from '../api/index.js';
+import * as api from '../api/index';
 
 import {
   CREATE_NEW_COMMENT,
@@ -24,17 +24,16 @@ export const createNewComment = (postId, commentData) => async (dispatch) => {
   }
 };
 
-export const updateComment =
-  (postId, commentId, updatedCommentData) => async (dispatch) => {
-    try {
-      const { data } = await api.updateComment(postId, commentId, {
-        content: updatedCommentData,
-      });
-      dispatch({ type: UPDATE_COMMENT, payload: data });
-    } catch (error) {
-      handleError(dispatch, error);
-    }
-  };
+export const updateComment = (postId, commentId, updatedCommentData) => async (dispatch) => {
+  try {
+    const { data } = await api.updateComment(postId, commentId, {
+      content: updatedCommentData,
+    });
+    dispatch({ type: UPDATE_COMMENT, payload: data });
+  } catch (error) {
+    handleError(dispatch, error);
+  }
+};
 
 export const deleteComment = (postId, commentId) => async (dispatch) => {
   try {

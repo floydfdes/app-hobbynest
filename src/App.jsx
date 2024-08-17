@@ -9,12 +9,10 @@ import checkTokenExpiry from './utills/checkTokenExpiry';
 function App() {
   checkTokenExpiry();
   return (
-    <>
-      <BrowserRouter>
-        <Appnavbar></Appnavbar>
-        <Home></Home>
-      </BrowserRouter>
-    </>
+    <BrowserRouter>
+      <Appnavbar />
+      <Home />
+    </BrowserRouter>
   );
 }
 

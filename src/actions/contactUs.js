@@ -1,4 +1,4 @@
-import * as api from '../api/index.js';
+import * as api from '../api/index';
 
 export const sendContactUsEmail = (contactFormData) => async () => {
   try {
@@ -6,6 +6,6 @@ export const sendContactUsEmail = (contactFormData) => async () => {
 
     return data;
   } catch (error) {
-    console.log(error);
+    return error;
   }
 };
