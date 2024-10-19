@@ -72,9 +72,9 @@ const Hobby = ({ id, title, creatorName, tags, description, likes, creator }) =>
             Created by: {creatorName || 'unknown'}
           </Typography>
           <Box display="flex" flexWrap="wrap" gap={1} my={2}>
-            {tags.map((tag, index) => (
+            {tags.map((tag) => (
               <Chip
-                key={index}
+                key={`${id}-${tag}`}
                 label={tag}
                 size="small"
                 className="tag-chip"

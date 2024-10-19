@@ -1,9 +1,9 @@
-import ContactUs from '../../assets/images/contact-us.svg';
-import React from 'react';
-import { notifyCreate } from '../../actions/toastNotifications';
-import { sendContactUsEmail } from '../../actions/contactUs';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useState } from 'react';
+import { sendContactUsEmail } from '../../actions/contactUs';
+import { notifyCreate } from '../../actions/toastNotifications';
+import ContactUs from '../../assets/images/contact-us.svg';
+
 const Contact = () => {
   const dispatch = useDispatch();
   const initialState = {
