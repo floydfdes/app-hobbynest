@@ -1,142 +1,121 @@
-import React, { useEffect } from 'react';
-
 import AddIcon from '@mui/icons-material/Add';
-import CloseIcon from '@mui/icons-material/Close';
-import Hobbie from './Hobby/Hobby';
-import Loading from '../Loading/Loading';
-import { createNewHobby } from '../../actions/trigger';
-import { getPosts } from '../../actions/hobby';
-import { useDispatch } from 'react-redux';
+import ClearIcon from '@mui/icons-material/Clear';
+import SearchIcon from '@mui/icons-material/Search';
+import {
+  Box,
+  Button,
+  Container,
+  Grid,
+  TextField,
+  Typography
+} from '@mui/material';
+import React, { useEffect, useMemo, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { useState } from 'react';
+import { getPosts } from '../../actions/hobby';
+import { createNewHobby } from '../../actions/trigger';
+import Loading from '../Loading/Loading';
+import Hobbie from './Hobby/Hobby';
 
-const Hobbies = () => {
+function Hobbies() {
   const dispatch = useDispatch();
-  const history = useNavigate();
-  const [filterHobbies, setFilterHobbies] = useState([]);
+  const navigate = useNavigate();
   const [searchValue, setSearchValue] = useState('');
+  const hobbies = useSelector((state) => state.hobby);
+
   useEffect(() => {
     dispatch(getPosts());
   }, [dispatch]);
 
-  let hobbies = useSelector((state) => state.hobby);
-  let filteredHobbiesCopy = hobbies.slice();
-  const createHobby = () => {
-    dispatch(createNewHobby(0, history));
+  const filteredHobbies = useMemo(() => {
+    if (!searchValue) return hobbies;
+    return hobbies.filter((hobby) => hobby.title.toLowerCase().includes(searchValue.toLowerCase())
+      || hobby.description.toLowerCase().includes(searchValue.toLowerCase())
+      || hobby.tags.some((tag) => tag.toLowerCase().includes(searchValue.toLowerCase())));
+  }, [hobbies, searchValue]);
+
+  const handleCreateHobby = () => {
+    dispatch(createNewHobby(0, navigate));
   };
 
-  const search = (event) => {
+  const handleSearch = (event) => {
     setSearchValue(event.target.value);
-    let filterArr = filteredHobbiesCopy.slice();
-    filterArr = filterArr.filter((el) => {
-      return (
-        el.title.includes(event.target.value) ||
-        el.description.includes(event.target.value) ||
-        el.tags.includes(event.target.value)
-      );
-    });
-    setFilterHobbies(filterArr.slice());
   };
 
   const clearSearch = () => {
     setSearchValue('');
-    setFilterHobbies(hobbies.slice());
   };
 
+  if (hobbies.length === 0) return <Loading />;
+
   return (
-    <div className="container">
-      {hobbies.length === 0 && <Loading />}
-      <div className="row mobile-grid">
-        <div className="col-lg-4 col-md-4">
-          <h2>Hobbies</h2>
-        </div>
-        <div className="col-lg-6 col-md-4 display-none-mobile hobbie-search">
-          <input
-            onInput={search}
-            type="text"
-            className="form-control"
-            id="query"
-            value={searchValue}
-          />
-
-          <button
-            onClick={clearSearch}
-            type="button"
-            className="btn btn-primary mx-2"
-          >
-            <CloseIcon></CloseIcon>
-          </button>
-        </div>
-        <div className="col-lg-2 col-md-4">
-          <button
-            type="button"
-            onClick={createHobby}
-            className="btn heading-button-color"
-          >
-            <AddIcon />
-            <span className="d-none d-md-block">Add a hobby</span>
-          </button>
-        </div>
-      </div>
-      <div className="row">
-        <div className="col-sm-12 d-sm-flex d-flex d-md-none my-2">
-          <input
-            onInput={search}
-            type="text"
-            className="form-control margin-right-1"
-            id="query"
-          />
-
-          <button
-            onClick={clearSearch}
-            type="button"
-            className="btn btn-primary"
-          >
-            <CloseIcon></CloseIcon>
-          </button>
-        </div>
-      </div>
-      <div className="row my-3">
-        {filterHobbies.length < 1 &&
-          hobbies.map((element) => {
-            return (
-              <div className="col-lg-4 col-md-6 col-sm-12" key={element.title}>
-                <Hobbie
-                  title={element.title}
-                  description={element.description}
-                  tags={element.tags}
-                  id={element._id}
-                  likes={element.likes.length}
-                  creator={element.creator}
-                  creatorName={element.creatorName}
-                  date={element.date}
-                  comments={element.comments}
-                />
-              </div>
-            );
-          })}
-        {filterHobbies.length > 0 &&
-          filterHobbies.map((element) => {
-            return (
-              <div className="col-lg-4 col-md-6 col-sm-12" key={element.title}>
-                <Hobbie
-                  title={element.title}
-                  description={element.description}
-                  tags={element.tags}
-                  id={element._id}
-                  likes={element.likes.length}
-                  creator={element.creator}
-                  creatorName={element.creatorName}
-                  date={element.date}
-                  comments={element.comments}
-                />
-              </div>
-            );
-          })}
-      </div>
-    </div>
+    <Container maxWidth="lg">
+      <Box my={4}>
+        <Grid container spacing={2} alignItems="center">
+          <Grid item xs={12} md={4}>
+            <Typography variant="h4" component="h2" color="primary">
+              Hobbies
+            </Typography>
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <TextField
+              fullWidth
+              variant="outlined"
+              placeholder="Search hobbies..."
+              value={searchValue}
+              onChange={handleSearch}
+              InputProps={{
+                startAdornment: <SearchIcon color="action" />,
+                endAdornment: searchValue && (
+                  <ClearIcon
+                    color="action"
+                    style={{ cursor: 'pointer' }}
+                    onClick={clearSearch}
+                  />
+                ),
+              }}
+            />
+          </Grid>
+          <Grid item xs={12} md={2}>
+            <Button
+              fullWidth
+              variant="contained"
+              onClick={handleCreateHobby}
+              startIcon={<AddIcon />}
+              sx={{
+                height: '56px', // Adjust this value to match your TextField height
+                textTransform: 'none', // Optional: removes uppercase transformation
+                backgroundColor: 'var(--secondary-color)',
+                '&:hover': {
+                  backgroundColor: 'var(--secondary-color-dark, var(--secondary-color))',
+                },
+                color: 'var(--secondary-color-text, #ffffff)', // Adjust text color as needed
+              }}
+            >
+              Add Hobby
+            </Button>
+          </Grid>
+        </Grid>
+      </Box>
+      <Grid container spacing={3}>
+        {filteredHobbies.map((hobby) => (
+          <Grid item xs={12} sm={6} md={4} key={hobby._id}>
+            <Hobbie
+              title={hobby.title}
+              description={hobby.description}
+              tags={hobby.tags}
+              id={hobby._id}
+              likes={hobby.likes.length}
+              creator={hobby.creator}
+              creatorName={hobby.creatorName}
+              date={hobby.date}
+              comments={hobby.comments}
+            />
+          </Grid>
+        ))}
+      </Grid>
+    </Container>
   );
-};
+}
 
 export default Hobbies;

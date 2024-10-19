@@ -1,78 +1,127 @@
 import './about.scss';
 
-import { GitHub, Instagram, LinkedIn, Twitter } from '@mui/icons-material';
+import {
+  GitHub,
+  Instagram,
+  LinkedIn,
+  Twitter,
+} from '@mui/icons-material';
+import {
+  Box,
+  Container,
+  Grid,
+  IconButton,
+  Paper,
+  Typography,
+} from '@mui/material';
 
-import { IconButton } from '@mui/material';
 import React from 'react';
 import MyImage from '../../assets/images/my_image.png';
 
-const About2 = () => {
-  return (
-    <div className="container">
-      <div className="row">
-        <div className="text-center my-4 py-4 about-heading-bg">
-          <h1>About</h1>
-        </div>
-        <div className="col-lg-6 col-md-6 col-sm-12">
-          <h3>About me</h3>
-          <div>
-            I am Floyd Fernandes, 24. I&apos;m a software developer from Goa,
-            India. I work with Angular, React, and Python-based projects. Please
-            click the links below to follow me and have fun using the HobbyNest
-            application.
-          </div>
-          <h3 className="my-2">About website</h3>
-          <div>
-            This project was developed for educational purposes, incorporating a
-            blend of technologies, including ReactJS, ExpressJS, MongoDB, and
-            Bootstrap. Its primary goal is to empower users to share their
-            experiences by creating posts about events, hobbies, and cherished
-            moments. User registration is required, but rest assured, it&apos;s
-            entirely free.
-          </div>
+const socialLinks = [
+  { icon: LinkedIn, url: 'https://www.linkedin.com/in/floyd-fernandes/', label: 'LinkedIn' },
+  { icon: Twitter, url: 'https://twitter.com/floydintech', label: 'Twitter' },
+  { icon: GitHub, url: 'https://github.com/floydfdes', label: 'GitHub' },
+  { icon: Instagram, url: 'https://www.instagram.com/floyd_fernandes_24/', label: 'Instagram' },
+];
 
-          <div>
-            <p className="about-icons">
-              Links to follow:
-              <IconButton
-                onClick={() =>
-                  window.open(
-                    'https://in.linkedin.com/in/floyd-fernandes-03b771121',
-                  )
-                }
-              >
-                <LinkedIn />
-              </IconButton>
-              <IconButton>
-                <Twitter />
-              </IconButton>
-              <IconButton>
-                <GitHub />
-              </IconButton>
-              <IconButton
-                onClick={() =>
-                  window.open('https://www.instagram.com/floyd_fernandes_24/')
-                }
-              >
-                <Instagram />
-              </IconButton>
-            </p>
-          </div>
-        </div>
-        <div className="col-lg-6 col-md-6 col-sm-6 d-flex justify-content-center align-items-center">
-          <div className="text-center about-image-div">
-            <img
-              loading="lazy"
-              className="about-image"
-              src={MyImage}
-              alt=""
-              height={300}
-              width={300}
-            />
-          </div>
-        </div>
-      </div>
-    </div>
+const About2 = function About2() {
+  return (
+    <Container maxWidth="lg">
+      <Paper elevation={3} sx={{ p: 3, mb: 4 }}>
+        <Grid container spacing={4} alignItems="center">
+          <Grid item xs={12} md={4}>
+            <Box textAlign="center">
+              <img
+                loading="lazy"
+                className="about-image"
+                src={MyImage}
+                alt="Floyd Fernandes"
+                style={{ maxWidth: '100%', height: 'auto', borderRadius: '50%' }}
+              />
+            </Box>
+          </Grid>
+          <Grid item xs={12} md={8}>
+            <Typography variant="h4" gutterBottom>
+              Floyd Fernandes
+            </Typography>
+            <Typography paragraph>
+              Hello! I&apos;m a 24-year-old software developer from Goa, India. I specialize in
+              Angular, React, and Python-based projects. My passion lies in creating innovative
+              digital solutions and bringing people together through technology.
+            </Typography>
+            <Box mt={2}>
+              {socialLinks.map((link) => (
+                <IconButton
+                  key={link.label}
+                  aria-label={link.label}
+                  onClick={() => window.open(link.url, '_blank')}
+                  color="primary"
+                >
+                  <link.icon />
+                </IconButton>
+              ))}
+            </Box>
+          </Grid>
+        </Grid>
+      </Paper>
+      <Grid container spacing={4}>
+        <Grid item xs={12} md={6}>
+          <Typography variant="h4" gutterBottom>
+            About HobbyNest
+          </Typography>
+          <Typography paragraph>
+            HobbyNest is a vibrant platform for hobby enthusiasts, built with ReactJS, ExpressJS,
+            MongoDB, and Bootstrap. It&apos;s designed to empower users to share their passions
+            and connect with like-minded individuals.
+          </Typography>
+          <Typography paragraph>
+            Key features:
+          </Typography>
+          <ul>
+            <li>
+              <Typography>
+                Share your hobbies and experiences through engaging posts
+              </Typography>
+            </li>
+            <li>
+              <Typography>
+                Discover new interests and get inspired by our diverse community
+              </Typography>
+            </li>
+            <li>
+              <Typography>
+                Connect with fellow enthusiasts and make new friends
+              </Typography>
+            </li>
+            <li>
+              <Typography>
+                100% free to join and use
+              </Typography>
+            </li>
+          </ul>
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <Typography variant="h4" gutterBottom>
+            My Vision
+          </Typography>
+          <Typography paragraph>
+            As a developer, my goal is to create applications that not only showcase technical
+            excellence but also bring value to users&apos; lives. HobbyNest is a testament to
+            this vision, combining my skills in web development with my passion for fostering
+            communities.
+          </Typography>
+          <Typography paragraph>
+            I believe in the power of hobbies to enrich our lives and bring people together.
+            Through HobbyNest, I aim to provide a platform where everyone can celebrate their
+            interests, learn from others, and find joy in shared passions.
+          </Typography>
+          <Typography>
+            Join us on this exciting journey of exploration and connection!
+          </Typography>
+        </Grid>
+      </Grid>
+    </Container>
   );
 };
 

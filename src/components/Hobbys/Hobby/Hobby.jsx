@@ -1,145 +1,138 @@
-import './Hobby.scss';
-
-import React, { useState } from 'react';
-import { deletePost, likePost } from '../../../actions/hobby';
-import { editHobby, viewHobby } from '../../../actions/trigger';
-
-import DeleteIcon from '@mui/icons-material/Delete';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import ModeEditIcon from '@mui/icons-material/ModeEdit';
-import PropTypes from 'prop-types';
-import ReactModal from 'react-modal';
+import {
+  Delete as DeleteIcon,
+  Edit as EditIcon,
+  ExpandMore as ExpandMoreIcon,
+  FavoriteBorder as FavoriteBorderIcon,
+  Favorite as FavoriteIcon
+} from '@mui/icons-material';
+import {
+  Avatar, Box,
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  Chip,
+  Dialog, DialogActions, DialogContent, DialogContentText,
+  DialogTitle,
+  IconButton,
+  Typography
+} from '@mui/material';
+import React, { useCallback, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { deletePost, likePost } from '../../../actions/hobby';
+import { editHobby, viewHobby } from '../../../actions/trigger';
+import './Hobby.scss';
 
-ReactModal.setAppElement('#root');
-
-const Hobbie = ({
-  id,
-  title,
-  creatorName,
-  tags,
-  description,
-  likes,
-  creator,
-}) => {
-  const user = JSON.parse(localStorage.getItem('profile'));
+const Hobby = ({ id, title, creatorName, tags, description, likes, creator }) => {
+  const [expanded, setExpanded] = useState(false);
   const [confirmDelete, setConfirmDelete] = useState(false);
   const dispatch = useDispatch();
-  const history = useNavigate();
+  const navigate = useNavigate();
+  const user = JSON.parse(localStorage.getItem('profile'));
 
-  const updateHobby = (event) => {
-    event.stopPropagation();
-    dispatch(
-      editHobby(
-        { id, title, creatorName, tags, description, likes, creator },
-        history,
-      ),
-    );
+  const handleExpandClick = () => {
+    setExpanded(!expanded);
   };
 
-  const deleteHobby = (event) => {
+  const updateHobby = useCallback((event) => {
     event.stopPropagation();
+    dispatch(editHobby({ id, title, creatorName, tags, description, likes, creator }, navigate));
+  }, [id, title, creatorName, tags, description, likes, creator, dispatch, navigate]);
+
+  const deleteHobby = useCallback(() => {
     dispatch(deletePost(id));
-  };
+    setConfirmDelete(false);
+  }, [id, dispatch]);
 
-  const view = () => {
-    dispatch(
-      viewHobby(
-        { id, title, creatorName, tags, description, likes, creator },
-        history,
-      ),
-    );
-  };
+  const view = useCallback(() => {
+    dispatch(viewHobby({ id, title, creatorName, tags, description, likes, creator }, navigate));
+  }, [id, title, creatorName, tags, description, likes, creator, dispatch, navigate]);
 
-  const splitTags = tags.map((tag) => tag.split(',').map((el) => `#${el} `));
+  const handleLike = useCallback((event) => {
+    event.stopPropagation();
+    dispatch(likePost(id));
+  }, [id, dispatch]);
+
+  const userIsCreator = user?.result?._id === creator;
 
   return (
     <>
-      <ReactModal id="delete-modal" isOpen={confirmDelete}>
-        <div>
-          <strong>
-            Are you sure you want to permanently delete this hobby?
-          </strong>
-        </div>
-        <div className="my-2 modal-button-div">
-          <button onClick={deleteHobby} className="btn btn-danger">
-            Delete hobby
-          </button>
-          <button
-            className="btn btn-primary mx-2"
-            onClick={() => setConfirmDelete(false)}
+      <Card className="hobby-card" elevation={3}>
+        <CardContent>
+          <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
+            <Typography variant="h5" component="div" className="hobby-title">
+              {title}
+            </Typography>
+            <Avatar className="creator-avatar">
+              {creatorName ? creatorName[0].toUpperCase() : '?'}
+            </Avatar>
+          </Box>
+          <Typography variant="subtitle2" color="text.secondary" gutterBottom>
+            Created by: {creatorName || 'unknown'}
+          </Typography>
+          <Box display="flex" flexWrap="wrap" gap={1} my={2}>
+            {tags.map((tag, index) => (
+              <Chip
+                key={index}
+                label={tag}
+                size="small"
+                className="tag-chip"
+              />
+            ))}
+          </Box>
+          <Typography
+            variant="body2"
+            color="text.secondary"
+            className={`hobby-description ${expanded ? 'expanded' : ''}`}
           >
-            Cancel
-          </button>
-        </div>
-      </ReactModal>
-      <div
-        onClick={view}
-        className="card card-border-background-color mb-3 shadow"
-      >
-        <div className="card-header">
-          <h3 className="card-title">{title}</h3>
-          <span className="card-author">
-            created by: {creatorName || 'unknown'}
-          </span>
-        </div>
-        <div className="card-body">
-          <span className="card-tags">{splitTags}</span>
-          <p
-            className="card-text"
-            dangerouslySetInnerHTML={{
-              __html:
-                description.length > 350
-                  ? `${description.slice(0, 350)}...`
-                  : description,
-            }}
-          ></p>
-          <div className="card-actions-container">
-            <button
-              onClick={(event) => {
-                event.stopPropagation();
-                dispatch(likePost(id));
-              }}
-              className="btn card-button-color mx-2 card-like-button"
-            >
-              <FavoriteIcon className="card-button-svg icon-like" />
-              <span className="mx-2">{likes}</span>
-            </button>
-            {user?.result?._id === creator && (
-              <>
-                <button
-                  onClick={updateHobby}
-                  className="btn card-button-color mx-2"
-                >
-                  <ModeEditIcon className="card-button-svg icon-edit" />
-                </button>
-                <button
-                  onClick={(event) => {
-                    event.stopPropagation();
-                    setConfirmDelete(true);
-                  }}
-                  className="btn card-button-color mx-2"
-                >
-                  <DeleteIcon className="card-button-svg icon-delete" />
-                </button>
-              </>
+            {expanded ? description : `${description.slice(0, 150)}...`}
+          </Typography>
+        </CardContent>
+        <CardActions disableSpacing>
+          <IconButton aria-label="like" onClick={handleLike}>
+            {userIsCreator ? (
+              <FavoriteIcon color="error" />
+            ) : (
+              <FavoriteBorderIcon />
             )}
-          </div>
-        </div>
-      </div>
+          </IconButton>
+          <Typography variant="body2">{likes} likes</Typography>
+          {userIsCreator && (
+            <>
+              <IconButton aria-label="edit" onClick={updateHobby}>
+                <EditIcon />
+              </IconButton>
+              <IconButton aria-label="delete" onClick={() => setConfirmDelete(true)}>
+                <DeleteIcon />
+              </IconButton>
+            </>
+          )}
+          <IconButton
+            onClick={handleExpandClick}
+            aria-expanded={expanded}
+            aria-label="show more"
+            className={`expand-icon ${expanded ? 'expanded' : ''}`}
+          >
+            <ExpandMoreIcon />
+          </IconButton>
+        </CardActions>
+      </Card>
+
+      <Dialog open={confirmDelete} onClose={() => setConfirmDelete(false)}>
+        <DialogTitle>Confirm Delete</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            Are you sure you want to permanently delete this hobby?
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={deleteHobby} color="error">Delete</Button>
+          <Button onClick={() => setConfirmDelete(false)} color="primary">Cancel</Button>
+        </DialogActions>
+      </Dialog>
     </>
   );
 };
 
-Hobbie.propTypes = {
-  id: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  creatorName: PropTypes.string,
-  tags: PropTypes.arrayOf(PropTypes.string).isRequired,
-  description: PropTypes.string.isRequired,
-  likes: PropTypes.number.isRequired,
-  creator: PropTypes.string.isRequired,
-};
-
-export default Hobbie;
+export default React.memo(Hobby);

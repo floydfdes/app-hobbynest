@@ -238,3 +238,46 @@
   border-radius: 10px;
   padding: 10px;
 }
+
+.hobby-card {
+  margin-bottom: 20px;
+  transition: box-shadow 0.3s ease-in-out;
+
+  &:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  .hobby-title {
+    font-weight: bold;
+    color: #333;
+  }
+
+  .creator-avatar {
+    background-color: #1976d2;
+    color: white;
+  }
+
+  .tag-chip {
+    margin-right: 8px;
+    margin-bottom: 8px;
+  }
+
+  .hobby-description {
+    max-height: 100px;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+
+    &.expanded {
+      max-height: none;
+    }
+  }
+
+  .expand-icon {
+    margin-left: auto;
+    transition: transform 0.3s ease-in-out;
+
+    &.expanded {
+      transform: rotate(180deg);
+    }
+  }
+}
