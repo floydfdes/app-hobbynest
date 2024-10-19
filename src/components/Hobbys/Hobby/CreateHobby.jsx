@@ -1,4 +1,7 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import AddIcon from '@mui/icons-material/Add';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { Box, Button, Chip, Paper, TextField, Typography } from '@mui/material';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { createPost, updatePost } from '../../../actions/hobby';
@@ -15,11 +18,7 @@ const initialErrorState = {
   description: '',
 };
 
-const fieldPattern = {
-  title: /^[A-Za-z .,]+$/,
-  tags: /^[A-Za-z]+(,[A-Za-z]+)*$/,
-  description: /^[A-Za-z .,]+$/,
-};
+const formFields = ['title', 'tags', 'description'];
 
 const CreateHobby = () => {
   const [formData, setFormData] = useState(initialFormState);
@@ -28,94 +27,179 @@ const CreateHobby = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const fieldPattern = useMemo(() => ({
+    title: /^[A-Za-z .,]+$/,
+    tags: /^[A-Za-z]+(,[A-Za-z]+)*$/,
+    description: /^[A-Za-z .,]+$/,
+  }), []);
+
   useEffect(() => {
     if (currentHobby.formData) setFormData(currentHobby.formData);
   }, [currentHobby.formData]);
 
   const handleChange = useCallback((e) => {
     const { name, value } = e.target;
-    setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   }, []);
 
   const validate = useCallback((data) => {
+    const newErrors = {};
     let isValid = true;
-    const newErrors = { ...initialErrorState };
 
-    Object.entries(fieldPattern).forEach(([key, pattern]) => {
+    for (const [key, pattern] of Object.entries(fieldPattern)) {
       const value = data[key];
-      if (!value) {
-        newErrors[key] = `${key} is required`;
-        isValid = false;
-      } else if (!pattern.test(value)) {
-        newErrors[key] = `${key} is invalid`;
+      if (!value || !pattern.test(value)) {
+        newErrors[key] = `${key} is ${!value ? 'required' : 'invalid'}`;
         isValid = false;
       }
-    });
+    }
 
     setErrors(newErrors);
     return isValid;
+  }, [fieldPattern]);
+
+  const handleSubmit = useCallback((e) => {
+    e.preventDefault();
+    if (!validate(formData)) return;
+
+    const action = currentHobby.formData
+      ? updatePost(currentHobby.formData.id, formData, navigate)
+      : createPost(formData, navigate);
+
+    dispatch(action);
+  }, [formData, currentHobby.formData, dispatch, navigate, validate]);
+
+  const handleTagChange = useCallback((e) => {
+    const { value } = e.target;
+    setFormData((prev) => ({ ...prev, tags: value }));
   }, []);
 
-  const handleSubmit = useCallback(
-    (e) => {
-      e.preventDefault();
-      if (!validate(formData)) return;
+  const handleTagDelete = useCallback((tagToDelete) => {
+    setFormData((prev) => ({
+      ...prev,
+      tags: Array.isArray(prev.tags)
+        ? prev.tags.filter(tag => tag !== tagToDelete).join(',')
+        : typeof prev.tags === 'string'
+          ? prev.tags.split(',').filter(tag => tag !== tagToDelete).join(',')
+          : ''
+    }));
+  }, []);
 
-      if (currentHobby.formData) {
-        dispatch(updatePost(currentHobby.formData.id, formData, navigate));
-      } else {
-        dispatch(createPost(formData, navigate));
-      }
-    },
-    [formData, currentHobby.formData, dispatch, navigate, validate],
-  );
+  const secondaryColor = getComputedStyle(document.documentElement).getPropertyValue('--secondary-color').trim();
+
+  const formContent = useMemo(() => (
+    <form onSubmit={handleSubmit}>
+      <Typography variant="h4" gutterBottom>
+        {formData.id ? 'Update your' : 'Add a'} hobby
+      </Typography>
+      <Typography variant="subtitle1" gutterBottom>
+        Please specify your Hobby
+      </Typography>
+
+      <Box mb={3}>
+        <TextField
+          fullWidth
+          label="Title"
+          name="title"
+          value={formData.title}
+          onChange={handleChange}
+          error={!!errors.title}
+          helperText={errors.title}
+        />
+      </Box>
+
+      <Box mb={3}>
+        <TextField
+          fullWidth
+          label="Tags (comma-separated)"
+          name="tags"
+          value={Array.isArray(formData.tags) ? formData.tags.join(',') : formData.tags || ''}
+          onChange={handleTagChange}
+          error={!!errors.tags}
+          helperText={errors.tags}
+        />
+        <Box mt={1} display="flex" flexWrap="wrap" gap={1}>
+          {(Array.isArray(formData.tags) ? formData.tags : (formData.tags || '').split(','))
+            .filter(Boolean)
+            .map((tag) => (
+              <Chip
+                key={tag}
+                label={tag}
+                onDelete={() => handleTagDelete(tag)}
+                sx={{
+                  color: secondaryColor,
+                  borderColor: secondaryColor,
+                  '&:hover': {
+                    backgroundColor: `${secondaryColor}1A`, // 10% opacity
+                  },
+                }}
+                variant="outlined"
+              />
+            ))}
+        </Box>
+      </Box>
+
+      <Box mb={3}>
+        <TextField
+          fullWidth
+          multiline
+          rows={4}
+          label="Description"
+          name="description"
+          value={formData.description}
+          onChange={handleChange}
+          error={!!errors.description}
+          helperText={errors.description}
+        />
+      </Box>
+
+      <Box display="flex" justifyContent="space-between">
+        <Button
+          component={Link}
+          to="/hobbies"
+          variant="outlined"
+          startIcon={<ArrowBackIcon />}
+          sx={{
+            color: secondaryColor,
+            borderColor: secondaryColor,
+            '&:hover': {
+              borderColor: secondaryColor,
+              backgroundColor: `${secondaryColor}1A`, // 10% opacity
+            },
+          }}
+        >
+          Back to Hobbies
+        </Button>
+        <Button
+          type="submit"
+          variant="contained"
+          startIcon={<AddIcon />}
+          sx={{
+            backgroundColor: secondaryColor,
+            '&:hover': {
+              backgroundColor: secondaryColor,
+              filter: 'brightness(90%)',
+            },
+          }}
+        >
+          {formData.id ? 'Update' : 'Create'} Hobby
+        </Button>
+      </Box>
+    </form>
+  ), [formData, errors, handleChange, handleSubmit, handleTagChange, handleTagDelete, secondaryColor]);
 
   return (
-    <div className="container container-bg page-height">
-      <div className="card login-card-margin">
-        <div className="row">
-          <div className="col-md-12 col-sm-12 login-form-div">
-            <form className="create-edit-form" onSubmit={handleSubmit}>
-              <h2 className="create-edit-form-h1">
-                {formData.id ? 'Update your' : 'Add a'} hobby
-              </h2>
-              <p className="create-edit-form-sub-heading">
-                Please specify your Hobby
-              </p>
-
-              {['title', 'tags', 'description'].map((field) => (
-                <div key={field}>
-                  <label className="create-edit-form-label" htmlFor={field}>
-                    {field.charAt(0).toUpperCase() + field.slice(1)}
-                  </label>
-                  <input
-                    type="text"
-                    name={field}
-                    className="form-control"
-                    autoComplete="off"
-                    value={formData[field]}
-                    onChange={handleChange}
-                  />
-                  <div className="validation-message">{errors[field]}</div>
-                </div>
-              ))}
-
-              <button
-                type="submit"
-                className="btn btn-primary btn-lg btn-block hobby-form-button hobby-form-button-primary"
-              >
-                {formData.id ? 'Update' : 'Create'}
-              </button>
-              <Link to="/hobbies">
-                <button className="btn btn-primary btn-lg btn-block hobby-form-button hobby-form-button-secondary">
-                  Return to Hobbies
-                </button>
-              </Link>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
+    <Box
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+      minHeight="100vh"
+      bgcolor="#f5f5f5"
+    >
+      <Paper elevation={3} sx={{ p: 4, width: '100%', maxWidth: 600 }}>
+        {formContent}
+      </Paper>
+    </Box>
   );
 };
 
