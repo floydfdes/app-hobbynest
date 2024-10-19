@@ -23,8 +23,10 @@ export const getPosts = () => async (dispatch) => {
   try {
     const { data } = await api.fetchPosts();
     dispatch({ type: FETCH_ALL, payload: data });
+    return data; // Return the fetched data
   } catch (error) {
     handleError(dispatch, error);
+    return []; // Return an empty array in case of error
   }
 };
 
