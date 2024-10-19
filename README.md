@@ -55,21 +55,11 @@ HobbyNest is a vibrant web application designed for hobby enthusiasts to share, 
 
 5. Open `http://localhost:3000` in your browser to view the app.
 
-## 📚 Documentation
 
-For more detailed information about the project structure, API endpoints, and component usage, please refer to our [Wiki](link-to-your-wiki).
-
-## 🤝 Contributing
-
-We welcome contributions! Please see our [Contributing Guide](link-to-contributing-guide) for more details.
-
-## 📄 License
-
-This project is licensed under the [MIT License](link-to-license-file).
 
 ## 📞 Contact
 
-For any queries or support, please reach out to us through the contact form in the application or email us at support@hobbynest.com.
+For any queries or support, please reach out to us through the contact form in the application or email us at floydprogrammer@gmail.com.
 
 ---
 
