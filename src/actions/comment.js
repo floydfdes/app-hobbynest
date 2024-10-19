@@ -11,7 +11,6 @@ import {
 import { notifyError } from './toastNotifications';
 
 const handleError = (dispatch, error) => {
-  console.log(error.message);
   dispatch(notifyError({ message: error.message, color: 'error' }));
 };
 

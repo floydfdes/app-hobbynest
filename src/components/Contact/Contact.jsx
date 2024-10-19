@@ -30,7 +30,6 @@ const Contact = () => {
       }
     }
     const res = await dispatch(sendContactUsEmail(contactFormData));
-    console.log(res);
     if (res) {
       dispatch(
         notifyCreate({
