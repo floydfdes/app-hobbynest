@@ -1,42 +1,76 @@
-## HobbyNest
+# HobbyNest
 
-[Link to postpred](https://hobbynext.netlify.app "HobbyNest App")
+HobbyNest is a vibrant web application designed for hobby enthusiasts to share, discover, and connect over their favorite pastimes. Built with React.js and powered by a robust Express.js backend, HobbyNest offers a seamless and engaging user experience for hobby exploration and community building.
 
-## Features
+## 🌟 Features
 
-- **User Authentication:** Secure signup and login functionality.
-- **Post Creation:** Users can create posts about their hobbies, including titles, descriptions, and tags.
-- **Post Interaction:** Users can like posts created by others.
-- **Search Functionality:** Find posts based on keywords, tags, or phrases.
-- **Responsive UI:** Designed with Bootstrap for a mobile-friendly experience.
+- **User Authentication**: Secure signup and login functionality.
+- **Hobby Posts**: Create, view, update, and delete posts about your hobbies.
+- **Social Interaction**: Like and comment on posts to engage with other users.
+- **Search Functionality**: Find posts based on keywords or tags.
+- **Responsive Design**: Optimized for both desktop and mobile views.
+- **User Profiles**: Personalized spaces for users to showcase their hobbies.
+- **Contact Form**: Easy communication channel for feedback and support.
 
-### API and Database
+## 🛠️ Technologies Used
 
-- The backend API is built using Express.js. You can access the API at [https://hobbies-project.herokuapp.com](https://hobbies-project.herokuapp.com).
-- The database is hosted on a free MongoDB cluster to store user data, posts, and other application information.
+- **Frontend**:
+  - React.js
+  - Redux for state management
+  - React Router for navigation
+  - Bootstrap and custom SCSS for styling
+  - Material-UI components
+  - React Hook Form & Yup for form handling and validation
+  - Axios for API requests
 
-### Tools and technologies
+- **Backend**:
+  - Express.js
+  - MongoDB for database
+  - Hosted on Heroku
 
-<p align="left"> <a href="https://getbootstrap.com" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/bootstrap/bootstrap-plain-wordmark.svg" alt="bootstrap" width="40" height="40"/> </a> <a href="https://www.w3schools.com/css/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt="css3" width="40" height="40"/> </a> <a href="https://expressjs.com" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original-wordmark.svg" alt="express" width="40" height="40"/> </a> <a href="https://www.w3.org/html/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg" alt="html5" width="40" height="40"/> </a> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="javascript" width="40" height="40"/> </a> <a href="https://www.mongodb.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original-wordmark.svg" alt="mongodb" width="40" height="40"/> </a> <a href="https://nodejs.org" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg" alt="nodejs" width="40" height="40"/> </a>  <a href="https://reactjs.org/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" alt="react" width="40" height="40"/> </a> <a href="https://redux.js.org" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/redux/redux-original.svg" alt="redux" width="40" height="40"/> </a> <a href="https://www.tensorflow.org" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/tensorflow/tensorflow-icon.svg" alt="tensorflow" width="40" height="40"/> </a>  </p>
+- **DevOps**:
+  - ESLint for code linting
+  - Prettier for code formatting
 
-## Issues and Feedback
+## 🚀 Getting Started
 
-If you encounter any issues while using HobbyNest or have any feedback or suggestions, please email us at floydprogrammer@gmail.com. We appreciate your input and strive to improve the app based on user feedback.
+1. Clone the repository:
+   ```
+   git clone https://github.com/floydfdes/app-hobbynest.git
+   ```
 
-## Installation and Setup Instructions
+2. Install dependencies:
+   ```
+   cd hobbynest
+   npm install
+   ```
 
-#### Example:
+3. Set up environment variables:
+   Create a `.env` file in the root directory and add necessary variables.
 
-Clone down this repository. You will need `node` and `npm` installed globally on your machine.
+4. Start the development server:
+   ```
+   npm start
+   ```
 
-Installation:
+5. Open `http://localhost:3000` in your browser to view the app.
 
-`npm install`
+## 📚 Documentation
 
-To Start Server:
+For more detailed information about the project structure, API endpoints, and component usage, please refer to our [Wiki](link-to-your-wiki).
 
-`npm start`
+## 🤝 Contributing
 
-To Visit App:
+We welcome contributions! Please see our [Contributing Guide](link-to-contributing-guide) for more details.
 
-`localhost:3000`
+## 📄 License
+
+This project is licensed under the [MIT License](link-to-license-file).
+
+## 📞 Contact
+
+For any queries or support, please reach out to us through the contact form in the application or email us at support@hobbynest.com.
+
+---
+
+Happy Hobbying with HobbyNest! 🎨🏋️‍♀️🎸
