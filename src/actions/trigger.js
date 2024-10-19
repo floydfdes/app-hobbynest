@@ -9,7 +9,8 @@ export const createNewHobby = (data, history) => async (dispatch) => {
     await dispatch({ type: CREATE_NEW_HOBBY, payload: data });
     history('/hobbies/create');
   } catch (error) {
-    console.log(error);
+    // Remove this line:
+    // console.log(error);
   }
 };
 
@@ -18,7 +19,8 @@ export const editHobby = (data, history) => async (dispatch) => {
     dispatch({ type: UPDATE_HOBBY, payload: data });
     history('/hobbies/update');
   } catch (error) {
-    console.log(error);
+    // Remove this line:
+    // console.log(error);
   }
 };
 
@@ -27,6 +29,7 @@ export const viewHobby = (data, history) => async (dispatch) => {
     dispatch({ type: FETCH, payload: data });
     history(`/hobbies/view/${data.id}`);
   } catch (error) {
-    console.log(error);
+    // Remove this line:
+    // console.log(error);
   }
 };

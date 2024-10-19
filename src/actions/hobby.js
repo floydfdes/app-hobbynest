@@ -16,7 +16,6 @@ import {
 } from './toastNotifications';
 
 const handleError = (dispatch, error) => {
-  console.log(error?.message);
   dispatch(notifyError({ message: error?.message, color: 'error' }));
 };
 
@@ -64,7 +63,9 @@ export const updatePost = (id, post, history) => async (dispatch) => {
     );
     history('/hobbies');
   } catch (error) {
-    handleError(dispatch, error);
+    // Remove this line:
+    // console.log(error?.message);
+    dispatch(notifyError({ message: error?.message, color: 'error' }));
   }
 };
 

@@ -10,7 +10,8 @@ export const signUp = (formData, history) => async (dispatch) => {
     dispatch(notifySignup({ message: 'New account created', color: 'info' }));
     history('/');
   } catch (error) {
-    console.log(error);
+    // Remove this line:
+    // console.log(error);
   }
 };
 
@@ -20,7 +21,8 @@ export const signIn = (formData, history) => async (dispatch) => {
     dispatch({ type: AUTH, data });
     history('/');
   } catch (error) {
-    console.log(error); // Removed return statement
+    // Remove this line:
+    // console.log(error);
   }
 };
 
@@ -33,7 +35,8 @@ export const editUser = (id, formData, history) => async (dispatch) => {
     );
     history('/');
   } catch (error) {
-    console.log(error); // Removed return statement
+    // Remove this line:
+    // console.log(error);
   }
 };
 
@@ -46,7 +49,8 @@ export const resetPassword = (id, formData, history) => async (dispatch) => {
     );
     history('/');
   } catch (error) {
-    console.log(error); // Removed return statement
+    // Remove this line:
+    // console.log(error);
   }
 };
 
@@ -57,6 +61,6 @@ export const deleteUser = (id, history) => async (dispatch) => {
     dispatch(notifySignup({ message: 'User has been deleted', color: 'info' }));
     history('/');
   } catch (error) {
-    console.log(error); // Removed return statement
+    // Error block
   }
 };
