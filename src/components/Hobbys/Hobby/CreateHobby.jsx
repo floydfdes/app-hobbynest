@@ -153,12 +153,13 @@ const CreateHobby = () => {
         />
       </Box>
 
-      <Box display="flex" justifyContent="space-between">
+      <Box display="flex" flexDirection={{ xs: 'column', sm: 'row' }} justifyContent="space-between" gap={2}>
         <Button
           component={Link}
           to="/hobbies"
           variant="outlined"
           startIcon={<ArrowBackIcon />}
+          fullWidth
           sx={{
             color: secondaryColor,
             borderColor: secondaryColor,
@@ -174,6 +175,7 @@ const CreateHobby = () => {
           type="submit"
           variant="contained"
           startIcon={<AddIcon />}
+          fullWidth
           sx={{
             backgroundColor: secondaryColor,
             '&:hover': {

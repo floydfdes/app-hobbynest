@@ -57,8 +57,8 @@ const Hobby = ({ id, title, creatorName, tags, description, likes, creator }) =>
   const userIsCreator = user?.result?._id === creator;
 
   return (
-    <>
-      <Card className="hobby-card" elevation={3}>
+    <div onClick={view} className="hobby-card">
+      <Card elevation={3}>
         <CardContent>
           <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
             <Typography variant="h5" component="div" className="hobby-title">
@@ -131,7 +131,7 @@ const Hobby = ({ id, title, creatorName, tags, description, likes, creator }) =>
           <Button onClick={() => setConfirmDelete(false)} color="primary">Cancel</Button>
         </DialogActions>
       </Dialog>
-    </>
+    </div>
   );
 };
 
