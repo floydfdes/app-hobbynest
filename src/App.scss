@@ -240,10 +240,13 @@ input[type='number'] {
 }
 
 .about-page {
-  h5,
-  h4 {
+  h5 {
     color: var(--fourth-color);
   }
+}
+
+h4 {
+  color: var(--primary-color);
 }
 
 .contact-row-padding {
