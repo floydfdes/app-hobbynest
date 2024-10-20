@@ -98,7 +98,10 @@ const Comment = ({ comment, userId, postId, dispatch, setNewComment }) => {
 const BackgroundBox = styled(Box)(({ theme }) => ({
   backgroundColor: 'var(--primary-color)',
   minHeight: '100vh',
-  padding: theme.spacing(4, 0),
+  padding: theme.spacing(2, 0),
+  [theme.breakpoints.up('md')]: {
+    padding: theme.spacing(4, 0),
+  },
 }));
 
 const ViewHobby = () => {
@@ -202,11 +205,12 @@ const ViewHobby = () => {
     <BackgroundBox>
       <Container maxWidth="xl">
         {formData ? (
-          <Card elevation={3} sx={{ mx: 2 }}>
-            <CardContent sx={{ p: 4 }}>
-              <Box sx={{ display: 'flex' }}>
+          <Card elevation={3} sx={{ mx: { xs: 0, sm: 2 } }}>
+            <CardContent sx={{ p: { xs: 2, sm: 4 } }}>
+              {/* Use flexbox with column direction on mobile, row on larger screens */}
+              <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' } }}>
                 {/* Left column: Post details */}
-                <Box sx={{ flex: 1, pr: 3, width: '50%' }}>
+                <Box sx={{ flex: 1, pr: { xs: 0, md: 3 }, width: { xs: '100%', md: '50%' }, mb: { xs: 3, md: 0 } }}>
                   <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
                     <Avatar sx={{ width: 56, height: 56, mr: 2 }}>{creatorName[0]}</Avatar>
                     <Box>
@@ -216,7 +220,7 @@ const ViewHobby = () => {
                       </Typography>
                     </Box>
                   </Box>
-                  <Typography variant="h4" gutterBottom>
+                  <Typography variant="h4" gutterBottom sx={{ fontSize: { xs: '1.5rem', sm: '2rem' } }}>
                     {title}
                   </Typography>
                   <Typography variant="body1" paragraph>
@@ -247,28 +251,33 @@ const ViewHobby = () => {
                     Other Hobbies
                   </Typography>
                   <Box sx={{ position: 'relative' }}>
-                    <IconButton
-                      sx={{
-                        position: 'absolute',
-                        left: -20,
-                        top: '50%',
-                        transform: 'translateY(-50%)',
-                        zIndex: 2,
-                        bgcolor: 'background.paper',
-                        '&:hover': { bgcolor: 'action.hover' },
-                      }}
-                      onClick={() => handleScroll('prev')}
-                    >
-                      <ChevronLeft />
-                    </IconButton>
+                    {/* Hide scroll buttons on mobile */}
+                    <Box sx={{ display: { xs: 'none', md: 'block' } }}>
+                      <IconButton
+                        sx={{
+                          position: 'absolute',
+                          left: -20,
+                          top: '50%',
+                          transform: 'translateY(-50%)',
+                          zIndex: 2,
+                          bgcolor: 'background.paper',
+                          '&:hover': { bgcolor: 'action.hover' },
+                        }}
+                        onClick={() => handleScroll('prev')}
+                      >
+                        <ChevronLeft />
+                      </IconButton>
+                    </Box>
                     <Box
                       ref={otherHobbiesRef}
                       sx={{
                         display: 'flex',
-                        overflowX: 'hidden',
+                        overflowX: 'auto',
                         scrollBehavior: 'smooth',
                         pb: 2,
-                        mx: 3,
+                        mx: { xs: 0, md: 3 },
+                        '&::-webkit-scrollbar': { display: 'none' },
+                        scrollbarWidth: 'none',
                       }}
                     >
                       {otherHobbies.map((hobby) => (
@@ -318,43 +327,61 @@ const ViewHobby = () => {
                         </Box>
                       ))}
                     </Box>
-                    <IconButton
-                      sx={{
-                        position: 'absolute',
-                        right: -20,
-                        top: '50%',
-                        transform: 'translateY(-50%)',
-                        zIndex: 2,
-                        bgcolor: 'background.paper',
-                        '&:hover': { bgcolor: 'action.hover' },
-                      }}
-                      onClick={() => handleScroll('next')}
-                    >
-                      <ChevronRight />
-                    </IconButton>
+                    {/* Hide scroll buttons on mobile */}
+                    <Box sx={{ display: { xs: 'none', md: 'block' } }}>
+                      <IconButton
+                        sx={{
+                          position: 'absolute',
+                          right: -20,
+                          top: '50%',
+                          transform: 'translateY(-50%)',
+                          zIndex: 2,
+                          bgcolor: 'background.paper',
+                          '&:hover': { bgcolor: 'action.hover' },
+                        }}
+                        onClick={() => handleScroll('next')}
+                      >
+                        <ChevronRight />
+                      </IconButton>
+                    </Box>
                   </Box>
 
                   {/* Back to Hobbies button */}
                   <Button
                     startIcon={<ArrowBack />}
                     onClick={handleBackToHobbies}
-                    sx={{ mt: 2 }}
-                    color="secondary"
+                    sx={{
+                      mt: 2,
+                      bgcolor: 'var(--secondary-color)',
+                      '&:hover': {
+                        bgcolor: 'var(--secondary-color)',
+                        opacity: 0.9,
+                      },
+                    }}
                     variant="contained"
+                    fullWidth
                   >
                     Back to Hobbies
                   </Button>
                 </Box>
 
                 {/* Right column: Comments */}
-                <Box sx={{ flex: 1, pl: 3, borderLeft: 1, borderColor: 'divider', width: '50%' }}>
+                <Box sx={{
+                  flex: 1,
+                  pl: { xs: 0, md: 3 },
+                  borderLeft: { xs: 0, md: 1 },
+                  borderColor: 'divider',
+                  width: { xs: '100%', md: '50%' },
+                  mt: { xs: 3, md: 0 }
+                }}
+                >
                   <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
                     <CommentIcon sx={{ mr: 1 }} />
                     <Typography variant="h6">
                       {comments?.length} Comments
                     </Typography>
                   </Box>
-                  <Box sx={{ height: '60vh', overflowY: 'auto', mb: 2 }}>
+                  <Box sx={{ height: { xs: '40vh', md: '60vh' }, overflowY: 'auto', mb: 2 }}>
                     {comments?.map((comment) => (
                       <Comment
                         key={comment._id}
@@ -380,9 +407,15 @@ const ViewHobby = () => {
                     <Button
                       fullWidth
                       variant="contained"
-                      color="primary"
                       endIcon={<SendIcon />}
                       type="submit"
+                      sx={{
+                        bgcolor: 'var(--secondary-color)',
+                        '&:hover': {
+                          bgcolor: 'var(--secondary-color)',
+                          opacity: 0.9,
+                        },
+                      }}
                     >
                       Send
                     </Button>
