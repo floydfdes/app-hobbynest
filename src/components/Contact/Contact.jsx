@@ -13,22 +13,45 @@ const Contact = () => {
     message: '',
   };
   const [contactFormData, setContactFormData] = useState(initialState);
+
   const onContactFormChange = (e) => {
     setContactFormData({ ...contactFormData, [e.target.name]: e.target.value });
   };
 
-  const sendEmail = async () => {
-    for (let keys in contactFormData) {
-      if (!contactFormData[keys]) {
-        dispatch(
-          notifyCreate({
-            message: 'Please fill all the fields',
-            color: 'error',
-          }),
-        );
-        return;
-      }
+  const validateForm = () => {
+    const errors = [];
+
+    if (!contactFormData.firstName.trim()) {
+      errors.push('First name is required');
     }
+    if (!contactFormData.lastName.trim()) {
+      errors.push('Last name is required');
+    }
+    if (!contactFormData.email.trim()) {
+      errors.push('Email is required');
+    } else if (!/\S+@\S+\.\S+/.test(contactFormData.email)) {
+      errors.push('Email is invalid');
+    }
+    if (!contactFormData.message.trim()) {
+      errors.push('Message is required');
+    }
+
+    return errors;
+  };
+
+  const sendEmail = async () => {
+    const errors = validateForm();
+
+    if (errors.length > 0) {
+      dispatch(
+        notifyCreate({
+          message: errors.join('. '),
+          color: 'error',
+        }),
+      );
+      return;
+    }
+
     const res = await dispatch(sendContactUsEmail(contactFormData));
     if (res) {
       dispatch(
@@ -58,9 +81,6 @@ const Contact = () => {
           <h1>Have some questions?</h1>
           <form>
             <div className="form-group mb-3">
-              {/* <label htmlFor="firstName" className="login-form-label">
-                First Name
-              </label> */}
               <input
                 type="text"
                 className="form-control"
@@ -73,9 +93,6 @@ const Contact = () => {
               />
             </div>
             <div className="form-group mb-3">
-              {/* <label htmlFor="lastName" className="login-form-label">
-                Last Name
-              </label> */}
               <input
                 type="text"
                 className="form-control"
@@ -87,9 +104,6 @@ const Contact = () => {
               />
             </div>
             <div className="form-group mb-3">
-              {/* <label htmlFor="email" className="login-form-label">
-                Email address
-              </label> */}
               <input
                 type="email"
                 className="form-control"
@@ -101,9 +115,6 @@ const Contact = () => {
               />
             </div>
             <div className="form-group mb-3">
-              {/* <label htmlFor="message" className="login-form-label">
-                Message
-              </label> */}
               <textarea
                 className="form-control"
                 id="message"
