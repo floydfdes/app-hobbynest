@@ -1,11 +1,40 @@
+import CommentIcon from '@mui/icons-material/Comment';
+import CreateIcon from '@mui/icons-material/Create';
+import EditIcon from '@mui/icons-material/Edit';
+import ExploreIcon from '@mui/icons-material/Explore';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 import InteractionIcon from '@mui/icons-material/Forum';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import SearchIcon from '@mui/icons-material/Search';
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import LandingImage from '../../assets/images/hobby-nest-bird.svg';
 import Contact from '../Contact/Contact';
 import Footer from '../Footer/Footer';
+
+const featureSections = [
+  {
+    id: "visitors",
+    title: "For All Visitors",
+    features: [
+      { id: "browse", icon: <SearchIcon />, text: "Browse and view hobby posts" },
+      { id: "explore", icon: <ExploreIcon />, text: "Explore diverse interests" }
+    ]
+  },
+  {
+    id: "members",
+    title: "For Registered Members",
+    features: [
+      { id: "create", icon: <CreateIcon />, text: "Create your own hobby posts" },
+      { id: "like", icon: <ThumbUpIcon />, text: "Like and dislike posts" },
+      { id: "comment", icon: <CommentIcon />, text: "Comment on posts" },
+      { id: "likeComments", icon: <FavoriteIcon />, text: "Like other people's comments" },
+      { id: "edit", icon: <EditIcon />, text: "Edit or delete your own posts and comments" }
+    ]
+  }
+];
 
 function Main() {
   const history = useNavigate();
@@ -98,31 +127,23 @@ function Main() {
       <div className="container mt-5 px-4">
         <h2 className="text-center mb-4">What You Can Do on HobbyNest</h2>
         <div className="row g-4">
-          <div className="col-md-6 mb-4">
-            <div className="card h-100">
-              <div className="card-body">
-                <h5 className="card-title">For All Visitors</h5>
-                <ul className="list-group list-group-flush">
-                  <li className="list-group-item">🔍 Browse and view hobby posts</li>
-                  <li className="list-group-item">🌟 Explore diverse interests</li>
-                </ul>
+          {featureSections.map((section) => (
+            <div key={section.id} className="col-md-6 mb-4">
+              <div className="card h-100">
+                <div className="card-body">
+                  <h5 className="card-title">{section.title}</h5>
+                  <ul className="list-unstyled">
+                    {section.features.map((feature) => (
+                      <li key={feature.id} className="mb-2">
+                        <span className="me-2" style={{ color: 'var(--secondary-color)' }}>{feature.icon}</span>
+                        {feature.text}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="col-md-6 mb-4">
-            <div className="card h-100">
-              <div className="card-body">
-                <h5 className="card-title">For Registered Members</h5>
-                <ul className="list-group list-group-flush">
-                  <li className="list-group-item">✍️ Create your own hobby posts</li>
-                  <li className="list-group-item">👍 Like and dislike posts</li>
-                  <li className="list-group-item">💬 Comment on posts</li>
-                  <li className="list-group-item">❤️ Like other people&apos;s comments</li>
-                  <li className="list-group-item">✏️ Edit or delete your own posts and comments</li>
-                </ul>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
 
