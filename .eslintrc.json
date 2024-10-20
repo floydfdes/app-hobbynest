@@ -48,7 +48,8 @@
     "react/jsx-curly-newline": "off",
     "no-nested-ternary": "off",
     "no-confusing-arrow": "off",
-    "function-paren-newline": "off"
+    "function-paren-newline": "off",
+    "react/jsx-closing-bracket-location": "off"
   },
   "env": {
     "browser": true,

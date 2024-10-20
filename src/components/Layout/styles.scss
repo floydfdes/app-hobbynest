@@ -1,131 +1,121 @@
 .navbar {
+  background-color: var(--secondary-color) !important;
   padding-top: 1rem !important;
   padding-bottom: 1rem !important;
-}
 
-.nav-link {
-  color: var(--secondary-color) !important;
-  font-family: RobotoBold !important;
-}
-
-.navbar-brand {
-  a {
-    color: var(--fourth-color) !important;
-    text-decoration: none;
+  .MuiToolbar-root {
     display: flex;
-    padding: 0px;
+    justify-content: space-between;
+  }
+
+  .navbar-brand {
+    color: var(--primary-color) !important;
+    text-decoration: none;
     font-size: 24px;
     font-weight: bold;
-    align-items: flex-end;
-  }
-
-  a:hover {
-    color: var(--secondary-color) !important;
-  }
-}
-
-.dropdown-menu {
-  background-color: var(--primary-color) !important;
-
-  .dropdown-item {
-    color: var(--secondary-color) !important;
-  }
-
-  .dropdown-item:hover {
-    background-color: var(--fourth-color) !important;
-    color: var(--primary-color) !important;
-  }
-}
-
-// .nav-link:hover {
-//   background-color: var(--fourth-color);
-// }
-.navbar-light .navbar-toggler {
-  color: transparent !important;
-  border: none !important;
-
-  &-icon {
-    width: 20px;
-    background-image: url(../../assets/images/menu.svg) !important;
-  }
-}
-
-@media only screen and (min-width: 769px) {
-  .nav-link {
-    padding: 8px 12px !important;
+    margin-right: auto;
 
     &:hover {
-      background-color: var(--secondary-color) !important;
+      color: var(--third-color) !important;
+    }
+  }
+
+  .MuiButton-root {
+    color: var(--primary-color) !important;
+    margin-left: 8px;
+  }
+
+  .MuiIconButton-root {
+    color: var(--primary-color) !important;
+    margin-left: 8px;
+  }
+
+  .MuiAvatar-root {
+    width: 32px;
+    height: 32px;
+    margin-left: 1rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  .nav-link {
+    color: var(--secondary-color) !important;
+    font-family: RobotoBold !important;
+  }
+
+  .dropdown-menu {
+    background-color: var(--primary-color) !important;
+
+    .dropdown-item {
+      color: var(--secondary-color) !important;
+    }
+
+    .dropdown-item:hover {
+      background-color: var(--fourth-color) !important;
       color: var(--primary-color) !important;
-      border-radius: 0.25rem;
     }
+  }
 
-    &-login {
-      margin-left: auto;
-      border: 2px solid var(--secondary-color);
-      border-radius: 0.25rem;
+  .navbar-light .navbar-toggler {
+    color: transparent !important;
+    border: none !important;
+
+    &-icon {
+      width: 20px;
+      background-image: url(../../assets/images/menu.svg) !important;
+    }
+  }
+
+  @media only screen and (min-width: 769px) {
+    .nav-link {
+      padding: 8px 12px !important;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .MuiToolbar-root {
+      padding-left: 16px;
+      padding-right: 16px;
     }
   }
 }
 
-.logo-image {
-  width: 32px;
-  height: 32px;
-  margin-right: 5px;
+.MuiMenu-paper {
+  background-color: var(--primary-color) !important;
 }
 
-.profile-avatar {
-  width: 30px !important;
-  height: 30px !important;
-}
+.MuiMenuItem-root {
+  color: var(--secondary-color) !important;
+  transition: background-color 0.3s ease;
 
-@media screen and (min-width: 769px) {
-  .profile-login-div {
-    display: flex !important;
-    align-items: center !important;
+  &:hover {
+    background-color: var(--fifth-color) !important;
   }
 }
 
-#navbar-toggle-button {
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.navbar-right {
   display: flex;
   align-items: center;
-  font-weight: 900 !important;
 }
 
-.MuiAvatar-root {
-  background-color: var(--secondary-color) !important;
-  color: var(--primary-color) !important;
+.MuiDrawer-paper {
+  width: 250px;
 }
 
-@media screen and (min-width: 900px) {
-  .navbar-fixed-top-mobile {
-    max-width: 100% !important;
-    margin: 0rem 5rem !important;
+@media screen and (max-width: 768px) {
+  .toolbar {
+    padding-left: 16px;
+    padding-right: 16px;
   }
-}
-
-@media screen and (max-width: 900px) {
-  .navbar-fixed-top-mobile {
-    position: fixed;
-    top: 0%;
-    background-color: var(--fifth-color);
-    z-index: 999;
-    max-width: 100% !important;
-  }
-}
-
-#basic-navbar-nav {
-  font-weight: 900;
-}
-
-@media screen and (max-width: 1000px) {
-  #main-container {
-    max-width: 100% !important;
-    margin: auto;
-    margin-top: 32px;
-  }
-}
-
-.main-logo {
-  color: var(--third-color) !important;
 }
