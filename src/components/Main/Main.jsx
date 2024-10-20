@@ -42,44 +42,52 @@ function Main() {
       </div>
 
       {/* Feature Cards */}
-      <div id="explore" className="main-page-card-div container-fluid my-5">
-        <h4 className="text-center mb-4">How HobbyNest Works</h4>
-        <div className="row">
-          <div className="col-md-4 col-lg-4 col-sm-12 mb-4">
-            <div className="card shadow text-center h-100">
-              <VisibilityIcon style={{ fontSize: '4rem', fill: 'var(--secondary-color)', marginTop: '1rem' }} />
-              <div className="card-body d-flex flex-column">
-                <h5 className="card-title">Explore Hobbies</h5>
-                <p className="card-text flex-grow-1">
-                  Browse through a diverse range of hobbies shared by our community. Get inspired and discover new interests without signing up.
-                </p>
-                <a href="/hobbies" className="btn mt-auto" style={{ backgroundColor: 'var(--secondary-color)', color: 'white' }}>View Hobbies</a>
+      <div id="explore" className="container-fluid py-5" style={{ backgroundColor: 'var(--secondary-color)' }}>
+        <div className="container">
+          <h4 className="text-center mb-4 text-white">How HobbyNest Works</h4>
+          <div className="row g-4">
+            <div className="col-md-4 col-lg-4 col-sm-12 mb-4">
+              <div className="card shadow text-center h-100">
+                <div className="card-body d-flex flex-column">
+                  <div>
+                    <VisibilityIcon style={{ fontSize: '4rem', fill: 'var(--secondary-color)' }} />
+                  </div>
+                  <h5 className="card-title">Explore Hobbies</h5>
+                  <p className="card-text flex-grow-1">
+                    Browse through a diverse range of hobbies shared by our community. Get inspired and discover new interests without signing up.
+                  </p>
+                  <a href="/hobbies" className="btn mt-auto" style={{ backgroundColor: 'var(--secondary-color)', color: 'white' }}>View Hobbies</a>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div className="col-md-4 col-lg-4 col-sm-12 mb-4">
-            <div className="card shadow text-center h-100">
-              <PersonAddIcon style={{ fontSize: '4rem', fill: 'var(--secondary-color)', marginTop: '1rem' }} />
-              <div className="card-body d-flex flex-column">
-                <h5 className="card-title">Join Our Community</h5>
-                <p className="card-text flex-grow-1">
-                  Sign up for free to unlock more features. Create your own hobby posts, like, and comment on others&apos; content.
-                </p>
-                <a href="/login" className="btn mt-auto" style={{ backgroundColor: 'var(--secondary-color)', color: 'white' }}>Sign Up Free</a>
+            <div className="col-md-4 col-lg-4 col-sm-12 mb-4">
+              <div className="card shadow text-center h-100">
+                <div className="card-body d-flex flex-column">
+                  <div>
+                    <PersonAddIcon style={{ fontSize: '4rem', fill: 'var(--secondary-color)' }} />
+                  </div>
+                  <h5 className="card-title">Join Our Community</h5>
+                  <p className="card-text flex-grow-1">
+                    Sign up for free to unlock more features. Create your own hobby posts, like, and comment on others&apos; content.
+                  </p>
+                  <a href="/login" className="btn mt-auto" style={{ backgroundColor: 'var(--secondary-color)', color: 'white' }}>Sign Up Free</a>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div className="col-md-4 col-lg-4 col-sm-12 mb-4">
-            <div className="card shadow text-center h-100">
-              <InteractionIcon style={{ fontSize: '4rem', fill: 'var(--secondary-color)', marginTop: '1rem' }} />
-              <div className="card-body d-flex flex-column">
-                <h5 className="card-title">Interact and Share</h5>
-                <p className="card-text flex-grow-1">
-                  As a member, like, comment, and react to posts. Edit or delete your own content, and engage with the community.
-                </p>
-                <a href="/login" className="btn mt-auto" style={{ backgroundColor: 'var(--secondary-color)', color: 'white' }}>Get Started</a>
+            <div className="col-md-4 col-lg-4 col-sm-12 mb-4">
+              <div className="card shadow text-center h-100">
+                <div className="card-body d-flex flex-column">
+                  <div>
+                    <InteractionIcon style={{ fontSize: '4rem', fill: 'var(--secondary-color)' }} />
+                  </div>
+                  <h5 className="card-title">Interact and Share</h5>
+                  <p className="card-text flex-grow-1">
+                    As a member, like, comment, and react to posts. Edit or delete your own content, and engage with the community.
+                  </p>
+                  <a href="/login" className="btn mt-auto" style={{ backgroundColor: 'var(--secondary-color)', color: 'white' }}>Get Started</a>
+                </div>
               </div>
             </div>
           </div>
@@ -87,9 +95,9 @@ function Main() {
       </div>
 
       {/* Features List */}
-      <div className="container mt-5">
+      <div className="container mt-5 px-4">
         <h2 className="text-center mb-4">What You Can Do on HobbyNest</h2>
-        <div className="row">
+        <div className="row g-4">
           <div className="col-md-6 mb-4">
             <div className="card h-100">
               <div className="card-body">
@@ -118,7 +126,9 @@ function Main() {
         </div>
       </div>
 
-      <Contact />
+      <div className="mt-5">
+        <Contact />
+      </div>
       <Footer />
     </>
   );
