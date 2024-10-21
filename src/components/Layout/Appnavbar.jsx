@@ -77,15 +77,31 @@ const Appnavbar = () => {
 
   return (
     <AppBar position="static" className="navbar">
-      <Toolbar className="toolbar">
-        <Typography variant="h6" component={Link} to="/home" className="navbar-brand">
+      <Toolbar
+        className="toolbar"
+        sx={{
+          minHeight: '56px !important', // Reduce the minimum height
+          padding: '0 16px !important', // Reduce horizontal padding
+        }}
+      >
+        <Typography
+          variant="h6"
+          component={Link}
+          to="/home"
+          className="navbar-brand"
+          sx={{
+            fontSize: '1.1rem', // Reduce font size
+            textDecoration: 'none',
+            color: 'inherit',
+          }}
+        >
           HobbyNest
         </Typography>
         <div className="navbar-right">
           {!isMobile && (
             <>
-              <Button color="inherit" component={Link} to="/hobbies">Hobbies</Button>
-              <Button color="inherit" component={Link} to="/about">About</Button>
+              <Button color="inherit" component={Link} to="/hobbies" sx={{ padding: '6px 8px' }}>Hobbies</Button>
+              <Button color="inherit" component={Link} to="/about" sx={{ padding: '6px 8px' }}>About</Button>
             </>
           )}
           {!isMobile && user && (
@@ -96,8 +112,13 @@ const Appnavbar = () => {
                 aria-haspopup="true"
                 onClick={handleMenu}
                 color="inherit"
+                sx={{ padding: '8px' }}
               >
-                <Avatar alt={user?.result?.firstName[0]} src={user.result?.imageUrl || user.result?.firstName} />
+                <Avatar
+                  alt={user?.result?.firstName[0]}
+                  src={user.result?.imageUrl || user.result?.firstName}
+                  sx={{ width: 32, height: 32 }} // Reduce avatar size
+                />
               </IconButton>
               <Menu
                 id="menu-appbar"
@@ -120,7 +141,7 @@ const Appnavbar = () => {
             </>
           )}
           {!isMobile && !user && (
-            <Button color="inherit" component={Link} to="/login">Login</Button>
+            <Button color="inherit" component={Link} to="/login" sx={{ padding: '6px 8px' }}>Login</Button>
           )}
           {isMobile && (
             <IconButton
@@ -128,6 +149,7 @@ const Appnavbar = () => {
               color="inherit"
               aria-label="menu"
               onClick={handleDrawerToggle}
+              sx={{ padding: '8px' }}
             >
               <MenuIcon />
             </IconButton>
@@ -140,7 +162,7 @@ const Appnavbar = () => {
         open={mobileOpen}
         onClose={handleDrawerToggle}
         ModalProps={{
-          keepMounted: true, // Better open performance on mobile.
+          keepMounted: true,
         }}
       >
         {drawer}

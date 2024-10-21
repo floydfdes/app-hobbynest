@@ -1,5 +1,6 @@
-import { Box, Button, Grid, Paper, TextField, Typography } from '@mui/material';
-import React from 'react';
+import { Visibility, VisibilityOff } from '@mui/icons-material';
+import { Box, Button, Grid, IconButton, InputAdornment, Paper, TextField, Typography } from '@mui/material';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 export const Login = ({ setIsLoggedIn, yupResolver, submitForm, schema, fields }) => {
@@ -10,6 +11,12 @@ export const Login = ({ setIsLoggedIn, yupResolver, submitForm, schema, fields }
     } = useForm({
         resolver: yupResolver(schema),
     });
+
+    const [showPassword, setShowPassword] = useState({});
+
+    const handleClickShowPassword = (fieldId) => {
+        setShowPassword(prev => ({ ...prev, [fieldId]: !prev[fieldId] }));
+    };
 
     const secondaryColor = getComputedStyle(document.documentElement).getPropertyValue('--secondary-color').trim();
 
@@ -36,10 +43,23 @@ export const Login = ({ setIsLoggedIn, yupResolver, submitForm, schema, fields }
                                 <TextField
                                     fullWidth
                                     label={field.fieldName}
-                                    type={field.fieldType}
+                                    type={field.fieldType === 'password' && !showPassword[field.fieldId] ? 'password' : 'text'}
                                     {...register(field.fieldId)}
                                     error={!!errors[field.fieldId]}
                                     helperText={errors[field.fieldId]?.message}
+                                    InputProps={field.fieldType === 'password' ? {
+                                        endAdornment: (
+                                            <InputAdornment position="end">
+                                                <IconButton
+                                                    aria-label="toggle password visibility"
+                                                    onClick={() => handleClickShowPassword(field.fieldId)}
+                                                    edge="end"
+                                                >
+                                                    {showPassword[field.fieldId] ? <VisibilityOff /> : <Visibility />}
+                                                </IconButton>
+                                            </InputAdornment>
+                                        ),
+                                    } : {}}
                                 />
                             </Grid>
                         ))}

@@ -85,7 +85,7 @@ function Main() {
                   <p className="card-text flex-grow-1">
                     Browse through a diverse range of hobbies shared by our community. Get inspired and discover new interests without signing up.
                   </p>
-                  <a href="/hobbies" className="btn mt-auto" style={{ backgroundColor: 'var(--secondary-color)', color: 'white' }}>View Hobbies</a>
+                  <a href="/hobbies" className="btn mt-auto mb-3" style={{ backgroundColor: 'var(--secondary-color)', color: 'white' }}>View Hobbies</a>
                 </div>
               </div>
             </div>
@@ -100,7 +100,7 @@ function Main() {
                   <p className="card-text flex-grow-1">
                     Sign up for free to unlock more features. Create your own hobby posts, like, and comment on others&apos; content.
                   </p>
-                  <a href="/login" className="btn mt-auto" style={{ backgroundColor: 'var(--secondary-color)', color: 'white' }}>Sign Up Free</a>
+                  <a href="/login" className="btn mt-auto mb-3" style={{ backgroundColor: 'var(--secondary-color)', color: 'white' }}>Sign Up Free</a>
                 </div>
               </div>
             </div>
@@ -115,7 +115,7 @@ function Main() {
                   <p className="card-text flex-grow-1">
                     As a member, like, comment, and react to posts. Edit or delete your own content, and engage with the community.
                   </p>
-                  <a href="/login" className="btn mt-auto" style={{ backgroundColor: 'var(--secondary-color)', color: 'white' }}>Get Started</a>
+                  <a href="/login" className="btn mt-auto mb-3" style={{ backgroundColor: 'var(--secondary-color)', color: 'white' }}>Get Started</a>
                 </div>
               </div>
             </div>
