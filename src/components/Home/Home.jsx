@@ -7,7 +7,7 @@ import { ToastContainer, toast } from 'react-toastify';
 
 import { Suspense } from 'react';
 import { useSelector } from 'react-redux';
-import Loading from '../Loading/Loading';
+import Loading from '../UniversalLoading/UniversalLoading';
 
 const Profile = React.lazy(() => import('../Profile/Profile'));
 const Hobbies = React.lazy(() => import('../Hobbys/Hobbies'));

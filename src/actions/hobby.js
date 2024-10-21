@@ -1,4 +1,5 @@
 import * as api from '../api/index';
+import { clearLoading, setLoading } from './loading';
 
 import {
   CREATE,
@@ -21,37 +22,42 @@ const handleError = (dispatch, error) => {
 
 export const getPosts = () => async (dispatch) => {
   try {
+    dispatch(setLoading());
     const { data } = await api.fetchPosts();
     dispatch({ type: FETCH_ALL, payload: data });
-    return data; // Return the fetched data
+    return data;
   } catch (error) {
     handleError(dispatch, error);
-    return []; // Return an empty array in case of error
+    return [];
+  } finally {
+    dispatch(clearLoading());
   }
 };
 
 export const getPost = (id) => async (dispatch) => {
   try {
+    dispatch(setLoading());
     const { data } = await api.fetchPost(id);
     dispatch({ type: FETCH_ONE, payload: data });
   } catch (error) {
     handleError(dispatch, error);
+  } finally {
+    dispatch(clearLoading());
   }
 };
 
 export const createPost = (post, history) => async (dispatch) => {
   try {
-    const creatorName = JSON.parse(localStorage.getItem('profile')).result
-      .firstName;
+    dispatch(setLoading());
+    const creatorName = JSON.parse(localStorage.getItem('profile')).result.firstName;
     const { data } = await api.createPost({ ...post, creatorName });
-
     dispatch({ type: CREATE, payload: data });
-    dispatch(
-      notifyCreate({ message: 'Post created successfully', color: 'success' }),
-    );
+    dispatch(notifyCreate({ message: 'Post created successfully', color: 'success' }));
     history('/hobbies');
   } catch (error) {
     handleError(dispatch, error);
+  } finally {
+    dispatch(clearLoading());
   }
 };
 

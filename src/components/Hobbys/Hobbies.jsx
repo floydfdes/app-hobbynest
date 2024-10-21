@@ -14,7 +14,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { getPosts } from '../../actions/hobby';
 import { createNewHobby } from '../../actions/trigger';
-import Loading from '../Loading/Loading';
 import Hobbie from './Hobby/Hobby';
 
 function Hobbies() {
@@ -45,8 +44,6 @@ function Hobbies() {
   const clearSearch = () => {
     setSearchValue('');
   };
-
-  if (hobbies.length === 0) return <Loading />;
 
   return (
     <Container maxWidth="lg">

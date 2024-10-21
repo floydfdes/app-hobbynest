@@ -1,4 +1,5 @@
 import * as api from '../api/index';
+import { clearLoading, setLoading } from './loading';
 
 import {
   CREATE_NEW_COMMENT,
@@ -16,30 +17,39 @@ const handleError = (dispatch, error) => {
 
 export const createNewComment = (postId, commentData) => async (dispatch) => {
   try {
+    dispatch(setLoading());
     const { data } = await api.createComment(postId, { content: commentData });
     dispatch({ type: CREATE_NEW_COMMENT, payload: data });
   } catch (error) {
     handleError(dispatch, error);
+  } finally {
+    dispatch(clearLoading());
   }
 };
 
 export const updateComment = (postId, commentId, updatedCommentData) => async (dispatch) => {
   try {
+    dispatch(setLoading());
     const { data } = await api.updateComment(postId, commentId, {
       content: updatedCommentData,
     });
     dispatch({ type: UPDATE_COMMENT, payload: data });
   } catch (error) {
     handleError(dispatch, error);
+  } finally {
+    dispatch(clearLoading());
   }
 };
 
 export const deleteComment = (postId, commentId) => async (dispatch) => {
   try {
+    dispatch(setLoading());
     const { data } = await api.deleteComment(postId, commentId);
     dispatch({ type: DELETE_COMMENT, payload: data });
   } catch (error) {
     handleError(dispatch, error);
+  } finally {
+    dispatch(clearLoading());
   }
 };
 
