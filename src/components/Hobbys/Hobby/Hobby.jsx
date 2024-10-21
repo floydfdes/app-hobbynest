@@ -31,9 +31,10 @@ const Hobby = ({ id, title, creatorName, tags, description, likes, creator }) =>
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem('profile'));
 
-  const handleExpandClick = () => {
+  const handleExpandClick = useCallback((event) => {
+    event.stopPropagation();
     setExpanded(!expanded);
-  };
+  }, [expanded]);
 
   const updateHobby = useCallback((event) => {
     event.stopPropagation();
