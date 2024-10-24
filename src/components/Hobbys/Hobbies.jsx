@@ -80,13 +80,13 @@ function Hobbies() {
               onClick={handleCreateHobby}
               startIcon={<AddIcon />}
               sx={{
-                height: '56px', // Adjust this value to match your TextField height
-                textTransform: 'none', // Optional: removes uppercase transformation
+                height: '56px',
+                textTransform: 'none',
                 backgroundColor: 'var(--secondary-color)',
                 '&:hover': {
                   backgroundColor: 'var(--secondary-color-dark, var(--secondary-color))',
                 },
-                color: 'var(--secondary-color-text, #ffffff)', // Adjust text color as needed
+                color: 'var(--secondary-color-text, #ffffff)',
               }}
             >
               Add Hobby

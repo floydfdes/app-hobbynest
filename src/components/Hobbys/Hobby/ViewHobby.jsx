@@ -10,7 +10,6 @@ import {
   ThumbUp,
 } from '@mui/icons-material';
 import {
-  Avatar,
   Box,
   Button,
   Card,
@@ -20,7 +19,7 @@ import {
   Divider,
   IconButton,
   TextField,
-  Typography,
+  Typography
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import moment from 'moment';
@@ -128,7 +127,6 @@ const ViewHobby = () => {
   }, [currentHobby]);
 
   useEffect(() => {
-    // Fetch other hobbies only once when the component mounts
     dispatch(getPosts()).then((posts) => {
       const filteredPosts = posts.filter((post) => post._id !== hobbyid);
       setOtherHobbies(filteredPosts);
@@ -158,8 +156,7 @@ const ViewHobby = () => {
     setNewComment(initialCommentState);
   };
 
-  const { title, description, tags, creatorName, date, comments, id, _id } =
-    formData;
+  const { title, description, tags, creatorName, date, comments, id, _id } = formData;
 
   const handleLikePost = () => {
     dispatch(likePost(formData.id || formData._id));
@@ -183,7 +180,7 @@ const ViewHobby = () => {
   const handleScroll = (direction) => {
     const container = otherHobbiesRef.current;
     if (container) {
-      const scrollAmount = 220; // Adjust this value based on your card width + margin
+      const scrollAmount = 220;
       const newPosition = direction === 'next'
         ? scrollPosition + scrollAmount
         : scrollPosition - scrollAmount;
@@ -207,35 +204,27 @@ const ViewHobby = () => {
         {formData ? (
           <Card elevation={3} sx={{ mx: { xs: 0, sm: 2 } }}>
             <CardContent sx={{ p: { xs: 2, sm: 4 } }}>
-              {/* Use flexbox with column direction on mobile, row on larger screens */}
               <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' } }}>
-                {/* Left column: Post details */}
-                <Box sx={{ flex: 1, pr: { xs: 0, md: 3 }, width: { xs: '100%', md: '50%' }, mb: { xs: 3, md: 0 } }}>
-                  <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
-                    <Avatar sx={{ width: 56, height: 56, mr: 2 }}>{creatorName[0]}</Avatar>
-                    <Box>
-                      <Typography variant="h6">{creatorName}</Typography>
-                      <Typography variant="caption" color="text.secondary">
-                        {formatDate(date)}
-                      </Typography>
-                    </Box>
-                  </Box>
-                  <Typography variant="h4" gutterBottom sx={{ fontSize: { xs: '1.5rem', sm: '2rem' } }}>
+                <Box sx={{ flex: 1, pr: { xs: 0, md: 3 }, width: { xs: '100%', md: '50%' } }}>
+                  <Typography variant="h4" gutterBottom>
                     {title}
                   </Typography>
+                  <Typography variant="subtitle1" color="text.secondary" gutterBottom>
+                    by {creatorName} • {formatDate(date)}
+                  </Typography>
+                  <Box sx={{ my: 2 }}>
+                    {tags.map((tag) => (
+                      <Chip key={tag} label={tag} sx={{ mr: 1, mb: 1 }} />
+                    ))}
+                  </Box>
                   <Typography variant="body1" paragraph>
                     {description}
                   </Typography>
-                  <Box sx={{ mb: 3 }}>
-                    {tags.map((tag) => (
-                      <Chip key={tag} label={tag} variant="outlined" size="small" sx={{ mr: 1, mb: 1 }} />
-                    ))}
-                  </Box>
-                  <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
+                  <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
                     <IconButton onClick={handleLikePost}>
                       <ThumbUp />
                     </IconButton>
-                    <Typography variant="body2" sx={{ mr: 2 }}>
+                    <Typography variant="body2">
                       {formData.likes?.length || 0}
                     </Typography>
                     <IconButton onClick={handleDislikePost}>
@@ -245,13 +234,10 @@ const ViewHobby = () => {
                       {formData.dislikes?.length || 0}
                     </Typography>
                   </Box>
-
-                  {/* Other Hobbies Section */}
                   <Typography variant="h6" gutterBottom>
                     Other Hobbies
                   </Typography>
                   <Box sx={{ position: 'relative' }}>
-                    {/* Hide scroll buttons on mobile */}
                     <Box sx={{ display: { xs: 'none', md: 'block' } }}>
                       <IconButton
                         sx={{
@@ -327,7 +313,6 @@ const ViewHobby = () => {
                         </Box>
                       ))}
                     </Box>
-                    {/* Hide scroll buttons on mobile */}
                     <Box sx={{ display: { xs: 'none', md: 'block' } }}>
                       <IconButton
                         sx={{
@@ -345,8 +330,6 @@ const ViewHobby = () => {
                       </IconButton>
                     </Box>
                   </Box>
-
-                  {/* Back to Hobbies button */}
                   <Button
                     startIcon={<ArrowBack />}
                     onClick={handleBackToHobbies}
@@ -364,8 +347,6 @@ const ViewHobby = () => {
                     Back to Hobbies
                   </Button>
                 </Box>
-
-                {/* Right column: Comments */}
                 <Box sx={{
                   flex: 1,
                   pl: { xs: 0, md: 3 },

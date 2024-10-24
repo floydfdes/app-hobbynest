@@ -130,7 +130,7 @@ const CreateHobby = () => {
                   color: secondaryColor,
                   borderColor: secondaryColor,
                   '&:hover': {
-                    backgroundColor: `${secondaryColor}1A`, // 10% opacity
+                    backgroundColor: `${secondaryColor}1A`,
                   },
                 }}
                 variant="outlined"
@@ -165,7 +165,7 @@ const CreateHobby = () => {
             borderColor: secondaryColor,
             '&:hover': {
               borderColor: secondaryColor,
-              backgroundColor: `${secondaryColor}1A`, // 10% opacity
+              backgroundColor: `${secondaryColor}1A`,
             },
           }}
         >
