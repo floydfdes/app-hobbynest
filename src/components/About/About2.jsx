@@ -46,7 +46,7 @@ const About2 = function About2() {
               Floyd Fernandes
             </Typography>
             <Typography paragraph>
-              Hello! I&apos;m a 24-year-old software developer from Goa, India. I specialize in
+              Hello! I&apos;m a 25-year-old software developer from Goa, India. I specialize in
               Angular, React, and Python-based projects. My passion lies in creating innovative
               digital solutions and bringing people together through technology.
             </Typography>
