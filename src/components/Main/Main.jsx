@@ -9,7 +9,6 @@ import SearchIcon from '@mui/icons-material/Search';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import LandingImage from '../../assets/images/hobby-nest-bird.svg';
 import Contact from '../Contact/Contact';
 import Footer from '../Footer/Footer';
@@ -37,8 +36,6 @@ const featureSections = [
 ];
 
 function Main() {
-  const history = useNavigate();
-
   return (
     <>
       {/* Hero Section */}

@@ -24,7 +24,7 @@
     "prefer-const": "off",
     "no-restricted-syntax": "off",
     "max-len": "off",
-    "no-unused-vars": "off",
+    "no-unused-vars": "warn",
     "arrow-parens": "off",
     "react/jsx-one-expression-per-line": "off",
     "jsx-a11y/control-has-associated-label": "off",

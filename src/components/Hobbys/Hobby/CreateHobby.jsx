@@ -18,8 +18,6 @@ const initialErrorState = {
   description: '',
 };
 
-const formFields = ['title', 'tags', 'description'];
-
 const CreateHobby = () => {
   const [formData, setFormData] = useState(initialFormState);
   const [errors, setErrors] = useState(initialErrorState);
