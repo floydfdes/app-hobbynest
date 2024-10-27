@@ -34,7 +34,7 @@ const EditModal = ({ open, setOpen, userDetails }) => {
   const handleClose = (action) => {
     if (action) {
       const { firstName, lastName, age } = user;
-      let formData = { firstName, lastName, age };
+      const formData = { firstName, lastName, age };
       const isValid = validation(formData);
       if (!isValid) return;
       if (user) dispatch(editUser(user._id, user, history));
@@ -50,7 +50,7 @@ const EditModal = ({ open, setOpen, userDetails }) => {
     let isValid = true;
     setErrors(initialErrorState);
 
-    for (let entry in formData) {
+    for (const entry in formData) {
       if (!formData[entry]) {
         setErrors((prevState) => ({
           ...prevState,
@@ -58,7 +58,7 @@ const EditModal = ({ open, setOpen, userDetails }) => {
         }));
         isValid = false;
       } else if (formData[entry]) {
-        let regularExp = new RegExp(fieldPattern[entry]);
+        const regularExp = new RegExp(fieldPattern[entry]);
         if (!regularExp.test(formData[entry])) {
           setErrors((prevState) => ({
             ...prevState,

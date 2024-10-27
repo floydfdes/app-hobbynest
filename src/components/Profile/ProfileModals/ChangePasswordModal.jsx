@@ -53,7 +53,7 @@ const ChangePasswordModal = ({ open, setOpen, userDetails }) => {
     let isValid = true;
     setErrors(initialErrorState);
 
-    for (let entry in formData) {
+    for (const entry in formData) {
       if (!formData[entry]) {
         setErrors((prevState) => ({
           ...prevState,

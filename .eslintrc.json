@@ -21,7 +21,7 @@
     "react/jsx-props-no-spreading": "off",
     "import/order": "off",
     "import/no-duplicates": "off",
-    "prefer-const": "off",
+    "prefer-const": "warn",
     "no-restricted-syntax": "off",
     "max-len": "off",
     "no-unused-vars": "warn",

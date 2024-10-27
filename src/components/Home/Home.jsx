@@ -22,7 +22,7 @@ function Home() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
-  let notification = useSelector((state) => state.toastNotificationReducer);
+  const notification = useSelector((state) => state.toastNotificationReducer);
 
   const notify = (notification) => {
     if (notification.message) toast[notification.color](notification.message);
@@ -36,7 +36,7 @@ function Home() {
     notify(notification);
   }, [notification]);
   const setScreenHeight = () => {
-    let heightOfScreen = window.innerHeight;
+    const heightOfScreen = window.innerHeight;
     document.documentElement.style.setProperty(
       '--screen-height',
       heightOfScreen + 'px',
