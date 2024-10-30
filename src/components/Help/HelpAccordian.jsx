@@ -7,53 +7,47 @@ import { help } from '../../Data/Data';
 
 ReactModal.setAppElement('#root');
 
-const HelpAccordian = (props) => {
-  return (
-    <ReactModal
-      id="helpAccordian"
-      isOpen={props.isHelpModelOpen}
-      onRequestClose={() => {
-        props.setIsHelpModelOpen(false);
-      }}
-    >
-      <div className="accordion" id="accordionExample">
-        {help.map((element) => {
-          return (
-            <div className="accordion-item" key={element.id}>
-              <h2 className="accordion-header" id={'heading' + element.id}>
-                <button
-                  className="accordion-button collapsed"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target={'#collapse' + element.id}
-                  aria-expanded="true"
-                  aria-controls={'collapse' + element.id}
-                >
-                  {element.helpTitle}
-                </button>
-              </h2>
-              <div
-                id={'collapse' + element.id}
-                className="accordion-collapse collapse hide"
-                aria-labelledby={'heading' + element.id}
-                data-bs-parent="#accordionExample"
-              >
-                <div
-                  className="accordion-body"
-                  dangerouslySetInnerHTML={{ __html: element.helpContent }}
-                ></div>
-              </div>
-            </div>
-          );
-        })}
-      </div>
-    </ReactModal>
-  );
-};
+const HelpAccordion = ({ isHelpModelOpen, setIsHelpModelOpen }) => (
+  <ReactModal
+    id="helpAccordion"
+    isOpen={isHelpModelOpen}
+    onRequestClose={() => setIsHelpModelOpen(false)}
+  >
+    <div className="accordion" id="accordionExample">
+      {help.map(({ id, helpTitle, helpContent }) => (
+        <div className="accordion-item" key={id}>
+          <h2 className="accordion-header" id={`heading${id}`}>
+            <button
+              className="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target={`#collapse${id}`}
+              aria-expanded="false"
+              aria-controls={`collapse${id}`}
+            >
+              {helpTitle}
+            </button>
+          </h2>
+          <div
+            id={`collapse${id}`}
+            className="accordion-collapse collapse"
+            aria-labelledby={`heading${id}`}
+            data-bs-parent="#accordionExample"
+          >
+            <div
+              className="accordion-body"
+              dangerouslySetInnerHTML={{ __html: helpContent }}
+            ></div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </ReactModal>
+);
 
-HelpAccordian.propTypes = {
+HelpAccordion.propTypes = {
   isHelpModelOpen: PropTypes.bool.isRequired,
   setIsHelpModelOpen: PropTypes.func.isRequired,
 };
 
-export default HelpAccordian;
+export default HelpAccordion;
