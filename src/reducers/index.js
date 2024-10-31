@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import adminReducer from './adminReducer';
 import authReducer from './auth';
 import formReducer from './formReducer';
 import hobby from './hobby';
@@ -11,6 +12,7 @@ const reducers = combineReducers({
   formReducer,
   toastNotificationReducer,
   loading: loadingReducer,
+  admin: adminReducer,
 });
 
 export default reducers;

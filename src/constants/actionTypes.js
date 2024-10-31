@@ -28,3 +28,7 @@ export const DISLIKE_COMMENT = 'DISLIKE_COMMENT';
 
 export const SET_LOADING = 'SET_LOADING';
 export const CLEAR_LOADING = 'CLEAR_LOADING';
+
+export const FETCH_USERS = 'FETCH_USERS';
+export const FETCH_POSTS = 'FETCH_POSTS';
+export const FETCH_COMMENTS = 'FETCH_COMMENTS';

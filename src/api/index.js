@@ -36,3 +36,7 @@ export const updateComment = (postId, commentId, updatedCommentData) => API.patc
 export const deleteComment = (postId, commentId) => API.delete(`/comment/${postId}/comments/${commentId}`);
 export const likeComment = (postId, commentId) => API.post(`/comment/${postId}/comments/${commentId}/like`);
 export const dislikeComment = (postId, commentId) => API.post(`/comment/${postId}/comments/${commentId}/dislike`);
+
+// Admin endpoints
+export const fetchUsers = () => API.get('/users');
+export const fetchComments = () => API.get('/comments');

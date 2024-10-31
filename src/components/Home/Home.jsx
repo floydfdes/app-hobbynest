@@ -7,6 +7,7 @@ import { ToastContainer, toast } from 'react-toastify';
 
 import { Suspense } from 'react';
 import { useSelector } from 'react-redux';
+import AdminDashboard from '../Admin/AdminDashboard';
 import Loading from '../UniversalLoading/UniversalLoading';
 
 const Profile = React.lazy(() => import('../Profile/Profile'));
@@ -58,6 +59,8 @@ function Home() {
             <Route path="/hobbies" element={<Hobbies />} exact />
             <Route path="/hobbies/create" element={<CreateHobby />} exact />
             <Route path="/hobbies/update" element={<CreateHobby />} exact />
+            <Route path="/admin" element={<AdminDashboard />} exact />
+
             <Route
               path="/hobbies/view/:hobbyid"
               element={<ViewHobby />}
