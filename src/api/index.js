@@ -38,5 +38,4 @@ export const likeComment = (postId, commentId) => API.post(`/comment/${postId}/c
 export const dislikeComment = (postId, commentId) => API.post(`/comment/${postId}/comments/${commentId}/dislike`);
 
 // Admin endpoints
-export const fetchUsers = () => API.get('/users');
-export const fetchComments = () => API.get('/comments');
+export const fetchUsers = () => API.get('/auth/users');

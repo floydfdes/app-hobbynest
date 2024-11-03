@@ -1,5 +1,5 @@
 import * as api from '../api/index';
-import { FETCH_COMMENTS, FETCH_POSTS, FETCH_USERS } from '../constants/actionTypes';
+import { FETCH_POSTS, FETCH_USERS } from '../constants/actionTypes';
 import { notifyError } from './toastNotifications';
 
 const handleError = (dispatch, error) => {
@@ -24,10 +24,10 @@ export const fetchPosts = () => async (dispatch) => {
     }
 };
 
-export const fetchComments = () => async (dispatch) => {
+export const updatePost = (postId, updatedData) => async (dispatch) => {
     try {
-        const { data } = await api.fetchComments();
-        dispatch({ type: FETCH_COMMENTS, payload: data });
+        const { data } = await api.updatePost(postId, updatedData);
+        dispatch({ type: FETCH_POSTS, payload: data });
     } catch (error) {
         handleError(dispatch, error);
     }
