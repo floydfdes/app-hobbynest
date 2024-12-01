@@ -16,7 +16,7 @@ const Main = React.lazy(() => import('../Main/Main'));
 const Auth = React.lazy(() => import('../Auth/Auth'));
 const CreateHobby = React.lazy(() => import('../Hobbys/Hobby/CreateHobby'));
 const ViewHobby = React.lazy(() => import('../Hobbys/Hobby/ViewHobby'));
-//const About2 = React.lazy(() => import('../About/About2'));
+// const About2 = React.lazy(() => import('../About/About2'));
 
 function Home() {
   const { pathname } = useLocation();
