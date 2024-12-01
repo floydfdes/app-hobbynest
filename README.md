@@ -1,15 +1,15 @@
-# HobbyNest
+# InterestHub
 
-HobbyNest is a vibrant web application designed for hobby enthusiasts to share, discover, and connect over their favorite pastimes. Built with React.js and powered by a robust Express.js backend, HobbyNest offers a seamless and engaging user experience for hobby exploration and community building.
+InterestHub is a vibrant web application designed for individuals to share, discover, and connect over their interests and passions. Built with React.js and powered by a robust Express.js backend, InterestHub offers a seamless and engaging user experience for interest exploration and community building.
 
 ## 🌟 Features
 
 - **User Authentication**: Secure signup and login functionality.
-- **Hobby Posts**: Create, view, update, and delete posts about your hobbies.
+- **Interest Posts**: Create, view, update, and delete posts about your interests.
 - **Social Interaction**: Like and comment on posts to engage with other users.
 - **Search Functionality**: Find posts based on keywords or tags.
 - **Responsive Design**: Optimized for both desktop and mobile views.
-- **User Profiles**: Personalized spaces for users to showcase their hobbies.
+- **User Profiles**: Personalized spaces for users to showcase their interests.
 - **Contact Form**: Easy communication channel for feedback and support.
 
 ## 🛠️ Technologies Used
@@ -35,32 +35,5 @@ HobbyNest is a vibrant web application designed for hobby enthusiasts to share, 
 ## 🚀 Getting Started
 
 1. Clone the repository:
-   ```
-   git clone https://github.com/floydfdes/app-hobbynest.git
-   ```
-
-2. Install dependencies:
-   ```
-   cd hobbynest
-   npm install
-   ```
-
-3. Set up environment variables:
-   Create a `.env` file in the root directory and add necessary variables.
-
-4. Start the development server:
-   ```
-   npm start
-   ```
-
-5. Open `http://localhost:3000` in your browser to view the app.
-
-
-
-## 📞 Contact
-
-For any queries or support, please reach out to us through the contact form in the application or email us at floydprogrammer@gmail.com.
-
----
-
-Happy Hobbying with HobbyNest! 🎨🏋️‍♀️🎸
+   ```bash
+   git clone https://github.com/floydfdes/app-interesthub.git

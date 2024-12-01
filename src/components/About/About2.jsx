@@ -68,12 +68,12 @@ const About2 = function About2() {
       <Grid container spacing={4}>
         <Grid item xs={12} md={6}>
           <Typography variant="h4" gutterBottom>
-            About HobbyNest
+            About InterestHub
           </Typography>
           <Typography paragraph>
-            HobbyNest is a vibrant platform for hobby enthusiasts, built with ReactJS, ExpressJS,
-            MongoDB, and Bootstrap. It&apos;s designed to empower users to share their passions
-            and connect with like-minded individuals.
+            InterestHub is a dynamic platform for individuals to share their interests, built with ReactJS, ExpressJS,
+            MongoDB, and Bootstrap. It&apos;s designed to empower users to showcase their passions and connect with
+            like-minded individuals.
           </Typography>
           <Typography paragraph>
             Key features:
@@ -81,17 +81,17 @@ const About2 = function About2() {
           <ul>
             <li>
               <Typography>
-                Share your hobbies and experiences through engaging posts
+                Share your interests and experiences through engaging posts
               </Typography>
             </li>
             <li>
               <Typography>
-                Discover new interests and get inspired by our diverse community
+                Discover new passions and get inspired by our diverse community
               </Typography>
             </li>
             <li>
               <Typography>
-                Connect with fellow enthusiasts and make new friends
+                Connect with fellow enthusiasts and make meaningful connections
               </Typography>
             </li>
             <li>
@@ -107,14 +107,14 @@ const About2 = function About2() {
           </Typography>
           <Typography paragraph>
             As a developer, my goal is to create applications that not only showcase technical
-            excellence but also bring value to users&apos; lives. HobbyNest is a testament to
+            excellence but also bring value to users&apos; lives. InterestHub is a testament to
             this vision, combining my skills in web development with my passion for fostering
             communities.
           </Typography>
           <Typography paragraph>
-            I believe in the power of hobbies to enrich our lives and bring people together.
-            Through HobbyNest, I aim to provide a platform where everyone can celebrate their
-            interests, learn from others, and find joy in shared passions.
+            I believe in the power of shared interests to enrich our lives and bring people together.
+            Through InterestHub, I aim to provide a platform where everyone can celebrate their
+            passions, learn from others, and find joy in shared experiences.
           </Typography>
           <Typography>
             Join us on this exciting journey of exploration and connection!

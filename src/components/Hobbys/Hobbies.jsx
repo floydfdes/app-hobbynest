@@ -1,6 +1,3 @@
-import AddIcon from '@mui/icons-material/Add';
-import ClearIcon from '@mui/icons-material/Clear';
-import SearchIcon from '@mui/icons-material/Search';
 import {
   Box,
   Button,
@@ -11,6 +8,10 @@ import {
 } from '@mui/material';
 import React, { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
+import AddIcon from '@mui/icons-material/Add';
+import ClearIcon from '@mui/icons-material/Clear';
+import SearchIcon from '@mui/icons-material/Search';
 import { useNavigate } from 'react-router-dom';
 import { getPosts } from '../../actions/hobby';
 import { createNewHobby } from '../../actions/trigger';
@@ -51,14 +52,14 @@ function Hobbies() {
         <Grid container spacing={2} alignItems="center">
           <Grid item xs={12} md={4}>
             <Typography variant="h4" component="h2" color="primary">
-              Hobbies
+              Interests
             </Typography>
           </Grid>
           <Grid item xs={12} md={6}>
             <TextField
               fullWidth
               variant="outlined"
-              placeholder="Search hobbies..."
+              placeholder="Search Interests..."
               value={searchValue}
               onChange={handleSearch}
               InputProps={{
@@ -89,7 +90,7 @@ function Hobbies() {
                 color: 'var(--secondary-color-text, #ffffff)',
               }}
             >
-              Add Hobby
+              Add Interest
             </Button>
           </Grid>
         </Grid>

@@ -1,10 +1,11 @@
 import './styles.scss';
 
-import MenuIcon from '@mui/icons-material/Menu';
 import { AppBar, Avatar, Button, Drawer, IconButton, List, ListItem, ListItemText, Menu, MenuItem, Toolbar, Typography, useMediaQuery, useTheme } from '@mui/material';
 import React, { useCallback, useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+
+import MenuIcon from '@mui/icons-material/Menu';
+import { useDispatch } from 'react-redux';
 
 const Appnavbar = () => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
@@ -95,12 +96,12 @@ const Appnavbar = () => {
             color: 'inherit',
           }}
         >
-          HobbyNest
+          InterestHub
         </Typography>
         <div className="navbar-right">
           {!isMobile && (
             <>
-              <Button color="inherit" component={Link} to="/hobbies" sx={{ padding: '6px 8px' }}>Hobbies</Button>
+              <Button color="inherit" component={Link} to="/hobbies" sx={{ padding: '6px 8px' }}>Interests</Button>
               <Button color="inherit" component={Link} to="/about" sx={{ padding: '6px 8px' }}>About</Button>
             </>
           )}

@@ -1,3 +1,5 @@
+import './Hobby.scss';
+
 import {
   Delete as DeleteIcon,
   Edit as EditIcon,
@@ -6,23 +8,27 @@ import {
   Favorite as FavoriteIcon
 } from '@mui/icons-material';
 import {
-  Avatar, Box,
+  Avatar,
+  Box,
   Button,
   Card,
   CardActions,
   CardContent,
   Chip,
-  Dialog, DialogActions, DialogContent, DialogContentText,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
   DialogTitle,
   IconButton,
   Typography
 } from '@mui/material';
 import React, { useCallback, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import { deletePost, likePost } from '../../../actions/hobby';
 import { editHobby, viewHobby } from '../../../actions/trigger';
-import './Hobby.scss';
+
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const Hobby = ({ id, title, creatorName, tags, description, likes, creator }) => {
   const [expanded, setExpanded] = useState(false);
@@ -124,7 +130,7 @@ const Hobby = ({ id, title, creatorName, tags, description, likes, creator }) =>
         <DialogTitle>Confirm Delete</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Are you sure you want to permanently delete this hobby?
+            Are you sure you want to permanently delete this interest?
           </DialogContentText>
         </DialogContent>
         <DialogActions>

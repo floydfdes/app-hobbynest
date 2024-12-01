@@ -1,10 +1,11 @@
-import AddIcon from '@mui/icons-material/Add';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { Box, Button, Chip, Paper, TextField, Typography } from '@mui/material';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { createPost, updatePost } from '../../../actions/hobby';
+
+import AddIcon from '@mui/icons-material/Add';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 const initialFormState = {
   title: '',
@@ -88,10 +89,10 @@ const CreateHobby = () => {
   const formContent = useMemo(() => (
     <form onSubmit={handleSubmit}>
       <Typography variant="h4" gutterBottom>
-        {formData.id ? 'Update your' : 'Add a'} hobby
+        {formData.id ? 'Update your' : 'Add a'} Interest
       </Typography>
       <Typography variant="subtitle1" gutterBottom>
-        Please specify your Hobby
+        Please specify your Interest
       </Typography>
 
       <Box mb={3}>
@@ -167,7 +168,7 @@ const CreateHobby = () => {
             },
           }}
         >
-          Back to Hobbies
+          Back to Interests
         </Button>
         <Button
           type="submit"
@@ -182,7 +183,7 @@ const CreateHobby = () => {
             },
           }}
         >
-          {formData.id ? 'Update' : 'Create'} Hobby
+          {formData.id ? 'Update' : 'Create'} Interest
         </Button>
       </Box>
     </form>

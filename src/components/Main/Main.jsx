@@ -9,7 +9,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import React from 'react';
-import LandingImage from '../../assets/images/hobby-nest-bird.svg';
+import LandingImage from '../../assets/images/interest-sharing-bird.svg'; // Update to new logo if applicable
 import Contact from '../Contact/Contact';
 import Footer from '../Footer/Footer';
 
@@ -18,7 +18,7 @@ const featureSections = [
     id: "visitors",
     title: "For All Visitors",
     features: [
-      { id: "browse", icon: <SearchIcon />, text: "Browse and view hobby posts" },
+      { id: "browse", icon: <SearchIcon />, text: "Browse and view posts" },
       { id: "explore", icon: <ExploreIcon />, text: "Explore diverse interests" }
     ]
   },
@@ -26,7 +26,7 @@ const featureSections = [
     id: "members",
     title: "For Registered Members",
     features: [
-      { id: "create", icon: <CreateIcon />, text: "Create your own hobby posts" },
+      { id: "create", icon: <CreateIcon />, text: "Create your own posts" },
       { id: "like", icon: <ThumbUpIcon />, text: "Like and dislike posts" },
       { id: "comment", icon: <CommentIcon />, text: "Comment on posts" },
       { id: "likeComments", icon: <FavoriteIcon />, text: "Like other people's comments" },
@@ -44,13 +44,13 @@ function Main() {
           <div className="main-page-mobile-center main-page-web">
             <div className="main-page-sub-div">
               <h1 className="main-page-heading my-3">
-                Discover and Share Hobbies on HobbyNest
+                Discover and Share Interests on the Interest Sharing Platform
               </h1>
               <p className="main-page-sub-heading my-0">
-                Explore a world of hobbies, connect with enthusiasts, and share your passions. Join our free community to unlock more features and interactions.
+                Explore a world of interests, connect with like-minded people, and share your passions. Join our free community to unlock more features and interactions.
               </p>
               <div className="my-3 main-page-button-div">
-                <a href="/hobbies" className="btn main-page-button" style={{ backgroundColor: 'var(--secondary-color)', color: 'white' }}>Explore Hobbies</a>
+                <a href="/hobbies" className="btn main-page-button" style={{ backgroundColor: 'var(--secondary-color)', color: 'white' }}>Explore Interests</a>
                 <a href="/login" className="btn main-page-button-secondary">Sign Up Free</a>
               </div>
             </div>
@@ -60,7 +60,7 @@ function Main() {
           <img
             src={LandingImage}
             loading="lazy"
-            alt="HobbyNest Community"
+            alt="Interest Sharing Platform Community"
             width={650}
             height={450}
           />
@@ -70,7 +70,7 @@ function Main() {
       {/* Feature Cards */}
       <div id="explore" className="container-fluid py-5" style={{ backgroundColor: 'var(--secondary-color)' }}>
         <div className="container">
-          <h4 className="text-center mb-4 text-white">How HobbyNest Works</h4>
+          <h4 className="text-center mb-4 text-white">How the Interest Sharing Platform Works</h4>
           <div className="row g-4">
             <div className="col-md-4 col-lg-4 col-sm-12 mb-4">
               <div className="card shadow text-center h-100">
@@ -78,11 +78,11 @@ function Main() {
                   <div>
                     <VisibilityIcon style={{ fontSize: '4rem', fill: 'var(--secondary-color)' }} />
                   </div>
-                  <h5 className="card-title">Explore Hobbies</h5>
+                  <h5 className="card-title">Explore Interests</h5>
                   <p className="card-text flex-grow-1">
-                    Browse through a diverse range of hobbies shared by our community. Get inspired and discover new interests without signing up.
+                    Browse through a diverse range of interests shared by our community. Get inspired and discover new passions without signing up.
                   </p>
-                  <a href="/hobbies" className="btn mt-auto mb-3" style={{ backgroundColor: 'var(--secondary-color)', color: 'white' }}>View Hobbies</a>
+                  <a href="/hobbies" className="btn mt-auto mb-3" style={{ backgroundColor: 'var(--secondary-color)', color: 'white' }}>View Interests</a>
                 </div>
               </div>
             </div>
@@ -95,7 +95,7 @@ function Main() {
                   </div>
                   <h5 className="card-title">Join Our Community</h5>
                   <p className="card-text flex-grow-1">
-                    Sign up for free to unlock more features. Create your own hobby posts, like, and comment on others&apos; content.
+                    Sign up for free to unlock more features. Create your own posts, like, and comment on others&apos; content.
                   </p>
                   <a href="/login" className="btn mt-auto mb-3" style={{ backgroundColor: 'var(--secondary-color)', color: 'white' }}>Sign Up Free</a>
                 </div>
@@ -122,7 +122,7 @@ function Main() {
 
       {/* Features List */}
       <div className="container mt-5 px-4">
-        <h2 className="text-center mb-4">What You Can Do on HobbyNest</h2>
+        <h2 className="text-center mb-4">What You Can Do on the Interest Sharing Platform</h2>
         <div className="row g-4">
           {featureSections.map((section) => (
             <div key={section.id} className="col-md-6 mb-4">
