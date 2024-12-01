@@ -19,7 +19,7 @@ import {
 } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { deletePost, deleteUser, fetchPosts, fetchUsers, updatePost } from '../../actions/adminActions';
+import { deletePost, fetchPosts, fetchUsers, updatePost } from '../../actions/adminActions';
 
 const AdminDashboard = () => {
     const dispatch = useDispatch();
@@ -29,6 +29,7 @@ const AdminDashboard = () => {
     const [editedPost, setEditedPost] = useState({});
     const [isDialogOpen, setIsDialogOpen] = useState(false);
     const [currentPostId, setCurrentPostId] = useState(null);
+    const [dialogType, setDialogType] = useState(''); // 'update' or 'delete'
 
     useEffect(() => {
         dispatch(fetchUsers());
@@ -49,49 +50,44 @@ const AdminDashboard = () => {
         }));
     };
 
-    const openDialog = (postId) => {
+    const openDialog = (postId, type) => {
         setCurrentPostId(postId);
+        setDialogType(type);
         setIsDialogOpen(true);
     };
 
     const closeDialog = () => {
         setIsDialogOpen(false);
         setCurrentPostId(null);
+        setDialogType('');
     };
 
-    const handleConfirmUpdate = async () => {
-        const postToUpdate = editedPost[currentPostId];
-        if (postToUpdate) {
-            await dispatch(updatePost(currentPostId, postToUpdate));
-            setEditedPost((prev) => {
-                const { [currentPostId]: _, ...rest } = prev;
-                return rest;
-            });
+    const handleConfirmAction = async () => {
+        if (dialogType === 'update') {
+            const postToUpdate = editedPost[currentPostId];
+            if (postToUpdate) {
+                await dispatch(updatePost(currentPostId, postToUpdate));
+                setEditedPost((prev) => {
+                    const { [currentPostId]: _, ...rest } = prev;
+                    return rest;
+                });
+            }
+        } else if (dialogType === 'delete') {
+            await dispatch(deletePost(currentPostId));
         }
         closeDialog();
     };
 
     const handleBlur = (postId) => {
-        openDialog(postId);
+        openDialog(postId, 'update');
     };
 
-    const handleDeletePost = async (postId) => {
-        const confirmDelete = window.confirm("Are you sure you want to delete this post?");
-        if (confirmDelete) {
-            await dispatch(deletePost(postId));
-        }
-    };
-
-    const handleEditUser = (userId) => {
-        // Placeholder for edit user logic
-        console.log(`Editing user with ID: ${userId}`);
+    const handleDeletePost = (postId) => {
+        openDialog(postId, 'delete');
     };
 
     const handleDeleteUser = async (userId) => {
-        const confirmDelete = window.confirm("Are you sure you want to delete this user?");
-        if (confirmDelete) {
-            await dispatch(deleteUser(userId));
-        }
+        openDialog(userId, 'delete');
     };
 
     return (
@@ -191,15 +187,21 @@ const AdminDashboard = () => {
                 </TableContainer>
             </TabPanel>
             <Dialog open={isDialogOpen} onClose={closeDialog}>
-                <DialogTitle>Confirm Update</DialogTitle>
+                <DialogTitle>
+                    {dialogType === 'update' ? 'Confirm Update' : 'Confirm Delete'}
+                </DialogTitle>
                 <DialogContent>
-                    <DialogContentText>Do you want to commit this update?</DialogContentText>
+                    <DialogContentText>
+                        {dialogType === 'update'
+                            ? 'Do you want to commit this update?'
+                            : 'Are you sure you want to delete this item?'}
+                    </DialogContentText>
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={closeDialog} color="primary">
                         Cancel
                     </Button>
-                    <Button onClick={handleConfirmUpdate} color="primary">
+                    <Button onClick={handleConfirmAction} color="primary">
                         Confirm
                     </Button>
                 </DialogActions>
