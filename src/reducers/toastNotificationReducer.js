@@ -18,6 +18,7 @@ const toastNotificationReducer = (
       NOTIFY_DELETE,
       NOTIFY_SIGNUP,
       NOTIFY_ERROR,
+      NOTIFY_SUCCESS,
     ].includes(type)
   ) {
     return {

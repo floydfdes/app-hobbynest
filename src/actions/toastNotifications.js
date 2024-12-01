@@ -3,7 +3,8 @@ import {
   NOTIFY_DELETE,
   NOTIFY_ERROR,
   NOTIFY_SIGNUP,
-  NOTIFY_UPDATE,
+  NOTIFY_SUCCESS,
+  NOTIFY_UPDATE
 } from '../constants/actionTypes';
 
 export const notifyCreate = (data) => async (dispatch) => {
@@ -45,6 +46,16 @@ export const notifySignup = (data) => async (dispatch) => {
 export const notifyError = (data) => async (dispatch) => {
   try {
     dispatch({ type: NOTIFY_ERROR, payload: data });
+  } catch (error) {
+    // Remove this line:
+    // console.log(error);
+  }
+};
+
+
+export const notifySuccess = (data) => async (dispatch) => {
+  try {
+    dispatch({ type: NOTIFY_SUCCESS, payload: data });
   } catch (error) {
     // Remove this line:
     // console.log(error);
