@@ -165,13 +165,13 @@ const AdminDashboard = () => {
                                     <TableCell>{user.name}</TableCell>
                                     <TableCell>{user.email}</TableCell>
                                     <TableCell>
-                                        <Button
+                                        {/* <Button
                                             variant="contained"
                                             color="primary"
                                             onClick={() => handleEditUser(user._id)}
                                         >
                                             Edit
-                                        </Button>
+                                        </Button> */}
                                         <Button
                                             variant="contained"
                                             color="error"
