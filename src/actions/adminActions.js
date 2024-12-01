@@ -1,8 +1,7 @@
 import * as api from '../api/index';
 
 import { FETCH_POSTS, FETCH_USERS } from '../constants/actionTypes';
-
-import { notifyError } from './toastNotifications';
+import { notifyError, notifySuccess } from './toastNotifications';
 
 const handleError = (dispatch, error) => {
     dispatch(notifyError({ message: error.message, color: 'error' }));

@@ -52,7 +52,6 @@ export const notifyError = (data) => async (dispatch) => {
   }
 };
 
-
 export const notifySuccess = (data) => async (dispatch) => {
   try {
     dispatch({ type: NOTIFY_SUCCESS, payload: data });

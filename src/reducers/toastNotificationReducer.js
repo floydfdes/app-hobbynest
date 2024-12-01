@@ -3,6 +3,7 @@ import {
   NOTIFY_DELETE,
   NOTIFY_ERROR,
   NOTIFY_SIGNUP,
+  NOTIFY_SUCCESS,
   NOTIFY_UPDATE,
 } from '../constants/actionTypes';
 
