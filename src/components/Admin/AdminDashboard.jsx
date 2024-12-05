@@ -91,6 +91,10 @@ const AdminDashboard = () => {
         openDialog(postId, 'delete');
     };
 
+    const handleDeleteUser = (postId) => {
+        openDialog(postId, 'delete');
+    };
+
     return (
         <div className="admin-dashboard" style={{ padding: '2rem' }}>
             <Typography variant="h4" gutterBottom align="center" style={{ fontWeight: 'bold', color: '#1976d2' }}>
