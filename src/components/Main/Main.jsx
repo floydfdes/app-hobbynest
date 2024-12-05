@@ -84,7 +84,7 @@ function Main() {
                   <p className="card-text flex-grow-1 text-center">
                     Browse through a diverse range of interests shared by our community. Get inspired and discover new passions without signing up.
                   </p>
-                  <a href="/hobbies" className="btn mt-auto mb-3">View Interests</a>
+                  <a href="/hobbies" className="btn mt-auto mb-3 feature-card-button">View Interests</a>
                 </div>
               </div>
             </div>
@@ -99,7 +99,7 @@ function Main() {
                   <p className="card-text flex-grow-1 text-center">
                     Sign up for free to unlock more features. Create your own posts, like, and comment on others&apos; content.
                   </p>
-                  <a href="/login" className="btn mt-auto mb-3">Sign Up Free</a>
+                  <a href="/login" className="btn mt-auto mb-3 feature-card-button">Sign Up Free</a>
                 </div>
               </div>
             </div>
@@ -114,7 +114,7 @@ function Main() {
                   <p className="card-text flex-grow-1 text-center">
                     As a member, like, comment, and react to posts. Edit or delete your own content, and engage with the community.
                   </p>
-                  <a href="/login" className="btn mt-auto mb-3">Get Started</a>
+                  <a href="/login" className="btn mt-auto mb-3 feature-card-button">Get Started</a>
                 </div>
               </div>
             </div>

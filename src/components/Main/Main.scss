@@ -6,8 +6,8 @@
     }
 
     .main-page-sub-heading {
-        color: var(--primary-color);
-        font-size: 1.2rem;
+        color: var(--fourt-color);
+        font-size: 1rem;
     }
 
     .main-page-button {
@@ -23,6 +23,7 @@
         background-color: transparent;
         border: 1px solid var(--secondary-color);
         color: var(--secondary-color);
+        margin-left: 1rem;
 
         &:hover {
             color: white;
@@ -86,5 +87,29 @@
                 color: #333;
             }
         }
+    }
+}
+
+.feature-card-button {
+    display: inline-block;
+    background-color: var(--secondary-color);
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+
+    &:hover {
+        background-color: var(--third-color);
+        transform: translateY(-2px);
+        text-decoration: none;
+    }
+
+    &:active {
+        transform: translateY(0);
+        background-color: darken(var(--third-color), 10%);
     }
 }
