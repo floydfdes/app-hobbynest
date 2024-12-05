@@ -1,4 +1,7 @@
 import {
+    Accordion,
+    AccordionDetails,
+    AccordionSummary,
     Box,
     Button,
     Dialog,
@@ -15,12 +18,13 @@ import {
     TableHead,
     TableRow,
     Tabs,
-    TextField,
-    Typography,
+    Typography
 } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { deletePost, fetchPosts, fetchUsers, updatePost } from '../../actions/adminActions';
+
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 const AdminDashboard = () => {
     const dispatch = useDispatch();
@@ -87,10 +91,6 @@ const AdminDashboard = () => {
         openDialog(postId, 'delete');
     };
 
-    const handleDeleteUser = async (userId) => {
-        openDialog(userId, 'delete');
-    };
-
     return (
         <div className="admin-dashboard" style={{ padding: '2rem' }}>
             <Typography variant="h4" gutterBottom align="center" style={{ fontWeight: 'bold', color: '#1976d2' }}>
@@ -112,55 +112,61 @@ const AdminDashboard = () => {
                 <Typography variant="h6" gutterBottom>
                     Posts Management
                 </Typography>
-                <TableContainer component={Paper} elevation={3} style={{ borderRadius: '8px' }}>
-                    <Table>
-                        <TableHead style={{ backgroundColor: '#1976d2' }}>
-                            <TableRow>
-                                <TableCell style={{ color: 'white', fontWeight: 'bold' }}>Title</TableCell>
-                                <TableCell style={{ color: 'white', fontWeight: 'bold' }}>Description</TableCell>
-                                <TableCell style={{ color: 'white', fontWeight: 'bold' }}>Creator</TableCell>
-                                <TableCell style={{ color: 'white', fontWeight: 'bold' }}>Actions</TableCell>
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            {posts.map((post) => (
-                                <TableRow key={post._id}>
-                                    <TableCell>
-                                        <TextField
-                                            fullWidth
-                                            defaultValue={post.title}
-                                            variant="outlined"
-                                            size="small"
-                                            onBlur={() => handleBlur(post._id)}
-                                            onChange={(e) => handleEditPost(post._id, 'title', e.target.value)}
-                                        />
-                                    </TableCell>
-                                    <TableCell>
-                                        <TextField
-                                            fullWidth
-                                            defaultValue={post.description}
-                                            variant="outlined"
-                                            size="small"
-                                            multiline
-                                            onBlur={() => handleBlur(post._id)}
-                                            onChange={(e) => handleEditPost(post._id, 'description', e.target.value)}
-                                        />
-                                    </TableCell>
-                                    <TableCell>{post.creatorName}</TableCell>
-                                    <TableCell>
-                                        <Button
-                                            variant="contained"
-                                            color="error"
-                                            onClick={() => handleDeletePost(post._id)}
-                                        >
-                                            Delete
-                                        </Button>
-                                    </TableCell>
-                                </TableRow>
-                            ))}
-                        </TableBody>
-                    </Table>
-                </TableContainer>
+                {posts.map((post) => (
+                    <Accordion key={post._id} elevation={3} style={{ marginBottom: '1rem', borderRadius: '8px' }}>
+                        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                            <Typography style={{ fontWeight: 'bold' }}>{post.title}</Typography>
+                        </AccordionSummary>
+                        <AccordionDetails>
+                            <Box>
+                                <Typography variant="body1">
+                                    <strong>Description:</strong> {post.description}
+                                </Typography>
+                                <Typography variant="body2">
+                                    <strong>Creator:</strong> {post.creatorName}
+                                </Typography>
+                                <Typography variant="body2">
+                                    <strong>Tags:</strong> {post.tags.join(', ')}
+                                </Typography>
+                                <Typography variant="body2">
+                                    <strong>Likes:</strong> {post.likes.length}
+                                </Typography>
+                                <Typography variant="body2">
+                                    <strong>Date:</strong> {new Date(post.date).toLocaleString()}
+                                </Typography>
+                                <Typography variant="body2">
+                                    <strong>Comments:</strong>
+                                </Typography>
+                                <ul>
+                                    {post.comments.map((comment) => (
+                                        <li key={comment._id}>
+                                            <Typography variant="body2">
+                                                <strong>{comment.content}</strong> by User {comment.userId} (
+                                                {comment.likes.length} likes, {comment.dislikes.length} dislikes)
+                                            </Typography>
+                                        </li>
+                                    ))}
+                                </ul>
+                                <Box display="flex" justifyContent="space-between" marginTop="1rem">
+                                    <Button
+                                        variant="contained"
+                                        color="error"
+                                        onClick={() => handleDeletePost(post._id)}
+                                    >
+                                        Delete Post
+                                    </Button>
+                                    <Button
+                                        variant="contained"
+                                        color="primary"
+                                        onClick={() => openDialog(post._id, 'update')}
+                                    >
+                                        Edit Post
+                                    </Button>
+                                </Box>
+                            </Box>
+                        </AccordionDetails>
+                    </Accordion>
+                ))}
             </TabPanel>
             <TabPanel value={value} index={1}>
                 <Typography variant="h6" gutterBottom>
