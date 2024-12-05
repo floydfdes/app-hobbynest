@@ -1,3 +1,5 @@
+import './Main.scss';
+
 import CommentIcon from '@mui/icons-material/Comment';
 import CreateIcon from '@mui/icons-material/Create';
 import EditIcon from '@mui/icons-material/Edit';
@@ -9,7 +11,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import React from 'react';
-import LandingImage from '../../assets/images/interest-sharing-bird.svg'; // Update to new logo if applicable
+import LandingImage from '../../assets/images/interest-sharing-bird.svg';
 import Contact from '../Contact/Contact';
 import Footer from '../Footer/Footer';
 
@@ -50,7 +52,7 @@ function Main() {
                 Explore a world of interests, connect with like-minded people, and share your passions. Join our free community to unlock more features and interactions.
               </p>
               <div className="my-3 main-page-button-div">
-                <a href="/hobbies" className="btn main-page-button" style={{ backgroundColor: 'var(--secondary-color)', color: 'white' }}>Explore Interests</a>
+                <a href="/hobbies" className="btn main-page-button">Explore Interests</a>
                 <a href="/login" className="btn main-page-button-secondary">Sign Up Free</a>
               </div>
             </div>
@@ -68,21 +70,21 @@ function Main() {
       </div>
 
       {/* Feature Cards */}
-      <div id="explore" className="container-fluid py-5" style={{ backgroundColor: 'var(--secondary-color)' }}>
+      <div id="explore" className="container-fluid py-5 explore-section">
         <div className="container">
           <h4 className="text-center mb-4 text-white">How the Interest Sharing Platform Works</h4>
           <div className="row g-4">
             <div className="col-md-4 col-lg-4 col-sm-12 mb-4">
               <div className="card shadow text-center h-100">
                 <div className="card-body d-flex flex-column align-items-center">
-                  <div className="mb-3" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                    <VisibilityIcon style={{ fontSize: '4rem', fill: 'var(--secondary-color)' }} />
+                  <div className="icon-container mb-3">
+                    <VisibilityIcon className="icon" />
                   </div>
                   <h5 className="card-title">Explore Interests</h5>
                   <p className="card-text flex-grow-1 text-center">
                     Browse through a diverse range of interests shared by our community. Get inspired and discover new passions without signing up.
                   </p>
-                  <a href="/hobbies" className="btn mt-auto mb-3" style={{ backgroundColor: 'var(--secondary-color)', color: 'white' }}>View Interests</a>
+                  <a href="/hobbies" className="btn mt-auto mb-3">View Interests</a>
                 </div>
               </div>
             </div>
@@ -90,14 +92,14 @@ function Main() {
             <div className="col-md-4 col-lg-4 col-sm-12 mb-4">
               <div className="card shadow text-center h-100">
                 <div className="card-body d-flex flex-column align-items-center">
-                  <div className="mb-3" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                    <PersonAddIcon style={{ fontSize: '4rem', fill: 'var(--secondary-color)' }} />
+                  <div className="icon-container mb-3">
+                    <PersonAddIcon className="icon" />
                   </div>
                   <h5 className="card-title">Join Our Community</h5>
                   <p className="card-text flex-grow-1 text-center">
                     Sign up for free to unlock more features. Create your own posts, like, and comment on others&apos; content.
                   </p>
-                  <a href="/login" className="btn mt-auto mb-3" style={{ backgroundColor: 'var(--secondary-color)', color: 'white' }}>Sign Up Free</a>
+                  <a href="/login" className="btn mt-auto mb-3">Sign Up Free</a>
                 </div>
               </div>
             </div>
@@ -105,64 +107,35 @@ function Main() {
             <div className="col-md-4 col-lg-4 col-sm-12 mb-4">
               <div className="card shadow text-center h-100">
                 <div className="card-body d-flex flex-column align-items-center">
-                  <div className="mb-3" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                    <InteractionIcon style={{ fontSize: '4rem', fill: 'var(--secondary-color)' }} />
+                  <div className="icon-container mb-3">
+                    <InteractionIcon className="icon" />
                   </div>
                   <h5 className="card-title">Interact and Share</h5>
                   <p className="card-text flex-grow-1 text-center">
                     As a member, like, comment, and react to posts. Edit or delete your own content, and engage with the community.
                   </p>
-                  <a href="/login" className="btn mt-auto mb-3" style={{ backgroundColor: 'var(--secondary-color)', color: 'white' }}>Get Started</a>
+                  <a href="/login" className="btn mt-auto mb-3">Get Started</a>
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>
 
       {/* Features List */}
       <div className="container mt-5 px-4">
-        <h2 className="text-center mb-4" style={{ color: 'var(--secondary-color)', fontWeight: 'bold' }}>
-          What You Can Do on the Interest Sharing Platform
-        </h2>
+        <h2 className="text-center mb-4 feature-list-heading">What You Can Do on the Interest Sharing Platform</h2>
         <div className="row g-4">
           {featureSections.map((section) => (
             <div key={section.id} className="col-md-6 mb-4">
-              <div className="card h-100 shadow-lg border-0" style={{ backgroundColor: '#f9f9f9' }}>
+              <div className="card h-100 shadow-lg">
                 <div className="card-body">
-                  <h5
-                    className="card-title text-center mb-4"
-                    style={{
-                      color: 'var(--secondary-color)',
-                      fontWeight: '600',
-                      borderBottom: '2px solid var(--secondary-color)',
-                      display: 'inline-block',
-                      paddingBottom: '0.5rem',
-                      margin: '0 auto',
-                    }}
-                  >
-                    {section.title}
-                  </h5>
-                  <ul className="list-unstyled mt-3">
+                  <h5 className="card-title">{section.title}</h5>
+                  <ul>
                     {section.features.map((feature) => (
-                      <li key={feature.id} className="d-flex align-items-start mb-3">
-                        <div
-                          style={{
-                            width: '2.5rem',
-                            height: '2.5rem',
-                            backgroundColor: 'var(--secondary-color)',
-                            color: 'white',
-                            borderRadius: '50%',
-                            display: 'flex',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            marginRight: '1rem',
-                          }}
-                        >
-                          {feature.icon}
-                        </div>
-                        <span style={{ fontSize: '1rem', fontWeight: '500', color: '#333' }}>{feature.text}</span>
+                      <li key={feature.id}>
+                        <div className="icon-container">{feature.icon}</div>
+                        <span>{feature.text}</span>
                       </li>
                     ))}
                   </ul>
