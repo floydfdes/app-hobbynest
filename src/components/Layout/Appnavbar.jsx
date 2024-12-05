@@ -54,9 +54,9 @@ const Appnavbar = () => {
         <ListItem button component={Link} to="/hobbies" onClick={handleDrawerToggle}>
           <ListItemText primary="Hobbies" />
         </ListItem>
-        <ListItem button component={Link} to="/about" onClick={handleDrawerToggle}>
+        {/* <ListItem button component={Link} to="/about" onClick={handleDrawerToggle}>
           <ListItemText primary="About" />
-        </ListItem>
+        </ListItem> */}
         {user && (
           <>
             <ListItem button onClick={goToProfile}>
@@ -102,7 +102,7 @@ const Appnavbar = () => {
           {!isMobile && (
             <>
               <Button color="inherit" component={Link} to="/hobbies" sx={{ padding: '6px 8px' }}>Interests</Button>
-              <Button color="inherit" component={Link} to="/about" sx={{ padding: '6px 8px' }}>About</Button>
+              {/* <Button color="inherit" component={Link} to="/about" sx={{ padding: '6px 8px' }}>About</Button> */}
             </>
           )}
           {!isMobile && user && (
