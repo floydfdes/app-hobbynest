@@ -87,7 +87,6 @@ function Main() {
               </div>
             </div>
 
-
             <div className="col-md-4 col-lg-4 col-sm-12 mb-4">
               <div className="card shadow text-center h-100">
                 <div className="card-body d-flex flex-column align-items-center">
@@ -102,7 +101,6 @@ function Main() {
                 </div>
               </div>
             </div>
-
 
             <div className="col-md-4 col-lg-4 col-sm-12 mb-4">
               <div className="card shadow text-center h-100">
@@ -174,7 +172,6 @@ function Main() {
           ))}
         </div>
       </div>
-
 
       <div className="mt-5">
         <Contact />
