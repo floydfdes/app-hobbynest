@@ -44,16 +44,15 @@ const AdminDashboard = () => {
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
-
-    const handleEditPost = (postId, field, value) => {
-        setEditedPost((prev) => ({
-            ...prev,
-            [postId]: {
-                ...prev[postId],
-                [field]: value,
-            },
-        }));
-    };
+    // const handleEditPost = (postId, field, value) => {
+    //     setEditedPost((prev) => ({
+    //         ...prev,
+    //         [postId]: {
+    //             ...prev[postId],
+    //             [field]: value,
+    //         },
+    //     }));
+    // };
 
     const openDialog = (postId, type) => {
         setCurrentPostId(postId);
@@ -83,10 +82,9 @@ const AdminDashboard = () => {
         closeDialog();
     };
 
-    const handleBlur = (postId) => {
-        openDialog(postId, 'update');
-    };
-
+    // const handleBlur = (postId) => {
+    //     openDialog(postId, 'update');
+    // };
     const handleDeletePost = (postId) => {
         openDialog(postId, 'delete');
     };
