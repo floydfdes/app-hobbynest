@@ -110,6 +110,6 @@
 
     &:active {
         transform: translateY(0);
-        background-color: darken(var(--third-color), 10%);
+        background-color: var(--third-color);
     }
 }

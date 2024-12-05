@@ -15,6 +15,7 @@ import {
     TableHead,
     TableRow,
     Tabs,
+    TextField,
     Typography,
 } from '@mui/material';
 import React, { useEffect, useState } from 'react';
@@ -91,43 +92,56 @@ const AdminDashboard = () => {
     };
 
     return (
-        <div className="admin-dashboard">
-            <Typography variant="h4" gutterBottom>
+        <div className="admin-dashboard" style={{ padding: '2rem' }}>
+            <Typography variant="h4" gutterBottom align="center" style={{ fontWeight: 'bold', color: '#1976d2' }}>
                 Admin Dashboard
             </Typography>
-            <Paper>
-                <Tabs value={value} onChange={handleChange} indicatorColor="primary" textColor="primary">
+            <Paper elevation={3} style={{ marginBottom: '2rem', padding: '1rem' }}>
+                <Tabs
+                    value={value}
+                    onChange={handleChange}
+                    indicatorColor="primary"
+                    textColor="primary"
+                    centered
+                >
                     <Tab label="Manage Posts" />
                     <Tab label="Manage Users" />
                 </Tabs>
             </Paper>
             <TabPanel value={value} index={0}>
-                <Typography variant="h6">Posts Management</Typography>
-                <TableContainer component={Paper}>
+                <Typography variant="h6" gutterBottom>
+                    Posts Management
+                </Typography>
+                <TableContainer component={Paper} elevation={3} style={{ borderRadius: '8px' }}>
                     <Table>
-                        <TableHead>
+                        <TableHead style={{ backgroundColor: '#1976d2' }}>
                             <TableRow>
-                                <TableCell>Title</TableCell>
-                                <TableCell>Description</TableCell>
-                                <TableCell>Creator</TableCell>
-                                <TableCell>Actions</TableCell>
+                                <TableCell style={{ color: 'white', fontWeight: 'bold' }}>Title</TableCell>
+                                <TableCell style={{ color: 'white', fontWeight: 'bold' }}>Description</TableCell>
+                                <TableCell style={{ color: 'white', fontWeight: 'bold' }}>Creator</TableCell>
+                                <TableCell style={{ color: 'white', fontWeight: 'bold' }}>Actions</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
                             {posts.map((post) => (
                                 <TableRow key={post._id}>
                                     <TableCell>
-                                        <input
-                                            type="text"
+                                        <TextField
+                                            fullWidth
                                             defaultValue={post.title}
+                                            variant="outlined"
+                                            size="small"
                                             onBlur={() => handleBlur(post._id)}
                                             onChange={(e) => handleEditPost(post._id, 'title', e.target.value)}
                                         />
                                     </TableCell>
                                     <TableCell>
-                                        <input
-                                            type="text"
+                                        <TextField
+                                            fullWidth
                                             defaultValue={post.description}
+                                            variant="outlined"
+                                            size="small"
+                                            multiline
                                             onBlur={() => handleBlur(post._id)}
                                             onChange={(e) => handleEditPost(post._id, 'description', e.target.value)}
                                         />
@@ -149,14 +163,16 @@ const AdminDashboard = () => {
                 </TableContainer>
             </TabPanel>
             <TabPanel value={value} index={1}>
-                <Typography variant="h6">Users Management</Typography>
-                <TableContainer component={Paper}>
+                <Typography variant="h6" gutterBottom>
+                    Users Management
+                </Typography>
+                <TableContainer component={Paper} elevation={3} style={{ borderRadius: '8px' }}>
                     <Table>
-                        <TableHead>
+                        <TableHead style={{ backgroundColor: '#1976d2' }}>
                             <TableRow>
-                                <TableCell>Name</TableCell>
-                                <TableCell>Email</TableCell>
-                                <TableCell>Actions</TableCell>
+                                <TableCell style={{ color: 'white', fontWeight: 'bold' }}>Name</TableCell>
+                                <TableCell style={{ color: 'white', fontWeight: 'bold' }}>Email</TableCell>
+                                <TableCell style={{ color: 'white', fontWeight: 'bold' }}>Actions</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -165,13 +181,6 @@ const AdminDashboard = () => {
                                     <TableCell>{user.name}</TableCell>
                                     <TableCell>{user.email}</TableCell>
                                     <TableCell>
-                                        {/* <Button
-                                            variant="contained"
-                                            color="primary"
-                                            onClick={() => handleEditUser(user._id)}
-                                        >
-                                            Edit
-                                        </Button> */}
                                         <Button
                                             variant="contained"
                                             color="error"
