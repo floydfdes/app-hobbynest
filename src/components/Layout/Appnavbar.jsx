@@ -1,6 +1,21 @@
 import './styles.scss';
 
-import { AppBar, Avatar, Button, Drawer, IconButton, List, ListItem, ListItemText, Menu, MenuItem, Toolbar, Typography, useMediaQuery, useTheme } from '@mui/material';
+import {
+  AppBar,
+  Avatar,
+  Button,
+  Drawer,
+  IconButton,
+  List,
+  ListItem,
+  ListItemText,
+  Menu,
+  MenuItem,
+  Toolbar,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from '@mui/material';
 import React, { useCallback, useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
@@ -48,15 +63,24 @@ const Appnavbar = () => {
     setMobileOpen(false);
   }, [history]);
 
+  // const goToAdmin = useCallback(() => {
+  //   history('/admin');
+  //   handleClose();
+  //   setMobileOpen(false);
+  // }, [history]);
+
   const drawer = (
     <div>
       <List>
         <ListItem button component={Link} to="/hobbies" onClick={handleDrawerToggle}>
           <ListItemText primary="Hobbies" />
         </ListItem>
-        {/* <ListItem button component={Link} to="/about" onClick={handleDrawerToggle}>
-          <ListItemText primary="About" />
-        </ListItem> */}
+        {/* Admin navigation for users with admin role */}
+        {user?.result?.role === 'admin' && (
+          <ListItem button component={Link} to="/admin" onClick={handleDrawerToggle}>
+            <ListItemText primary="Admin" />
+          </ListItem>
+        )}
         {user && (
           <>
             <ListItem button onClick={goToProfile}>
@@ -101,8 +125,15 @@ const Appnavbar = () => {
         <div className="navbar-right">
           {!isMobile && (
             <>
-              <Button color="inherit" component={Link} to="/hobbies" sx={{ padding: '6px 8px' }}>Interests</Button>
-              {/* <Button color="inherit" component={Link} to="/about" sx={{ padding: '6px 8px' }}>About</Button> */}
+              <Button color="inherit" component={Link} to="/hobbies" sx={{ padding: '6px 8px' }}>
+                Interests
+              </Button>
+              {/* Admin navigation for users with admin role */}
+              {user?.result?.role === 'admin' && (
+                <Button color="inherit" component={Link} to="/admin" sx={{ padding: '6px 8px' }}>
+                  Admin
+                </Button>
+              )}
             </>
           )}
           {!isMobile && user && (
@@ -142,7 +173,9 @@ const Appnavbar = () => {
             </>
           )}
           {!isMobile && !user && (
-            <Button color="inherit" component={Link} to="/login" sx={{ padding: '6px 8px' }}>Login</Button>
+            <Button color="inherit" component={Link} to="/login" sx={{ padding: '6px 8px' }}>
+              Login
+            </Button>
           )}
           {isMobile && (
             <IconButton

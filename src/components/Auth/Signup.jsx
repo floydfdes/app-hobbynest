@@ -1,8 +1,10 @@
+import './Auth.css';
+
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { Box, Button, Grid, IconButton, InputAdornment, MenuItem, Paper, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react';
+
 import { useForm } from 'react-hook-form';
-import './Auth.css';
 
 export const SignUp = ({ setIsLoggedIn, yupResolver, submitForm, schema, fields }) => {
     const {
@@ -45,7 +47,7 @@ export const SignUp = ({ setIsLoggedIn, yupResolver, submitForm, schema, fields 
                                     <TextField
                                         fullWidth
                                         label={field.fieldName}
-                                        type={field.fieldType === 'password' && !showPassword[field.fieldId] ? 'password' : field.fieldType}
+                                        type={field.fieldType === 'password' && !showPassword[field.fieldId] ? 'password' : 'text'}
                                         placeholder={field.placeholder ? `e.g. ${field.placeholder}` : ''}
                                         {...register(field.fieldId)}
                                         error={!!errors[field.fieldId]}

@@ -1,14 +1,14 @@
+import './AdminDashboard.scss'; // Import the SCSS file
+
+import { Comment, ExpandLess, ExpandMore, Tag, ThumbUp } from '@mui/icons-material';
 import {
-    Accordion,
-    AccordionDetails,
-    AccordionSummary,
     Box,
     Button,
-    Dialog,
-    DialogActions,
-    DialogContent,
-    DialogContentText,
-    DialogTitle,
+    Card,
+    CardContent,
+    Collapse,
+    Grid,
+    IconButton,
     Paper,
     Tab,
     Table,
@@ -18,23 +18,19 @@ import {
     TableHead,
     TableRow,
     Tabs,
-    Typography
+    Tooltip,
+    Typography,
 } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { deletePost, fetchPosts, fetchUsers, updatePost } from '../../actions/adminActions';
-
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { deletePost, deleteUser, fetchPosts, fetchUsers } from '../../actions/adminActions';
 
 const AdminDashboard = () => {
     const dispatch = useDispatch();
     const users = useSelector((state) => state.admin.users);
     const posts = useSelector((state) => state.admin.posts);
     const [value, setValue] = useState(0);
-    const [editedPost, setEditedPost] = useState({});
-    const [isDialogOpen, setIsDialogOpen] = useState(false);
-    const [currentPostId, setCurrentPostId] = useState(null);
-    const [dialogType, setDialogType] = useState(''); // 'update' or 'delete'
+    const [expandedPostId, setExpandedPostId] = useState(null);
 
     useEffect(() => {
         dispatch(fetchUsers());
@@ -44,61 +40,41 @@ const AdminDashboard = () => {
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
-    // const handleEditPost = (postId, field, value) => {
-    //     setEditedPost((prev) => ({
-    //         ...prev,
-    //         [postId]: {
-    //             ...prev[postId],
-    //             [field]: value,
-    //         },
-    //     }));
-    // };
 
-    const openDialog = (postId, type) => {
-        setCurrentPostId(postId);
-        setDialogType(type);
-        setIsDialogOpen(true);
+    const togglePostDetails = (postId) => {
+        setExpandedPostId((prev) => (prev === postId ? null : postId));
     };
 
-    const closeDialog = () => {
-        setIsDialogOpen(false);
-        setCurrentPostId(null);
-        setDialogType('');
-    };
-
-    const handleConfirmAction = async () => {
-        if (dialogType === 'update') {
-            const postToUpdate = editedPost[currentPostId];
-            if (postToUpdate) {
-                await dispatch(updatePost(currentPostId, postToUpdate));
-                setEditedPost((prev) => {
-                    const { [currentPostId]: _, ...rest } = prev;
-                    return rest;
-                });
-            }
-        } else if (dialogType === 'delete') {
-            await dispatch(deletePost(currentPostId));
-        }
-        closeDialog();
-    };
-
-    // const handleBlur = (postId) => {
-    //     openDialog(postId, 'update');
-    // };
     const handleDeletePost = (postId) => {
-        openDialog(postId, 'delete');
+        dispatch(deletePost(postId));
     };
 
-    const handleDeleteUser = (postId) => {
-        openDialog(postId, 'delete');
+    const handleDeleteUser = (userId) => {
+        dispatch(deleteUser(userId));
+    };
+
+    const renderComments = (comments) => {
+        return comments.map((comment) => {
+            // Find the user associated with the comment
+            const user = users.find((user) => user._id === comment.userId);
+
+            return (
+                <Box key={comment._id} sx={{ marginBottom: '0.5rem' }}>
+                    <Typography variant="body2">
+                        <strong>{comment.content}</strong> by {user?.firstName || "Unknown User"} (
+                        {comment.likes.length} like(s), {comment.dislikes.length} dislike(s))
+                    </Typography>
+                </Box>
+            );
+        });
     };
 
     return (
-        <div className="admin-dashboard" style={{ padding: '2rem' }}>
-            <Typography variant="h4" gutterBottom align="center" style={{ fontWeight: 'bold', color: '#1976d2' }}>
+        <div className="admin-dashboard">
+            <Typography variant="h4" className="dashboard-title">
                 Admin Dashboard
             </Typography>
-            <Paper elevation={3} style={{ marginBottom: '2rem', padding: '1rem' }}>
+            <Paper elevation={3} className="tabs-container">
                 <Tabs
                     value={value}
                     onChange={handleChange}
@@ -110,135 +86,153 @@ const AdminDashboard = () => {
                     <Tab label="Manage Users" />
                 </Tabs>
             </Paper>
-            <TabPanel value={value} index={0}>
-                <Typography variant="h6" gutterBottom>
-                    Posts Management
-                </Typography>
-                {posts.map((post) => (
-                    <Accordion key={post._id} elevation={3} style={{ marginBottom: '1rem', borderRadius: '8px' }}>
-                        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                            <Typography style={{ fontWeight: 'bold' }}>{post.title}</Typography>
-                        </AccordionSummary>
-                        <AccordionDetails>
-                            <Box>
-                                <Typography variant="body1">
-                                    <strong>Description:</strong> {post.description}
-                                </Typography>
-                                <Typography variant="body2">
-                                    <strong>Creator:</strong> {post.creatorName}
-                                </Typography>
-                                <Typography variant="body2">
-                                    <strong>Tags:</strong> {post.tags.join(', ')}
-                                </Typography>
-                                <Typography variant="body2">
-                                    <strong>Likes:</strong> {post.likes.length}
-                                </Typography>
-                                <Typography variant="body2">
-                                    <strong>Date:</strong> {new Date(post.date).toLocaleString()}
-                                </Typography>
-                                <Typography variant="body2">
-                                    <strong>Comments:</strong>
-                                </Typography>
-                                <ul>
-                                    {post.comments.map((comment) => (
-                                        <li key={comment._id}>
-                                            <Typography variant="body2">
-                                                <strong>{comment.content}</strong> by User {comment.userId} (
-                                                {comment.likes.length} likes, {comment.dislikes.length} dislikes)
-                                            </Typography>
-                                        </li>
-                                    ))}
-                                </ul>
-                                <Box display="flex" justifyContent="space-between" marginTop="1rem">
-                                    <Button
-                                        variant="contained"
-                                        color="error"
-                                        onClick={() => handleDeletePost(post._id)}
-                                    >
-                                        Delete Post
-                                    </Button>
-                                    <Button
-                                        variant="contained"
-                                        color="primary"
-                                        onClick={() => openDialog(post._id, 'update')}
-                                    >
-                                        Edit Post
-                                    </Button>
-                                </Box>
-                            </Box>
-                        </AccordionDetails>
-                    </Accordion>
-                ))}
-            </TabPanel>
-            <TabPanel value={value} index={1}>
-                <Typography variant="h6" gutterBottom>
-                    Users Management
-                </Typography>
-                <TableContainer component={Paper} elevation={3} style={{ borderRadius: '8px' }}>
-                    <Table>
-                        <TableHead style={{ backgroundColor: '#1976d2' }}>
-                            <TableRow>
-                                <TableCell style={{ color: 'white', fontWeight: 'bold' }}>Name</TableCell>
-                                <TableCell style={{ color: 'white', fontWeight: 'bold' }}>Email</TableCell>
-                                <TableCell style={{ color: 'white', fontWeight: 'bold' }}>Actions</TableCell>
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            {users.map((user) => (
-                                <TableRow key={user._id}>
-                                    <TableCell>{user.name}</TableCell>
-                                    <TableCell>{user.email}</TableCell>
-                                    <TableCell>
-                                        <Button
-                                            variant="contained"
-                                            color="error"
-                                            onClick={() => handleDeleteUser(user._id)}
-                                        >
-                                            Delete
-                                        </Button>
-                                    </TableCell>
+            {value === 0 && (
+                <div>
+                    <Typography variant="h6" gutterBottom>
+                        Posts Management
+                    </Typography>
+                    <TableContainer component={Paper} className="post-table-container">
+                        <Table>
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell className="tabs-head">Title</TableCell>
+                                    <TableCell className="tabs-head">Description</TableCell>
+                                    <TableCell className="tabs-head">Creator</TableCell>
+                                    <TableCell className="tabs-head">Date</TableCell>
+                                    <TableCell className="tabs-head">Actions</TableCell>
                                 </TableRow>
-                            ))}
-                        </TableBody>
-                    </Table>
-                </TableContainer>
-            </TabPanel>
-            <Dialog open={isDialogOpen} onClose={closeDialog}>
-                <DialogTitle>
-                    {dialogType === 'update' ? 'Confirm Update' : 'Confirm Delete'}
-                </DialogTitle>
-                <DialogContent>
-                    <DialogContentText>
-                        {dialogType === 'update'
-                            ? 'Do you want to commit this update?'
-                            : 'Are you sure you want to delete this item?'}
-                    </DialogContentText>
-                </DialogContent>
-                <DialogActions>
-                    <Button onClick={closeDialog} color="primary">
-                        Cancel
-                    </Button>
-                    <Button onClick={handleConfirmAction} color="primary">
-                        Confirm
-                    </Button>
-                </DialogActions>
-            </Dialog>
-        </div>
-    );
-};
+                            </TableHead>
+                            <TableBody>
+                                {posts.map((post) => (
+                                    <React.Fragment key={post._id}>
+                                        <TableRow>
+                                            <TableCell>{post.title}</TableCell>
+                                            <TableCell>{post.description}</TableCell>
+                                            <TableCell>{post.creatorName}</TableCell>
+                                            <TableCell>{new Date(post.date).toLocaleString()}</TableCell>
+                                            <TableCell className="post-actions">
+                                                <Button
+                                                    variant="contained"
+                                                    color="error"
+                                                    onClick={() => handleDeletePost(post._id)}
+                                                >
+                                                    Delete
+                                                </Button>
+                                                <Tooltip title="More Details" arrow>
+                                                    <IconButton
+                                                        size="small"
+                                                        onClick={() => togglePostDetails(post._id)}
+                                                        color="primary"
+                                                        className="more-details-button"
+                                                    >
+                                                        {expandedPostId === post._id ? <ExpandLess /> : <ExpandMore />}
+                                                    </IconButton>
+                                                </Tooltip>
+                                            </TableCell>
+                                        </TableRow>
+                                        <TableRow>
+                                            <TableCell colSpan={5} style={{ padding: 0 }}>
+                                                <Collapse in={expandedPostId === post._id} timeout="auto" unmountOnExit>
+                                                    <Box className="collapse-container">
+                                                        <Grid container spacing={2} alignItems="stretch">
+                                                            <Grid item xs={12} md={4}>
+                                                                <Card variant="outlined" className="card-likes-tags">
+                                                                    <CardContent>
+                                                                        <Typography variant="h6" gutterBottom>
+                                                                            <ThumbUp /> Likes
+                                                                        </Typography>
+                                                                        {post.likes.length > 0 ? (
+                                                                            <Typography>{post.likes.length} like(s)</Typography>
+                                                                        ) : (
+                                                                            <Typography color="textSecondary">No likes yet</Typography>
+                                                                        )}
+                                                                        <Typography variant="h6" gutterBottom>
+                                                                            <Tag /> Tags
+                                                                        </Typography>
+                                                                        {post.tags.length > 0 ? (
+                                                                            <Typography>{post.tags.join(', ')}</Typography>
+                                                                        ) : (
+                                                                            <Typography color="textSecondary">
+                                                                                No tags available
+                                                                            </Typography>
+                                                                        )}
+                                                                    </CardContent>
+                                                                </Card>
+                                                            </Grid>
+                                                            <Grid item xs={12} md={8}>
+                                                                <Card variant="outlined" className="card-comments">
+                                                                    <CardContent>
+                                                                        <Typography variant="h6" gutterBottom>
+                                                                            <Comment /> Comments
+                                                                        </Typography>
+                                                                        {post.comments.length > 0 ? (
+                                                                            <Box className="comments-container">
+                                                                                {renderComments(post.comments)}
+                                                                            </Box>
+                                                                        ) : (
+                                                                            <Box className="comments-empty">
+                                                                                <Typography color="textSecondary">
+                                                                                    No comments yet
+                                                                                </Typography>
+                                                                            </Box>
+                                                                        )}
+                                                                    </CardContent>
+                                                                </Card>
+                                                            </Grid>
+                                                        </Grid>
+                                                    </Box>
+                                                </Collapse>
+                                            </TableCell>
+                                        </TableRow>
+                                    </React.Fragment>
+                                ))}
+                            </TableBody>
+                        </Table>
+                    </TableContainer>
+                </div>
+            )}
+            {value === 1 && (
+                <div>
+                    <Typography variant="h6" gutterBottom>
+                        Users Management
+                    </Typography>
+                    <TableContainer component={Paper} className="table-container">
+                        <Table>
+                            <TableHead className="table-head">
+                                <TableRow>
+                                    <TableCell className="table-cell-head">First Name</TableCell>
+                                    <TableCell className="table-cell-head">Last Name</TableCell>
+                                    <TableCell className="table-cell-head">Email</TableCell>
+                                    <TableCell className="table-cell-head">Age</TableCell>
+                                    <TableCell className="table-cell-head">Gender</TableCell>
+                                    <TableCell className="table-cell-head">Actions</TableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {users.map((user) => (
+                                    <TableRow key={user._id}>
+                                        <TableCell>{user.firstName}</TableCell>
+                                        <TableCell>{user.lastName}</TableCell>
+                                        <TableCell>{user.email}</TableCell>
+                                        <TableCell>{user.age}</TableCell>
+                                        <TableCell>{user.gender}</TableCell>
+                                        <TableCell>
+                                            <Button
+                                                variant="contained"
+                                                color="error"
+                                                onClick={() => handleDeleteUser(user._id)}
+                                            >
+                                                Delete
+                                            </Button>
+                                        </TableCell>
+                                    </TableRow>
+                                ))}
+                            </TableBody>
+                        </Table>
+                    </TableContainer>
+                </div>
+            )}
 
-const TabPanel = (props) => {
-    const { children, value, index, ...other } = props;
-
-    return (
-        <div
-            role="tabpanel"
-            hidden={value !== index}
-            id={`simple-tabpanel-${index}`}
-            aria-labelledby={`simple-tab-${index}`}
-            {...other}
-        >
-            {value === index && <Box p={3}>{children}</Box>}
         </div>
     );
 };
