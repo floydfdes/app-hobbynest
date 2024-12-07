@@ -1,5 +1,5 @@
 import React from 'react';
-import { featureSections } from './data';
+import { featureSections } from '../../Data/Data';
 
 function FeatureList() {
   return (

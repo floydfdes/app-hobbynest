@@ -1,7 +1,9 @@
+import InteractionIcon from '@mui/icons-material/Forum';
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import VisibilityIcon from '@mui/icons-material/Visibility';
 import React from 'react';
-import { VisibilityIcon, PersonAddIcon, InteractionIcon } from '@mui/icons-material';
 
-function FeatureCards() {
+function FeatureCard() {
   return (
     <div id="explore" className="container-fluid py-5 explore-section">
       <div className="container">
@@ -57,4 +59,4 @@ function FeatureCards() {
   );
 }
 
-export default FeatureCards;
+export default FeatureCard;
