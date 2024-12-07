@@ -1,10 +1,21 @@
+import './Profile.scss'; // Import the SCSS file
+
 import { Delete as DeleteIcon, Edit as EditIcon, VpnKey as VpnKeyIcon } from '@mui/icons-material';
 import {
-  Avatar, Box, Button, Card, CardContent, Container, Grid, Typography,
+  Avatar,
+  Box,
+  Button,
+  Card,
+  CardContent,
+  Container,
+  Divider,
+  Grid,
+  Typography,
   useMediaQuery,
   useTheme
 } from '@mui/material';
 import React, { useMemo, useState } from 'react';
+
 import ChangePasswordModal from './ProfileModals/ChangePasswordModal';
 import DeleteModal from './ProfileModals/DeleteModal';
 import EditModal from './ProfileModals/EditModal';
@@ -16,67 +27,75 @@ const Profile = () => {
   const [openModal, setOpenModal] = useState({ delete: false, edit: false, changePwd: false });
 
   const handleModalOpen = (modalType) => () => {
-    setOpenModal(prev => ({ ...prev, [modalType]: true }));
+    setOpenModal((prev) => ({ ...prev, [modalType]: true }));
   };
 
   if (!user) return <Typography variant="h6">Loading...</Typography>;
 
   return (
-    <Container maxWidth="lg">
-      <Box sx={{ my: 4 }}>
-        <Card elevation={3}>
-          <CardContent>
-            <Grid container spacing={3} alignItems="center">
-              <Grid item xs={12} md={4} sx={{ display: 'flex', justifyContent: 'center' }}>
-                <Avatar
-                  sx={{ width: 120, height: 120, fontSize: 48, mb: 2 }}
-                  alt={`${user?.firstName} ${user?.lastName}`}
-                  src={user?.imageUrl}
+    <Container maxWidth="md" className="profile-container">
+      <Card elevation={4} className="profile-card">
+        <Box className="profile-header">
+          <Avatar
+            className="profile-avatar"
+            alt={`${user?.firstName} ${user?.lastName}`}
+            src={user?.imageUrl}
+          >
+            {!user?.imageUrl && `${user?.firstName[0]}${user?.lastName[0]}`}
+          </Avatar>
+          <Typography variant="h4" className="profile-name">
+            {user?.firstName} {user?.lastName}
+          </Typography>
+          <Typography variant="subtitle1" className="profile-email">
+            {user?.email}
+          </Typography>
+        </Box>
+        <CardContent>
+          <Box className="profile-details">
+            <Typography variant="h6" className="profile-details-heading">
+              Personal Details
+            </Typography>
+            <Divider className="profile-divider" />
+            <Typography variant="body1" className="profile-detail">
+              <strong>Age:</strong> {user?.age}
+            </Typography>
+            <Typography variant="body1" className="profile-detail">
+              <strong>Gender:</strong> {user?.gender}
+            </Typography>
+          </Box>
+          <Grid container spacing={2} className="profile-actions">
+            {['Change Password', 'Edit Profile', 'Delete Profile'].map((text, index) => (
+              <Grid item xs={12} sm={4} key={text}>
+                <Button
+                  fullWidth
+                  className={`profile-button ${index === 2 ? 'profile-button-delete' : index === 1 ? 'profile-button-edit' : ''
+                    }`}
+                  variant={index === 2 ? 'outlined' : 'contained'}
+                  color={index === 2 ? 'error' : index === 1 ? 'secondary' : 'primary'}
+                  startIcon={index === 0 ? <VpnKeyIcon /> : index === 1 ? <EditIcon /> : <DeleteIcon />}
+                  onClick={handleModalOpen(['changePwd', 'edit', 'delete'][index])}
+                  size={isMobile ? 'small' : 'medium'}
                 >
-                  {!user?.imageUrl && `${user?.firstName[0]}${user?.lastName[0]}`}
-                </Avatar>
+                  {text}
+                </Button>
               </Grid>
-              <Grid item xs={12} md={8}>
-                <Typography variant="h4" gutterBottom>
-                  {user?.firstName} {user?.lastName}
-                </Typography>
-                <Typography variant="body1" color="textSecondary" paragraph>
-                  {user?.email}
-                </Typography>
-                <Grid container spacing={2}>
-                  {['Change Password', 'Edit Profile', 'Delete Profile'].map((text, index) => (
-                    <Grid item xs={12} sm={4} key={text}>
-                      <Button
-                        fullWidth
-                        variant={index === 2 ? "outlined" : "contained"}
-                        color={index === 2 ? "error" : index === 1 ? "secondary" : "primary"}
-                        startIcon={index === 0 ? <VpnKeyIcon /> : index === 1 ? <EditIcon /> : <DeleteIcon />}
-                        onClick={handleModalOpen(['changePwd', 'edit', 'delete'][index])}
-                        size={isMobile ? "small" : "medium"}
-                      >
-                        {text}
-                      </Button>
-                    </Grid>
-                  ))}
-                </Grid>
-              </Grid>
-            </Grid>
-          </CardContent>
-        </Card>
-      </Box>
+            ))}
+          </Grid>
+        </CardContent>
+      </Card>
       <DeleteModal
         open={openModal.delete}
-        setOpen={(isOpen) => setOpenModal(prev => ({ ...prev, delete: isOpen }))}
+        setOpen={(isOpen) => setOpenModal((prev) => ({ ...prev, delete: isOpen }))}
         userDetails={user}
       />
       <EditModal
         open={openModal.edit}
-        setOpen={(isOpen) => setOpenModal(prev => ({ ...prev, edit: isOpen }))}
+        setOpen={(isOpen) => setOpenModal((prev) => ({ ...prev, edit: isOpen }))}
         userDetails={user}
       />
       <ChangePasswordModal
         open={openModal.changePwd}
-        setOpen={(isOpen) => setOpenModal(prev => ({ ...prev, changePwd: isOpen }))}
+        setOpen={(isOpen) => setOpenModal((prev) => ({ ...prev, changePwd: isOpen }))}
         userDetails={user}
       />
     </Container>
