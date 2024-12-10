@@ -1,5 +1,4 @@
 import * as api from '../api/index';
-import { clearLoading, setLoading } from './loading';
 
 import {
   CREATE,
@@ -9,6 +8,7 @@ import {
   LIKE,
   UPDATE,
 } from '../constants/actionTypes';
+import { clearLoading, setLoading } from './loading';
 import {
   notifyCreate,
   notifyDelete,
@@ -49,8 +49,11 @@ export const getPost = (id) => async (dispatch) => {
 export const createPost = (post, history) => async (dispatch) => {
   try {
     dispatch(setLoading());
-    const creatorName = JSON.parse(localStorage.getItem('profile')).result.firstName;
-    const { data } = await api.createPost({ ...post, creatorName });
+
+    const tagsArray = post.tags.split(',').map((tag) => tag.trim());
+    const updatedPost = { ...post, tags: tagsArray };
+
+    const { data } = await api.createPost(updatedPost);
     dispatch({ type: CREATE, payload: data });
     dispatch(notifyCreate({ message: 'Post created successfully', color: 'success' }));
     history('/hobbies');
@@ -63,7 +66,15 @@ export const createPost = (post, history) => async (dispatch) => {
 
 export const updatePost = (id, post, history) => async (dispatch) => {
   try {
-    const { data } = await api.updatePost(id, post);
+    const filteredPost = {
+      ...post,
+      likes: Array.isArray(post.likes) ? post.likes : [],
+    };
+    delete filteredPost.id;
+    delete filteredPost.creator;
+    delete filteredPost.creatorName;
+
+    const { data } = await api.updatePost(id, filteredPost);
 
     dispatch({ type: UPDATE, payload: data });
     dispatch(
@@ -71,8 +82,6 @@ export const updatePost = (id, post, history) => async (dispatch) => {
     );
     history('/hobbies');
   } catch (error) {
-    // Remove this line:
-    // console.log(error?.message);
     dispatch(notifyError({ message: error?.message, color: 'error' }));
   }
 };

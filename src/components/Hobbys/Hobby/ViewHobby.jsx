@@ -1,6 +1,9 @@
+import './Hobby.scss';
+
 import {
   ArrowBack,
-  ChevronLeft, ChevronRight,
+  ChevronLeft,
+  ChevronRight,
   Comment as CommentIcon,
   Delete as DeleteIcon,
   Edit as EditIcon,
@@ -21,9 +24,6 @@ import {
   TextField,
   Typography
 } from '@mui/material';
-import { styled } from '@mui/material/styles';
-import moment from 'moment';
-import PropTypes from 'prop-types';
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -35,7 +35,10 @@ import {
   updateComment,
 } from '../../../actions/comment';
 import { getPost, getPosts, likePost } from '../../../actions/hobby';
-import './Hobby.scss';
+
+import { styled } from '@mui/material/styles';
+import moment from 'moment';
+import PropTypes from 'prop-types';
 
 const initialState = {
   title: '',
@@ -235,7 +238,7 @@ const ViewHobby = () => {
                     </Typography>
                   </Box>
                   <Typography variant="h6" gutterBottom>
-                    Other Hobbies
+                    Other Interests
                   </Typography>
                   <Box sx={{ position: 'relative' }}>
                     <Box sx={{ display: { xs: 'none', md: 'block' } }}>
@@ -342,9 +345,9 @@ const ViewHobby = () => {
                       },
                     }}
                     variant="contained"
-                    fullWidth
+
                   >
-                    Back to Hobbies
+                    Back to Interests
                   </Button>
                 </Box>
                 <Box sx={{
@@ -386,7 +389,6 @@ const ViewHobby = () => {
                       sx={{ mb: 2 }}
                     />
                     <Button
-                      fullWidth
                       variant="contained"
                       endIcon={<SendIcon />}
                       type="submit"

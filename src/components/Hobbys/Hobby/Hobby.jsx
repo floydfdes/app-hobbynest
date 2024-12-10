@@ -47,7 +47,8 @@ const Hobby = ({ id, title, creatorName, tags, description, likes, creator }) =>
     dispatch(editHobby({ id, title, creatorName, tags, description, likes, creator }, navigate));
   }, [id, title, creatorName, tags, description, likes, creator, dispatch, navigate]);
 
-  const deleteHobby = useCallback(() => {
+  const deleteHobby = useCallback((event) => {
+    event.stopPropagation();
     dispatch(deletePost(id));
     setConfirmDelete(false);
   }, [id, dispatch]);
@@ -110,7 +111,12 @@ const Hobby = ({ id, title, creatorName, tags, description, likes, creator }) =>
               <IconButton aria-label="edit" onClick={updateHobby}>
                 <EditIcon />
               </IconButton>
-              <IconButton aria-label="delete" onClick={() => setConfirmDelete(true)}>
+              <IconButton
+                aria-label="delete"
+                onClick={(event) => {
+                  event.stopPropagation();
+                  setConfirmDelete(true);
+                }}>
                 <DeleteIcon />
               </IconButton>
             </>

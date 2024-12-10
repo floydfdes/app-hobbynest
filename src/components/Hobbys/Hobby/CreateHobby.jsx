@@ -28,8 +28,8 @@ const CreateHobby = () => {
 
   const fieldPattern = useMemo(() => ({
     title: /^[A-Za-z .,]+$/,
-    tags: /^[A-Za-z]+(,[A-Za-z]+)*$/,
-    description: /^[A-Za-z .,]+$/,
+    tags: /^[A-Za-z]+(, ?[A-Za-z]+)*$/,
+    description: /^[A-Za-z0-9 .,]+$/,
   }), []);
 
   useEffect(() => {
