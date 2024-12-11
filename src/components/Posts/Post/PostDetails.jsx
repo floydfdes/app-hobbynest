@@ -1,4 +1,4 @@
-import './Hobby.scss';
+import './Post.scss';
 
 import {
   ArrowBack,
@@ -106,8 +106,8 @@ const BackgroundBox = styled(Box)(({ theme }) => ({
   },
 }));
 
-const ViewHobby = () => {
-  const { hobbyid } = useParams();
+const PostDetails = () => {
+  const { postId } = useParams();
   const userId = JSON.parse(localStorage.getItem('profile'));
   const currentHobby = useSelector((state) => state.formReducer);
   const dispatch = useDispatch();
@@ -120,10 +120,10 @@ const ViewHobby = () => {
   const otherHobbiesRef = useRef(null);
 
   useEffect(() => {
-    if (hobbyid) {
-      dispatch(getPost(hobbyid));
+    if (postId) {
+      dispatch(getPost(postId));
     }
-  }, [dispatch, hobbyid]);
+  }, [dispatch, postId]);
 
   useEffect(() => {
     if (currentHobby.formData) setFormData(currentHobby.formData);
@@ -131,7 +131,7 @@ const ViewHobby = () => {
 
   useEffect(() => {
     dispatch(getPosts()).then((posts) => {
-      const filteredPosts = posts.filter((post) => post._id !== hobbyid);
+      const filteredPosts = posts.filter((post) => post._id !== postId);
       setOtherHobbies(filteredPosts);
     });
   }, [dispatch]);
@@ -173,7 +173,7 @@ const ViewHobby = () => {
     const selectedHobby = otherHobbies.find(hobby => hobby._id === hobbyId);
     if (selectedHobby) {
       setFormData(selectedHobby);
-      navigate(`/hobbies/view/${hobbyId}`, { replace: true });
+      navigate(`/posts/view/${hobbyId}`, { replace: true });
       setOtherHobbies(prevHobbies =>
         prevHobbies.filter(hobby => hobby._id !== hobbyId).concat(formData)
       );
@@ -198,7 +198,7 @@ const ViewHobby = () => {
   };
 
   const handleBackToHobbies = () => {
-    navigate('/hobbies');
+    navigate('/posts');
   };
 
   return (
@@ -435,4 +435,4 @@ Comment.propTypes = {
   setNewComment: PropTypes.func.isRequired,
 };
 
-export default ViewHobby;
+export default PostDetails;

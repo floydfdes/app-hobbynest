@@ -14,7 +14,7 @@ function HeroSection() {
               Explore a world of interests, connect with like-minded people, and share your passions. Join our free community to unlock more features and interactions.
             </p>
             <div className="my-3 main-page-button-div">
-              <a href="/hobbies" className="btn main-page-button">Explore Interests</a>
+              <a href="/posts" className="btn main-page-button">Explore Interests</a>
               <a href="/login" className="btn main-page-button-secondary">Sign Up Free</a>
             </div>
           </div>

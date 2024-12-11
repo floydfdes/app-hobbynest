@@ -19,7 +19,7 @@ function FeatureCard() {
                 <p className="card-text flex-grow-1 text-center">
                   Browse through a diverse range of interests shared by our community. Get inspired and discover new passions without signing up.
                 </p>
-                <a href="/hobbies" className="btn mt-auto mb-3 feature-card-button">View Interests</a>
+                <a href="/posts" className="btn mt-auto mb-3 feature-card-button">View Interests</a>
               </div>
             </div>
           </div>

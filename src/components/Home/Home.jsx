@@ -11,11 +11,11 @@ import AdminDashboard from '../Admin/AdminDashboard';
 import Loading from '../UniversalLoading/UniversalLoading';
 
 const Profile = React.lazy(() => import('../Profile/Profile'));
-const Hobbies = React.lazy(() => import('../Hobbys/Hobbies'));
+const PostList = React.lazy(() => import('../Posts/PostList'));
 const Main = React.lazy(() => import('../Main/Main'));
 const Auth = React.lazy(() => import('../Auth/Auth'));
-const CreateHobby = React.lazy(() => import('../Hobbys/Hobby/CreateHobby'));
-const ViewHobby = React.lazy(() => import('../Hobbys/Hobby/ViewHobby'));
+const CreatePost = React.lazy(() => import('../Posts/Post/CreatePost'));
+const PostDetails = React.lazy(() => import('../Posts/Post/PostDetails'));
 // const About2 = React.lazy(() => import('../About/About2'));
 
 function Home() {
@@ -55,14 +55,14 @@ function Home() {
             <Route path="/home" element={<Main />} exact />
             <Route path="/login" element={<Auth />} exact />
             <Route path="/profile" element={<Profile />} exact />
-            <Route path="/hobbies" element={<Hobbies />} exact />
-            <Route path="/hobbies/create" element={<CreateHobby />} exact />
-            <Route path="/hobbies/update" element={<CreateHobby />} exact />
+            <Route path="/posts" element={<PostList />} exact />
+            <Route path="/posts/create" element={<CreatePost />} exact />
+            <Route path="/posts/update" element={<CreatePost />} exact />
             <Route path="/admin" element={<AdminDashboard />} exact />
 
             <Route
-              path="/hobbies/view/:hobbyid"
-              element={<ViewHobby />}
+              path="/posts/view/:postId"
+              element={<PostDetails />}
               exact
             />
             <Route path="/*" element={<Main />} exact />

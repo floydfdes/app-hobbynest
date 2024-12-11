@@ -72,7 +72,7 @@ const Appnavbar = () => {
   const drawer = (
     <div>
       <List>
-        <ListItem button component={Link} to="/hobbies" onClick={handleDrawerToggle}>
+        <ListItem button component={Link} to="/posts" onClick={handleDrawerToggle}>
           <ListItemText primary="Hobbies" />
         </ListItem>
         {/* Admin navigation for users with admin role */}
@@ -125,7 +125,7 @@ const Appnavbar = () => {
         <div className="navbar-right">
           {!isMobile && (
             <>
-              <Button color="inherit" component={Link} to="/hobbies" sx={{ padding: '6px 8px' }}>
+              <Button color="inherit" component={Link} to="/posts" sx={{ padding: '6px 8px' }}>
                 Interests
               </Button>
               {/* Admin navigation for users with admin role */}

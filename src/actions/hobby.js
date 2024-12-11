@@ -56,7 +56,7 @@ export const createPost = (post, history) => async (dispatch) => {
     const { data } = await api.createPost(updatedPost);
     dispatch({ type: CREATE, payload: data });
     dispatch(notifyCreate({ message: 'Post created successfully', color: 'success' }));
-    history('/hobbies');
+    history('/posts');
   } catch (error) {
     handleError(dispatch, error);
   } finally {
@@ -80,7 +80,7 @@ export const updatePost = (id, post, history) => async (dispatch) => {
     dispatch(
       notifyUpdate({ message: 'Post updated successfully', color: 'success' }),
     );
-    history('/hobbies');
+    history('/posts');
   } catch (error) {
     dispatch(notifyError({ message: error?.message, color: 'error' }));
   }

@@ -15,9 +15,9 @@ import SearchIcon from '@mui/icons-material/Search';
 import { useNavigate } from 'react-router-dom';
 import { getPosts } from '../../actions/hobby';
 import { createNewHobby } from '../../actions/trigger';
-import Hobbie from './Hobby/Hobby';
+import PostCard from './Post/PostCard';
 
-function Hobbies() {
+function PostList() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [searchValue, setSearchValue] = useState('');
@@ -98,7 +98,7 @@ function Hobbies() {
       <Grid container spacing={3}>
         {filteredHobbies.map((hobby) => (
           <Grid item xs={12} sm={6} md={4} key={hobby._id}>
-            <Hobbie
+            <PostCard
               title={hobby.title}
               description={hobby.description}
               tags={hobby.tags}
@@ -116,4 +116,4 @@ function Hobbies() {
   );
 }
 
-export default Hobbies;
+export default PostList;

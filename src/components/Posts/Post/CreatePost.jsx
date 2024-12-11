@@ -19,7 +19,7 @@ const initialErrorState = {
   description: '',
 };
 
-const CreateHobby = () => {
+const CreatePost = () => {
   const [formData, setFormData] = useState(initialFormState);
   const [errors, setErrors] = useState(initialErrorState);
   const currentHobby = useSelector((state) => state.formReducer);
@@ -155,7 +155,7 @@ const CreateHobby = () => {
       <Box display="flex" flexDirection={{ xs: 'column', sm: 'row' }} justifyContent="space-between" gap={2}>
         <Button
           component={Link}
-          to="/hobbies"
+          to="/posts"
           variant="outlined"
           startIcon={<ArrowBackIcon />}
           fullWidth
@@ -204,4 +204,4 @@ const CreateHobby = () => {
   );
 };
 
-export default CreateHobby;
+export default CreatePost;

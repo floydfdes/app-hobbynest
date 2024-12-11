@@ -1,4 +1,4 @@
-import './Hobby.scss';
+import './Post.scss';
 
 import {
   Delete as DeleteIcon,
@@ -30,7 +30,7 @@ import { editHobby, viewHobby } from '../../../actions/trigger';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-const Hobby = ({ id, title, creatorName, tags, description, likes, creator }) => {
+const PostCard = ({ id, title, creatorName, tags, description, likes, creator }) => {
   const [expanded, setExpanded] = useState(false);
   const [confirmDelete, setConfirmDelete] = useState(false);
   const dispatch = useDispatch();
@@ -148,4 +148,4 @@ const Hobby = ({ id, title, creatorName, tags, description, likes, creator }) =>
   );
 };
 
-export default React.memo(Hobby);
+export default React.memo(PostCard);
