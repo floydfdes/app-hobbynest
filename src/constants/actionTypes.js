@@ -9,8 +9,8 @@ export const LIKE = 'LIKE';
 export const AUTH = 'AUTH';
 export const LOGOUT = 'LOGOUT';
 
-export const CREATE_NEW_HOBBY = 'CREATE_NEW_HOBBY';
-export const UPDATE_HOBBY = 'UPDATE_HOBBY';
+export const CREATE_NEW_POST = 'CREATE_NEW_POST';
+export const UPDATE_POST = 'UPDATE_POST';
 
 export const NOTIFY_CREATE = 'NOTIFY_CREATE';
 export const NOTIFY_UPDATE = 'NOTIFY_UPDATE';

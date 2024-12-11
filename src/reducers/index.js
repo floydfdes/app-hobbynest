@@ -3,12 +3,12 @@ import adminReducer from './adminReducer';
 import authReducer from './authReducer';
 import formReducer from './formReducer';
 import loadingReducer from './loadingReducer';
-import hobby from './postReducer';
+import postReducer from './postReducer';
 import toastNotificationReducer from './toastNotificationReducer';
 
 const reducers = combineReducers({
   authReducer,
-  hobby,
+  posts: postReducer,
   formReducer,
   toastNotificationReducer,
   loading: loadingReducer,

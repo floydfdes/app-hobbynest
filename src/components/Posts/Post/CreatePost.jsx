@@ -2,7 +2,7 @@ import { Box, Button, Chip, Paper, TextField, Typography } from '@mui/material';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { createPost, updatePost } from '../../../actions/hobby';
+import { createPost, updatePost } from '../../../actions/postActions';
 
 import AddIcon from '@mui/icons-material/Add';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
@@ -22,7 +22,7 @@ const initialErrorState = {
 const CreatePost = () => {
   const [formData, setFormData] = useState(initialFormState);
   const [errors, setErrors] = useState(initialErrorState);
-  const currentHobby = useSelector((state) => state.formReducer);
+  const currentPost = useSelector((state) => state.formReducer);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -33,8 +33,8 @@ const CreatePost = () => {
   }), []);
 
   useEffect(() => {
-    if (currentHobby.formData) setFormData(currentHobby.formData);
-  }, [currentHobby.formData]);
+    if (currentPost.formData) setFormData(currentPost.formData);
+  }, [currentPost.formData]);
 
   const handleChange = useCallback((e) => {
     const { name, value } = e.target;
@@ -61,12 +61,12 @@ const CreatePost = () => {
     e.preventDefault();
     if (!validate(formData)) return;
 
-    const action = currentHobby.formData
-      ? updatePost(currentHobby.formData.id, formData, navigate)
+    const action = currentPost.formData
+      ? updatePost(currentPost.formData.id, formData, navigate)
       : createPost(formData, navigate);
 
     dispatch(action);
-  }, [formData, currentHobby.formData, dispatch, navigate, validate]);
+  }, [formData, currentPost.formData, dispatch, navigate, validate]);
 
   const handleTagChange = useCallback((e) => {
     const { value } = e.target;

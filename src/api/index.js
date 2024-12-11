@@ -19,7 +19,7 @@ export const editUser = (id, formData) => API.patch(`/auth/editUser/${id}`, form
 export const deleteUser = (id) => API.delete(`/auth/deleteUser/${id}`);
 export const resetPassword = (id, formData) => API.patch(`/auth/resetPassword/${id}`, formData);
 
-// Hobby endpoints
+// Post endpoints
 export const fetchPosts = () => API.get('/posts');
 export const fetchPost = (id) => API.get(`/posts/${id}`);
 export const createPost = (newPost) => API.post('/posts', newPost);

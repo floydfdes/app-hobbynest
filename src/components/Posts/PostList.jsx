@@ -13,29 +13,29 @@ import AddIcon from '@mui/icons-material/Add';
 import ClearIcon from '@mui/icons-material/Clear';
 import SearchIcon from '@mui/icons-material/Search';
 import { useNavigate } from 'react-router-dom';
-import { getPosts } from '../../actions/hobby';
-import { createNewHobby } from '../../actions/trigger';
+import { getPosts } from '../../actions/postActions';
+import { createNewPost } from '../../actions/trigger';
 import PostCard from './Post/PostCard';
 
 function PostList() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [searchValue, setSearchValue] = useState('');
-  const hobbies = useSelector((state) => state.hobby);
+  const posts = useSelector((state) => state.posts);
 
   useEffect(() => {
     dispatch(getPosts());
   }, [dispatch]);
 
-  const filteredHobbies = useMemo(() => {
-    if (!searchValue) return hobbies;
-    return hobbies.filter((hobby) => hobby.title.toLowerCase().includes(searchValue.toLowerCase())
-      || hobby.description.toLowerCase().includes(searchValue.toLowerCase())
-      || hobby.tags.some((tag) => tag.toLowerCase().includes(searchValue.toLowerCase())));
-  }, [hobbies, searchValue]);
+  const filteredPosts = useMemo(() => {
+    if (!searchValue) return posts;
+    return posts.filter((post) => post.title.toLowerCase().includes(searchValue.toLowerCase())
+      || post.description.toLowerCase().includes(searchValue.toLowerCase())
+      || post.tags.some((tag) => tag.toLowerCase().includes(searchValue.toLowerCase())));
+  }, [posts, searchValue]);
 
-  const handleCreateHobby = () => {
-    dispatch(createNewHobby(0, navigate));
+  const handleCreatePost = () => {
+    dispatch(createNewPost(0, navigate));
   };
 
   const handleSearch = (event) => {
@@ -78,7 +78,7 @@ function PostList() {
             <Button
               fullWidth
               variant="contained"
-              onClick={handleCreateHobby}
+              onClick={handleCreatePost}
               startIcon={<AddIcon />}
               sx={{
                 height: '56px',
@@ -96,18 +96,18 @@ function PostList() {
         </Grid>
       </Box>
       <Grid container spacing={3}>
-        {filteredHobbies.map((hobby) => (
-          <Grid item xs={12} sm={6} md={4} key={hobby._id}>
+        {filteredPosts.map((post) => (
+          <Grid item xs={12} sm={6} md={4} key={post._id}>
             <PostCard
-              title={hobby.title}
-              description={hobby.description}
-              tags={hobby.tags}
-              id={hobby._id}
-              likes={hobby.likes.length}
-              creator={hobby.creator}
-              creatorName={hobby.creatorName}
-              date={hobby.date}
-              comments={hobby.comments}
+              title={post.title}
+              description={post.description}
+              tags={post.tags}
+              id={post._id}
+              likes={post.likes.length}
+              creator={post.creator}
+              creatorName={post.creatorName}
+              date={post.date}
+              comments={post.comments}
             />
           </Grid>
         ))}

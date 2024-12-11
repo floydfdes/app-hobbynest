@@ -1,12 +1,12 @@
 import {
-  CREATE_NEW_HOBBY,
+  CREATE_NEW_POST,
   FETCH,
-  UPDATE_HOBBY,
+  UPDATE_POST,
 } from '../constants/actionTypes';
 
-export const createNewHobby = (data, history) => async (dispatch) => {
+export const createNewPost = (data, history) => async (dispatch) => {
   try {
-    await dispatch({ type: CREATE_NEW_HOBBY, payload: data });
+    await dispatch({ type: CREATE_NEW_POST, payload: data });
     history('/posts/create');
   } catch (error) {
     // Remove this line:
@@ -14,9 +14,9 @@ export const createNewHobby = (data, history) => async (dispatch) => {
   }
 };
 
-export const editHobby = (data, history) => async (dispatch) => {
+export const editPost = (data, history) => async (dispatch) => {
   try {
-    dispatch({ type: UPDATE_HOBBY, payload: data });
+    dispatch({ type: UPDATE_POST, payload: data });
     history('/posts/update');
   } catch (error) {
     // Remove this line:
@@ -24,7 +24,7 @@ export const editHobby = (data, history) => async (dispatch) => {
   }
 };
 
-export const viewHobby = (data, history) => async (dispatch) => {
+export const viewPost = (data, history) => async (dispatch) => {
   try {
     dispatch({ type: FETCH, payload: data });
     history(`/posts/view/${data.id}`);

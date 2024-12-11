@@ -6,7 +6,7 @@ import {
   UPDATE,
 } from '../constants/actionTypes';
 
-const hobby = (posts = [], action) => {
+const postReducer = (posts = [], action) => {
   switch (action.type) {
     case FETCH_ALL:
       return action.payload;
@@ -27,4 +27,4 @@ const hobby = (posts = [], action) => {
   }
 };
 
-export default hobby;
+export default postReducer;

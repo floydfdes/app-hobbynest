@@ -24,8 +24,8 @@ import {
   Typography
 } from '@mui/material';
 import React, { useCallback, useState } from 'react';
-import { deletePost, likePost } from '../../../actions/hobby';
-import { editHobby, viewHobby } from '../../../actions/trigger';
+import { likePost } from '../../../actions/postActions';
+import { editPost, viewPost } from '../../../actions/trigger';
 
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -42,19 +42,19 @@ const PostCard = ({ id, title, creatorName, tags, description, likes, creator })
     setExpanded(!expanded);
   }, [expanded]);
 
-  const updateHobby = useCallback((event) => {
+  const updatePost = useCallback((event) => {
     event.stopPropagation();
-    dispatch(editHobby({ id, title, creatorName, tags, description, likes, creator }, navigate));
+    dispatch(editPost({ id, title, creatorName, tags, description, likes, creator }, navigate));
   }, [id, title, creatorName, tags, description, likes, creator, dispatch, navigate]);
 
-  const deleteHobby = useCallback((event) => {
+  const deletePost = useCallback((event) => {
     event.stopPropagation();
     dispatch(deletePost(id));
     setConfirmDelete(false);
   }, [id, dispatch]);
 
   const view = useCallback(() => {
-    dispatch(viewHobby({ id, title, creatorName, tags, description, likes, creator }, navigate));
+    dispatch(viewPost({ id, title, creatorName, tags, description, likes, creator }, navigate));
   }, [id, title, creatorName, tags, description, likes, creator, dispatch, navigate]);
 
   const handleLike = useCallback((event) => {
@@ -108,7 +108,7 @@ const PostCard = ({ id, title, creatorName, tags, description, likes, creator })
           <Typography variant="body2">{likes} likes</Typography>
           {userIsCreator && (
             <>
-              <IconButton aria-label="edit" onClick={updateHobby}>
+              <IconButton aria-label="edit" onClick={updatePost}>
                 <EditIcon />
               </IconButton>
               <IconButton
@@ -140,7 +140,7 @@ const PostCard = ({ id, title, creatorName, tags, description, likes, creator })
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={deleteHobby} color="error">Delete</Button>
+          <Button onClick={deletePost} color="error">Delete</Button>
           <Button onClick={() => setConfirmDelete(false)} color="primary">Cancel</Button>
         </DialogActions>
       </Dialog>

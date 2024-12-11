@@ -73,7 +73,7 @@ const Appnavbar = () => {
     <div>
       <List>
         <ListItem button component={Link} to="/posts" onClick={handleDrawerToggle}>
-          <ListItemText primary="Hobbies" />
+          <ListItemText primary="Interests" />
         </ListItem>
         {/* Admin navigation for users with admin role */}
         {user?.result?.role === 'admin' && (

@@ -34,7 +34,7 @@ import {
   likeComment,
   updateComment,
 } from '../../../actions/comment';
-import { getPost, getPosts, likePost } from '../../../actions/hobby';
+import { getPost, getPosts, likePost } from '../../../actions/postActions';
 
 import { styled } from '@mui/material/styles';
 import moment from 'moment';
@@ -109,15 +109,15 @@ const BackgroundBox = styled(Box)(({ theme }) => ({
 const PostDetails = () => {
   const { postId } = useParams();
   const userId = JSON.parse(localStorage.getItem('profile'));
-  const currentHobby = useSelector((state) => state.formReducer);
+  const currentPost = useSelector((state) => state.formReducer);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState(initialState);
   const [newComment, setNewComment] = useState(initialCommentState);
-  const [otherHobbies, setOtherHobbies] = useState([]);
+  const [otherPosts, setOtherPosts] = useState([]);
   const [scrollPosition, setScrollPosition] = useState(0);
-  const otherHobbiesRef = useRef(null);
+  const otherPostsRef = useRef(null);
 
   useEffect(() => {
     if (postId) {
@@ -126,13 +126,13 @@ const PostDetails = () => {
   }, [dispatch, postId]);
 
   useEffect(() => {
-    if (currentHobby.formData) setFormData(currentHobby.formData);
-  }, [currentHobby]);
+    if (currentPost.formData) setFormData(currentPost.formData);
+  }, [currentPost]);
 
   useEffect(() => {
     dispatch(getPosts()).then((posts) => {
       const filteredPosts = posts.filter((post) => post._id !== postId);
-      setOtherHobbies(filteredPosts);
+      setOtherPosts(filteredPosts);
     });
   }, [dispatch]);
 
@@ -169,19 +169,19 @@ const PostDetails = () => {
     dispatch(likePost(formData.id || formData._id));
   };
 
-  const handleOtherHobbyClick = (hobbyId) => {
-    const selectedHobby = otherHobbies.find(hobby => hobby._id === hobbyId);
-    if (selectedHobby) {
-      setFormData(selectedHobby);
-      navigate(`/posts/view/${hobbyId}`, { replace: true });
-      setOtherHobbies(prevHobbies =>
-        prevHobbies.filter(hobby => hobby._id !== hobbyId).concat(formData)
+  const handleOtherPostClick = (postId) => {
+    const selectedPost = otherPosts.find(post => post._id === postId);
+    if (selectedPost) {
+      setFormData(selectedPost);
+      navigate(`/posts/view/${postId}`, { replace: true });
+      setOtherPosts(prevPosts =>
+        prevPosts.filter(post => post._id !== postId).concat(formData)
       );
     }
   };
 
   const handleScroll = (direction) => {
-    const container = otherHobbiesRef.current;
+    const container = otherPostsRef.current;
     if (container) {
       const scrollAmount = 220;
       const newPosition = direction === 'next'
@@ -197,7 +197,7 @@ const PostDetails = () => {
     }
   };
 
-  const handleBackToHobbies = () => {
+  const handleBackToPosts = () => {
     navigate('/posts');
   };
 
@@ -258,7 +258,7 @@ const PostDetails = () => {
                       </IconButton>
                     </Box>
                     <Box
-                      ref={otherHobbiesRef}
+                      ref={otherPostsRef}
                       sx={{
                         display: 'flex',
                         overflowX: 'auto',
@@ -269,9 +269,9 @@ const PostDetails = () => {
                         scrollbarWidth: 'none',
                       }}
                     >
-                      {otherHobbies.map((hobby) => (
+                      {otherPosts.map((post) => (
                         <Box
-                          key={hobby._id}
+                          key={post._id}
                           sx={{
                             minWidth: 220,
                             maxWidth: 220,
@@ -283,18 +283,18 @@ const PostDetails = () => {
                             cursor: 'pointer',
                             '&:hover': { boxShadow: 1 }
                           }}
-                          onClick={() => handleOtherHobbyClick(hobby._id)}
+                          onClick={() => handleOtherPostClick(post._id)}
                         >
                           <Typography variant="subtitle1" noWrap fontWeight="bold">
-                            {hobby.title}
+                            {post.title}
                           </Typography>
                           <Typography variant="body2" color="text.secondary" noWrap>
-                            by {hobby.creatorName}
+                            by {post.creatorName}
                           </Typography>
                           <Box sx={{ my: 1, height: 40, overflowY: 'hidden' }}>
-                            {hobby.tags.slice(0, 3).map((tag) => (
+                            {post.tags.slice(0, 3).map((tag) => (
                               <Chip
-                                key={`${hobby._id}-${tag}`}
+                                key={`${post._id}-${tag}`}
                                 label={tag}
                                 size="small"
                                 sx={{ mr: 0.5, mb: 0.5, fontSize: '0.7rem' }}
@@ -306,11 +306,11 @@ const PostDetails = () => {
                             <Box sx={{ display: 'flex', alignItems: 'center' }}>
                               <Favorite fontSize="small" color="error" />
                               <Typography variant="body2" sx={{ ml: 0.5 }}>
-                                {hobby.likes?.length || 0}
+                                {post.likes?.length || 0}
                               </Typography>
                             </Box>
                             <Typography variant="caption" color="text.secondary">
-                              {formatDate(hobby.date)}
+                              {formatDate(post.date)}
                             </Typography>
                           </Box>
                         </Box>
@@ -335,7 +335,7 @@ const PostDetails = () => {
                   </Box>
                   <Button
                     startIcon={<ArrowBack />}
-                    onClick={handleBackToHobbies}
+                    onClick={handleBackToPosts}
                     sx={{
                       mt: 2,
                       bgcolor: 'var(--secondary-color)',
