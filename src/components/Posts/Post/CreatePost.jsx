@@ -11,17 +11,20 @@ const initialFormState = {
   title: '',
   tags: '',
   description: '',
+  postImage: null, // Add postImage to the initial form state
 };
 
 const initialErrorState = {
   title: '',
   tags: '',
   description: '',
+  postImage: '',
 };
 
 const CreatePost = () => {
   const [formData, setFormData] = useState(initialFormState);
   const [errors, setErrors] = useState(initialErrorState);
+  const [imagePreview, setImagePreview] = useState(null); // For previewing the selected image
   const currentPost = useSelector((state) => state.formReducer);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -39,6 +42,24 @@ const CreatePost = () => {
   const handleChange = useCallback((e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+  }, []);
+
+  const handleImageChange = useCallback(async (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        setFormData((prev) => ({ ...prev, postImage: reader.result }));
+        setImagePreview(reader.result);
+      };
+      reader.onerror = () => {
+        setErrors((prev) => ({ ...prev, postImage: 'Error uploading image' }));
+      };
+    } else {
+      setFormData((prev) => ({ ...prev, postImage: null }));
+      setImagePreview(null);
+    }
   }, []);
 
   const validate = useCallback((data) => {
@@ -60,7 +81,6 @@ const CreatePost = () => {
   const handleSubmit = useCallback((e) => {
     e.preventDefault();
     if (!validate(formData)) return;
-
     const action = currentPost.formData
       ? updatePost(currentPost.formData.id, formData, navigate)
       : createPost(formData, navigate);
@@ -152,6 +172,32 @@ const CreatePost = () => {
         />
       </Box>
 
+      <Box mb={3}>
+        <Button variant="contained" component="label">
+          Upload Image
+          <input
+            type="file"
+            accept="image/*"
+            hidden
+            onChange={handleImageChange}
+          />
+        </Button>
+        {errors.postImage && (
+          <Typography color="error" variant="body2">
+            {errors.postImage}
+          </Typography>
+        )}
+        {imagePreview && (
+          <Box mt={2}>
+            <img
+              src={imagePreview}
+              alt="Preview"
+              style={{ maxWidth: '100%', maxHeight: '200px' }}
+            />
+          </Box>
+        )}
+      </Box>
+
       <Box display="flex" flexDirection={{ xs: 'column', sm: 'row' }} justifyContent="space-between" gap={2}>
         <Button
           component={Link}
@@ -187,7 +233,7 @@ const CreatePost = () => {
         </Button>
       </Box>
     </form>
-  ), [formData, errors, handleChange, handleSubmit, handleTagChange, handleTagDelete, secondaryColor]);
+  ), [formData, errors, handleChange, handleSubmit, handleTagChange, handleTagDelete, handleImageChange, imagePreview, secondaryColor]);
 
   return (
     <Box

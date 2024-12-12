@@ -49,7 +49,6 @@ export const getPost = (id) => async (dispatch) => {
 export const createPost = (post, history) => async (dispatch) => {
   try {
     dispatch(setLoading());
-
     const tagsArray = post.tags.split(',').map((tag) => tag.trim());
     const updatedPost = { ...post, tags: tagsArray };
 

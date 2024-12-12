@@ -108,6 +108,7 @@ function PostList() {
               creatorName={post.creatorName}
               date={post.date}
               comments={post.comments}
+              postImage={post.postImage}
             />
           </Grid>
         ))}

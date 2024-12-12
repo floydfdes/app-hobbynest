@@ -24,13 +24,13 @@ import {
   Typography
 } from '@mui/material';
 import React, { useCallback, useState } from 'react';
-import { likePost } from '../../../actions/postActions';
 import { editPost, viewPost } from '../../../actions/trigger';
 
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { likePost } from '../../../actions/postActions';
 
-const PostCard = ({ id, title, creatorName, tags, description, likes, creator }) => {
+const PostCard = ({ id, title, creatorName, tags, description, likes, creator, postImage }) => {
   const [expanded, setExpanded] = useState(false);
   const [confirmDelete, setConfirmDelete] = useState(false);
   const dispatch = useDispatch();
@@ -44,8 +44,8 @@ const PostCard = ({ id, title, creatorName, tags, description, likes, creator })
 
   const updatePost = useCallback((event) => {
     event.stopPropagation();
-    dispatch(editPost({ id, title, creatorName, tags, description, likes, creator }, navigate));
-  }, [id, title, creatorName, tags, description, likes, creator, dispatch, navigate]);
+    dispatch(editPost({ id, title, creatorName, tags, description, likes, creator, postImage }, navigate));
+  }, [id, title, creatorName, tags, description, likes, creator, postImage, dispatch, navigate]);
 
   const deletePost = useCallback((event) => {
     event.stopPropagation();
