@@ -39,9 +39,9 @@ const Profile = () => {
           <Avatar
             className="profile-avatar"
             alt={`${user?.firstName} ${user?.lastName}`}
-            src={user?.imageUrl}
+            src={user?.profilePicture ? `${user?.profilePicture}` : ''}
           >
-            {!user?.imageUrl && `${user?.firstName[0]}${user?.lastName[0]}`}
+            {!user?.profilePicture && `${user?.firstName[0]}${user?.lastName[0]}`}
           </Avatar>
           <Typography variant="h4" className="profile-name">
             {user?.firstName} {user?.lastName}

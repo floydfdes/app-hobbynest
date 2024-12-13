@@ -1,7 +1,8 @@
 import * as api from '../api/index'; // Removed the .js extension
 
-import { AUTH } from '../constants/actionTypes';
 import { clearLoading, setLoading } from './loading';
+
+import { AUTH } from '../constants/actionTypes';
 import { notifySignup } from './toastNotifications';
 
 export const signUp = (formData, history) => async (dispatch) => {
@@ -34,7 +35,15 @@ export const signIn = (formData, history) => async (dispatch) => {
 export const editUser = (id, formData, history) => async (dispatch) => {
   try {
     dispatch(setLoading());
-    const { data } = await api.editUser(id, formData);
+
+    const disallowedKeys = ["role", "date", "_id", "password", "gender", "__v"];
+
+    const filteredFormData = Object.fromEntries(
+      Object.entries(formData).filter(([key]) => !disallowedKeys.includes(key))
+    );
+
+    const { data } = await api.editUser(id, filteredFormData);
+
     dispatch({ type: AUTH, data });
     dispatch(notifySignup({ message: 'User successfully updated', color: 'info' }));
     history('/');

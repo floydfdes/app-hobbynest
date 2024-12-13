@@ -8,16 +8,18 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import TextField from '@mui/material/TextField';
-import PropTypes from 'prop-types'; // Import PropTypes
+import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { editUser } from '../../../actions/auth';
+import { resizeFile } from '../../../utills/imageCompression';
 
 const EditModal = ({ open, setOpen, userDetails }) => {
   const initialErrorState = {
     firstName: '',
     lastName: '',
     age: '',
+    profilePicture: '',
   };
 
   const fieldPattern = {
@@ -30,11 +32,12 @@ const EditModal = ({ open, setOpen, userDetails }) => {
   const dispatch = useDispatch();
   const [user, setUser] = useState(userDetails);
   const [errors, setErrors] = useState(initialErrorState);
+  const [imagePreview, setImagePreview] = useState(userDetails.profilePicture || null);
 
   const handleClose = (action) => {
     if (action) {
-      const { firstName, lastName, age } = user;
-      const formData = { firstName, lastName, age };
+      const { firstName, lastName, age, profilePicture } = user;
+      const formData = { firstName, lastName, age, profilePicture };
       const isValid = validation(formData);
       if (!isValid) return;
       if (user) dispatch(editUser(user._id, user, history));
@@ -46,18 +49,53 @@ const EditModal = ({ open, setOpen, userDetails }) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
+  const handleImageChange = async (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      try {
+        const compressedFile = await resizeFile(file);
+        const reader = new FileReader();
+        reader.readAsDataURL(compressedFile);
+        reader.onload = () => {
+          setUser((prev) => ({ ...prev, profilePicture: reader.result }));
+          setImagePreview(reader.result);
+        };
+        reader.onerror = () => {
+          setErrors((prevState) => ({
+            ...prevState,
+            profilePicture: 'Error reading compressed image',
+          }));
+        };
+      } catch (error) {
+        setErrors((prevState) => ({
+          ...prevState,
+          profilePicture: 'Error compressing image',
+        }));
+      }
+    }
+  };
+
+  const handleRemoveImage = () => {
+    setUser((prev) => ({ ...prev, profilePicture: '' }));
+    setImagePreview(null);
+    setErrors((prevState) => ({
+      ...prevState,
+      profilePicture: '', // Reset error if any
+    }));
+  };
+
   const validation = (formData) => {
     let isValid = true;
     setErrors(initialErrorState);
 
     for (const entry in formData) {
-      if (!formData[entry]) {
+      if (entry !== 'profilePicture' && !formData[entry]) {
         setErrors((prevState) => ({
           ...prevState,
           [entry]: `${entry} is required`,
         }));
         isValid = false;
-      } else if (formData[entry]) {
+      } else if (formData[entry] && fieldPattern[entry]) {
         const regularExp = new RegExp(fieldPattern[entry]);
         if (!regularExp.test(formData[entry])) {
           setErrors((prevState) => ({
@@ -122,6 +160,48 @@ const EditModal = ({ open, setOpen, userDetails }) => {
             error={!!errors.age}
             helperText={errors.age}
           />
+          <Box mt={2}>
+            {imagePreview && (
+              <Box mt={2}>
+                <img
+                  src={imagePreview}
+                  alt="Profile Preview"
+                  style={{ maxWidth: '100%', maxHeight: '200px' }}
+                />
+              </Box>
+            )}
+            <Box mt={2}>
+              <Button variant="contained" component="label">
+                Upload Profile Picture
+                <input
+                  type="file"
+                  accept="image/*"
+                  hidden
+                  onChange={handleImageChange}
+                />
+              </Button>
+            </Box>
+            {imagePreview && (
+              <Box mt={2}>
+                <Button
+                  variant="outlined"
+                  color="secondary"
+                  onClick={handleRemoveImage}
+                >
+                  Remove Profile Picture
+                </Button>
+              </Box>
+            )}
+            {errors.profilePicture && (
+              <Box mt={1}>
+                <TextField
+                  error
+                  helperText={errors.profilePicture}
+                  sx={{ display: 'none' }}
+                />
+              </Box>
+            )}
+          </Box>
         </Box>
       </DialogContent>
       <DialogActions sx={{ p: 3 }}>
@@ -167,6 +247,7 @@ EditModal.propTypes = {
     firstName: PropTypes.string,
     lastName: PropTypes.string,
     age: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    profilePicture: PropTypes.string, // Include profilePicture as optional
   }).isRequired,
 };
 
