@@ -4,7 +4,7 @@ import {
   FETCH_ALL,
   LIKE,
   UPDATE,
-} from '../constants/actionTypes';
+} from '../Constants/actionTypes';
 
 const postReducer = (posts = [], action) => {
   switch (action.type) {

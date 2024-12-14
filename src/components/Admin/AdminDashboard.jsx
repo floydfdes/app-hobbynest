@@ -23,7 +23,7 @@ import {
 } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { deletePost, deleteUser, fetchPosts, fetchUsers } from '../../actions/adminActions';
+import { deletePost, deleteUser, fetchPosts, fetchUsers } from '../../Actions/adminActions';
 
 const AdminDashboard = () => {
     const dispatch = useDispatch();

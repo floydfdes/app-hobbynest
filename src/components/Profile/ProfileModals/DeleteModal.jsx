@@ -1,9 +1,10 @@
 import { Box, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, TextField } from '@mui/material';
-import PropTypes from 'prop-types';
 import React, { useState } from 'react';
+
+import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { deleteUser } from '../../../actions/auth';
+import { deleteUser } from '../../../Actions/auth';
 
 const DeleteModal = ({ open, setOpen, userDetails }) => {
   const [emailField, setEmailField] = useState(null);

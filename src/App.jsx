@@ -2,10 +2,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.scss';
 
 import { BrowserRouter } from 'react-router-dom';
-import Home from './components/Home/Home';
-import Appnavbar from './components/Layout/Appnavbar';
-import UniversalLoading from './components/UniversalLoading/UniversalLoading';
-import checkTokenExpiry from './utills/checkTokenExpiry';
+import Home from './Components/Home/Home';
+import Appnavbar from './Components/Layout/Appnavbar';
+import UniversalLoading from './Components/UniversalLoading/UniversalLoading';
+import checkTokenExpiry from './Utils/checkTokenExpiry';
 
 function App() {
   checkTokenExpiry();

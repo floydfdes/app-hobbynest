@@ -8,7 +8,7 @@ import {
   LIKE_COMMENT,
   UPDATE_COMMENT,
   UPDATE_POST,
-} from '../constants/actionTypes';
+} from '../Constants/actionTypes';
 
 const formReducer = (state = { formData: null }, action) => {
   switch (action.type) {

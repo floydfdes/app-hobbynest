@@ -1,4 +1,4 @@
-import { FETCH_COMMENTS, FETCH_POSTS, FETCH_USERS } from '../constants/actionTypes';
+import { FETCH_COMMENTS, FETCH_POSTS, FETCH_USERS } from '../Constants/actionTypes';
 
 const initialState = {
     users: [],

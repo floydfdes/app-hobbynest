@@ -1,11 +1,13 @@
-import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+
 import React, { useCallback, useState } from 'react';
+import { signIn, signUp } from '../../Actions/auth';
+import { loginFields, signUpFields } from '../../Data/Data';
+
+import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import * as yup from 'yup';
-import { loginFields, signUpFields } from '../../Data/Data';
-import { signIn, signUp } from '../../actions/auth';
-import { notifyCreate } from '../../actions/toastNotifications';
+import { notifyCreate } from '../../Actions/toastNotifications';
 import { Login } from './Login';
 import { SignUp } from './Signup';
 

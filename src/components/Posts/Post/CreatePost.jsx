@@ -2,7 +2,7 @@ import { Box, Button, Chip, Paper, TextField, Typography } from '@mui/material';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { createPost, updatePost } from '../../../actions/postActions';
+import { createPost, updatePost } from '../../../Actions/postActions';
 
 import AddIcon from '@mui/icons-material/Add';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';

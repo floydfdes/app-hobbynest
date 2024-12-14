@@ -4,7 +4,7 @@ import {
   DISLIKE_COMMENT,
   LIKE_COMMENT,
   UPDATE_COMMENT,
-} from '../constants/actionTypes';
+} from '../Constants/actionTypes';
 
 const comments = (state = [], action) => {
   switch (action.type) {

@@ -1,15 +1,22 @@
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import {
-  Box, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle,
+  Box,
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
   IconButton,
   InputAdornment,
   TextField
 } from '@mui/material';
-import PropTypes from 'prop-types';
 import React, { useState } from 'react';
+
+import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { resetPassword } from '../../../actions/auth';
+import { resetPassword } from '../../../Actions/auth';
 
 const ChangePasswordModal = ({ open, setOpen, userDetails }) => {
   const initialErrorState = {

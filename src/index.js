@@ -7,7 +7,7 @@ import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { thunk } from 'redux-thunk';
 import App from './App';
-import reducers from './reducers';
+import reducers from './Reducers';
 
 const store = createStore(reducers, compose(applyMiddleware(thunk)));
 

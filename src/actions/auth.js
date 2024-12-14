@@ -1,8 +1,8 @@
-import * as api from '../api/index'; // Removed the .js extension
+import * as api from '../Api/index'; // Removed the .js extension
 
 import { clearLoading, setLoading } from './loading';
 
-import { AUTH } from '../constants/actionTypes';
+import { AUTH } from '../Constants/actionTypes';
 import { notifySignup } from './toastNotifications';
 
 export const signUp = (formData, history) => async (dispatch) => {

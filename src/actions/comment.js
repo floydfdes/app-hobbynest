@@ -1,5 +1,4 @@
-import * as api from '../api/index';
-import { clearLoading, setLoading } from './loading';
+import * as api from '../Api/index';
 
 import {
   CREATE_NEW_COMMENT,
@@ -7,7 +6,8 @@ import {
   DISLIKE_COMMENT,
   LIKE_COMMENT,
   UPDATE_COMMENT,
-} from '../constants/actionTypes';
+} from '../Constants/actionTypes';
+import { clearLoading, setLoading } from './loading';
 
 import { notifyError } from './toastNotifications';
 

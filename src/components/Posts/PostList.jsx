@@ -13,8 +13,8 @@ import AddIcon from '@mui/icons-material/Add';
 import ClearIcon from '@mui/icons-material/Clear';
 import SearchIcon from '@mui/icons-material/Search';
 import { useNavigate } from 'react-router-dom';
-import { getPosts } from '../../actions/postActions';
-import { createNewPost } from '../../actions/trigger';
+import { getPosts } from '../../Actions/postActions';
+import { createNewPost } from '../../Actions/trigger';
 import PostCard from './Post/PostCard';
 
 function PostList() {

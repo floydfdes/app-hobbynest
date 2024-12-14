@@ -5,7 +5,7 @@ import {
   NOTIFY_SIGNUP,
   NOTIFY_SUCCESS,
   NOTIFY_UPDATE,
-} from '../constants/actionTypes';
+} from '../Constants/actionTypes';
 
 const toastNotificationReducer = (
   state = { message: null, color: null },

@@ -2,7 +2,7 @@ import {
   CREATE_NEW_POST,
   FETCH,
   UPDATE_POST,
-} from '../constants/actionTypes';
+} from '../Constants/actionTypes';
 
 export const createNewPost = (data, history) => async (dispatch) => {
   try {

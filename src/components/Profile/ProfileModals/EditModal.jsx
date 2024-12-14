@@ -11,8 +11,8 @@ import TextField from '@mui/material/TextField';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { editUser } from '../../../actions/auth';
-import { resizeFile } from '../../../utills/imageCompression';
+import { editUser } from '../../../Actions/auth';
+import { resizeFile } from '../../../Utils/imageCompression';
 
 const EditModal = ({ open, setOpen, userDetails }) => {
   const initialErrorState = {

@@ -33,8 +33,8 @@ import {
   dislikeComment,
   likeComment,
   updateComment,
-} from '../../../actions/comment';
-import { getPost, getPosts, likePost } from '../../../actions/postActions';
+} from '../../../Actions/comment';
+import { getPost, getPosts, likePost } from '../../../Actions/postActions';
 
 import { styled } from '@mui/material/styles';
 import moment from 'moment';

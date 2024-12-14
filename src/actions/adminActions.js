@@ -1,6 +1,6 @@
-import * as api from '../api/index';
+import * as api from '../Api/index';
 
-import { FETCH_POSTS, FETCH_USERS } from '../constants/actionTypes';
+import { FETCH_POSTS, FETCH_USERS } from '../Constants/actionTypes';
 import { notifyError, notifySuccess } from './toastNotifications';
 
 const handleError = (dispatch, error) => {

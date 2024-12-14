@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+
 import { useDispatch } from 'react-redux';
-import { sendContactUsEmail } from '../../actions/contactUs';
-import { notifyCreate } from '../../actions/toastNotifications';
+import { sendContactUsEmail } from '../../Actions/contactUs';
+import { notifyCreate } from '../../Actions/toastNotifications';
 import ContactUs from '../../assets/images/contact-us.svg';
 
 const Contact = () => {

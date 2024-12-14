@@ -1,4 +1,5 @@
-import * as api from '../api/index';
+import * as api from '../Api/index';
+
 import { clearLoading, setLoading } from './loading';
 
 export const sendContactUsEmail = (contactFormData) => async (dispatch) => {

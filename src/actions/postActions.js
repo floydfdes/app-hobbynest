@@ -1,4 +1,4 @@
-import * as api from '../api/index';
+import * as api from '../Api/index';
 
 import {
   CREATE,
@@ -7,7 +7,7 @@ import {
   FETCH_ONE,
   LIKE,
   UPDATE,
-} from '../constants/actionTypes';
+} from '../Constants/actionTypes';
 import { clearLoading, setLoading } from './loading';
 import {
   notifyCreate,

@@ -24,11 +24,11 @@ import {
   Typography
 } from '@mui/material';
 import React, { useCallback, useState } from 'react';
-import { editPost, viewPost } from '../../../actions/trigger';
+import { editPost, viewPost } from '../../../Actions/trigger';
 
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { likePost } from '../../../actions/postActions';
+import { likePost } from '../../../Actions/postActions';
 
 const PostCard = ({ id, title, creatorName, tags, description, likes, creator, postImage }) => {
   const [expanded, setExpanded] = useState(false);
